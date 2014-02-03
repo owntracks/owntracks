@@ -15,8 +15,8 @@ header {
   text-transform: uppercase;
   font-family: 'Raleway', sans-serif;
   width: 100%;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 	border-bottom: 2px solid #243240;
 }
 
@@ -125,9 +125,9 @@ footer {
   font-family: 'Raleway', sans-serif;
   width: 100%;
   text-align: center;
-	padding-top: 100px;
+	padding-top: 50px;
 	font-size: 12px;
-	padding-bottom: 60px;
+	padding-bottom: 50px;
 	border-top: 2px solid #243240;
 }
 
