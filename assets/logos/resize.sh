@@ -38,5 +38,3 @@ $INK -z -D -e "$MYPWD/$BASE-98@2x.png" -f 	$MYPWD/$SVG -w 196 -h 196
 $INK -z -D -e "$MYPWD/$BASE-192.png" -f 	$MYPWD/$SVG -w 192 -h 192
 $INK -z -D -e "$MYPWD/$BASE-512.png" -f 	$MYPWD/$SVG -w 512 -h 512
 $INK -z -D -e "$MYPWD/$BASE-1024.png" -f 	$MYPWD/$SVG -w 1024 -h 1024
-cp "$MYPWD/$BASE-512.png" 			$MYPWD/iTunesArtwork.png
-cp "$MYPWD/$BASE-1024.png" 			$MYPWD/iTunesArtwork@2x.png
