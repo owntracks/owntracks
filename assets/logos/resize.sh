@@ -19,6 +19,9 @@ $INK -z -D -e "$MYPWD/$BASE-27-5@2x.png" -f 	$MYPWD/$SVG -w 55 -h 55
 $INK -z -D -e "$MYPWD/$BASE-29.png" -f 		$MYPWD/$SVG -w 29 -h 29
 $INK -z -D -e "$MYPWD/$BASE-29@2x.png" -f 	$MYPWD/$SVG -w 58 -h 58
 $INK -z -D -e "$MYPWD/$BASE-29@3x.png" -f 	$MYPWD/$SVG -w 87 -h 87
+$INK -z -D -e "$MYPWD/$BASE-33.png" -f 		$MYPWD/$SVG -w 33 -h 33
+$INK -z -D -e "$MYPWD/$BASE-33@2x.png" -f 	$MYPWD/$SVG -w 66 -h 66
+$INK -z -D -e "$MYPWD/$BASE-33@3x.png" -f	$MYPWD/$SVG -w 99 -h 99
 $INK -z -D -e "$MYPWD/$BASE-40.png" -f 		$MYPWD/$SVG -w 40 -h 40
 $INK -z -D -e "$MYPWD/$BASE-40@2x.png" -f 	$MYPWD/$SVG -w 80 -h 80
 $INK -z -D -e "$MYPWD/$BASE-40@3x.png" -f 	$MYPWD/$SVG -w 120 -h 120
