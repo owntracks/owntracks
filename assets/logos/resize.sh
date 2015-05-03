@@ -1,6 +1,7 @@
 #!/bin/bash
 
 INK=/Applications/Inkscape.app/Contents/Resources/bin/inkscape
+IMAGEW=imagew
 
 if [[ -z "$1" ]] 
 then
@@ -25,7 +26,7 @@ $INK -z -D -e "$MYPWD/$BASE-33@3x.png" -f	$MYPWD/$SVG -w 99 -h 99
 $INK -z -D -e "$MYPWD/$BASE-40.png" -f 		$MYPWD/$SVG -w 40 -h 40
 $INK -z -D -e "$MYPWD/$BASE-40@2x.png" -f 	$MYPWD/$SVG -w 80 -h 80
 $INK -z -D -e "$MYPWD/$BASE-40@3x.png" -f 	$MYPWD/$SVG -w 120 -h 120
-$INK -z -D -e "$MYPWD/$BASE-44@2x.png" -f 	$MYPWD/$SVG -w 44 -h 44
+$INK -z -D -e "$MYPWD/$BASE-44@2x.png" -f 	$MYPWD/$SVG -w 88 -h 88
 $INK -z -D -e "$MYPWD/$BASE-50.png" -f 		$MYPWD/$SVG -w 50 -h 50
 $INK -z -D -e "$MYPWD/$BASE-50@2x.png" -f 	$MYPWD/$SVG -w 100 -h 100
 $INK -z -D -e "$MYPWD/$BASE-57.png" -f 		$MYPWD/$SVG -w 57 -h 57
@@ -41,3 +42,5 @@ $INK -z -D -e "$MYPWD/$BASE-98@2x.png" -f 	$MYPWD/$SVG -w 196 -h 196
 $INK -z -D -e "$MYPWD/$BASE-192.png" -f 	$MYPWD/$SVG -w 192 -h 192
 $INK -z -D -e "$MYPWD/$BASE-512.png" -f 	$MYPWD/$SVG -w 512 -h 512
 $INK -z -D -e "$MYPWD/$BASE-1024.png" -f 	$MYPWD/$SVG -w 1024 -h 1024
+$IMAGEW "$MYPWD/$BASE-512.png" "$MYPWD/$BASE-512-noalpha.png"
+$IMAGEW "$MYPWD/$BASE-1024.png" "$MYPWD/$BASE-1024-noalpha.png"
