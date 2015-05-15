@@ -255,10 +255,14 @@
 
 <h1 id="card">Card</h1>
 <p>OwnTracks typically displays the <em>TID</em> of a <a href="../friends/">friend</a> on the map, but you can associate an address book entry to that friend in order to see a friendly face (if you have you friend's photo in your device's address book) and/or a friendly name.</p>
+<p><img alt="TID on iOS" src="../images/b-ipad-TID-map.png" /></p>
 <p>For <em>Hosted mode</em> we developed a new feature we call a <em>card</em> which you can also make use of when in in <em>Private mode</em>. A card is a retained message which contains a <a href="../../tech/json/">JSON payload</a> which, in absence of an address-book association, will be used to populate your friend on your map. The payload contains a full name (hopefully one you recognize), and an avatar -- a small image. If a card exists it will be used, but you can override its use in OwnTracks by associating your friend with an address book entry of your own device.</p>
-<p>FIXME: show JSON</p>
-<p>FIXME: show result of card on iOS</p>
-<p>FIXME: create CTRL issue w/ optional CARD support </p></div>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;card&quot;,
+  &quot;name&quot;: &quot;Jane Jolie&quot;
+  &quot;face&quot;: &quot;iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==&quot;,
+}
+</code></pre></div>
         </div>
 
 	<footer class="col-md-12">

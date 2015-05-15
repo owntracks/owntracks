@@ -246,7 +246,9 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#ios">iOS</a></li>
+        <li class="main active"><a href="#waypoints">Waypoints</a></li>
+        
+            <li><a href="#ios">iOS</a></li>
         
     
         <li class="main "><a href="#setting-up-ibeacons">Setting up iBeacons</a></li>
@@ -256,10 +258,11 @@
 </div></div>
             <div class="col-md-9" role="main">
 
+<h1 id="waypoints">Waypoints</h1>
 <p>The <em>base topic</em> for publishes from the devices (OwnTracks apps) is what you configure it
 to be in the app's preferences/settings. For argument's sake we'll use
 <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
-<p>This base topic is used for publishes of type <code>location</code> (see [[JSON|JSON]]).
+<p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
 All messages published to this base topic are retained if you have configured
 the app to retain them.</p>
 <p>Additionally, if you've configured a geo-fence, a <code>location</code> message will
@@ -273,7 +276,7 @@ contain the elements:</p>
 <p>If you set up a shared waypoint, the app publishes that waypoint (without the retain flag,
 irrespective of your general preference) to the base topic with <code>/waypoints</code>
 tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the
-payload for <code>_type=waypoint</code> as specified in the [[JSON page|JSON]]. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
+payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
 <p>For example, If Jane configures a waypoint on her iPhone</p>
 <p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-config-ios.png" /></p>
 <p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-map-ios.png" /></p>

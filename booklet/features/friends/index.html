@@ -260,7 +260,7 @@
 <h1 id="friends">Friends</h1>
 <p>OwnTracks has a so-called <em>Friends and Family</em> capability which is enabled by
 default. The way this works is friends and/or family members who share a single
-[[MQTT broker|MQTTbroker]] can "see" eachother on the map, respectively on a
+<a href="../../guide/broker/">MQTT broker</a> can "see" eachother on the map, respectively on a
 list of friends held by the app.  (This can be done either by configuring all
 apps to use the same broker or by what is called <em>bridging</em>.)</p>
 <p>Let's assume for a moment, that a user Jane (user name <code>jjolie</code>) has an iPhone 4s (device name <code>4s</code>), and that she publishes location data to a topic at</p>
@@ -271,7 +271,7 @@ apps to use the same broker or by what is called <em>bridging</em>.)</p>
 <pre><code>owntracks/john/nex4
 </code></pre>
 
-<p>Let us further assume that access control on the [[MQTT broker|MQTTbroker]] allows both users to subscribe to eachother's topics.</p>
+<p>Let us further assume that access control on the <a href="../../guide/broker/">MQTT broker</a> allows both users to subscribe to eachother's topics.</p>
 <p>Now, if <em>both</em> friends subscribe to a topic called <code>owntracks/+/+</code> (which the
 apps do by default) their devices will effectively receive published location
 messages to either topic. So when either Jane or John publish their location,
