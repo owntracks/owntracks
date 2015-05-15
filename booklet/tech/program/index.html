@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="OwnTracks.org">
+        <link rel="canonical" href="http://owntracks.org/tech/program/">
+        <link rel="shortcut icon" href="../../favicon.ico">
+        
+
+	<title>Code - OwnTracksDoc</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">OwnTracksDoc</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Intro</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../guide/what/">What it does</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/how/">How it works</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/ui/">User interface</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/scenarios/">Scenarios</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/mqtt/">MQTT</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/topics/">Topics</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/broker/">Broker</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/clients/">Clients</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/beacons/">iBeacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/bridge/">Bridging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../features/hosted/">Hosted</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/security/">Security</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/tid/">TID</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/card/">Card</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/beacons/">Beacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/pedometer/">Pedometer</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/settings/">Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/debug/">Debugging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../json/">JSON</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Code</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sundry <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../terminology/">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../people/">People</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../ideas/">Ideas</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../faq/">Answers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../press/">Press</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../json/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../terminology/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/owntracks">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#programming">Programming</a></li>
+        
+            <li><a href="#getting-started-paho-python">Getting started: Paho Python</a></li>
+        
+            <li><a href="#progress-reports">Progress reports</a></li>
+        
+            <li><a href="#micro-map">Micro Map</a></li>
+        
+            <li><a href="#testing">Testing</a></li>
+        
+            <li><a href="#last-words">Last words</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="programming">Programming</h1>
+<p>We've <a href="../../guide/clients/">shown you some clients which consume OwnTracks data</a>, but you may well wish to dip your fingers into programming something of your own. Creating a program to consume OwnTracks data isn't particularly difficult, and we're going to show you what you can do with a bit of <a href="https://www.python.org">Python</a> together with the <a href="https://www.eclipse.org/paho/clients/python/">Paho Python client</a>.</p>
+<h2 id="getting-started-paho-python">Getting started: Paho Python</h2>
+<p>We're assuming you have Python installed, which you can verify by attempting to invoke <code>python -V</code>; if installed, it tells you the version number. We're also assuming you have <code>pip</code> installed (a Python package manager) which may be called <code>pip2</code> or something on your machine. You may have to install <code>setuptools</code> via your distribution's package manager.</p>
+<p>Install the <a href="https://www.eclipse.org/paho/clients/python/">Paho Python</a> module using</p>
+<pre><code class="bash">pip install paho-mqtt
+</code></pre>
+
+<h2 id="progress-reports">Progress reports</h2>
+<p>Assume we want to create a program which should report the location of our friends, as a simple list:</p>
+<pre><code>TID = n4 is currently at 51.0343863, 9.4763712
+TID = n7 is currently at 52.7343671, 7.8764431
+TID = jp is currently at 53.134404655, 8.1063173
+</code></pre>
+
+<p>We need a small utility program which will subscribe to location publishes received by your broker by connecting to it on <em>localhost</em> and subscribing to <code>owntracks/+/+</code> (a wild-card expression in which each <code>+</code> means <em>anything at this level</em>).</p>
+<h3 id="the-code">The Code</h3>
+<p>For each received message, the utility attempts to decode the JSON payload and then prints the tracker-ID (<em>TID</em>) as well as latitude, longitude coordinates. Keep a copy of our <a href="../json/">OwnTracks-JSON</a> documentation handy and study the topic names of each possible publish by the apps.</p>
+<pre><code class="python">#!/usr/bin/env python
+
+import paho.mqtt.client as mqtt
+import json
+
+# The callback for when the client successfully connects to the broker
+def on_connect(client, userdata, rc):
+    ''' We subscribe on_connect() so that if we lose the connection
+        and reconnect, subscriptions will be renewed. '''
+
+    client.subscribe(&quot;owntracks/+/+&quot;)
+
+# The callback for when a PUBLISH message is received from the broker
+def on_message(client, userdata, msg):
+
+    topic = msg.topic
+
+    try:
+        data = json.loads(str(msg.payload))
+
+        print &quot;TID = {0} is currently at {1}, {2}&quot;.format(data['tid'], data['lat'], data['lon'])
+    except:
+        print &quot;Cannot decode data on topic {0}&quot;.format(topic)
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+
+client.connect(&quot;localhost&quot;, 1883, 60)
+
+# Blocking call which processes all network traffic and dispatches
+# callbacks (see on_*() above). It also handles reconnecting.
+
+client.loop_forever()
+</code></pre>
+
+<h2 id="micro-map">Micro Map</h2>
+<p>Assume for a moment that you alter the program above in such a way as that it writes your current location in JSON format to a file called <code>me.json</code> which could look like this:</p>
+<pre><code class="json">{
+    &quot;lat&quot;: 48.858334,
+    &quot;lon&quot; : 2.295134,
+    &quot;tid&quot;:&quot;JJ&quot;
+}
+</code></pre>
+
+<p>We could then create a Web page which would load that JSON and display a marker on a map.</p>
+<p><img alt="micro map" src="../images/micro-map.png" /></p>
+<h3 id="indexhtml">index.html</h3>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Micromap&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, height=device-height, user-scalable=no, initial-scale=1.0&quot; /&gt;
+
+    &lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+      body {  font-size: 80%; }
+
+      td { border-bottom: 1px solid; border-right: 1px dotted;}
+
+      #map-canvas { height: 100% }
+
+    &lt;/style&gt;
+     &lt;script src=&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;http://code.jquery.com/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;http://code.jquery.com/jquery-migrate-1.1.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;functions.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;div id=&quot;map-canvas&quot; style='width: 100%; height: 400px;'/&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="functionsjs">functions.js</h3>
+<pre><code class="js">function initialize() {
+    var json = (function () {
+        var json = null; 
+        $.ajax({ 
+            'type' : 'GET',
+            'async': false, 
+            'cache' : false,
+            'global': true, 
+            'url'   : 'me.json',  // URI of JSON file we create
+            'dataType': &quot;json&quot;, 
+            'success': function (data) {
+                json = data;
+                return json;
+             }
+        });
+    return json;
+    })();
+
+    var data = json;
+    console.log(JSON.stringify(data));
+
+    var center = new google.maps.LatLng(data.lat, data.lon);
+    mapOptions = {
+        center: center,
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false,
+        disableDefaultUI: false,
+        panControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        overviewMapControl: false,
+    };
+
+    map = new google.maps.Map(document.getElementById(&quot;map-canvas&quot;), mapOptions);
+
+    var LatLng = new google.maps.LatLng(data.lat, data.lon); 
+    var m = new google.maps.Marker({
+        position: LatLng,
+        map: map,
+        title: data.tid,
+    });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</code></pre>
+
+<p>would result in a map being displayed in your Web browser with a marker at the last location received by your MQTT broker. Note: the marker won't move; we leave that as an exercise to you, or just head over and look <a href="../../guide/clients/">at some clients</a> which do that for you.</p>
+<h2 id="testing">Testing</h2>
+<p>Testing location-based apps is a bit of a, well, pain, but remember there are a few simple tricks you can apply:</p>
+<ul>
+<li>Use the <em>publish now</em> button in OwnTracks to fire a location update. The smart phone won't really <em>move</em> much of course, but it'll allow you to test your program a bit.</li>
+<li>Publish your own <a href="../json/">OwnTracks-JSON</a> payload to the broker with <em>mosquitto_pub</em> or similar.</li>
+</ul>
+<h2 id="last-words">Last words</h2>
+<p>Consuming OwnTracks messages from your MQTT broker isn't particularly difficult, and people have built nice programs doing so. </p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+	</footer>
+
+        
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

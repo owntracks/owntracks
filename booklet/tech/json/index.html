@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="OwnTracks.org">
+        <link rel="canonical" href="http://owntracks.org/tech/json/">
+        <link rel="shortcut icon" href="../../favicon.ico">
+        
+
+	<title>JSON - OwnTracksDoc</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">OwnTracksDoc</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Intro</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../guide/what/">What it does</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/how/">How it works</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/ui/">User interface</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/scenarios/">Scenarios</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/mqtt/">MQTT</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/topics/">Topics</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/broker/">Broker</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/clients/">Clients</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/beacons/">iBeacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/bridge/">Bridging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../features/hosted/">Hosted</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/security/">Security</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/tid/">TID</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/card/">Card</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/beacons/">Beacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/pedometer/">Pedometer</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/settings/">Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/debug/">Debugging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">JSON</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../program/">Code</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sundry <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../terminology/">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../people/">People</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../ideas/">Ideas</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../faq/">Answers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../press/">Press</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../../features/debug/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../program/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/owntracks">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#topics">Topics</a></li>
+        
+    
+        <li class="main "><a href="#_typelocation">_type=location</a></li>
+        
+            <li><a href="#greenwich">Greenwich</a></li>
+        
+    
+        <li class="main "><a href="#_typelwt">_type=lwt</a></li>
+        
+    
+        <li class="main "><a href="#_typewaypoint">_type=waypoint</a></li>
+        
+    
+        <li class="main "><a href="#_typeconfiguration">_type=configuration</a></li>
+        
+    
+        <li class="main "><a href="#_typebeacon">_type=beacon</a></li>
+        
+    
+        <li class="main "><a href="#_typecmd">_type=cmd</a></li>
+        
+    
+        <li class="main "><a href="#_typesteps">_type=steps</a></li>
+        
+    
+        <li class="main "><a href="#_typetransition">_type=transition</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a <code>_type</code> element. Depending on the app platform, different payload types are supported. </p>
+<table>
+<thead>
+<tr>
+<th><code>_type</code></th>
+<th>iOS</th>
+<th>Android</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>location</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>lwt</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>waypoint</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>transition</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>beacon</code></td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>cmd</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<h3 id="topics">Topics</h3>
+<p>Apps publish to:</p>
+<ul>
+<li><code>owntracks/user/device</code> with <code>_type=location</code> for location updates, and with <code>_type=lwt</code></li>
+<li><code>owntracks/user/device/cmd</code> with <code>_type=cmd</code>      for remote commands</li>
+<li><code>owntracks/user/device/event</code> with <code>_type=transition</code> for enter/leave events</li>
+</ul>
+<p>Apps subscribe to:</p>
+<ul>
+<li><code>owntracks/user/device/cmd</code> if remote commands are enabled</li>
+<li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
+<li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
+<li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
+</ul>
+<p>In addition, the iOS app publishes to:</p>
+<ul>
+<li><code>owntracks/user/device/step</code> to report step counter</li>
+<li><code>owntracks/user/device/beacon</code> for beacon ranging</li>
+<li><code>owntracks/user/device/dump</code> for config dumps</li>
+</ul>
+<h3 id="_typelocation"><code>_type=location</code></h3>
+<p>This location object describes the location of the device that published it. <strong>Heads up: as from Android version 0.5.11 and from iOS version 8.0 numeric types are real numeric (<code>float</code>, <code>int</code>, boolean <code>true</code>/<code>false</code>) and no longer strings.</strong></p>
+<pre><code class="json">{
+    &quot;_type&quot; : &quot;location&quot;,        
+    &quot;acc&quot;   : 75,              
+    &quot;alt&quot;   : 13,
+    &quot;batt&quot;  : nnn,              
+    &quot;cog&quot;   : 270,
+    &quot;desc&quot;  : &quot;sssss&quot;,      
+    &quot;event&quot; : &quot;sssss&quot;,      
+    &quot;lat&quot;   : x.xxxxxx,       
+    &quot;lon&quot;   : y.yyyyyy,        
+    &quot;rad&quot;   : nnn,       
+    &quot;t&quot;     : &quot;x&quot;,
+    &quot;tid&quot;   : &quot;YY&quot;,
+    &quot;tst&quot;   : 1376715317,      
+    &quot;vacc&quot;  : 10,
+    &quot;vel&quot;   : 54 
+}
+</code></pre>
+
+<ul>
+<li><code>acc</code> is accuracy of the reported location in meters without unit. </li>
+<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>)</li>
+<li><code>batt</code> is the device's battery level in percent</li>
+<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>)</li>
+<li><code>desc</code> is the description of a [[waypoint|Waypoints]] </li>
+<li><code>event</code> is one of <code>"enter"</code> or <code>"leave"</code> and tells if the app is entering or leaving a geofence </li>
+<li><code>lat</code> is latitude as decimal, represented as a string</li>
+<li><code>lon</code> is longitude as decimal, represented as a string</li>
+<li><code>rad</code> is the radius in meters around around the geo-fence when entering/leaving a geofence</li>
+<li><code>t</code> is the trigger for the publish x = <ul>
+<li>"p" ping, issued randomly by background task </li>
+<li>"c" circular region enter/leave event </li>
+<li>"b" beacon region enter/leave event</li>
+<li>"r" response to a "reportLocation" request</li>
+<li>"u" manual publish requested by the user</li>
+<li>"t" timer based publish in move move</li>
+<li>"a" or missing <code>t</code> indicates automatic location update</li>
+</ul>
+</li>
+<li><code>tid</code> is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
+<li><code>tst</code> is a UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the event as it occurs which may be different from the time it is published.</li>
+<li><code>vacc</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>)</li>
+<li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>)</li>
+</ul>
+<p>(The IOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
+<h4 id="greenwich">Greenwich</h4>
+<p>The OwnTracks-edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
+<pre><code class="json">{
+    &quot;_type&quot;: &quot;location&quot;,
+    &quot;alt&quot;: 160,
+    &quot;cog&quot;: 0,
+    &quot;dist&quot;: 189,
+    &quot;trip&quot;: 279122,
+    &quot;lat&quot;: xx.xxxxxx,
+    &quot;lon&quot;: y.yyyyyy,
+    &quot;vel&quot;: 12,
+    &quot;t&quot;: &quot;t&quot;,
+    &quot;tst&quot;: 1406803894
+}
+</code></pre>
+
+<ul>
+<li><code>alt</code> is altitude in meters. (<em>Optional</em>)</li>
+<li><code>batt</code> is the external battery voltage. (<em>Optional</em>)</li>
+<li><code>cog</code> is the course over ground (heading) in degrees. (<em>Optional</em>)</li>
+<li><code>dist</code> is the distance travelled in meters since the last location publish. (<em>Optional</em>)</li>
+<li><code>trip</code> is the distance travelled in meters since the last reboot. (<em>Optional</em>)</li>
+<li><code>vel</code> is the speed (velocity) in km/h. (<em>Optional</em>)</li>
+<li><code>t</code> is the trigger of the published message:</li>
+<li><code>f</code> first publish after reboot</li>
+<li><code>m</code> for manually requested locations (e.g. by publishing to <code>/cmd</code>)</li>
+<li><code>t</code> (time) for location published because device is moving.</li>
+<li><code>T</code> (time) for location published because of time passed (<code>maxInterval</code>); device is stationary</li>
+<li><code>k</code> When transitioning from <em>move</em> to <em>stationary</em> an additional publish is sent marked with trigger <code>k</code> (park)</li>
+<li><code>v</code> When transitioning from <em>stationary</em> to <em>move</em> additional publish is sent marked with trigger <code>v</code> (mo-v-e)</li>
+<li><code>l</code> When device looses GPS fix, an additional publish is sent to transmit the last known position</li>
+<li><code>L</code> last position before gracefull shutdown</li>
+</ul>
+<p>(The device can be configured to produce or not produce fields marked as <em>optional</em>.)</p>
+<h3 id="_typelwt"><code>_type=lwt</code></h3>
+<p>A <em>last will and testament</em> is published automatically by the MQTT broker when it looses contact with the app. This typically looks like this:</p>
+<pre><code class="json">{
+    &quot;_type&quot;:&quot;lwt&quot;,
+    &quot;tst&quot;: 1380738247
+}
+</code></pre>
+
+<p>The timestamp is the Unix epoch time at which the app first connected (and <em>not</em> the time at which the LWT was published).</p>
+<h3 id="_typewaypoint"><code>_type=waypoint</code></h3>
+<p>Waypoints denote a specific geographical location that you want to keep track of. </p>
+<pre><code class="json">{
+    &quot;_type&quot;  : &quot;waypoint&quot;,
+    &quot;desc&quot;   : &quot;Free text entered on device&quot;,
+    &quot;lat&quot;    : x.xxxxxx,       
+    &quot;lon&quot;    : y.yyyyyy,        
+    &quot;rad&quot;    : xxx,
+    &quot;tst&quot;    : nnnnn,
+    &quot;shared&quot; : true,
+    &quot;tid&quot;    : &quot;XX&quot;
+}
+</code></pre>
+
+<ul>
+<li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
+<li><code>tst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See [[waypoints|Waypoints]].)</li>
+</ul>
+<h3 id="_typeconfiguration"><code>_type=configuration</code></h3>
+<p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. </p>
+<pre><code class="json">{
+    &quot;_type&quot;: &quot;configuration&quot;,
+    &quot;mode&quot;: 0,
+    &quot;deviceid&quot;: &quot;phone&quot;,
+    &quot;clientid&quot;: &quot;jane-phone&quot;,
+    &quot;trackerId&quot;: &quot;xx&quot;,
+    &quot;subTopic&quot;: &quot;owntracks/#&quot;,
+    &quot;pubTopicBase&quot;: &quot;owntracks/jane/phone&quot;,
+    &quot;host&quot;: &quot;broker.my.net&quot;,
+    &quot;username&quot;: &quot;jane&quot;,
+    &quot;password&quot;: &quot;secr3t&quot;,
+    &quot;willTopic&quot;: &quot;&quot;,
+    &quot;subQos&quot;: 1,
+    &quot;pubQos&quot;: 2,
+    &quot;pubInterval&quot; : 30,
+    &quot;port&quot;: 8883,
+    &quot;keepalive&quot;: 60,
+    &quot;willQos&quot;: 1,
+    &quot;pubRetain&quot;: true,
+    &quot;tls&quot;: true,
+    &quot;tlsCrtPath&quot; : &quot;/foo/bar&quot;,
+    &quot;auth&quot;: true,
+    &quot;cleanSession&quot;: false,
+    &quot;willRetain&quot;: false,
+    &quot;locatorDisplacement&quot;: 200,
+    &quot;locatorInterval&quot;: 180,
+    &quot;locatorAccuracyBackground&quot; : 2,
+    &quot;locatorAccuracyForeground&quot; : 0,
+    &quot;monitoring&quot;: 1,
+    &quot;ranging&quot;: &quot;&quot;,
+    &quot;positions&quot;: 50,
+    &quot;connectionAdvancedMode&quot; : false,
+    &quot;autostartOnBoot&quot; : false,
+    &quot;pubIncludeBattery&quot; : false,
+    &quot;sub&quot; : false,
+    &quot;pub&quot; : false,
+    &quot;updateAddressBook&quot; : false,
+    &quot;notification&quot; : false,
+    &quot;notificationLocation&quot; : false,
+    &quot;notificationGeocoder&quot; : false,
+    &quot;notificationTickerOnPublish&quot; : false,
+    &quot;notificationTickerOnGeofenceTransition&quot; : false,
+    &quot;remoteCommandReportLocation&quot; : false,
+    &quot;remoteCommandDump&quot; : false,
+    &quot;cmd&quot; : false,
+    &quot;allowRemoteLocation&quot; : false,
+    &quot;extendedData&quot; : false,
+    &quot;remoteConfiguration&quot; : false,
+    &quot;waypoints&quot; : [
+                    { &quot;_type&quot; : &quot;waypoint&quot;,
+                      &quot;tst&quot;: nnnnnnnnnn,
+                      &quot;lat&quot;: nn.nnn,
+                      &quot;lon&quot;: nn.nnn,
+                      &quot;rad&quot;: nnn,
+                      &quot;shared&quot;: true,
+                      &quot;desc&quot; : &quot;blabla&quot;,
+                      &quot;transition&quot;: true,
+                    } 
+                  ]
+}
+</code></pre>
+
+<ul>
+<li><code>mode</code>                    0 == Own mode, 1 == Hosted mode (for registered users), 2 = Public mode </li>
+<li><code>subTopic</code></li>
+<li><code>pubTopicBase</code></li>
+<li><code>username</code></li>
+<li><code>password</code></li>
+<li><code>willTopic</code></li>
+<li><code>subQos</code></li>
+<li><code>pubQos</code></li>
+<li><code>willQos</code></li>
+<li><code>pubRetain</code></li>
+<li><code>tlsCrtPath</code>                  not in IOS</li>
+<li><code>cleanSession</code></li>
+<li><code>willRetain</code></li>
+<li><code>locatorDisplacement</code> </li>
+<li><code>locatorInterval</code></li>
+<li><code>locatorAccuracyBackground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
+<li><code>locatorAccuracyForeground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
+<li><code>monitoring</code>                  IOS only, set in UI</li>
+<li><code>ranging</code>                 IOS only, set in UI</li>
+<li><code>positions</code>                   IOS only, number of positions to keep and display</li>
+<li><code>autostartOnBoot</code>             Android only</li>
+<li><code>pubIncludeBattery</code>               Android only, in IOS alway on</li>
+<li><code>sub</code>                     Android only, subscription enabled for contacts, in IOS always subscribed</li>
+<li><code>pub</code>                     Android only, auto publish, in IOS controlled by <code>monitoring</code></li>
+<li><code>updateAddressBook</code></li>
+<li><code>notification</code>                Android only, show notifications</li>
+<li><code>notificationLocation</code>            Android only, show last reported location in notification, off in IOS</li>
+<li><code>notificationGeocoder</code>            Android only, resolve location in notification to address, in IOS only resolved when in show details</li>
+<li><code>notificationTickerOnPublish</code>         Android only, show a ticker on successful publishes, always off in IOS", </li>
+<li><code>notificationTickerOnGeofenceTransition</code>  Android only, show a ticker when the devices enters or leaves a geofence, always on in IOS", </li>
+<li><code>remoteCommandReportLocation</code>         Android only, respond to reportLocation remote command</li>
+<li><code>remoteCommandDump</code>               Android only, respond to dump remote command</li>
+<li><code>cmd</code>                     IOS only, respond to remote commands</li>
+<li><code>allowRemoteLocation</code>             IOS only, respond to remote location request even if monitoring mode is set to manual</li>
+<li><code>extendedData</code>                IOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
+<li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
+</ul>
+<h3 id="_typebeacon"><code>_type=beacon</code></h3>
+<pre><code class="json">{
+        &quot;_type&quot;:&quot;beacon&quot;,
+        &quot;uuid&quot;:&quot;CA271EAE-5FA8-4E80-8F08-2A302A95A959&quot;,
+        &quot;major&quot;:1,
+        &quot;minor&quot;:1,
+        &quot;tst&quot;: 1399028969,
+        &quot;acc&quot;:n,
+        &quot;rssi&quot;:n,
+        &quot;prox&quot;:n,
+}
+</code></pre>
+
+<ul>
+<li><code>acc</code> The accuracy of the proximity value, measured in meters from the beacon.</li>
+<li><code>rssi</code>    The received signal strength of the beacon, measured in decibels. The theoretical relationship between RSSI and distance is something like this: <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI 1 meter point away from the Bluetooth Low Energy device.</li>
+<li><code>prox</code>    The relative distance to the beacon where n indicates<ul>
+<li>0 = the proximity of the beacon could not be determined.</li>
+<li>1 = the beacon is in the user’s immediate vicinity.</li>
+<li>2 = the beacon is relatively close to the user.</li>
+<li>3 = the beacon is far away."</li>
+</ul>
+</li>
+</ul>
+<h3 id="_typecmd"><code>_type=cmd</code></h3>
+<pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
+</code></pre>
+
+<ul>
+<li><code>action</code>      action to be performed by the device<ul>
+<li>"reportSteps" reports steps walked on iPhone 5s devices. <br>
+  You may add "from":<em>timestamp</em> and/or "to":<em>timestamp</em>" 
+  which defaults to current time, from defaults to current date 00:00 am
+  (see [[pedometer|Pedometer]]).</li>
+<li>"reportLocation" triggers the publish of the current location</li>
+<li>"dump" triggers the publish of a configuration message</li>
+</ul>
+</li>
+</ul>
+<h3 id="_typesteps"><code>_type=steps</code></h3>
+<pre><code class="json">{&quot;_type&quot;:&quot;steps&quot;,&quot;tst&quot;:1400455130,&quot;steps&quot;:1234,&quot;from&quot;:1400455130,&quot;to&quot;:1400458000}
+</code></pre>
+
+<ul>
+<li><code>tst</code>         timestamp of the request</li>
+<li><code>steps</code>   the number of steps walked with the device in the specfied time period or
+                -1 if device does not support step counting or specified time period
+                is invalid</li>
+<li><code>from</code>        effective start of time period</li>
+<li><code>to</code>          effective end of time period</li>
+</ul>
+<h3 id="_typetransition"><code>_type=transition</code></h3>
+<p>As from XXXXX:
+A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;transition&quot;,
+  &quot;wtst&quot;: 1425042603,           // time of waypoint creation
+  &quot;lat&quot;: 12.34,                 // transition coordinates i.e. &quot;here&quot;
+  &quot;lon&quot;: 44.5,
+  &quot;tst&quot;: 1427634603,            // timestamp of transition (e.g. &quot;now&quot;)
+  &quot;acc&quot;: 130,                   // accuracy of lat, lon
+  &quot;tid&quot;: &quot;JP&quot;,
+  &quot;event&quot;: &quot;enter&quot;,
+  &quot;desc&quot;: &quot;my Indian restaurant&quot;
+}
+</code></pre></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+	</footer>
+
+        
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

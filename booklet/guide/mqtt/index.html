@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="OwnTracks.org">
+        <link rel="canonical" href="http://owntracks.org/guide/mqtt/">
+        <link rel="shortcut icon" href="../../favicon.ico">
+        
+
+	<title>MQTT - OwnTracksDoc</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">OwnTracksDoc</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Intro</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../what/">What it does</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../how/">How it works</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../ui/">User interface</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../scenarios/">Scenarios</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">MQTT</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../topics/">Topics</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../broker/">Broker</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../clients/">Clients</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../beacons/">iBeacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../bridge/">Bridging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../features/hosted/">Hosted</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/security/">Security</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/tid/">TID</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/card/">Card</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/beacons/">Beacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/pedometer/">Pedometer</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/settings/">Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../features/debug/">Debugging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../tech/json/">JSON</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../tech/program/">Code</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sundry <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../terminology/">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../people/">People</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../ideas/">Ideas</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../faq/">Answers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../press/">Press</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li >
+                    <a rel="next" href="../scenarios/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../topics/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/owntracks">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#mqtt">MQTT</a></li>
+        
+            <li><a href="#pubsub">Pub/Sub</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="mqtt">MQTT</h1>
+<p>So what's this MQTT thing? Quoting directly <a href="http://mqtt.org">from the horse's mouth</a>:</p>
+<blockquote>
+<p>MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium. For example, it has been used in sensors communicating to a broker via satellite link, over occasional dial-up connections with healthcare providers, and in a range of home automation and small device scenarios. It is also ideal for mobile applications because of its small size, low power usage, minimised data packets, and efficient distribution of information to one or many receivers</p>
+</blockquote>
+<p>We've tried, but we couldn't have phrased this better.</p>
+<p>It's lightweight. It's easy on a battery. It has a low overhead (important to save on your phone's data plan). And it distributes information to one or more receivers.</p>
+<h2 id="pubsub">Pub/Sub</h2>
+<p>In MQTT-speak, clients publish messages, which means they send or transmit them, and other clients subscribe to messages, meaning they receive them. Messages are published on <a href="../topics/">topics</a>, and the MQTT server, which is called a <a href="../broker/">broker</a> is configured to permit or deny clients doing so.</p>
+<h3 id="cauldron">Cauldron</h3>
+<p>We like to imagine that MQTT makes something reminiscent of a large <em>cauldron</em> available to publishing and subscribing clients. Publishers drop messages which are tagged <a href="../topics/">with topic names</a> into the pot, and subscribers can, access-control permitting, slurp these out, store them, create new messages and ladle them back into the pot or simply throw them away after peeking at them. As a small example, assume a client periodically publishes a Celsius temperature measurement to a particular topic, but you want Fahrenheit (incomprehensible that you would, but anyway). You could <a href="../../tech/program/">create a small client</a> which subscribed to the Celsius reading (from the topic, say, <code>temp/celsius</code> in the cauldron), converted to Fahrenheit or Kelvin or whatever, and republished the new value to a different topic, say, <code>temp/fahrenheit</code> back into the cauldron. It's important to understand that subscribing and receiving an MQTT message does <em>not remove</em> it from the broker; the same message is available to all clients which are subscribed at the time the message was published. (So you could have one client doing Fahrenheit conversion and another doing Kelvin.)</p>
+<p>And what does OwnTracks have to do with all of this? Well, the OwnTracks apps are MQTT clients which publish messages (your location) and subscribe to and consume messages (e.g. the locations of <a href="../friends/">your friends</a>). OwnTracks' location updates land in the cauldron when the app publishes a location message from which it can be consumed by any number of subscribers to the same <a href="../broker/">MQTT broker</a>.</p>
+<p>There are <a href="../clients/">a number of clients</a> which do that already, and we're even going to show you how you can <a href="../../tech/program/">create your own client</a> for specific purposes.</p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+	</footer>
+
+        
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
