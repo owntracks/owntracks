@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="OwnTracks.org">
-        <link rel="canonical" href="http://owntracks.org/guide/bridge/">
+        <link rel="canonical" href="http://owntracks.org/guide/apps/">
         <link rel="shortcut icon" href="../../favicon.ico">
         
 
-	<title>Bridging - OwnTracksDoc</title>
+	<title>Apps - OwnTracksDoc</title>
 
         <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -89,8 +89,8 @@
                             <a href="../broker/">Broker</a>
                         </li>
                     
-                        <li >
-                            <a href="../apps/">Apps</a>
+                        <li class="active">
+                            <a href="./">Apps</a>
                         </li>
                     
                         <li >
@@ -109,8 +109,8 @@
                             <a href="../beacons/">iBeacons</a>
                         </li>
                     
-                        <li class="active">
-                            <a href="./">Bridging</a>
+                        <li >
+                            <a href="../bridge/">Bridging</a>
                         </li>
                     
                     </ul>
@@ -218,12 +218,12 @@
             <ul class="nav navbar-nav navbar-right">
                 
                 <li >
-                    <a rel="next" href="../beacons/">
+                    <a rel="next" href="../broker/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../features/hosted/">
+                    <a rel="prev" href="../clients/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -246,89 +246,17 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#bridging">Bridging</a></li>
-        
-            <li><a href="#what-will-happen">What will happen?</a></li>
-        
-            <li><a href="#publishes">Publishes</a></li>
-        
-            <li><a href="#events">Events</a></li>
-        
-            <li><a href="#cmd">CMD</a></li>
+        <li class="main active"><a href="#owntracks-apps">OwnTracks apps</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="bridging">Bridging</h1>
-<p>In order to profit from the <a href="../friends">Friends feature</a> in
-OwnTracks, all contacts you want to be able to track on your your device must
-share a broker, but that can be difficult if both you and your friend
-(henceforce "Jane" in the examples that follow) also use your brokers for other
-purposes.</p>
-<p><a href="http://mosquitto.org">Mosquitto</a> (and some other <a href="http://mqtt.org">MQTT</a> brokers) have a feature called bridging
-which basically lets you connect two (or more) brokers together.</p>
-<p>Let's assume that you and Jane want to see each other's location updates while
-maintaining a connection from your devices to your respective MQTT brokers at
-home. In other words, you will use your broker, whereas Jane connects to her broker because, e.g. she has private contacts who use her broker, but she doesn't want you to have access to those.</p>
-<p><img alt="Bridging" src="../images/mosquitto-bridge-mqttitude.png" /></p>
-<h2 id="what-will-happen">What will happen?</h2>
-<p>Setting up a bridge is not difficult, but there are some things we have to keep in mind.  In this example, we'll assume the following:</p>
-<ul>
-<li>Your broker will initiate a connection to Jane's broker</li>
-<li>You'll be using <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> to protect credentials and data in transit</li>
-<li>Jane has given you (e.g. via e-mail) a copy of her TLS CA certificate</li>
-<li>Jane has set up an ACL on her <a href="http://mosquitto.org">Mosquitto</a> broker to ensure you have access only to her OwnTracks location data and nothing else.</li>
-<li>Jane has a username and password for your broker to use when connecting to her broker, and she's given you both.</li>
-<li>Jane has a device called <code>nexus7</code> and she publishes location updates to <em>her</em> broker at <code>owntracks/jane/nexus7</code>.</li>
-<li>You have an iPhone and want to share your location data with Jane. You publish (on your broker) to <code>owntracks/john/iphone</code>.</li>
-</ul>
-<p>Here's what you configure <em>on your broker</em>'s <code>mosquitto.conf</code>:</p>
-<pre><code># Bridge to Jane
-connection br-me-to-jane
-bridge_cafile /etc/mosquitto/jane/JANE-OwnTracks-ca.crt
-bridge_insecure false
-address jane.example.org:8883
-cleansession false
-clientid br-john-jane
-start_type automatic
-username john
-password s3cr1t
-notifications false
-try_private true
-topic nexus7 in 2 owntracks/jane/ owntracks/jane/
-topic iphone out 2 owntracks/john/ owntracks/john/
-</code></pre>
-
-<p>These last two lines define which topic branches will be published (<code>out</code>) and
-which will be subscribed to (<code>in</code>) from the point of view of your broker. There
-are a lot of things you can tweak in this configuration, but this is should get
-you started.</p>
-<h2 id="publishes">Publishes</h2>
-<p>When your device publishes location data to your broker, it will publish the single topic <code>owntracks/john/iphone</code> to Jane's broker. Conversely, as your broker is now subscribed to Jane's at <code>owntracks/jane/nexus7</code>, it will receive Jane's location data and re-publish that to your connected device.</p>
-<h2 id="events">Events</h2>
-<p>OwnTracks uses more than just a single topic per user <a href="../../tech/json/">as documented</a>. This means we must add more <code>topic</code> statements to our broker (and Jane to her broker) if we additionally want to support transition events (e.g. when did Jane leave home?) and outgoing commands (e.g. tell Jane's device to report its location <em>now</em>).</p>
-<p>Assuming Jane allows this (by configuring appropriate ACLs on her broker), we add one or more of the following. The first line we already had: it bridges Jane's location publishes <em>in</em> to our broker. The second line is new: it bridges Jane's <code>nexus7</code> events into our broker.</p>
-<pre><code>topic nexus7 in 2 owntracks/jane/ owntracks/jane/
-topic event in 2 owntracks/jane/nexus7/ owntracks/jane/nexus7/
-</code></pre>
-
-<h2 id="cmd">CMD</h2>
-<p>Tapping on OwnTrack's <em>request location update</em> publishes a <code>cmd</code> to the destination device, so we bridge that topic <em>out</em> towards Jane's broker:</p>
-<pre><code>topic cmd out 2 owntracks/jane/nexus7/ owntracks/jane/nexus7/
-</code></pre>
-
-<h3 id="mqttitude">MQTTitude</h3>
-<p>Let's assume for the moment that you're running a broker with a number of connected OwnTracks clients, some of which are still publishing to the "old" topic branch at `mqttitude/', but you want to "assimilate" these clients into your environment without having to force them to rename the topic to which they publish. You can easily do that in Mosquitto, by adding the following line to your bridge configuration:</p>
-<pre><code>topic # in 2 owntracks/ mqttitude/
-</code></pre>
-
-<p>What this does is: your bridge subscribes to the <em>remote</em> topic <code>mqttitude/#</code> and all received messages will be republished at <code>owntracks/</code> on <em>your</em> broker (note the <code>in</code> direction). </p>
-<p>Neat, eh? </p>
-<p>Consult the manual page for
-<a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> for more
-details.</p></div>
+<h1 id="owntracks-apps">OwnTracks apps</h1>
+<p>configure iOS</p>
+<p>configure Android</p>
+<p>There are other <a href="../clients/">clients</a> you can use with OwnTracks.</p></div>
         </div>
 
 	<footer class="col-md-12">
