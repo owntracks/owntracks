@@ -252,14 +252,13 @@
         
             <li><a href="#raspi">RasPi</a></li>
         
-    
-        <li class="main "><a href="#fixme-does-brokermd-contain-acl-example">FIXME: does broker.md contain ACL example?</a></li>
-        
             <li><a href="#testing">Testing</a></li>
         
             <li><a href="#bridging">Bridging</a></li>
         
-            <li><a href="#logging-brokermd">logging (broker.md)</a></li>
+            <li><a href="#logging">Logging</a></li>
+        
+            <li><a href="#acls">ACLs</a></li>
         
             <li><a href="#firewall">Firewall</a></li>
         
@@ -347,8 +346,6 @@ settings:</p>
         IP Address:192.168.1.189, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1, DNS:broker.example.com, DNS:foo.example.de, DNS:localhost
 </code></pre>
 
-<p>FIXME:  a few words about auth in mqtt.md page, ACL</p>
-<h1 id="fixme-does-brokermd-contain-acl-example">FIXME: does broker.md contain ACL example?</h1>
 <p>Will it work? Let's start the broker manually to see what it says:</p>
 <pre><code class="bash">sudo /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
 1378042632: mosquitto version 1.2 (build date 2013-08-09 21:49:03+0100) starting
@@ -386,21 +383,33 @@ the whole topic branch in single quotes.)</p>
 <p>Once you feel comfortable with what is going on, you should consider adding <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>.</p>
 <h3 id="bridging">Bridging</h3>
 <p>If you want to connect two (or more) brokers (e.g. yours and that of your friend) you can, and we've written up <a href="../bridge/">how you can bridge brokers</a>.</p>
-<h2 id="logging-brokermd">logging (broker.md)</h2>
+<h2 id="logging">Logging</h2>
 <p>Before doing anything else, please consult the manual to determine where your Mosquitto logs are being written to. It's hard stabbing around in the dark when a glance at a log file can give you valuable tips on what is actually happening.</p>
 <p>Mosquitto typically logs via <em>syslog</em>, and <em>syslog</em>'s configuration defines where the log messages are actually written to. Your <em>syslog</em> may be called <em>syslog</em>, <em>rsyslog</em>, <em>syslog-ng</em>, or anything else for that matter. In case of doubt, check the files in <code>/var/log</code>; one of them <em>ought</em> to have what you're looking for (e..g <code>messages</code>, <code>syslog</code>, <code>localmessages</code>, or even <code>debugmessages</code>).</p>
 <p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the <a href="http://mosquitto.org/FIXME">manpage for <code>mosquitto.conf</code></a> to learn how to configure logging.</p>
-<p>A successful publish of an OwnTracks location could look somewhat like this:
-FIXME: add log snippet</p>
+<p>A successful publish of an OwnTracks location could look somewhat like this:</p>
+<pre><code>mosquitto[1366]: Received PUBLISH from jane-5s-m-o (d0, q2, r1, m7, 'owntracks/jane/5s', ... (159 bytes))
+mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)
+mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
+mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
+</code></pre>
+
+<h2 id="acls">ACLs</h2>
+<p>You will definitely want to set up Access Control Lists (ACLs) on your broker so that you can control who may see what. As an example, suppose Jane (username <code>jjolie</code>) should be able to publish to her <a href="../topics/">OwnTracks MQTT topics</a> and Fred (username <code>fred</code>) should be allowed to see Jane's location, we could configure something like this:</p>
+<pre><code>user jjolie
+topic owntracks/jjolie/#
+
+user fred
+topic read owntracks/jjolie/5s
+topic owntracks/fred/nexus/#
+</code></pre>
+
 <h2 id="firewall">Firewall</h2>
-<p>If you want to run your <em>Private</em> broker it's possibly going to be at home under your desk (or is it your bed?). Be that as it may, how does an OwnTracks app reach (network-wise) that broker?</p>
-<p>Chances are you have some form of router which connects the local network in your home to the Internet.</p>
-<p>FIXME: diag
-FIXME: photo of MR3020?</p>
+<p>If you want to run your <em>Private</em> broker it's possibly going to be at home under your desk (or is it in your small office?). Be that as it may, how does an OwnTracks app reach (network-wise) that broker?  Chances are you have some form of router which connects the local network in your home to the Internet.</p>
 <p>OwnTracks runs on the device which is in your pocket or your purse, or wherever you placed it, and it must be able to connect to your MQTT broker, but it cannot: your router hopefully has a firewall configured on it which will allow outgoing (from your home outwards) connections, but it is sure to not allow incoming connections. We must change that, at least for MQTT, and we're going to assume you've configured TLS, i.e. your broker is (also) listening on TCP port 8883</p>
 <p>What you need to do to get this working is to reconfigure your router to allow incoming TCP traffic on port 8883 and to hand that off to the TCP/IP address of your MQTT broker. The exact details on how to do that vary from vendor to vendor, but a close look at the documentation of your router should show you how to do that.</p>
 <p>What is also likely, or at least possible, is that your home doesn't have a fixed TCP/IP address, but one which changes periodically. The OwnTracks apps won't be able to find your home then, will they? If you keep "moving" (i.e changing addresses).</p>
-<p>A service which is typically (if maybe incorrectly) called dynamic DNS to the rescue. Organizations like FIXME and NoIP FIXME will help you configure a DNS name which always points to your changing address.</p>
+<p>A service which is typically (if maybe incorrectly) called dynamic DNS comes to the rescue. These services allow you to configure a DNS name (e.g. <code>freds-router.example.org</code>) which points to the changing IP address of your router.</p>
 <p>Once you've completed those steps, configure the OwnTracks apps to use the shiny new DNS name and TCP port number (8883) and you should be all set.</p>
 <h3 id="owntracks">OwnTracks</h3>
 <p>So, you've configured your broker and you are familiar with the <em>mosquitto</em> command-line
