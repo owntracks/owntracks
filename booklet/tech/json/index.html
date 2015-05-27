@@ -287,6 +287,9 @@
         <li class="main "><a href="#_typewaypoint">_type=waypoint</a></li>
         
     
+        <li class="main "><a href="#_typetransition">_type=transition</a></li>
+        
+    
         <li class="main "><a href="#_typeconfiguration">_type=configuration</a></li>
         
     
@@ -297,9 +300,6 @@
         
     
         <li class="main "><a href="#_typesteps">_type=steps</a></li>
-        
-    
-        <li class="main "><a href="#_typetransition">_type=transition</a></li>
         
     
     </ul>
@@ -404,7 +404,7 @@
 <li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>)</li>
 <li><code>batt</code> is the device's battery level in percent</li>
 <li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>)</li>
-<li><code>desc</code> is the description of a [[waypoint|Waypoints]] </li>
+<li><code>desc</code> is the description of a <a href="../../features/waypoints/">waypoint</a></li>
 <li><code>event</code> is one of <code>"enter"</code> or <code>"leave"</code> and tells if the app is entering or leaving a geofence </li>
 <li><code>lat</code> is latitude as decimal, represented as a string</li>
 <li><code>lon</code> is longitude as decimal, represented as a string</li>
@@ -469,7 +469,7 @@
 
 <p>The timestamp is the Unix epoch time at which the app first connected (and <em>not</em> the time at which the LWT was published).</p>
 <h3 id="_typewaypoint"><code>_type=waypoint</code></h3>
-<p>Waypoints denote a specific geographical location that you want to keep track of. </p>
+<p>Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked <code>shared</code>). OwnTracks also monitors these waypoints and will publish a transition event (<code>_type: transition</code>) when entering or leaving the waypoint. Note, that a waypoint may also define a <a href="../../features/beacons/">Beacon</a>.</p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     &quot;desc&quot;   : &quot;Free text entered on device&quot;,
@@ -484,8 +484,24 @@
 
 <ul>
 <li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
-<li><code>tst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See [[waypoints|Waypoints]].)</li>
+<li><code>wtst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.)</li>
 </ul>
+<h3 id="_typetransition"><code>_type=transition</code></h3>
+<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;transition&quot;,
+  &quot;wtst&quot;: 1425042603,           // time of waypoint creation
+  &quot;lat&quot;: 12.34,                 // transition coordinates i.e. &quot;here&quot;
+  &quot;lon&quot;: 44.5,
+  &quot;tst&quot;: 1427634603,            // timestamp of transition (e.g. &quot;now&quot;)
+  &quot;acc&quot;: 130,                   // accuracy of lat, lon
+  &quot;tid&quot;: &quot;JP&quot;,
+  &quot;event&quot;: &quot;enter&quot;,
+  &quot;desc&quot;: &quot;my Indian restaurant&quot;
+}
+</code></pre>
+
+<p>A transition event published as a result of a Beacon movement will have a <code>"t" : "b"</code> associated with it.</p>
 <h3 id="_typeconfiguration"><code>_type=configuration</code></h3>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. </p>
 <pre><code class="json">{
@@ -624,7 +640,7 @@
 <li>"reportSteps" reports steps walked on iPhone 5s devices. <br>
   You may add "from":<em>timestamp</em> and/or "to":<em>timestamp</em>" 
   which defaults to current time, from defaults to current date 00:00 am
-  (see [[pedometer|Pedometer]]).</li>
+  (see <a href="../../features/pedometer/">Pedometer</a>).</li>
 <li>"reportLocation" triggers the publish of the current location</li>
 <li>"dump" triggers the publish of a configuration message</li>
 </ul>
@@ -641,23 +657,7 @@
                 is invalid</li>
 <li><code>from</code>        effective start of time period</li>
 <li><code>to</code>          effective end of time period</li>
-</ul>
-<h3 id="_typetransition"><code>_type=transition</code></h3>
-<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
-<pre><code class="json">{
-  &quot;_type&quot;: &quot;transition&quot;,
-  &quot;wtst&quot;: 1425042603,           // time of waypoint creation
-  &quot;lat&quot;: 12.34,                 // transition coordinates i.e. &quot;here&quot;
-  &quot;lon&quot;: 44.5,
-  &quot;tst&quot;: 1427634603,            // timestamp of transition (e.g. &quot;now&quot;)
-  &quot;acc&quot;: 130,                   // accuracy of lat, lon
-  &quot;tid&quot;: &quot;JP&quot;,
-  &quot;event&quot;: &quot;enter&quot;,
-  &quot;desc&quot;: &quot;my Indian restaurant&quot;
-}
-</code></pre>
-
-<p>A transition event published as a result of a Beacon movement will have a <code>"t" : "b"</code> associated with it.</p></div>
+</ul></div>
         </div>
 
 	<footer class="col-md-12">

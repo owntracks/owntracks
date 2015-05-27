@@ -294,15 +294,15 @@ to be in the app's preferences/settings. For argument's sake we'll use
 <p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
 All messages published to this base topic are retained if you have configured
 the app to retain them.</p>
-<p>Additionally, if you've configured a geo-fence, a <code>location</code> message will
-contain the elements:</p>
+<p>Additionally, if you've configured a geo-fence, a transition event will be published upon
+entering or leaving a waypoint:</p>
 <ul>
 <li><code>rad</code>ius (if its value is greater than 0)</li>
 <li><code>desc</code>ription with the name you set for the waypoint</li>
 <li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
    whether the device is entering or leaving a configured region, respectively.</li>
 </ul>
-<p>If you set up a shared waypoint, the app publishes that waypoint (without the retain flag,
+<p>If you set up a shared waypoint, the app publishes that waypoint (with <code>retain=0</code> 
 irrespective of your general preference) to the base topic with <code>/waypoints</code>
 tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the
 payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
@@ -339,36 +339,37 @@ available with a subscription to <code>owntracks/#</code>.</p>
 <p>On iOS you can <a href="../beacons/">monitor an iBeacon region</a> in addition to circular regions.</p>
 <h2 id="remote-loading-of-waypoints">Remote loading of waypoints</h2>
 <p>Do you want to prepare your waypoints at home and load to your device?</p>
-<p>Here's what you can do with OwnTracks for [[iOS]]:</p>
+<p>Here's what you can do with OwnTracks for iOS:</p>
 <ul>
 <li>Create a configuration file in JSON with an <code>.otrw</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtw</code> suffix is also supported.)</li>
-<li>Send the file to the device via email, http, dropbox, ... you name it.</li>
+<li>Send the file to the device via e-mail, HTTP, Dropbox, ... you name it.</li>
 <li>Open the file on the device with OwnTracks</li>
 </ul>
-<p>Here is a sample waypoints file which follows the settings as explained
-in [[JSON]]. Boolean values are represented as <code>0</code> (false) or <code>1</code> (true).  The <code>_type</code>
-entry is mandatory, all other entries are optional; they are replaced by built-in
+<p>Here is a sample waypoints file which follows the settings as explained in
+<a href="../../tech/json/">JSON</a>  The <code>_type</code> entry is mandatory, all other entries are
+optional; they are replaced by built-in
 defaults if not specified.</p>
 <pre><code class="json">{
-    &quot;_type&quot;: &quot;waypoints&quot;,
-    &quot;waypoints&quot; : [
-                    { &quot;_type&quot; : &quot;waypoint&quot;,
-                      &quot;tst&quot;: &quot;100000000&quot;,
-                      &quot;lat&quot;: &quot;50.0&quot;,
-                      &quot;lon&quot;: &quot;8.0&quot;,
-                      &quot;rad&quot;: &quot;100&quot;,
-                      &quot;desc&quot; : &quot;fifty/eight&quot;
-                    }, 
-                    { &quot;_type&quot; : &quot;waypoint&quot;,
-                      &quot;tst&quot;: &quot;100000001&quot;,
-                      &quot;lat&quot;: &quot;40.0&quot;,
-                      &quot;lon&quot;: &quot;-8.0&quot;,
-                      &quot;rad&quot;: &quot;500&quot;,
-                      &quot;desc&quot; : &quot;forty/minus-eight&quot;
-                    }
-                  ]
+  &quot;_type&quot;: &quot;waypoints&quot;,
+  &quot;waypoints&quot;: [
+    {
+      &quot;desc&quot;: &quot;fifty/eight&quot;,
+      &quot;rad&quot;: &quot;100&quot;,
+      &quot;lon&quot;: &quot;8.0&quot;,
+      &quot;lat&quot;: &quot;50.0&quot;,
+      &quot;tst&quot;: &quot;100000000&quot;,
+      &quot;_type&quot;: &quot;waypoint&quot;
+    },
+    {
+      &quot;desc&quot;: &quot;forty/minus-eight&quot;,
+      &quot;rad&quot;: &quot;500&quot;,
+      &quot;lon&quot;: &quot;-8.0&quot;,
+      &quot;lat&quot;: &quot;40.0&quot;,
+      &quot;tst&quot;: &quot;100000001&quot;,
+      &quot;_type&quot;: &quot;waypoint&quot;
+    }
+  ]
 }
-
 </code></pre></div>
         </div>
 
