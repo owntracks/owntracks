@@ -273,32 +273,39 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#json">JSON</a></li>
+        <li class="main active"><a href="#topics">Topics</a></li>
         
-            <li><a href="#topics">Topics</a></li>
+    
+        <li class="main "><a href="#_typelocation">_type=location</a></li>
         
-            <li><a href="#_typelocation">_type=location</a></li>
+            <li><a href="#greenwich">Greenwich</a></li>
         
-            <li><a href="#_typelwt">_type=lwt</a></li>
+    
+        <li class="main "><a href="#_typelwt">_type=lwt</a></li>
         
-            <li><a href="#_typewaypoint">_type=waypoint</a></li>
+    
+        <li class="main "><a href="#_typewaypoint">_type=waypoint</a></li>
         
-            <li><a href="#_typeconfiguration">_type=configuration</a></li>
+    
+        <li class="main "><a href="#_typeconfiguration">_type=configuration</a></li>
         
-            <li><a href="#_typebeacon">_type=beacon</a></li>
+    
+        <li class="main "><a href="#_typebeacon">_type=beacon</a></li>
         
-            <li><a href="#_typecmd">_type=cmd</a></li>
+    
+        <li class="main "><a href="#_typecmd">_type=cmd</a></li>
         
-            <li><a href="#_typesteps">_type=steps</a></li>
+    
+        <li class="main "><a href="#_typesteps">_type=steps</a></li>
         
-            <li><a href="#_typetransition">_type=transition</a></li>
+    
+        <li class="main "><a href="#_typetransition">_type=transition</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="json">JSON</h1>
 <p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a <code>_type</code> element. Depending on the app platform, different payload types are supported. </p>
 <table>
 <thead>
@@ -484,8 +491,8 @@
 <pre><code class="json">{
     &quot;_type&quot;: &quot;configuration&quot;,
     &quot;mode&quot;: 0,
-    &quot;deviceid&quot;: &quot;phone&quot;,
-    &quot;clientid&quot;: &quot;jane-phone&quot;,
+    &quot;deviceId&quot;: &quot;phone&quot;,
+    &quot;clientId&quot;: &quot;jane-phone&quot;,
     &quot;trackerId&quot;: &quot;xx&quot;,
     &quot;subTopic&quot;: &quot;owntracks/#&quot;,
     &quot;pubTopicBase&quot;: &quot;owntracks/jane/phone&quot;,
@@ -549,6 +556,8 @@
 <li><code>pubTopicBase</code></li>
 <li><code>username</code></li>
 <li><code>password</code></li>
+<li><code>deviceId</code></li>
+<li><code>tid</code>                      is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
 <li><code>willTopic</code></li>
 <li><code>subQos</code></li>
 <li><code>pubQos</code></li>
@@ -633,8 +642,7 @@
 <li><code>to</code>          effective end of time period</li>
 </ul>
 <h3 id="_typetransition"><code>_type=transition</code></h3>
-<p>As from XXXXX:
-A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
+<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;transition&quot;,
   &quot;wtst&quot;: 1425042603,           // time of waypoint creation
@@ -646,7 +654,9 @@ A transition into or out of a previously configured waypoint is effected by publ
   &quot;event&quot;: &quot;enter&quot;,
   &quot;desc&quot;: &quot;my Indian restaurant&quot;
 }
-</code></pre></div>
+</code></pre>
+
+<p>A transition event published as a result of a Beacon movement will have a <code>"t" : "b"</code> associated with it.</p></div>
         </div>
 
 	<footer class="col-md-12">
