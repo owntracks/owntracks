@@ -254,13 +254,17 @@
             <div class="col-md-9" role="main">
 
 <h1 id="ibeacons">iBeacons</h1>
-<p>If you want to monitor an iBeacon region rather than a circular region set the radius to zero (0) and add the beacon identifier to the description separated by a colon (:).</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/waypoints/b-waypoint-config-ibeacon.jpg" /></p>
-<p>You add the UUID of the beacon to the description and may specify the major and minor identifier numbers of the beacons in hex.</p>
-<p>When the UUID is valid, iBeacon monitoring will start.</p>
-<p>Examples:
-<em> 'myBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE'
-</em> 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'</p></div>
+<p>If you want to monitor an iBeacon region rather than a circular region set the
+radius to zero (<code>0</code>), and add the beacon identifier to the description
+separated by a colon (:).</p>
+<p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
+<p>You add the UUID of the beacon to the description and may specify the major and
+minor identifier numbers of the beacons in hex.</p>
+<p>If the UUID is valid, iBeacon monitoring will start.</p>
+<p>Examples:</p>
+<pre><code>mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE
+myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
+</code></pre></div>
         </div>
 
 	<footer class="col-md-12">

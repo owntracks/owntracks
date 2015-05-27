@@ -386,7 +386,7 @@ the whole topic branch in single quotes.)</p>
 <h2 id="logging">Logging</h2>
 <p>Before doing anything else, please consult the manual to determine where your Mosquitto logs are being written to. It's hard stabbing around in the dark when a glance at a log file can give you valuable tips on what is actually happening.</p>
 <p>Mosquitto typically logs via <em>syslog</em>, and <em>syslog</em>'s configuration defines where the log messages are actually written to. Your <em>syslog</em> may be called <em>syslog</em>, <em>rsyslog</em>, <em>syslog-ng</em>, or anything else for that matter. In case of doubt, check the files in <code>/var/log</code>; one of them <em>ought</em> to have what you're looking for (e..g <code>messages</code>, <code>syslog</code>, <code>localmessages</code>, or even <code>debugmessages</code>).</p>
-<p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the <a href="http://mosquitto.org/FIXME">manpage for <code>mosquitto.conf</code></a> to learn how to configure logging.</p>
+<p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the <a href="http://mosquitto.org/man/mosquitto-conf-5.html">manpage for <code>mosquitto.conf</code></a> to learn how to configure logging.</p>
 <p>A successful publish of an OwnTracks location could look somewhat like this:</p>
 <pre><code>mosquitto[1366]: Received PUBLISH from jane-5s-m-o (d0, q2, r1, m7, 'owntracks/jane/5s', ... (159 bytes))
 mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)

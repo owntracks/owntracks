@@ -287,18 +287,23 @@
 <li>Alert via (future) plugins that a geographical region (<a href="../waypoints/">waypoint</a>) has been entered or left</li>
 </ul>
 <p>The result of using <em>o2s</em> is that you get a database table (several actually) in which your OwnTracks locations are stored.</p>
-<p>FIXME: show table select for jjolie</p>
+<pre><code>+---------------------+-----+------------+------------+------+--------------------------------------+
+| tst                 | tid | lat        | lon        | cc   | addr                                 |
++---------------------+-----+------------+------------+------+--------------------------------------+
+| 2015-05-27 06:23:36 | jJ  | 46.7835540 | 17.2073088 | HU   | Keszthely, Hévízi út, 8360 Ungarn    |
+| 2015-05-26 20:10:52 | jJ  | 46.7710135 | 17.1829915 | HU   | Alsópáhok, 760, 8394 Ungarn          |
+| 2015-05-26 14:32:50 | jJ  | 46.9557636 | 19.4132377 | HU   | Kerekegyháza, 5211, 6041 Ungarn      |
+| 2015-05-23 22:42:27 | jJ  | 47.4986630 | 19.0438124 | HU   | Budapest, Eötvös tér, 1051 Ungarn    |
++---------------------+-----+------------+------------+------+--------------------------------------+
+</code></pre>
+
 <p>So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter <em>Pista</em>.</p>
 <h2 id="pista">Pista</h2>
 <p><em>Pista</em> is a word which signifies <em>track</em> in Spanish and in Italian. It is, unfortunately, a very difficult bit of software to get installed, but we'll try to help you. <em>Pista</em> contains a whole kitchen-sink of features, most of which you won't need to use with our OwnTracks apps. (These features were built for the OwnTracks Greenwich devices.)</p>
 <p>We'll concentrate on setting up <em>Pista</em>'s <em>Tracks</em> utility which will enable you to view past locations directly from the database tables which are updated by <em>o2s</em>.</p>
 <h2 id="mqttwarn">mqttwarn</h2>
-<p>You'll recall (we hope) the discussion on <a href="../mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does), and as JP wrote this section, you'll have to live with it!</p>
-<p>Let's for a moment assume you want to do something really stupid: tweet your location every time your OwnTracks app reports it. (Why is this stupid? Well, to be honest it isn't necessarily, but that depends on your desired <em>privacy level</em>; however, if you tweet with the Twitter location thing enabled, this won't hurt.</p>
-<p>The documentation of <em>mqttwarn</em> is excellent (recall: JP is writing this) so you'll probably have no problems whatsoever. After installing <em>mqttwarn</em>, you create a configuration file which looks like this:</p>
-<p>FIXME: ini for twitter</p>
-<p>The funny numbers are called Twitter OAuth credentials and you get them on the Twitter developer site. When everything's been wired up to <em>mqttwarn</em>'s content, a location publish should result in a tweet:</p>
-<p>FIXME: show tweet for a jjolie location</p>
+<p>You'll recall (we hope) the discussion on <a href="../mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
+<p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>
 <h2 id="openhab">openHAB</h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
 <p>This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal <a href="../broker/">MQTT broker</a> where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in <a href="../scenarios/"><em>private mode</em></a>, all your data is 'yours' and yours alone - there is no cloud service collecting, storing and potentially mining your data. </p>
