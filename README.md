@@ -4,3 +4,6 @@ OwnTracks allows you to keep track of your own location. You can build your priv
 
 To get started, install OwnTracks on your smartphone. Afterwards you can connect it to an existing server straight away or follow the guide in our [Wiki](https://github.com/owntracks/owntracks/wiki) to set up your own.
 
+### Documentation
+
+[![Build Status](https://travis-ci.org/owntracks/booklet.svg?branch=master)](https://travis-ci.org/owntracks/booklet)
