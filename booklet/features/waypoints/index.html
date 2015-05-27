@@ -131,6 +131,14 @@
                         </li>
                     
                         <li >
+                            <a href="../tls/">TLS</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../location/">Location</a>
+                        </li>
+                    
+                        <li >
                             <a href="../tid/">TID</a>
                         </li>
                     
@@ -156,6 +164,22 @@
                     
                         <li >
                             <a href="../settings/">Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../comparison/">Comparison</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../android/">Android</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../ios/">iOS</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../remoteconfig/">Remoteconfig</a>
                         </li>
                     
                         <li >
@@ -190,6 +214,10 @@
                     
                         <li >
                             <a href="../../terminology/">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../privacy/">Privacy</a>
                         </li>
                     
                         <li >
@@ -252,6 +280,8 @@
     
         <li class="main "><a href="#setting-up-ibeacons">Setting up iBeacons</a></li>
         
+            <li><a href="#remote-loading-of-waypoints">Remote loading of waypoints</a></li>
+        
     
     </ul>
 </div></div>
@@ -303,11 +333,43 @@ prohibit access to <code>owntracks/+/+/waypoints</code> for particular users if 
 Conversely, all messages published by the apps (<code>location</code> and <code>waypoint</code>) are
 available with a subscription to <code>owntracks/#</code>.</p>
 <p>The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. </p>
-<p>For convenience, waypoints can be loaded remotely: [[Remote-Loading-of-Waypoints]].</p>
 <h2 id="ios">iOS</h2>
 <p>On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name <code>Center</code>, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.</p>
 <h1 id="setting-up-ibeacons">Setting up iBeacons</h1>
-<p>On iOS you can <a href="../beacons/">monitor an iBeacon region</a> in addition to circular regions.</p></div>
+<p>On iOS you can <a href="../beacons/">monitor an iBeacon region</a> in addition to circular regions.</p>
+<h2 id="remote-loading-of-waypoints">Remote loading of waypoints</h2>
+<p>Do you want to prepare your waypoints at home and load to your device?</p>
+<p>Here's what you can do with OwnTracks for [[iOS]]:</p>
+<ul>
+<li>Create a configuration file in JSON with an <code>.otrw</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtw</code> suffix is also supported.)</li>
+<li>Send the file to the device via email, http, dropbox, ... you name it.</li>
+<li>Open the file on the device with OwnTracks</li>
+</ul>
+<p>Here is a sample waypoints file which follows the settings as explained
+in [[JSON]]. Boolean values are represented as <code>0</code> (false) or <code>1</code> (true).  The <code>_type</code>
+entry is mandatory, all other entries are optional; they are replaced by built-in
+defaults if not specified.</p>
+<pre><code class="json">{
+    &quot;_type&quot;: &quot;waypoints&quot;,
+    &quot;waypoints&quot; : [
+                    { &quot;_type&quot; : &quot;waypoint&quot;,
+                      &quot;tst&quot;: &quot;100000000&quot;,
+                      &quot;lat&quot;: &quot;50.0&quot;,
+                      &quot;lon&quot;: &quot;8.0&quot;,
+                      &quot;rad&quot;: &quot;100&quot;,
+                      &quot;desc&quot; : &quot;fifty/eight&quot;
+                    }, 
+                    { &quot;_type&quot; : &quot;waypoint&quot;,
+                      &quot;tst&quot;: &quot;100000001&quot;,
+                      &quot;lat&quot;: &quot;40.0&quot;,
+                      &quot;lon&quot;: &quot;-8.0&quot;,
+                      &quot;rad&quot;: &quot;500&quot;,
+                      &quot;desc&quot; : &quot;forty/minus-eight&quot;
+                    }
+                  ]
+}
+
+</code></pre></div>
         </div>
 
 	<footer class="col-md-12">

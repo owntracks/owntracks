@@ -106,6 +106,18 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/features/tls/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/location/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/features/tid/</loc>
      <lastmod>2015-05-27</lastmod>
      <changefreq>daily</changefreq>
@@ -148,6 +160,30 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/features/comparison/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/android/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/ios/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/remoteconfig/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/features/debug/</loc>
      <lastmod>2015-05-27</lastmod>
      <changefreq>daily</changefreq>
@@ -175,6 +211,12 @@
         
     <url>
      <loc>http://owntracks.org/terminology/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/privacy/</loc>
      <lastmod>2015-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>

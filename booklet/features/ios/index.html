@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="OwnTracks.org">
+        <link rel="canonical" href="http://owntracks.org/features/ios/">
+        <link rel="shortcut icon" href="../../favicon.ico">
+        
+
+	<title>iOS - OwnTracksDoc</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">OwnTracksDoc</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">Intro</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../guide/what/">What it does</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/how/">How it works</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/ui/">User interface</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/scenarios/">Scenarios</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/mqtt/">MQTT</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/topics/">Topics</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/broker/">Broker</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/apps/">Apps</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/clients/">Clients</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/beacons/">iBeacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../guide/bridge/">Bridging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../hosted/">Hosted</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../security/">Security</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../tls/">TLS</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../location/">Location</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../tid/">TID</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../friends/">Friends</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../card/">Card</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../waypoints/">Waypoints</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../beacons/">Beacons</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../pedometer/">Pedometer</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../settings/">Settings</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../comparison/">Comparison</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../android/">Android</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">iOS</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../remoteconfig/">Remoteconfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../debug/">Debugging</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../tech/json/">JSON</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../tech/program/">Code</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sundry <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../terminology/">Terminology</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../privacy/">Privacy</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../people/">People</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../ideas/">Ideas</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../faq/">Answers</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../press/">Press</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../android/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../remoteconfig/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/owntracks">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#startup">Startup</a></li>
+        
+    
+        <li class="main "><a href="#settings">Settings</a></li>
+        
+            <li><a href="#follow-your-broker">Follow your broker</a></li>
+        
+            <li><a href="#main-screen">Main Screen</a></li>
+        
+            <li><a href="#friends">Friends</a></li>
+        
+            <li><a href="#location-indicators-and-friendly-faces">Location indicators and friendly faces</a></li>
+        
+            <li><a href="#region-monitoring-and-waypoints">Region Monitoring and Waypoints</a></li>
+        
+            <li><a href="#waypoints">Waypoints</a></li>
+        
+            <li><a href="#region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</a></li>
+        
+            <li><a href="#region-monitoring-with-ibeacons">Region Monitoring with iBeacons</a></li>
+        
+            <li><a href="#remote-configuration">Remote configuration</a></li>
+        
+            <li><a href="#why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h2 id="startup">Startup</h2>
+<p>After <a href="https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8">downloading and installing the iPhone/iPad app</a>, start it
+up.</p>
+<p>You will see the launch image
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone4-launch.png" width="200px" height="300px" /></p>
+<p>followed by OwnTracks' main screen. When the main screen appeares it shows the title bar
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone4-title-on.png" width="200px" height="300px" /></p>
+<p>but hides it after a few seconds to give more room for the map (examples show iPhone 3 1/2", but looks similar on iPhone 4" and iPad).</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone4-title-off.png" width="200px" height="300px" /></p>
+<p>The first time you start the app, the system asks you to give OwnTracks access to your location. Please hit OK.
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-use-location.png" width="200px" height="300px" /></p>
+<p>Now you'll notice the connection indicator in <em>red</em> (iPhone top/right, iPad bottom/right). Let's head to settings by
+using the <em>Settings</em> tab on the iPhone or by activating the popover menu (hit 'Friends' button on bottom/left) and then <em>Settings</em> tab on the iPad.</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-friends.png" width="300px" height="200px" /></p>
+<h2 id="settings">Settings</h2>
+<p>You're now in the settings panel for OwnTracks, and there are some things
+you have to change. (See [[general settings|Settings]] for additional information.)</p>
+<p>Don't get overwhelmed by the number of settings, there are only 4 things you need to change (marked with an asterisk '*').
+1. <em>DeviceID</em> is a short name you'll give your device. Good examples could be <code>iphone</code>, <code>myphone</code>, or <code>xyzz90</code>.
+2. <em>Host</em> is the host name or IP address of your MQTT broker. (The port defaults to 8883 because we default to using TLS.)
+3. <em>UserID</em> is your username on the broker. Even if your broker doesn't enforce authentication, you <em>must set a UserID</em>.
+4. <em>Password</em> is the password for <em>UserID</em>.</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-settings1.png" width="200px" height="300px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-settings2.png" width="200px" height="300px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-settings3.png" width="200px" height="300px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-settings4.png" width="200px" height="300px" /></p>
+<p>After adjusting your settings, you can check the MQTT broker connection by hitting <em>Check</em> and watch the status change or look at the detail status screen (information button right of connection status in the first row).</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-check.png" width="200px" height="300px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-error-ok.png" width="200px" height="300px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-error-nok.png" width="200px" height="300px" /></p>
+<p>You do not need to fill out all fields, however to check the effective values have a look by hitting the information button to the right of UserID, ClientID, Topic or Will Topic.</p>
+<p>Quality of Service (QoS) settings for Reporting, Subscription or Will are indicated next to the descriptive label and can be altered by selecting the corresponding value after opening the detail selection screen.</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-qos.png" width="200px" height="300px" /></p>
+<p>Scroll down to the bottom of the screen to find the current application version, license information, a link to this documentation and the possibility to export all settings.</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-export.png" width="200px" height="300px" /></p>
+<p>If you have successfully connected to your MQTT broker, switch the the main screen again (use the OwnTracks tab on iPhone or tap on the map on iPad).</p>
+<h3 id="follow-your-broker">Follow your broker</h3>
+<p>At this time you should check that the MQTT broker is actually receiving location messages. (See [[MQTT broker|MQTTbroker]] on how to do this.)</p>
+<h3 id="main-screen">Main Screen</h3>
+<p>Let's look at the main screen for a moment:</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-start.png" width="300px" height="200px" /></p>
+<p>The icons on the bottom/top (iPad/iPhone) row are as follows:</p>
+<ol>
+<li>First Button is User Tracking Mode</li>
+<li>Second Button is Monitoring Mode and Indicator<ul>
+<li>a <code>PAUSE</code> symbol indicates no automatic location monitoring </li>
+<li>a <code>PLAY</code>symbol indicates significant location monitoring</li>
+<li>a <code>FAST FORWARD</code> indicates move mode monitoring
+(See [[Location]])</li>
+</ul>
+</li>
+<li>Third Button is Beacon Mode and Indicator<ul>
+<li>RED = inside iBeacon region</li>
+<li>BLUE = not within an iBeacon region</li>
+<li>GRAY = iBeacon status not available</li>
+<li>flashing = continously updating iBeacon distances (a.k.a. ranging)</li>
+</ul>
+</li>
+<li>Forth Button is Connection Switch and Indicator<ul>
+<li>BLUE=IDLE, no connection established</li>
+<li>GREEN=CONNECTED, server connection established</li>
+<li>AMBER=ERROR OCCURED, WAITING FOR RECONNECT, app will automatically try to reconnect to the server</li>
+<li>RED=ERROR, no connection to the server possible or transient errror condition</li>
+<li>animated size changes indicate outgoing messages</li>
+</ul>
+</li>
+</ol>
+<p>The system network activity indicator (in top status bar) is now used to indicate actual
+transmission of messages.</p>
+<p>To switch Map Mode, Monitoring Mode, Beacon Ranging and Switch Connection, tap on the corresponding button and select one of the displayed options:</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-map-modes.png" width="300px" height="200px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-monitoring.png" width="300px" height="200px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-ranging.png" width="300px" height="200px" />
+<img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/ipad-connection.png" width="300px" height="200px" /></p>
+<p>Tap on Map Mode Follow to see your position.</p>
+<h3 id="friends">Friends</h3>
+<p>The [[Friends]] feature shows self and all Friends published by the server,
+their picture or OwnTracks default icon, and their last location.  Tapping on
+the entry switches back to map centered on friend's last location.</p>
+<p>The first time you launch the app you'll also be asked whether it may access your
+contacts data, which you should allow. (If you change your mind later, <em>Privacy</em> in
+<em>General settings</em> allows you to disable the feature.)</p>
+<p>Tapping on the disclosure indicator (little right-arrow) lists all received locations of the friend.
+App keeps track of a number (see Settings) of own locations and the last location and sharedpoint of others.s
+ Tapping on an location entry centers the map on the selected location.</p>
+<p>If the location was set manually, a disclosure indicator allows changing the remark of the location (e.g. parked my car here!, started my run here!). Manual locations can only be deleted manually.</p>
+<p>Deleting locations or all locations of a friend is done by left-swipe on the entry.</p>
+<p>Q. As regards the friends list: when is reverse geo-coding done?</p>
+<p>Reverse geo-coding is done when displaying/editing location details by either
+<em> tapping the info button of a location callout on the map or
+</em> navigating via friends/locations/...</p>
+<p>No geo-coding is done automatically in the background to limit mobile data usage.</p>
+<h3 id="location-indicators-and-friendly-faces">Location indicators and friendly faces</h3>
+<p>The locations of yourself, your friends and of the waypoints you set are displayed as little yellow circles. The color of the circumfence indicates
+<em> Orange: yourself
+</em> Blue: one of your waypoints
+* Green: one of your friends</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-circles.png" width="200px" height="300px" /></p>
+<p>The inner area of the circle either shows a picture of yourself / your friend or the Tracker ID (tid) which is usually 2 digits and defaults to the last two characters of the publish topic.</p>
+<p>A red, yellow rimmed tachometer indicating the velocity (speed) at the reported location starts at at the 6 o'clock position and works clockwise. It uses a logarithmic scale to show slow speeds
+as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the 12 o'clock posistion a speed of 100 km/h. 3 o'clock means 180 km/h.</p>
+<p>A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.</p>
+<p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [[Friends]] list, as soon as a location update for Jane is seen by the app.</p>
+<p>In order to associate an MQTT topic with our friend (Jane, in this case), edit your addressbook entry on iOS for Jane and do either of the following:</p>
+<ul>
+<li>Create a new relashionship (like 'Spouse') called <code>OwnTracks</code> (case insensitive), and add your friend's topic name to that (e.g. <code>owntracks/jane/loc</code>)</li>
+</ul>
+<p>The addressbook API might need a while to be refreshed, but you may be able to speed that up by swiping the Friends list downward until the activity indicator appears, then let go).</p>
+<p>or...</p>
+<p>Tap the Bookmark Button in the Navigation Bar on the Location screen. Select an entry from your Address Book.
+The entry will be marked with a relationship to the current friend's topic name.</p>
+<p>Beginning with iPhone app version 5.1, there's now a switch in Expert Mode settings titled <em>Update Address Book". If this is _on</em>, the app uses related names from the address book to identify topics and updates address book as described above. If the switch is <em>off</em>, the app maintains an internal reference to the address book record and doesn't modify the address book.</p>
+<h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints</h3>
+<p>For all manually published locations, a description, a region radius and a share flag can be edited.</p>
+<p>Setting the description of a location helps you to remember places.</p>
+<p>If a description is entered and the share flag set, the location is published to the MQTT broker as a <code>waypoint</code> once.
+Waypoints shared by other users are displayed on the map and are visible in the Friends/Locations... table.</p>
+<p>If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. A region may be 'waypoint'.
+The regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns red-ish.</p>
+<p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
+monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.</p>
+<p>Everytime the devices enters or leaves a monitored region, an additional location message is published to the MQTT broker.</p>
+<p>Use cases:
+<em> Define a <code>home</code> region to insure that the device publishes a new location when coming home or leaving home even if you do not move more than 500m.
+</em> Share your favorite places with your friends ("Best Sushi in Town").
+<em> Keep a private note ("Parked Car here").
+</em> Use iBeacons to accurately report enter/leave events for your home
+* Use iBeacons to publish enter/leave events for individual rooms/floors in your home</p>
+<h3 id="waypoints">Waypoints</h3>
+<p>All manually published locations can be edited (by tapping on the <code>(I)</code> to add
+a description. If the <em>Share</em> flag is on, this waypoint is published to the
+[[MQTT broker|MQTTbroker]] along with its location information. Setting a
+description helps you remember particular points of interest.</p>
+<p>If a description is entered and the share flag set, the location is published
+to the MQTT broker as a waypoint once. Waypoints shared by other users are
+displayed on the map and are visible in the <em>Friends/Locations</em> table.</p>
+<h3 id="region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</h3>
+<p>If the waypoint description is non-empty and a radius &gt; 0 (meters) is set, the
+app starts monitoring the circular region around the specified coordinates. 
+Regions are shown on the map as blue-ish circles. If the
+device is within a region, the corresponding circle turns red-ish. Every time
+the devices enters or leaves a monitored region, an additional location message
+is published to the MQTT broker, specifying whether the device is entering or leaving
+said region.</p>
+<p><img src="https://raw.github.com/wiki/owntracks/owntracks/assets/ios/iphone5-notification-center.jpg" width="300px" height="200px" /></p>
+<p>For example, you can define a home region to ensure that the device publishes a
+new location when coming home or leaving home even if you do not move more than
+500m. Share your favorite places with your friends ("Best Sushi in Town"). Keep
+a private note ("Parked Car here").</p>
+<h3 id="region-monitoring-with-ibeacons">Region Monitoring with iBeacons</h3>
+<p>Rather than setting the radius, you may add your iBeacon's UUID and optionally major and minor numbers
+to the description to start region monitoring using iBeacons.</p>
+<p>e.g.
+* 'myBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE'
+reports region with description 'myBeacon' when the iBeacon identified with UUID = CA..., major = 0001 and minor = CAFE is in proximity</p>
+<ul>
+<li>'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
+reports region with description 'myBeacons' when any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant is in proximity</li>
+</ul>
+<h3 id="remote-configuration">Remote configuration</h3>
+<p>You can help your friends customize their copy of OwnTracks with [[remote configuration|RemoteConfig]].</p>
+<h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</h3>
+<p>Here's what happens:</p>
+<p>If the app goes into Background, the connection is disconnected because the app
+cannot maintain the TCP connection in background.</p>
+<p>If you bring the app back into foreground, the app will re-connect.</p>
+<p>When a location change is recorded (no matter if manual, significant, move or
+region mode), a message is prepared and an attempt to connect to the broker is
+started. If there is an error, connect will be retried after 2, 4, 8, ..., 64,
+64, .... seconds until it succeeds.</p>
+<p>BUT...</p>
+<p>If the application is in background or is sent to the background, retries are
+restarted eventually - depending on IOS' background execution model about every 10 minutes.</p>
+<p>With automatic modes switched off, even when bringing the app to foreground, no
+new location updates are generated.</p></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+	</footer>
+
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
