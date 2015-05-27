@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>http://owntracks.org/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>http://owntracks.org/guide/what/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/how/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/ui/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/scenarios/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/mqtt/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/topics/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/broker/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/apps/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/clients/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/friends/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/waypoints/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/beacons/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/guide/bridge/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://owntracks.org/features/hosted/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/security/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/tid/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/friends/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/card/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/waypoints/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/beacons/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/pedometer/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/settings/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/debug/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://owntracks.org/tech/json/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/tech/program/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://owntracks.org/terminology/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/people/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/ideas/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/faq/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/press/</loc>
+     <lastmod>2015-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+</urlset>
