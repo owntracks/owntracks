@@ -451,25 +451,27 @@ unmarked (by setting radius to 0).</p>
 indicates the device is is within the region.</p>
 <h4 id="ibeacon-monitoring">iBeacon monitoring</h4>
 <p>The app user may mark a previously manually published or manually created location
-as a monitored beacon region by appending a beacon uuid to the region's name.
+as a monitored beacon region by appending a beacon UUID to the region's name.
 The app will publish the location
-additionally everytime the device leaves or enters one of the beacon regions, and the
+additionally every time the device leaves or enters one of the beacon regions, and the
 published data contains an indication of whether the device is entering or
 leaving the region.</p>
 <p>Region monitoring is not related to one of the location publication modes and
-works independently. It is switched on when a region's name has a valid uuid
-appended.</p>
+works independently. It is switched on when a region's name has a valid UUID
+appended to it.</p>
 <p>If the device is within a monitored beacon region, the the beacon indicator
 is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
-<p>There are 2 kinds of locations:
-a) an <code>automatic location</code> created when iOS detects a change of location
-b) a <code>manual location</code> created by the user</p>
-<p>A <code>manual location</code> with a non-zero length remark (description) is a <code>waypoint</code>.</p>
-<p>If a <code>waypoint</code> is <code>shared</code>, its attributes are published when created or changed.</p>
-<p>If a <code>waypoint</code> specifies a radius, a <code>circular region</code> is monitored for <code>enter/leave events</code>.</p>
-<p>If a <code>waypoint</code> is not a <code>circular region</code> and the <code>waypoint</code>'s description contains a valid <code>iBeacon</code> specification, a <code>beacon region</code> is monitored for <code>enter/leave events</code>.</p>
-<p>If an <code>enter/leave event</code> occurs an event message is published with the <code>type</code> attribute set to <code>c</code>or <code>b</code>for (<code>circular region</code>or <code>beacon region</code>). The message contains an <code>event</code>attribute specifying either <code>enter</code>or <code>leave</code>.</p>
-<p>If the <code>waypoint</code>is <code>shared</code>, the description of the <code>waypoint</code>is added to the published <code>event</code>message.</p>
+<p>There are 2 kinds of locations:</p>
+<ul>
+<li>an <em>automatic location</em> created when iOS detects a change of location</li>
+<li>a <em>manual location</em> created by the user</li>
+</ul>
+<p>A <em>manual location</em> with a non-zero length remark (description) is a <em>waypoint</em>.</p>
+<p>If a <em>waypoint</em> is <em>shared</em>, its attributes are published when the waypoint is created or changed.</p>
+<p>If a <em>waypoint</em> specifies a radius, a <em>circular region</em> is monitored for <em>enter/leave events</em>.</p>
+<p>If a <em>waypoint</em> is not a <em>circular region</em> and the waypoint's description contains a valid iBeacon specification, a <em>beacon region</em> is monitored for enter/leave events.</p>
+<p>If an enter/leave event occurs an event message is published with the <code>type</code> attribute set to <code>c</code>or <code>b</code>for (<em>circular region_or _beacon region</em>). The message contains an <code>event</code> attribute specifying either <code>enter</code>or <code>leave</code>.</p>
+<p>If the <em>waypoint_is _shared</em>, the description of the <em>waypoint</em> is added to the published <code>event</code> message.</p>
 <table>
 <thead>
 <tr>
