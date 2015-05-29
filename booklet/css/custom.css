@@ -1,5 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web);
 
+/* JPM begin */
+code {
+	color: #505050;
+}
+/* JPM end */
+
 table {
   width:100%;
 }
