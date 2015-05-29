@@ -12,13 +12,7 @@
     
         
     <url>
-     <loc>http://owntracks.org/guide/what/</loc>
-     <lastmod>2015-05-29</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/guide/how/</loc>
+     <loc>http://owntracks.org/guide/whathow/</loc>
      <lastmod>2015-05-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
