@@ -62,12 +62,7 @@
         <span class="toctree-l0">Guide</span>
             
                 <li class="toctree-l1 ">
-                    <a class="" href="../../guide/what/">What it does</a>
-                    
-                </li>
-            
-                <li class="toctree-l1 ">
-                    <a class="" href="../../guide/how/">How it works</a>
+                    <a class="" href="../../guide/whathow/">What it does</a>
                     
                 </li>
             
@@ -224,6 +219,9 @@
                       
                         <ul>
                         
+                            <li class="toctree-l2"><a href="#json">JSON</a></li>
+                            
+                        
                             <li class="toctree-l2"><a href="#topics">Topics</a></li>
                             
                         
@@ -335,7 +333,8 @@
 </div>
           <div role="main">
             <div class="section">
-              <p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a <code>_type</code> element. Depending on the app platform, different payload types are supported. </p>
+              <h2 id="json">JSON</h2>
+<p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a <code>_type</code> element. Depending on the app platform, different payload types are supported. </p>
 <table>
 <thead>
 <tr>
@@ -387,7 +386,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="topics">Topics</h3>
+<h2 id="topics">Topics</h2>
 <p>Apps publish to:</p>
 <ul>
 <li><code>owntracks/user/device</code> with <code>_type=location</code> for location updates, and with <code>_type=lwt</code></li>
@@ -407,7 +406,7 @@
 <li><code>owntracks/user/device/beacon</code> for beacon ranging</li>
 <li><code>owntracks/user/device/dump</code> for config dumps</li>
 </ul>
-<h3 id="_typelocation"><code>_type=location</code></h3>
+<h2 id="_typelocation"><code>_type=location</code></h2>
 <p>This location object describes the location of the device that published it. <strong>Heads up: as from Android version 0.5.11 and from iOS version 8.0 numeric types are real numeric (<code>float</code>, <code>int</code>, boolean <code>true</code>/<code>false</code>) and no longer strings.</strong></p>
 <pre><code class="json">{
     &quot;_type&quot; : &quot;location&quot;,        
@@ -454,7 +453,7 @@
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>)</li>
 </ul>
 <p>(The IOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
-<h4 id="greenwich">Greenwich</h4>
+<h3 id="greenwich">Greenwich</h3>
 <p>The OwnTracks-edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;location&quot;,
@@ -488,7 +487,7 @@
 <li><code>L</code> last position before gracefull shutdown</li>
 </ul>
 <p>(The device can be configured to produce or not produce fields marked as <em>optional</em>.)</p>
-<h3 id="_typelwt"><code>_type=lwt</code></h3>
+<h2 id="_typelwt"><code>_type=lwt</code></h2>
 <p>A <em>last will and testament</em> is published automatically by the MQTT broker when it looses contact with the app. This typically looks like this:</p>
 <pre><code class="json">{
     &quot;_type&quot;:&quot;lwt&quot;,
@@ -497,7 +496,7 @@
 </code></pre>
 
 <p>The timestamp is the Unix epoch time at which the app first connected (and <em>not</em> the time at which the LWT was published).</p>
-<h3 id="_typewaypoint"><code>_type=waypoint</code></h3>
+<h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
 <p>Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked <code>shared</code>). OwnTracks also monitors these waypoints and will publish a transition event (<code>_type: transition</code>) when entering or leaving the waypoint. Note, that a waypoint may also define a <a href="../../features/beacons/">Beacon</a>.</p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
@@ -515,7 +514,7 @@
 <li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
 <li><code>wtst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.)</li>
 </ul>
-<h3 id="_typetransition"><code>_type=transition</code></h3>
+<h2 id="_typetransition"><code>_type=transition</code></h2>
 <p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;transition&quot;,
@@ -531,7 +530,7 @@
 </code></pre>
 
 <p>A transition event published as a result of a Beacon movement will have a <code>"t" : "b"</code> associated with it.</p>
-<h3 id="_typeconfiguration"><code>_type=configuration</code></h3>
+<h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. </p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;configuration&quot;,
@@ -635,7 +634,7 @@
 <li><code>extendedData</code>                IOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
 <li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
 </ul>
-<h3 id="_typebeacon"><code>_type=beacon</code></h3>
+<h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.</p>
 <pre><code class="json">{
         &quot;_type&quot;:&quot;beacon&quot;,
@@ -660,7 +659,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="_typecmd"><code>_type=cmd</code></h3>
+<h2 id="_typecmd"><code>_type=cmd</code></h2>
 <pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
 </code></pre>
 
@@ -675,7 +674,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="_typesteps"><code>_type=steps</code></h3>
+<h2 id="_typesteps"><code>_type=steps</code></h2>
 <pre><code class="json">{&quot;_type&quot;:&quot;steps&quot;,&quot;tst&quot;:1400455130,&quot;steps&quot;:1234,&quot;from&quot;:1400455130,&quot;to&quot;:1400458000}
 </code></pre>
 

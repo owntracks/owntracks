@@ -62,12 +62,7 @@
         <span class="toctree-l0">Guide</span>
             
                 <li class="toctree-l1 ">
-                    <a class="" href="../what/">What it does</a>
-                    
-                </li>
-            
-                <li class="toctree-l1 ">
-                    <a class="" href="../how/">How it works</a>
+                    <a class="" href="../whathow/">What it does</a>
                     
                 </li>
             
@@ -109,19 +104,26 @@
                         
                             <li class="toctree-l2"><a href="#clients">Clients</a></li>
                             
-                                <li><a class="toctree-l3" href="#mosquitto_sub">mosquitto_sub</a></li>
+                        
+                            <li class="toctree-l2"><a href="#mosquitto_sub">mosquitto_sub</a></li>
                             
-                                <li><a class="toctree-l3" href="#o2s">o2s</a></li>
+                        
+                            <li class="toctree-l2"><a href="#o2s">o2s</a></li>
                             
-                                <li><a class="toctree-l3" href="#pista">Pista</a></li>
+                        
+                            <li class="toctree-l2"><a href="#pista">Pista</a></li>
                             
-                                <li><a class="toctree-l3" href="#mqttwarn">mqttwarn</a></li>
+                        
+                            <li class="toctree-l2"><a href="#mqttwarn">mqttwarn</a></li>
                             
-                                <li><a class="toctree-l3" href="#openhab">openHAB</a></li>
+                        
+                            <li class="toctree-l2"><a href="#openhab">openHAB</a></li>
                             
-                                <li><a class="toctree-l3" href="#roll-your-own">Roll your own</a></li>
+                        
+                            <li class="toctree-l2"><a href="#roll-your-own">Roll your own</a></li>
                             
-                                <li><a class="toctree-l3" href="#related">Related</a></li>
+                        
+                            <li class="toctree-l2"><a href="#related">Related</a></li>
                             
                         
                         </ul>
@@ -323,7 +325,7 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="clients">Clients</h1>
+              <h2 id="clients">Clients</h2>
 <p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in <a href="../scenarios/"><em>public mode</em></a>.)</p>
 <p>You know that OwnTracks <em>publishes</em> location information to an MQTT <em>broker</em>. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
 <p>When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilitze for doing that.</p>

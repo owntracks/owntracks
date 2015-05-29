@@ -62,12 +62,7 @@
         <span class="toctree-l0">Guide</span>
             
                 <li class="toctree-l1 ">
-                    <a class="" href="../what/">What it does</a>
-                    
-                </li>
-            
-                <li class="toctree-l1 ">
-                    <a class="" href="../how/">How it works</a>
+                    <a class="" href="../whathow/">What it does</a>
                     
                 </li>
             
@@ -94,19 +89,26 @@
                         
                             <li class="toctree-l2"><a href="#topics">Topics</a></li>
                             
-                                <li><a class="toctree-l3" href="#topic-name-root">topic name Root</a></li>
+                        
+                            <li class="toctree-l2"><a href="#topic-name-root">topic name Root</a></li>
                             
-                                <li><a class="toctree-l3" href="#device-name">Device name</a></li>
+                        
+                            <li class="toctree-l2"><a href="#device-name">Device name</a></li>
                             
-                                <li><a class="toctree-l3" href="#base-topic-name">Base topic name</a></li>
+                        
+                            <li class="toctree-l2"><a href="#base-topic-name">Base topic name</a></li>
                             
-                                <li><a class="toctree-l3" href="#subscribing-to-location-messages">Subscribing to location Messages</a></li>
+                        
+                            <li class="toctree-l2"><a href="#subscribing-to-location-messages">Subscribing to location Messages</a></li>
                             
-                                <li><a class="toctree-l3" href="#additional-topic-names">Additional topic names</a></li>
+                        
+                            <li class="toctree-l2"><a href="#additional-topic-names">Additional topic names</a></li>
                             
-                                <li><a class="toctree-l3" href="#summary">Summary</a></li>
+                        
+                            <li class="toctree-l2"><a href="#summary">Summary</a></li>
                             
-                                <li><a class="toctree-l3" href="#terms-used">Terms used</a></li>
+                        
+                            <li class="toctree-l2"><a href="#terms-used">Terms used</a></li>
                             
                         
                         </ul>
@@ -323,7 +325,7 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="topics">Topics</h1>
+              <h2 id="topics">Topics</h2>
 <p>You now know that <a href="../mqtt/">MQTT</a> is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
 topic levels by separating them with a forward slash (<code>/</code>). topic levels are
@@ -335,12 +337,12 @@ The last two are used to address sets of topic names.</p>
 <li>traffic minimization</li>
 <li>granular access control</li>
 </ul>
-<h4 id="topic-name-root">topic name Root</h4>
+<h2 id="topic-name-root">topic name Root</h2>
 <p>Typically an MQTT broker hosts multiple applications. To create a separate name space
 for OwnTracks we use a topic name root as the beginning of a topic name. Per default
 this is <code>owntracks/</code>, but you may choose any other root (e.g. <code>peters/locations/</code>) or,
 if you prefer, the empty string.</p>
-<h4 id="device-name">Device name</h4>
+<h2 id="device-name">Device name</h2>
 <p>Locations are captured in OwnTracks by devices (e.g. your Smartphone). The
 device name forms the second component of the topic name. In order to avoid
 clashes in naming and to simplify subscription and authorization we decided to
@@ -354,16 +356,16 @@ device naming schemes are possible and transparent to OwnTracks (e.g. using
 just one level <code>peters-iPhone</code> or multiple levels <code>aFamily/father/iPhone</code>), but
 under any one OwnTracks name root the number of levels used for device names
 have to the same.</p>
-<h4 id="base-topic-name">Base topic name</h4>
+<h2 id="base-topic-name">Base topic name</h2>
 <p>Combining the topic name root and the device name result in what we call <em>base
 topic name</em> for each device (e.g. <code>owntracks/peter/iPhone</code>).  The devices label
 their location messages with the <em>base topic name</em> when publishing to the MQTT
 broker.</p>
-<h4 id="subscribing-to-location-messages">Subscribing to location Messages</h4>
+<h2 id="subscribing-to-location-messages">Subscribing to location Messages</h2>
 <p>Given the structure explained above, the topic filter you can use to subscribe to the
 location messages of all devices is <code>owntracks/+/+</code> (the topic name root plus a so-called
 wild card (<code>+</code>) for each level of the device name.</p>
-<h4 id="additional-topic-names">Additional topic names</h4>
+<h2 id="additional-topic-names">Additional topic names</h2>
 <p>For additional communication from and to devices, OwnTracks uses topic names relative
 to the base topic name.</p>
 <p>Devices listen to the relative topic name <code>cmd</code> for commands you can publish to
@@ -379,7 +381,7 @@ avatar of a user with which authorized users can identify, say, Peter within the
 <p>Devices publish their <a href="../waypoints/">waypoints</a> to the relative topic name
 <code>waypoint</code> and the corresponding events the transition into or out of a
 waypoint triggers, to the relative topic name <code>event</code>.</p>
-<h4 id="summary">Summary</h4>
+<h2 id="summary">Summary</h2>
 <p>A device (named <code>peter/iPhone</code> in this example) is connected to an <a href="../broker/">MQTT
 Broker</a> with the OwnTracks name Root <code>owntracks</code>. It publishes
 location messages labeled with the topic name <code>owntracks/peter/iPhone</code>. The
@@ -397,7 +399,7 @@ the device will subscribe to <code>owntracks/peter/iPhone/cmd</code> as well, an
 commands; responses to these commands will be published and labeled <code>owntracks/peter/iPhone/dump</code>,
 <code>owntracks/peter/iPhone/step</code>, etc.</p>
 <p>A full set of supported topic names and expected payloads is documented in <a href="../../tech/json/">our JSON API</a>.</p>
-<h4 id="terms-used">Terms used</h4>
+<h2 id="terms-used">Terms used</h2>
 <ul>
 <li>topic name</li>
 <li>OwnTracks topic name root</li>

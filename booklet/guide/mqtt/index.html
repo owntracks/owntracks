@@ -62,12 +62,7 @@
         <span class="toctree-l0">Guide</span>
             
                 <li class="toctree-l1 ">
-                    <a class="" href="../what/">What it does</a>
-                    
-                </li>
-            
-                <li class="toctree-l1 ">
-                    <a class="" href="../how/">How it works</a>
+                    <a class="" href="../whathow/">What it does</a>
                     
                 </li>
             
@@ -89,7 +84,11 @@
                         
                             <li class="toctree-l2"><a href="#mqtt">MQTT</a></li>
                             
-                                <li><a class="toctree-l3" href="#pubsub">Pub/Sub</a></li>
+                        
+                            <li class="toctree-l2"><a href="#pubsub">Pub/Sub</a></li>
+                            
+                        
+                            <li class="toctree-l2"><a href="#cauldron">Cauldron</a></li>
                             
                         
                         </ul>
@@ -311,7 +310,7 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="mqtt">MQTT</h1>
+              <h2 id="mqtt">MQTT</h2>
 <p>So what's this MQTT thing? Quoting directly <a href="http://mqtt.org">from the horse's mouth</a>:</p>
 <blockquote>
 <p>MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium. For example, it has been used in sensors communicating to a broker via satellite link, over occasional dial-up connections with healthcare providers, and in a range of home automation and small device scenarios. It is also ideal for mobile applications because of its small size, low power usage, minimised data packets, and efficient distribution of information to one or many receivers</p>
@@ -320,7 +319,7 @@
 <p>It's lightweight. It's easy on a battery. It has a low overhead (important to save on your phone's data plan). And it distributes information to one or more receivers.</p>
 <h2 id="pubsub">Pub/Sub</h2>
 <p>In MQTT-speak, clients publish messages, which means they send or transmit them, and other clients subscribe to messages, meaning they receive them. Messages are published on <a href="../topics/">topics</a>, and the MQTT server, which is called a <a href="../broker/">broker</a> is configured to permit or deny clients doing so.</p>
-<h3 id="cauldron">Cauldron</h3>
+<h2 id="cauldron">Cauldron</h2>
 <p>We like to imagine that MQTT makes something reminiscent of a large <em>cauldron</em> available to publishing and subscribing clients. Publishers drop messages which are tagged <a href="../topics/">with topic names</a> into the pot, and subscribers can, access-control permitting, slurp these out, store them, create new messages and ladle them back into the pot or simply throw them away after peeking at them. As a small example, assume a client periodically publishes a Celsius temperature measurement to a particular topic, but you want Fahrenheit (incomprehensible that you would, but anyway). You could <a href="../../tech/program/">create a small client</a> which subscribed to the Celsius reading (from the topic, say, <code>temp/celsius</code> in the cauldron), converted to Fahrenheit or Kelvin or whatever, and republished the new value to a different topic, say, <code>temp/fahrenheit</code> back into the cauldron. It's important to understand that subscribing and receiving an MQTT message does <em>not remove</em> it from the broker; the same message is available to all clients which are subscribed at the time the message was published. (So you could have one client doing Fahrenheit conversion and another doing Kelvin.)</p>
 <p>And what does OwnTracks have to do with all of this? Well, the OwnTracks apps are MQTT clients which publish messages (your location) and subscribe to and consume messages (e.g. the locations of <a href="../friends/">your friends</a>). OwnTracks' location updates land in the cauldron when the app publishes a location message from which it can be consumed by any number of subscribers to the same <a href="../broker/">MQTT broker</a>.</p>
 <p>There are <a href="../clients/">a number of clients</a> which do that already, and we're even going to show you how you can <a href="../../tech/program/">create your own client</a> for specific purposes.</p>
