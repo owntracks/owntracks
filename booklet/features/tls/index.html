@@ -171,7 +171,8 @@
             
                 <li class="toctree-l3"><a href="#tls">TLS</a></li>
                 
-                    <li><a class="toctree-l4" href="#configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</a></li>
+            
+                <li class="toctree-l3"><a href="#configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</a></li>
                 
             
                 <li class="toctree-l3"><a href="#configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</a></li>
@@ -180,8 +181,7 @@
                 
                     <li><a class="toctree-l4" href="#ios">iOS</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#manual-configuration-on-android">manual configuration on Android</a></li>
+                    <li><a class="toctree-l4" href="#manual-configuration-on-android">manual configuration on Android</a></li>
                 
             
                 <li class="toctree-l3"><a href="#the-nitty-gritty">The nitty gritty</a></li>
@@ -408,9 +408,9 @@
 <li>Configure TLS on the MQTT broker</li>
 <li>Configuring the app to use TLS</li>
 </ul>
-<p>You can share the cerficate if you want to (though not many people will want it ...)
+<p>You can share the certificate if you want to (though not many people will want it ...)
 It's so public, that it's perfectly OK to send yourself the file by, say, e-mail.</p>
-<h3 id="configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</h3>
+<h2 id="configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</h2>
 <p>We'll first show you how to set up TLS on your Mosquitto <a href="../../guide/broker/">broker</a>.
 The basic configuration for TLS in <a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> is:</p>
 <pre><code>listener 8883
@@ -451,7 +451,7 @@ keyfile .............
 <p>There you go! That's it: the certificate was installed.</p>
 <p><img alt="iOS" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/ios-cert-04-stor.png" /></p>
 <p>You're done, and if you no longer require the certificate file just delete the e-mail, though we recommend you keep it around for a bit.</p>
-<h2 id="manual-configuration-on-android">manual configuration on Android</h2>
+<h3 id="manual-configuration-on-android">manual configuration on Android</h3>
 <p>From the, say, e-mail you got with the certificate, click "save" on the attached <code>.crt</code> file which is stored on your device's <code>Download</code> folder.</p>
 <p>In OwnTracks's settings, select <code>TLS (Custom Certificate)</code></p>
 <p><img alt="Android custom" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/android-custom-01.png" /></p>

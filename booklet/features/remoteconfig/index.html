@@ -384,46 +384,46 @@
             <div class="section">
               
                 <h2 id="remote-config">Remote config</h2>
-<p>Getting bored and frustrated by telling other people how to edit settings on their iPhone to connect to your server?</p>
-<p>Here's what you can do with OwnTracks:</p>
+<p>Instead of telling others how to edit settings on their device in order to use OwnTracks to connect to your server, you can help them yourself by sending them a ready-to-run configuration which they load onto their device. This is particularly useful in cases of "remote support" for parents, etc.</p>
 <ul>
 <li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtc</code> suffix is also supported.)</li>
-<li>Send the file to the device via email, http, dropbox, ... you name it.</li>
-<li>Open the file on the device with OwnTracks</li>
+<li>Ensure the JSON is valid by using either of the <a href="http://jsonlint.com">online JSON validator</a>, a utility such as <a href="http://stedolan.github.io/jq/">jq</a> or simply by running</li>
 </ul>
-<p>Here is a sample configuration file which follows the settings as explained
-above. Boolean values are represented as <code>0</code> (false) or <code>1</code> (true).  The <code>_type</code>
-entry is mandatory, all other entries are optional; they are replaced by built-in
+<pre><code>python -mjson.tool &lt; your.otrc
+</code></pre>
+
+<ul>
+<li>Send the file to the device via e-mail, provide it for download on an HTTP server, send via Dropbox, ... you name it.</li>
+<li>Have the OwnTracks app user open the file on their device with OwnTracks.</li>
+</ul>
+<p>Here is a sample configuration file which contains some of the possible settings.
+ The <code>_type</code>
+entry is mandatory, most other entries are optional; they are replaced by built-in
 defaults if not specified.</p>
 <pre><code class="json">{
-    &quot;_type&quot;: &quot;configuration&quot;,
-    &quot;deviceid&quot;: &quot;phone&quot;,
-    &quot;clientid&quot;: &quot;jane-phone&quot;,
-    &quot;subscription&quot;: &quot;owntracks/#&quot;,
-    &quot;topic&quot;: &quot;owntracks/jane/phone&quot;,
-    &quot;host&quot;: &quot;broker.my.net&quot;,
-    &quot;user&quot;: &quot;jane&quot;,
-    &quot;pass&quot;: &quot;secr3t&quot;,
-    &quot;will&quot;: &quot;lwt&quot;,
-    &quot;willtopic&quot;: &quot;&quot;,
-    &quot;subscriptionqos&quot;: &quot;1&quot;,
-    &quot;qos&quot;: &quot;2&quot;,
-    &quot;port&quot;: &quot;8883&quot;,
-    &quot;keepalive&quot;: &quot;60&quot;,
-    &quot;willqos&quot;: &quot;1&quot;,
-    &quot;retain&quot;: &quot;1&quot;,
-    &quot;tls&quot;: &quot;1&quot;,
-    &quot;auth&quot;: &quot;1&quot;,
-    &quot;clean&quot;: &quot;0&quot;,
-    &quot;willretain&quot;: &quot;0&quot;,
-    &quot;mindist&quot;: &quot;200&quot;,
-    &quot;mintime&quot;: &quot;180&quot;,
-    &quot;monitoring&quot;: &quot;1&quot;,
-    &quot;ab&quot;: &quot;0&quot;,
-    &quot;ranging&quot;: &quot;0&quot;,
-    &quot;cmd&quot;: &quot;0&quot;
+  &quot;username&quot;: &quot;jjolie&quot;,
+  &quot;password&quot;: &quot;s1kr3t&quot;,
+  &quot;clientId&quot;: &quot;janecli01&quot;,
+  &quot;pubRetain&quot;: true,
+  &quot;subTopic&quot;: &quot;owntracks/+/+&quot;,
+  &quot;allowRemoteLocation&quot;: true,
+  &quot;cmd&quot;: true,
+  &quot;pubTopicBase&quot;: &quot;&quot;,
+  &quot;_type&quot;: &quot;configuration&quot;,
+  &quot;tid&quot;: &quot;jJ&quot;,
+  &quot;host&quot;: &quot;mybroker.example.org&quot;,
+  &quot;willRetain&quot;: false,
+  &quot;updateAddressBook&quot;: true,
+  &quot;port&quot;: 8883,
+  &quot;pubQos&quot;: 2,
+  &quot;locatorInterval&quot;: 180,
+  &quot;tls&quot;: true,
+  &quot;auth&quot;: true,
+  &quot;cleanSession&quot;: false
 }
 </code></pre>
+
+<p>A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
               
             </div>
           </div>

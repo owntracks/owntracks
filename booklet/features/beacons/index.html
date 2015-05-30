@@ -388,13 +388,16 @@
 radius to zero (<code>0</code>), and add the beacon identifier to the description
 separated by a colon (:).</p>
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
-<p>You add the UUID of the beacon to the description and may specify the major and
-minor identifier numbers of the beacons in hex.</p>
+<p>You add the UUID of the beacon to the description, and you can optionally specify the major and/or
+minor identifier numbers of the beacons in hex if you desire finer control over which beacons OwnTracks will monitor.</p>
 <p>If the UUID is valid, iBeacon monitoring will start.</p>
 <p>Examples:</p>
-<pre><code>mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE
-myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
+<pre><code>myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
+mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE
 </code></pre>
+
+<p>In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
+in the second example, OwnTracks would monitor just that one specific beacon with the major number <code>0001</code> and the minor number <code>CAFE</code>.</p>
               
             </div>
           </div>

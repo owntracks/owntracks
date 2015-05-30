@@ -404,16 +404,16 @@ If you move more than 500 meters in 5 minutes you'll get a PUB after 10 minutes.
 <li><em>Move</em> mode</li>
 </ul>
 <p>In addition to this, there's also <em>Region Monitoring</em> (a.k.a. Geo Fence) and <em>iBeacon Monitoring</em> and <em>iBeacon Ranging</em>.</p>
-<h4 id="move-mode">MOVE mode</h4>
-<p>In MOVE mode, the app monitors location permanently and publishes a new
+<h4 id="move-mode"><em>Move</em> mode</h4>
+<p>In <em>move</em> mode, the app monitors location permanently and publishes a new
 location as soon as the device moves <code>x</code> meters or after <code>t</code> seconds, whatever
 happens first. <code>x</code> and <code>t</code> can be adjusted by the user in the systems settings for
 OwnTracks. The defaults are 100m and 300 seconds (5 minutes). </p>
 <p>The payoff is higher battery usage as high as in navigation or tracker app.
-So it is recommend to use MOVE mode while charging or during moves only - hence the name.</p>
-<p>Please note, MOVE mode is active when the app is active (a.k.a in foreground).</p>
-<h4 id="significant-location-change-mode">SIGNIFICANT LOCATION CHANGE mode</h4>
-<p>iOS defines a SIGNIFICANT LOCATION CHANGE as travelling a distance of at least
+So it is recommend to use <em>move</em> mode while charging or during moves only - hence the name.</p>
+<p>Please note, <em>move</em> mode is active when the app is active (a.k.a in foreground).</p>
+<h4 id="significant-location-change-mode"><em>Significant location change</em> mode</h4>
+<p>iOS defines a <em>Significant location change</em> as travelling a distance of at least
 500 meters in 5 minutes.  This mode allows the app to run in background and
 minimize the power consumption.</p>
 <p>This standard tracking mode reports significant location changes only (&gt;500m
@@ -421,24 +421,25 @@ and at most once every 5 minutes).  This is defined by Apple and is optimal
 with respect to battery usage.</p>
 <p>Examples:</p>
 <ul>
-<li>if you don't move, no new location is published - even if you don't move for hours</li>
+<li>if you don't move, no new location is published - even if you don't move for hours. (Note, however, that the app will publish a <em>ping</em>-type message once in a while.)</li>
 <li>if you move at least 500 meters, a new location will be published after 5 minutes</li>
 <li>if you move 10 kilometers in 5 minutes, only one location will be published</li>
 </ul>
-<h4 id="manual-mode">MANUAL mode</h4>
-<p>The app doesn't monitor location changes in MANUAL mode while in background.
-The user has to publish the current location explicitly via the UI.</p>
-<h4 id="region-monitoring">REGION monitoring</h4>
+<h4 id="manual-mode"><em>Manual</em> mode</h4>
+<p>The app doesn't monitor location changes in <em>manual</em> mode while in background.
+The user has to publish the current location explicitly via the UI. You use this if
+you want to (temporarily) avoid friends seeing where you are.</p>
+<h4 id="region-monitoring"><em>Region</em> monitoring</h4>
 <p>The app user may mark a previously manually published or manually created 
-location as a monitored circular region by specifying a monitoring radius in meters.
+location as a monitored circular region by specifying a monitoring radius in meters. (See <a href="../waypoints/">Waypoints</a>.)
 The app will publish the location
 additionally everytime the device leaves or enters one of the regions, and the
 published data contains an indication of whether the device is entering or
 leaving the region.</p>
 <p>Region monitoring is not related to one of the location publication modes and
-works independently. It is switched on when a region is setup with description
+works independently thereof. It is switched on when a region is setup with description
 and radius. To switch region monitoring off, all regions have to be 
-unmarked (by setting radius to 0).</p>
+unmarked (by setting their radius to 0).</p>
 <p>Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.</p>
 <h4 id="ibeacon-monitoring">iBeacon monitoring</h4>
