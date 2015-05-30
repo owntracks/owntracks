@@ -169,16 +169,16 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</a></li>
+                <li class="toctree-l3"><a href="#tls">TLS</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</a></li>
                 
             
                 <li class="toctree-l3"><a href="#configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#android">Android</a></li>
+                    <li><a class="toctree-l4" href="#android">Android</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#ios">iOS</a></li>
+                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
                 
             
                 <li class="toctree-l3"><a href="#manual-configuration-on-android">manual configuration on Android</a></li>
@@ -400,7 +400,8 @@
           <div role="main">
             <div class="section">
               
-                <p>You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using <em>TLS</em> (the artist formerly known as <em>SSL</em>). When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)</p>
+                <h2 id="tls">TLS</h2>
+<p>You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using <em>TLS</em> (the artist formerly known as <em>SSL</em>). When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)</p>
 <p>Configuring TLS (<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a>) for OwnTracks involves doing three things:</p>
 <ul>
 <li>Obtain a TLS certificate/key pair (see below on how to do this) if you don't yet have one</li>
@@ -427,11 +428,11 @@ keyfile .............
 <li><code>certfile</code> points to your server's certificate in PEM format</li>
 <li><code>keyfile</code> points to your server's secret key file (which you <em>never</em> divulge!)</li>
 </ul>
-<h3 id="configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</h3>
+<h2 id="configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</h2>
 <p>We show you here how to set up your iOS or Android device with that kind of certificate.</p>
 <p>In both cases we assume you've got an e-mail in your inbox with the file you've sent yourself. This file has a <code>.crt</code> extension, and in both Android and iOS you can simply launch configuration by clicking on the attachment.</p>
 <p>In our example, the CA certificate is called <code>MQTTitude-ca.crt</code>.</p>
-<h2 id="android">Android</h2>
+<h3 id="android">Android</h3>
 <p>Note that by following these instructions on Android you'll be prompted to set a device PIN or pattern to protect the device. If you already have that, just carry on. If you absolutely don't want to do that, you should download the certificate into, say, the Downloads folder, and configure it manually in OwnTracks (see below).</p>
 <p>So, here's your e-mail message with said attachment.</p>
 <p><img alt="Android" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/android-cert-01-mail.png" /></p>
@@ -440,7 +441,7 @@ keyfile .............
 <p>That's it. You're done, and if you no longer require the certificate file just delete the e-mail, though we recommend you keep it around for a bit.</p>
 <p>Note that installing a certificate into Android will, since Kitkat (4.4) bring up a warning when you power up your device. This warning is harmless (even though we consider it quite annoying).</p>
 <p><img alt="Android" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/cert-alert.png" /></p>
-<h2 id="ios">iOS</h2>
+<h3 id="ios">iOS</h3>
 <p>So, here's your e-mail containing the certificate file. Click on it to launch the profile installer. No worries: we're not going to break anything. We're just adding yet another certificate to iOS' certificate store, and you're going to say that you trust that certificate. You ought to trust it: you've just created it yourself!</p>
 <p><img alt="iOS" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/ios-cert-01-mail.png" /></p>
 <p>You've clicked, and here's the trust store. You see the certificate has a name, but it's not trusted yet. Click on Install.</p>

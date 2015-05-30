@@ -176,20 +176,11 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#android">Android</a></li>
+                <li class="toctree-l3"><a href="#location-data">Location data</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#ios">iOS</a></li>
+                    <li><a class="toctree-l4" href="#android">Android</a></li>
                 
-                    <li><a class="toctree-l4" href="#move-mode">MOVE mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#significant-location-change-mode">SIGNIFICANT LOCATION CHANGE mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#manual-mode">MANUAL mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#region-monitoring">REGION monitoring</a></li>
-                
-                    <li><a class="toctree-l4" href="#ibeacon-monitoring">iBeacon monitoring</a></li>
+                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
                 
             
             </ul>
@@ -396,7 +387,8 @@
           <div role="main">
             <div class="section">
               
-                <p>Location data is obtained by your smartphone and published to the <a href="../../guide/broker/">MQTT broker</a> as follows:</p>
+                <h2 id="location-data">Location data</h2>
+<p>Location data is obtained by your smartphone and published to the <a href="../../guide/broker/">MQTT broker</a> as follows:</p>
 <h3 id="android">Android</h3>
 <p>The way it currently works is by specifying an interval in which you want to receive updates (the one you configure in the settings). You only receive updates if this amount of time has passed and you moved more than 500m (when the app is in the background. The movement restriction is set to 50m or so when in the foreground).</p>
 <p>Say I set an interval of 10min and I don't move; will I get a PUBlish? No. 

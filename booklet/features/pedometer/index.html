@@ -387,11 +387,11 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="pedometer">Pedometer</h1>
+                <h2 id="pedometer">Pedometer</h2>
 <p>The iPhone 5S has a built-in pedometer which we’ve leveraged into OwnTracks (iOS only).
 The way this works is that the iPhone counts the steps you take, and OwnTracks
 can report these in a JSON payload upon request.</p>
-<h2 id="command">Command</h2>
+<h3 id="command">Command</h3>
 <p>In order for the app to actually report the steps counted by the device, you
 send it a specially formatted command:</p>
 <pre><code>mosquitto_pub -q 2 -t owntracks/jj/5s/cmd -m '{&quot;_type&quot; : &quot;cmd&quot;, &quot;action&quot;: &quot;reportSteps&quot;}'
@@ -410,7 +410,7 @@ to your MQTT broker.</p>
 }
 </code></pre>
 
-<h2 id="daily-reports">Daily reports</h2>
+<h3 id="daily-reports">Daily reports</h3>
 <p>We use the following small program to issue the JSON needed to request the
 steps for the 00:00 - 23:59 time-frame of this particular day (or the day before, etc.)</p>
 <pre><code class="python">#!/usr/bin/env python

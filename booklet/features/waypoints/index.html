@@ -390,7 +390,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="waypoints">Waypoints</h1>
+                <h2 id="waypoints">Waypoints</h2>
 <p>The <em>base topic</em> for publishes from the devices (OwnTracks apps) is what you configure it
 to be in the app's preferences/settings. For argument's sake we'll use
 <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
@@ -436,7 +436,7 @@ prohibit access to <code>owntracks/+/+/waypoints</code> for particular users if 
 Conversely, all messages published by the apps (<code>location</code> and <code>waypoint</code>) are
 available with a subscription to <code>owntracks/#</code>.</p>
 <p>The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. </p>
-<h2 id="ios">iOS</h2>
+<h3 id="ios">iOS</h3>
 <p>On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name <code>Center</code>, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.</p>
 <h1 id="setting-up-ibeacons">Setting up iBeacons</h1>
 <p>On iOS you can <a href="../beacons/">monitor an iBeacon region</a> in addition to circular regions.</p>
