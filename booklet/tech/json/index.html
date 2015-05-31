@@ -307,6 +307,9 @@
                 <li class="toctree-l3"><a href="#_typesteps">_type=steps</a></li>
                 
             
+                <li class="toctree-l3"><a href="#_typecard">_type=card</a></li>
+                
+            
             </ul>
         
     </li>
@@ -463,6 +466,11 @@
 <td>Y</td>
 <td>Y</td>
 </tr>
+<tr>
+<td><code>card</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
 </tbody>
 </table>
 <h2 id="topics">Topics</h2>
@@ -478,6 +486,7 @@
 <li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
 <li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
 <li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
+<li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
 </ul>
 <p>In addition, the iOS app publishes to:</p>
 <ul>
@@ -765,6 +774,16 @@
 <li><code>from</code>        effective start of time period</li>
 <li><code>to</code>          effective end of time period</li>
 </ul>
+<h2 id="_typecard"><code>_type=card</code></h2>
+<p>As described in <a href="../../features/card/">Card</a>, apps read retained messages of <code>_type=card</code> on <code>owntracks/+/+/info</code> to find the <em>name</em> and avatar (<em>face</em>) of a user.</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;card&quot;,
+  &quot;name&quot;: &quot;Jane Jolie&quot;
+  &quot;face&quot;: &quot;iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==&quot;,
+}
+</code></pre>
+
+<p>The <code>name</code> element contains a name which is displayed by the apps to identify a user, and <code>face</code> contains the base64-encoded PNG image (40x40 px) which is displayed instead of a <a href="../../features/tid/">TID</a>.</p>
               
             </div>
           </div>
