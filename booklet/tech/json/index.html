@@ -526,7 +526,7 @@
 <li><code>lon</code> is longitude as decimal, represented as a string</li>
 <li><code>rad</code> is the radius in meters around around the geo-fence when entering/leaving a geofence</li>
 <li><code>t</code> is the trigger for the publish x = <ul>
-<li>"p" ping, issued randomly by background task </li>
+<li>"p" ping, issued randomly by background task. Note, that the <code>tst</code> in a ping is that of the <a href="https://github.com/owntracks/ios/issues/197">last location reported by iOS</a>, so this may look like a duplicate.</li>
 <li>"c" circular region enter/leave event </li>
 <li>"b" beacon region enter/leave event</li>
 <li>"r" response to a "reportLocation" request</li>
