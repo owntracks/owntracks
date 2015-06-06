@@ -310,6 +310,9 @@
                 <li class="toctree-l3"><a href="#_typecard">_type=card</a></li>
                 
             
+                <li class="toctree-l3"><a href="#_typewaypoints">_type=waypoints</a></li>
+                
+            
             </ul>
         
     </li>
@@ -470,6 +473,11 @@
 <td><code>card</code></td>
 <td>Y</td>
 <td>Y</td>
+</tr>
+<tr>
+<td><code>waypoints</code></td>
+<td>Y</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -784,6 +792,34 @@
 </code></pre>
 
 <p>The <code>name</code> element contains a name which is displayed by the apps to identify a user, and <code>face</code> contains the base64-encoded PNG image (40x40 px) which is displayed instead of a <a href="../../features/tid/">TID</a>.</p>
+<h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
+<p>(currently iOS only)
+The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with <code>.otrw</code> extension. The list of waypoints looks like this.</p>
+<pre><code class="json">{
+    &quot;_type&quot;: &quot;waypoints&quot;,
+    &quot;_creator&quot;: &quot;OTwpDraw&quot;,
+    &quot;waypoints&quot;: [
+        {
+            &quot;_type&quot;: &quot;waypoint&quot;,
+            &quot;tst&quot;: 1433598071,
+            &quot;lat&quot;: 47.580231298,
+            &quot;lon&quot;: 9.525146484,
+            &quot;rad&quot;: 25186,
+            &quot;desc&quot;: &quot;I went swimming here&quot;
+        },
+        {
+            &quot;_type&quot;: &quot;waypoint&quot;,
+            &quot;tst&quot;: 1430398091,
+            &quot;lat&quot;: 46.517295754,
+            &quot;lon&quot;: 9.871215820,
+            &quot;rad&quot;: 500,
+            &quot;desc&quot;: &quot;Cheese fondue&quot;
+        }
+    ]
+}
+</code></pre>
+
+<p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
               
             </div>
           </div>
