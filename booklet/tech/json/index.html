@@ -549,6 +549,8 @@
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>)</li>
 </ul>
 <p>(The IOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
+<p>Notes:
+* A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</p>
 <h3 id="greenwich">Greenwich</h3>
 <p>The OwnTracks-edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="json">{
