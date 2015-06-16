@@ -524,15 +524,15 @@
 </code></pre>
 
 <ul>
-<li><code>acc</code> is accuracy of the reported location in meters without unit. </li>
-<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>)</li>
-<li><code>batt</code> is the device's battery level in percent</li>
-<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>)</li>
+<li><code>acc</code> is accuracy of the reported location in meters without unit (integer)</li>
+<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>, integer)</li>
+<li><code>batt</code> is the device's battery level in percent (integer)</li>
+<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>, integer)</li>
 <li><code>desc</code> is the description of a <a href="../../features/waypoints/">waypoint</a></li>
 <li><code>event</code> is one of <code>"enter"</code> or <code>"leave"</code> and tells if the app is entering or leaving a geofence </li>
-<li><code>lat</code> is latitude as decimal, represented as a string</li>
-<li><code>lon</code> is longitude as decimal, represented as a string</li>
-<li><code>rad</code> is the radius in meters around around the geo-fence when entering/leaving a geofence</li>
+<li><code>lat</code> is latitude as decimal, represented as a floating point number</li>
+<li><code>lon</code> is longitude as decimal, represented as a floating point number</li>
+<li><code>rad</code> is the radius in meters around around the geo-fence when entering/leaving a geofence (integer)</li>
 <li><code>t</code> is the trigger for the publish x = <ul>
 <li>"p" ping, issued randomly by background task. Note, that the <code>tst</code> in a ping is that of the <a href="https://github.com/owntracks/ios/issues/197">last location reported by iOS</a>, so this may look like a duplicate.</li>
 <li>"c" circular region enter/leave event </li>
@@ -544,9 +544,9 @@
 </ul>
 </li>
 <li><code>tid</code> is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
-<li><code>tst</code> is a UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the event as it occurs which may be different from the time it is published.</li>
-<li><code>vacc</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>)</li>
-<li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>)</li>
+<li><code>tst</code> is a UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the event as it occurs which may be different from the time it is published (integer, seconds).</li>
+<li><code>vacc</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>, integer)</li>
+<li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer)</li>
 </ul>
 <p>(The IOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
 <p>Notes:
