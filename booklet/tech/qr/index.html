@@ -395,38 +395,41 @@
             <div class="section">
               
                 <h2 id="qr-codes">QR codes</h2>
-<p>To setup the OwnTracks app, you may use QR codes or URLs to configure the app for</p>
+<p>To setup the OwnTracks app (iOS only currently), you can use QR codes or URLs to configure the app for</p>
 <ul>
 <li>Hosted mode and</li>
 <li>iBeacons.</li>
 </ul>
-<p>The QR codes can be scanned from the settings tab within the app, using an external QR reader app (like <code>Qrafter</code>) or 
-by providing the URL in the device's browser.</p>
-<p>QR codes can be prepared with a number of tools (like <code>qrencode</code>).</p>
+<p>The QR codes can be scanned from the settings tab within the app, using an external QR reader app (such as <em>Qrafter</em>) or by providing the URL in the device's browser.</p>
+<p><img alt="QRafter" src="../images/b-qrafter.png" /></p>
+<p>QR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of <a href="https://fukuchi.org/works/qrencode/">qrencode</a> which works very well:</p>
+<pre><code>qrencode -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1'
+</code></pre>
+
 <h3 id="ibeacon-qr-url">iBeacon QR URL</h3>
 <ul>
 <li>scheme = <code>owntracks</code></li>
-<li>host = ``</li>
+<li>host = <code>&lt;empty&gt;</code></li>
 <li>path = <code>/beacon</code></li>
 <li>query = <code>name=&lt;name&gt;&amp;uuid=&lt;uuid&gt;&amp;major=&lt;major&gt;&amp;minor=&lt;minor&gt;</code></li>
 </ul>
 <p>major and minor are optional</p>
 <p>Example:</p>
-<blockquote>
-<p>owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1</p>
-</blockquote>
+<pre><code>owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1
+</code></pre>
+
 <p><img alt="beacon QR" src="../images/beacon.png" /></p>
 <h3 id="hosted-mode-qr-url">Hosted mode QR URL</h3>
 <ul>
 <li>scheme = <code>owntracks</code></li>
-<li>host = ``</li>
+<li>host = <code>&lt;empty&gt;</code></li>
 <li>path = <code>/hosted</code></li>
 <li>query = <code>user=&lt;user&gt;&amp;device=&lt;device&gt;&amp;token=&lt;token&gt;</code></li>
 </ul>
 <p>Example:</p>
-<blockquote>
-<p>owntracks:///hosted?user=user&amp;device=device&amp;token=token</p>
-</blockquote>
+<pre><code>owntracks:///hosted?user=user&amp;device=device&amp;token=token
+</code></pre>
+
 <p><img alt="hosted QR" src="../images/hosted.png" /></p>
               
             </div>
