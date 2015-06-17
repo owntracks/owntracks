@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Settings - OwnTracks Booklet</title>
+  <title>QR - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -151,126 +151,112 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../hosted/">Hosted</a>
+        <a class="" href="../../features/hosted/">Hosted</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../security/">Security</a>
+        <a class="" href="../../features/security/">Security</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tls/">TLS</a>
+        <a class="" href="../../features/tls/">TLS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../location/">Location</a>
+        <a class="" href="../../features/location/">Location</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tid/">TID</a>
+        <a class="" href="../../features/tid/">TID</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
+        <a class="" href="../../features/friends/">Friends</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../card/">Card</a>
+        <a class="" href="../../features/card/">Card</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../waypoints/">Waypoints</a>
+        <a class="" href="../../features/waypoints/">Waypoints</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../beacons/">Beacons</a>
+        <a class="" href="../../features/beacons/">Beacons</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pedometer/">Pedometer</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Settings</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#settings">Settings</a></li>
-                
-                    <li><a class="toctree-l4" href="#ios-android">iOS  Android</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#ios-only">iOS only</a></li>
-                
-                    <li><a class="toctree-l4" href="#android-only">Android only</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../features/pedometer/">Pedometer</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../comparison/">Comparison</a>
+        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../android/">Android</a>
+        <a class="" href="../../features/comparison/">Comparison</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../ios/">iOS</a>
+        <a class="" href="../../features/android/">Android</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../remoteconfig/">Remoteconfig</a>
+        <a class="" href="../../features/ios/">iOS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../debug/">Debugging</a>
+        <a class="" href="../../features/remoteconfig/">Remoteconfig</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../features/debug/">Debugging</a>
         
     </li>
 
@@ -285,21 +271,32 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/json/">JSON</a>
+        <a class="" href="../json/">JSON</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">QR</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#qr-codes">QR codes</a></li>
+                
+                    <li><a class="toctree-l4" href="#beacon-qr-url">Beacon QR URL</a></li>
+                
+                    <li><a class="toctree-l4" href="#hosted-mode-qr-url">Hosted mode QR URL</a></li>
+                
+            
+            </ul>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/qr/">QR</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/program/">Code</a>
+        <a class="" href="../program/">Code</a>
         
     </li>
 
@@ -379,11 +376,11 @@
     
       
         
-          <li>Features &raquo;</li>
+          <li>API &raquo;</li>
         
       
     
-    <li>Settings</li>
+    <li>QR</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -397,22 +394,38 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="settings">Settings</h2>
-<p>Location tracking isn't easy, and people's requirements differ. You may be happy with one location report when your device moves a few kilometers, whereas the next person prefers seeing a minute-by-minute report. As described in <a href="../../guide/whathow/">the introduction</a>??? OwnTracks relies on the device's operating system APIs for this information. What our apps do is to tell the operating system that they're willing to get more or fewer updates if possible. For configuring this, as well as the connection parameters to your [MQTT broker] and sundry options, we have quite a large number of settings.</p>
-<h3 id="ios-android">iOS &amp; Android</h3>
-<h4 id="user">User</h4>
-<h4 id="device">Device</h4>
-<h4 id="subscribe-topic">Subscribe topic</h4>
-<h4 id="publish-topic">Publish topic</h4>
-<h4 id="tid">TID</h4>
-<h2 id="ios-only">iOS only</h2>
-<p><img alt="Switcher settings" src="../images/b-ios-mode-switcher-settings.png" /></p>
-<p>Depending on the <a href="../../guide/scenarios/">mode</a> you're configuring, iOS will show you all or fewer possible settings:</p>
+                <h2 id="qr-codes">QR codes</h2>
+<p>To setup the OwnTracks app, you may use QR codes or URLs to configure the app for
+<em> Hosted mode and
+</em> Beacons.</p>
+<p>The QR codes can be scanned from the settings tab within the app, using an external QR reader app (like <code>Qrafter</code>) or 
+by providing the URL in the device's browser.</p>
+<p>QR codes can be prepared with a number of tools (like <code>qrencode</code>).</p>
+<h3 id="beacon-qr-url">Beacon QR URL</h3>
 <ul>
-<li>In <em>Public mode</em> you can configure the <a href="../tid/">TrackerID</a> only.</li>
-<li>In <em>Hosted mode</em> you configure the username, device, and token you set up on the OwnTracks Hosted Web site, and you may specify a <a href="../tid/">TrackerID</a>.</li>
+<li>scheme = <code>owntracks</code></li>
+<li>host = ``</li>
+<li>path = <code>/beacon</code></li>
+<li>query = `name=<name>&amp;uuid=<uuid>&amp;major=<major>&amp;minor=<minor>'</li>
 </ul>
-<h3 id="android-only">Android only</h3>
+<p>major and minor are optional</p>
+<p>Example:</p>
+<blockquote>
+<p>owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1
+<img alt="beacon QR" src="../images/beacon.png" /></p>
+</blockquote>
+<h3 id="hosted-mode-qr-url">Hosted mode QR URL</h3>
+<ul>
+<li>scheme = <code>owntracks</code></li>
+<li>host = ``</li>
+<li>path = <code>/hosted</code></li>
+<li>query = `user=<user>&amp;device=<device>&amp;token=<token>'</li>
+</ul>
+<p>Example:</p>
+<blockquote>
+<p>owntracks:///hosted?user=user&amp;device=device&amp;token=token
+<img alt="hosted QR" src="../images/hosted.png" /></p>
+</blockquote>
               
             </div>
           </div>
@@ -420,10 +433,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../comparison/" class="btn btn-neutral float-right" title="Comparison"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../program/" class="btn btn-neutral float-right" title="Code"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../pedometer/" class="btn btn-neutral" title="Pedometer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../json/" class="btn btn-neutral" title="JSON"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -452,10 +465,10 @@
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../pedometer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../json/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../comparison/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../program/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
