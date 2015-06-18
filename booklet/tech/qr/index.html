@@ -403,7 +403,7 @@
 <p>The QR codes can be scanned from the settings tab within the app, using an external QR reader app (such as <em>Qrafter</em>) or by providing the URL in the device's browser.</p>
 <p><img alt="QRafter" src="../images/b-qrafter.png" /></p>
 <p>QR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of <a href="https://fukuchi.org/works/qrencode/">qrencode</a> which works very well:</p>
-<pre><code>qrencode -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1'
+<pre><code>qrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1'
 </code></pre>
 
 <h3 id="ibeacon-qr-url">iBeacon QR URL</h3>
