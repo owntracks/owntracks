@@ -395,12 +395,14 @@
             <div class="section">
               
                 <h2 id="qr-codes">QR codes</h2>
-<p>To setup the OwnTracks app (iOS only currently), you can use QR codes or URLs to configure the app for</p>
+<p>To setup the OwnTracks app (iOS only currently), you can use QR codes or specially-constructed URLs to configure the app. This is currently implemented for</p>
 <ul>
 <li>Hosted mode and</li>
 <li>iBeacons.</li>
 </ul>
-<p>The QR codes can be scanned from the settings tab within the app, using an external QR reader app (such as <em>Qrafter</em>) or by providing the URL in the device's browser.</p>
+<p>The QR codes can be scanned from the settings tab within the app</p>
+<p><img alt="iOS settings" src="../images/b-ios-scan-setting.png" /></p>
+<p>Alternatively, you can use an external QR reader app (such as <em>Qrafter</em>) or, even easier, you provide the URL and view it through the device's mobile Web browser.</p>
 <p><img alt="QRafter" src="../images/b-qrafter.png" /></p>
 <p>QR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of <a href="https://fukuchi.org/works/qrencode/">qrencode</a> which works very well:</p>
 <pre><code>qrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?name=MyBeacon&amp;uuid=12345678-1234-1234-1234-123456789A&amp;major=2&amp;minor=1'
