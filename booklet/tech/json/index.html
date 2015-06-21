@@ -291,6 +291,8 @@
             
                 <li class="toctree-l3"><a href="#_typewaypoint">_type=waypoint</a></li>
                 
+                    <li><a class="toctree-l4" href="#android">Android</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typetransition">_type=transition</a></li>
                 
@@ -619,6 +621,8 @@
 <li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
 <li><code>wtst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.)</li>
 </ul>
+<h4 id="android">Android</h4>
+<p>If you configure a waypoint description (<code>desc</code>) containing a dollar character (<code>$</code>) followed by a WiFi SSID, our Android app will trigger a transition event when it recognizes it is entering that WiFi SSID. For example, a <code>desc</code> of <code>Mi casa$homeNetwork</code> will trigger upon the device detecting WiFi connectivity at the SSID <code>homeNetwork</code>.</p>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
 <p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
 <pre><code class="json">{
