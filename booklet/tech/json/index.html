@@ -518,12 +518,8 @@
 <li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
 <li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
 <li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
-<li>
-<p><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</p>
-</li>
-<li>
-<p><code>owntracks/user/device/msg</code> if messaging is enabled</p>
-</li>
+<li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
+<li><code>owntracks/user/device/msg</code> if messaging is enabled</li>
 <li><code>msg/+/&lt;ghash&gt;</code> if messaging is enabled (see below and <a href="../../features/msg/">Messages</a>)</li>
 </ul>
 <p>In addition, the iOS app publishes to:</p>
@@ -866,7 +862,8 @@ The app can export a list of configured waypoints (separate from the configurati
     &quot;iconurl&quot;      : &quot;http://xxx&quot;     // URL to icon if `icon' not set (iOS only)
     &quot;prio&quot;         : 0,               // background color for `icon'
     &quot;tst&quot;          : nnnnnn,          // Unix epoch time in seconds when message is published
-    &quot;ttl&quot;          : 86400            // Time to Live (in seconds) until message is deleted
+    &quot;ttl&quot;          : 86400,           // Time to Live (in seconds) until message is deleted
+    &quot;sender&quot;       : &lt;topic&gt;          // MQTT topic name of sender
 }
 </code></pre>
 

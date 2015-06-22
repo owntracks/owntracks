@@ -398,18 +398,8 @@
             <div class="section">
               
                 <h2 id="messages">Messages</h2>
-<p>The OwnTracks apps have support for receiving messages. The way it works is that the apps subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
-<p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters). OwnTracks subscribes to four topics:</p>
-<pre><code>2: ez
-3: ezj
-4: ezjm
-5: ezjmg
-6: ezjmgx
-</code></pre>
-
-<p>Thanks to the wonderful <a href="http://www.movable-type.co.uk/scripts/geohash.html">page on Geohashes by Chris Veness</a> we can visualize these on a map (note the map's scale):</p>
-<p><img alt="lbs geohash" src="../images/lbs-geohash.png" /></p>
-<p>The full description of the supported JSON payload is <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
+<p>The OwnTracks apps have support for receiving messages, if messaging in OwnTracks is enabled. The apps subscribe to <code>owntracks/&lt;user&gt;/&lt;device&gt;/msg</code> to receive messages which you publish to that topic from an application.</p>
+<p>The full description of the supported JSON payload in messages <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
 <pre><code class="json">{
    &quot;_type&quot; : &quot;msg&quot;,
    &quot;prio&quot; : 0,
@@ -418,6 +408,17 @@
    &quot;icon&quot; : &quot;fa-book&quot;
 }
 </code></pre>
+
+<p>If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
+<p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters). OwnTracks subscribes to four topics:</p>
+<pre><code>3: ezj
+4: ezjm
+5: ezjmg
+6: ezjmgx
+</code></pre>
+
+<p>Thanks to the wonderful <a href="http://www.movable-type.co.uk/scripts/geohash.html">page on Geohashes by Chris Veness</a> we can visualize these on a map (note the map's scale):</p>
+<p><img alt="lbs geohash" src="../images/lbs-geohash.png" /></p>
               
             </div>
           </div>
