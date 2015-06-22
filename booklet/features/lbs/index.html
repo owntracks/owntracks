@@ -399,12 +399,16 @@
               
                 <h2 id="lbsmessages">LBS/Messages</h2>
 <p>The OwnTracks apps have support for receiving messages; this feature is also known as Location-Based Services. The way it works is that the apps subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
-<p>ezjmvj0jfdx5</p>
-<p>OwnTracks subscribes to</p>
-<pre><code>lbs/+/+/ezjmvj0jfdx5
+<p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters). OwnTracks subscribes to four topics:</p>
+<pre><code>2: ez
+3: ezj
+4: ezjm
+5: ezjmg
+6: ezjmgx
 </code></pre>
 
-<p>Messages are published to <em>channels</em> and have an identifier <em>lbsid</em>.</p>
+<p>Thanks to the wonderful <a href="http://www.movable-type.co.uk/scripts/geohash.html">page on Geohashes by Chris Veness</a> we can visualize these on a map (note the map's scale):</p>
+<p><img alt="lbs geohash" src="../images/lbs-geohash.png" /></p>
 <p>The full description of the supported JSON payload is <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
 <pre><code class="json">{
    &quot;_type&quot; : &quot;lbs&quot;,
