@@ -869,7 +869,7 @@ The app can export a list of configured waypoints (separate from the configurati
 <li><code>icon</code> is the name of a <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Font-Awesome icon</a></li>
 <li><code>prio</code> is <code>0</code> (OwnTracks blue), <code>1</code> (Yellow), <code>2</code> (Red)</li>
 <li><code>urlicon</code> (iOS only) should be the URL to a 40x40px image, but you should prefer <code>icon</code> as it avoids a HTTP round trip.</li>
-<li><code>ttl</code> defaults to 0 which means messages don't expire</li>
+<li><code>ttl</code> defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if <code>now() - ttl &gt;= tst</code>.</li>
 </ul>
               
             </div>
