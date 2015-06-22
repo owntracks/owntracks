@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Debugging - OwnTracks Booklet</title>
+  <title>Messages - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -227,8 +227,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../msg/">Messages</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Messages</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#messages">Messages</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -262,15 +269,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Debugging</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#debugging">Debugging</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../debug/">Debugging</a>
         
     </li>
 
@@ -383,7 +383,7 @@
         
       
     
-    <li>Debugging</li>
+    <li>Messages</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -397,15 +397,27 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="debugging">Debugging</h2>
-<p>Designing mobile apps is hard. Designing mobile apps which are killed off every once in a while by the underlying OS is harder (iOS). Designing mobile apps which reliable do what they should at all times is hardest. <a href="../../people/">Christoph and Alexander</a> know this and they've done a hell of a job to get stability and reliability of OwnTracks to where it stands today.</p>
-<p>Be that as it may, there are things which can be difficult to test, and in this section we give you some things to watch out for.</p>
-<p>First and foremost, and please don't laugh: does your device have either WiFi or 3G connectivity? No data means no location reported, which ought to be self-explanatory.</p>
-<ul>
-<li>Check whether OwnTracks is connected to your broker. On iOS this is the green mushroom symbol on the map; on Android you can check in preferences. If need be, disconnect and reconnect OwnTracks and check your broker's logfile as you do so.</li>
-<li>Is your broker running and can it be reached by your device? We've <a href="../../guide/broker/">given you tips on configuring your broker</a>.</li>
-<li>Make liberal use of the Mosquitto <a href="../../guide/clients/">clients</a> to test whether your broker is receiving messages, and please ensure your broker ACLs match the settings in OwnTracks.</li>
-</ul>
+                <h2 id="messages">Messages</h2>
+<p>The OwnTracks apps have support for receiving messages. The way it works is that the apps subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
+<p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters). OwnTracks subscribes to four topics:</p>
+<pre><code>2: ez
+3: ezj
+4: ezjm
+5: ezjmg
+6: ezjmgx
+</code></pre>
+
+<p>Thanks to the wonderful <a href="http://www.movable-type.co.uk/scripts/geohash.html">page on Geohashes by Chris Veness</a> we can visualize these on a map (note the map's scale):</p>
+<p><img alt="lbs geohash" src="../images/lbs-geohash.png" /></p>
+<p>The full description of the supported JSON payload is <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
+<pre><code class="json">{
+   &quot;_type&quot; : &quot;msg&quot;,
+   &quot;prio&quot; : 0,
+   &quot;title&quot; : &quot;Library&quot;,
+   &quot;desc&quot; : &quot;Don't forget to return War and Peace&quot;,
+   &quot;icon&quot; : &quot;fa-book&quot;
+}
+</code></pre>
               
             </div>
           </div>
@@ -413,10 +425,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../tech/json/" class="btn btn-neutral float-right" title="JSON"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../comparison/" class="btn btn-neutral float-right" title="Comparison"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../remoteconfig/" class="btn btn-neutral" title="Remoteconfig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../settings/" class="btn btn-neutral" title="Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -445,10 +457,10 @@
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../remoteconfig/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../settings/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../tech/json/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../comparison/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

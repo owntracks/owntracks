@@ -228,7 +228,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../features/lbs/">LBS</a>
+        <a class="" href="../../features/msg/">Messages</a>
         
     </li>
 
@@ -322,7 +322,7 @@
                 <li class="toctree-l3"><a href="#_typewaypoints">_type=waypoints</a></li>
                 
             
-                <li class="toctree-l3"><a href="#_typelbs">_type=lbs</a></li>
+                <li class="toctree-l3"><a href="#_typemsg">_type=msg</a></li>
                 
             
             </ul>
@@ -499,7 +499,7 @@
 <td></td>
 </tr>
 <tr>
-<td><code>lbs</code></td>
+<td><code>msg</code></td>
 <td>Y</td>
 <td>Y</td>
 </tr>
@@ -518,7 +518,13 @@
 <li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
 <li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
 <li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
-<li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
+<li>
+<p><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</p>
+</li>
+<li>
+<p><code>owntracks/user/device/msg</code> if messaging is enabled</p>
+</li>
+<li><code>msg/+/&lt;ghash&gt;</code> if messaging is enabled (see below and <a href="../../features/msg/">Messages</a>)</li>
 </ul>
 <p>In addition, the iOS app publishes to:</p>
 <ul>
@@ -848,9 +854,9 @@ The app can export a list of configured waypoints (separate from the configurati
 </code></pre>
 
 <p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
-<h2 id="_typelbs"><code>_type=lbs</code></h2>
+<h2 id="_typemsg"><code>_type=msg</code></h2>
 <pre><code class="json">{
-    &quot;_type&quot;        : &quot;lbs&quot;,
+    &quot;_type&quot;        : &quot;msg&quot;,
     &quot;lat&quot;          : n.nnnn,          // latitude of message (e.g. to navigate thereto)
     &quot;lon&quot;          : n.nnnnn,         // longitude
     &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message
