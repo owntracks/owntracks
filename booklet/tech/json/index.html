@@ -859,6 +859,7 @@ The app can export a list of configured waypoints (separate from the configurati
     &quot;icon&quot;         : &quot;fa-eye&quot;,        // FA icon
     &quot;iconurl&quot;      : &quot;http://xxx&quot;     // URL to icon if `icon' not set (iOS only)
     &quot;prio&quot;         : 0,               // background color for `icon'
+    &quot;tst&quot;          : nnnnnn,          // Unix epoch time in seconds when message is published
     &quot;ttl&quot;          : 86400            // Time to Live (in seconds) until message is deleted
 }
 </code></pre>
@@ -867,6 +868,7 @@ The app can export a list of configured waypoints (separate from the configurati
 <li><code>icon</code> is the name of a <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Font-Awesome icon</a></li>
 <li><code>prio</code> is <code>0</code> (OwnTracks blue), <code>1</code> (Yellow), <code>2</code> (Red)</li>
 <li><code>urlicon</code> (iOS only) should be the URL to a 40x40px image, but you should prefer <code>icon</code> as it avoids a HTTP round trip.</li>
+<li><code>ttl</code> defaults to 0 which means messages don't expire</li>
 </ul>
               
             </div>
