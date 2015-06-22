@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beacons - OwnTracks Booklet</title>
+  <title>LBS - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -206,18 +206,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Beacons</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#ibeacons">iBeacons</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#example-office">Example: office</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../beacons/">Beacons</a>
         
     </li>
 
@@ -237,8 +227,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../lbs/">LBS</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">LBS</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#lbsmessages">LBS/Messages</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -386,7 +383,7 @@
         
       
     
-    <li>Beacons</li>
+    <li>LBS</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -400,71 +397,23 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="ibeacons">iBeacons</h2>
-<p>If you want to monitor an iBeacon region rather than a circular region set the
-radius to zero (<code>0</code>), and add the beacon identifier to the description
-separated by a colon (:).</p>
-<p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
-<p>You add the UUID of the beacon to the description, and you can optionally specify the major and/or
-minor identifier numbers of the beacons in hex if you desire finer control over which beacons OwnTracks will monitor.</p>
-<p>If the UUID is valid, iBeacon monitoring will start.</p>
-<p>Examples:</p>
-<pre><code>myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
-mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:0001:CAFE
+                <h2 id="lbsmessages">LBS/Messages</h2>
+<p>The OwnTracks apps have support for receiving messages; this feature is also known as Location-Based Services. The way it works is that the apps subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
+<p>ezjmvj0jfdx5</p>
+<p>OwnTracks subscribes to</p>
+<pre><code>lbs/+/+/ezjmvj0jfdx5
 </code></pre>
 
-<p>In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
-in the second example, OwnTracks would monitor just that one specific beacon with the major number <code>0001</code> and the minor number <code>CAFE</code>.</p>
-<h2 id="example-office">Example: office</h2>
-<p>Upon arriving at our Frankfurt location, I see from the monitor panel at the reception that Jane is in the office, so I'll pop in to ask a question.</p>
-<p><img alt="office panel" src="../images/ot-beacons-office-panel.png" /></p>
-<p>Instead of relying solely on the location your smart phone thinks you are at, small, and relatively inexpensive <a href="http://en.m.wikipedia.org/wiki/IBeacon">iBeacons</a> can pinpoint you down to a few meters. OwnTracks for iOS has had support for iBeacons for a few releases now, and it works very reliably.</p>
-<p>Beacons use Bluetooth low energy to transmit a UUID (typically modifiable) together with user-defined <em>major</em> and <em>minor</em> numbers, and these allow us to identify, say, a particular room in a building or even a specific corner of a room. The <em>major</em> number can be used, say, to identify an office building, whereas you'd configure a beacon's <em>minor</em> number to identify a room within that building. Alternatively, if you don't want to bother with identifying rooms, you can e.g. set all beacons to have the same <em>major</em> and <em>minor</em> numbers.</p>
-<p>Let's assume the office we're discussing has a few beacons. Let's further assume we do not want to track people within a particular room; instead we just want to capture whether an employee is in this particular office building. We can configure all beacons with the same UUID, and we will ignore the <em>major</em> and <em>minor</em> numbers. (How a beacon gets it's UUID, <em>major</em>, and <em>minor</em> set depends on the product.)</p>
-<p>We define a UUID, say, <code>DEADBEEF-ABBA-CDEF-1001-000000000001</code> which we assign to all beacons, and configure them accordingly. (The <a href="http://www.blukii.com/beacons_en.html">Blukii</a> iBeacons we use have a utility with which we can configure them accordingly.)</p>
-<p>What we then do is configure a waypoint within the iOS OwnTracks app. The values for latitude/longitude are irrelevant. What is important is the UUID separated from the name of the beacon (I chose <code>*Main@WestWing</code> here) by a colon. A beacon's <em>major</em> and <em>minor</em> are optionally concatenated to that string, also colon-separated.</p>
-<p><img alt="OwnTracks beacon settings" src="../images/ot-beacon-waypoint-config.png" /></p>
-<p>Instead of painstakingly configuring this on the device proper, I prepare a small file called <code>office.otrw</code> (the <code>.otrw</code> extension is important), with the following <a href="../../tech/json/">JSON</a> payload:</p>
+<p>Messages are published to <em>channels</em> and have an identifier <em>lbsid</em>.</p>
+<p>The full description of the supported JSON payload is <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
 <pre><code class="json">{
-  &quot;waypoints&quot; : [
-    {
-      &quot;tst&quot; : 1432817332,
-      &quot;lat&quot; : 52.0,
-      &quot;_type&quot; : &quot;waypoint&quot;,
-      &quot;lon&quot; : 13.0,
-      &quot;rad&quot; : 0,
-      &quot;desc&quot; : &quot;*Main@WestWing:DEADBEEF-ABBA-CDEF-1001-000000000001:0001&quot;
-    }
-  ],
-  &quot;_type&quot; : &quot;waypoints&quot;
+   &quot;_type&quot; : &quot;lbs&quot;,
+   &quot;prio&quot; : 0,                        // optional priority (0 -- 2)
+   &quot;title&quot; : &quot;&quot;,
+   &quot;desc&quot; : &quot;&quot;,
+   &quot;icon&quot; : 
 }
 </code></pre>
-
-<p>I then either place that file on a Web server, or e-mail it as attachment to my colleagues who open that on their OwnTracks device, and presto: the device has the beacon monitoring regions configured.</p>
-<p>From this point on, OwnTracks monitors all beacons with that particular UUID, and it will publish an <code>enter</code> or <code>leave</code> event whenever the device gets within range of a beacon or leaves it. Additionally, the device shows the event with a local iOS notification.</p>
-<p><img alt="iBeacon notification on iPhone" src="../images/ot-beacon-enter-notif.png" /></p>
-<p>We publish these <a href="../../tech/json/">events as JSON</a> via MQTT to the MQTT broker the device is connected to, and from there, you consume the message and do as you please.</p>
-<pre><code class="json">{
-    &quot;_type&quot;: &quot;transition&quot;,
-    &quot;acc&quot;: 65,
-    &quot;desc&quot;: &quot;*Main@WestWing&quot;,
-    &quot;event&quot;: &quot;enter&quot;,
-    &quot;lat&quot;: 2.2222,
-    &quot;lon&quot;: 1.1111,
-    &quot;tid&quot;: &quot;jp&quot;,
-    &quot;tst&quot;: 1433342520,
-    &quot;wtst&quot;: 1432817332
-}
-</code></pre>
-
-<p>For instance, send an e-mail when a particular person leaves the building, publish a list of people who remain in the building on a monitor (as above), etc.</p>
-<p>To summarize: OwnTracks can monitor beacons by configuring it either with:</p>
-<ul>
-<li>a <em>UUID</em> only, in which case the app would report any beacon with that UUID, irrespective of its <em>major</em>/<em>minor</em> numbers.</li>
-<li>a <em>UUID</em> with a <em>major</em> number: the app would report iBeacons with the specified UUID and exactly that <em>major</em> number</li>
-<li>all three: the <em>UUID</em>, the <em>major</em> and <em>minor</em> numbers, in which case the app reports events on precisely that beacon.</li>
-</ul>
-<p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
               
             </div>
           </div>
@@ -472,10 +421,10 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../pedometer/" class="btn btn-neutral float-right" title="Pedometer"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../comparison/" class="btn btn-neutral float-right" title="Comparison"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../waypoints/" class="btn btn-neutral" title="Waypoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../settings/" class="btn btn-neutral" title="Settings"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -504,10 +453,10 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../waypoints/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../settings/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../pedometer/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../comparison/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -228,6 +228,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../features/lbs/">LBS</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../features/comparison/">Comparison</a>
         
     </li>
@@ -313,6 +320,9 @@
                 
             
                 <li class="toctree-l3"><a href="#_typewaypoints">_type=waypoints</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_typelbs">_type=lbs</a></li>
                 
             
             </ul>
@@ -488,6 +498,11 @@
 <td>Y</td>
 <td></td>
 </tr>
+<tr>
+<td><code>lbs</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
 </tbody>
 </table>
 <h2 id="topics">Topics</h2>
@@ -519,11 +534,11 @@
     &quot;alt&quot;   : 13,
     &quot;batt&quot;  : nnn,              
     &quot;cog&quot;   : 270,
-    &quot;desc&quot;  : &quot;sssss&quot;,      
-    &quot;event&quot; : &quot;sssss&quot;,      
+    &quot;desc&quot;  : &quot;sssss&quot;,
+    &quot;event&quot; : &quot;sssss&quot;,
     &quot;lat&quot;   : x.xxxxxx,       
     &quot;lon&quot;   : y.yyyyyy,        
-    &quot;rad&quot;   : nnn,       
+    &quot;rad&quot;   : nnn, 
     &quot;t&quot;     : &quot;x&quot;,
     &quot;tid&quot;   : &quot;YY&quot;,
     &quot;tst&quot;   : 1376715317,      
@@ -833,6 +848,24 @@ The app can export a list of configured waypoints (separate from the configurati
 </code></pre>
 
 <p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
+<h2 id="_typelbs"><code>_type=lbs</code></h2>
+<pre><code class="json">{
+    &quot;_type&quot;        : &quot;lbs&quot;,
+    &quot;lat&quot;          : n.nnnn,          // latitude of message (e.g. to navigate thereto)
+    &quot;lon&quot;          : n.nnnnn,         // longitude
+    &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message
+    &quot;desc&quot;         : &quot;special offer&quot;  // content of message
+    &quot;url&quot;          : &quot;http://xxxx&quot;    // URL on which to click
+    &quot;icon&quot;         : &quot;fa-eye&quot;,        // FA icon
+    &quot;iconurl&quot;      : &quot;http://xxx&quot;     // URL to icon if `icon' not set (iOS only)
+    &quot;prio&quot;         : 0,               // background color for `icon'
+    &quot;ttl&quot;          : 86400            // Time to Live (in seconds) until message is deleted
+}
+</code></pre>
+
+<ul>
+<li><code>prio</code> is <code>0</code> (OwnTracks blue), <code>1</code> (Yellow), <code>2</code> (Red)</li>
+</ul>
               
             </div>
           </div>
