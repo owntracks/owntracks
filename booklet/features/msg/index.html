@@ -409,7 +409,7 @@
 }
 </code></pre>
 
-<p>If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 2 through 6 inclusive).</p>
+<p>If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 3 through 6 inclusive).</p>
 <p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters).</p>
 <pre><code class="python">#!/usr/bin/env python
 
