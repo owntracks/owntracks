@@ -234,6 +234,8 @@
             
                 <li class="toctree-l3"><a href="#messages">Messages</a></li>
                 
+                    <li><a class="toctree-l4" href="#geohashes">GeoHashes</a></li>
+                
             
             </ul>
         
@@ -398,17 +400,20 @@
             <div class="section">
               
                 <h2 id="messages">Messages</h2>
-<p>The OwnTracks apps have support for receiving messages, if messaging in OwnTracks is enabled. The apps subscribe to <code>owntracks/&lt;user&gt;/&lt;device&gt;/msg</code> to receive messages which you publish to that topic from an application.</p>
+<p>The OwnTracks apps have support for receiving messages in newer versions, if it is configured in preferences/settings. Messaging is an experimental feature which relies on MQTT transport: you publish messages with a specific payload to your MQTT broker, and the apps subscribe to those messages on the broker. Just as with OwnTracks location data, the apps rely on connectivity between the mobile device and the MQTT broker to exchange messages. In particular with iOS, in which the operating system puts the app to sleep for a large number of seconds, this means that message reception is not necessarily instantaneous. Contrary to popular messaging or chat apps, OwnTracks currently doesn't utilize APN or other forms of notification of the device; a user may need a bit of patience until a message is received, unless the OwnTracks app is running in the foreground.</p>
+<p>If messaging in OwnTracks is enabled, the apps subscribe to <code>owntracks/&lt;user&gt;/&lt;device&gt;/msg</code> to receive messages which you publish to that topic from an application. Messages should be published qith <code>qos=2</code> to ensure delivery exactly once.</p>
 <p>The full description of the supported JSON payload in messages <a href="../../tech/json/">described here</a>, but a short example will clarify:</p>
 <pre><code class="json">{
    &quot;_type&quot; : &quot;msg&quot;,
    &quot;prio&quot; : 0,
    &quot;title&quot; : &quot;Library&quot;,
    &quot;desc&quot; : &quot;Don't forget to return War and Peace&quot;,
-   &quot;icon&quot; : &quot;fa-book&quot;
+   &quot;icon&quot; : &quot;fa-book&quot;,
+   &quot;tst&quot;  : 1435017442
 }
 </code></pre>
 
+<h3 id="geohashes">GeoHashes</h3>
 <p>If messaging is enabled, the apps additionally subscribe to a geo-dependent topic as soon as they detect movement. When the app is about to publish a <code>"_type" : "location"</code> message because it has detected the user has moved, the apps subscribe to four (4) <a href="https://en.wikipedia.org/wiki/Geohash">GeoHash</a> specific topics (levels 3 through 6 inclusive).</p>
 <p>A point in Madrid, Spain is, for example <code>40.426979, -3.703913</code> (lat, lon), which resolves to the Geohash <code>ezjmgxwbhx47</code> (precision 12 == 12 characters).</p>
 <pre><code class="python">#!/usr/bin/env python
