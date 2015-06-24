@@ -521,6 +521,7 @@
 <li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
 <li><code>owntracks/user/device/msg</code> if messaging is enabled</li>
 <li><code>msg/+/&lt;ghash&gt;</code> if messaging is enabled (see below and <a href="../../features/msg/">Messages</a>)</li>
+<li><code>msg/system</code> if messaging is enabled; for very occasional messages, e.g. maintenance related.</li>
 </ul>
 <p>In addition, the iOS app publishes to:</p>
 <ul>
@@ -853,6 +854,7 @@ The app can export a list of configured waypoints (separate from the configurati
 
 <p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
 <h2 id="_typemsg"><code>_type=msg</code></h2>
+<p>The <code>msg/</code> prefix for messaging is not configurable in the apps.</p>
 <pre><code class="json">{
     &quot;_type&quot;        : &quot;msg&quot;,           // mandatory
     &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message; mandatory
