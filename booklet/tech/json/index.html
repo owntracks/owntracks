@@ -854,16 +854,16 @@ The app can export a list of configured waypoints (separate from the configurati
 <p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
 <h2 id="_typemsg"><code>_type=msg</code></h2>
 <pre><code class="json">{
-    &quot;_type&quot;        : &quot;msg&quot;,
-    &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message
-    &quot;desc&quot;         : &quot;special offer&quot;  // content of message
-    &quot;url&quot;          : &quot;http://xxxx&quot;    // URL on which to click
-    &quot;icon&quot;         : &quot;fa-eye&quot;,        // FA icon
+    &quot;_type&quot;        : &quot;msg&quot;,           // mandatory
+    &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message; mandatory
+    &quot;desc&quot;         : &quot;special offer&quot;  // string, content of message; mandatory
+    &quot;url&quot;          : &quot;http://xxxx&quot;    // URL on which to click; optional
+    &quot;icon&quot;         : &quot;fa-eye&quot;,        // string, FA icon; optional
     &quot;iconurl&quot;      : &quot;http://xxx&quot;     // URL to icon if `icon' not set (iOS only)
-    &quot;prio&quot;         : 0,               // background color for `icon'
-    &quot;tst&quot;          : nnnnnn,          // Unix epoch time in seconds when message is published
-    &quot;ttl&quot;          : 86400,           // Time to Live (in seconds) until message is deleted
-    &quot;sender&quot;       : &lt;topic&gt;          // MQTT topic name of sender
+    &quot;prio&quot;         : 0,               // background color for `icon'; default: `0`
+    &quot;tst&quot;          : nnnnnn,          // Unix epoch time in seconds when message is published; mandatory
+    &quot;ttl&quot;          : 86400,           // Time to Live (in seconds) until message is expired; default `0`
+    &quot;sender&quot;       : &lt;topic&gt;          // MQTT topic name of sender; optional
 }
 </code></pre>
 
