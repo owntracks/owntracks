@@ -1,3 +1,9 @@
 ### Colors 
-Primary color: #478db2
-Darker color: #39718e
+
+* Primary: #3f72b5
+* Secondary: #305e9f
+* priority0: #B0BEC5
+* priority1: #FFB74D
+* priority2: #ef5350
+
+
