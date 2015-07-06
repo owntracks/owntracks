@@ -17,7 +17,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="Logo.svg"
+   sodipodi:docname="OwnTracks.svg"
    inkscape:export-filename="/Users/ckrey/OwnTracks/owntracks/assets/logos/Logo1024.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
@@ -39,8 +39,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.65343925"
-     inkscape:cx="-53.01675"
+     inkscape:zoom="0.21162312"
+     inkscape:cx="-254.33305"
      inkscape:cy="555.91316"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -48,8 +48,8 @@
      units="px"
      inkscape:window-width="1190"
      inkscape:window-height="651"
-     inkscape:window-x="221"
-     inkscape:window-y="187"
+     inkscape:window-x="264"
+     inkscape:window-y="56"
      inkscape:window-maximized="0"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -103,7 +103,7 @@
      transform="translate(0,-28.362161)"
      style="display:inline">
     <rect
-       style="opacity:1;fill:#478db2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:30;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#3f72b5;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:30;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3338"
        width="1024"
        height="1024"
@@ -140,7 +140,7 @@
        inkscape:transform-center-y="36.791314"
        transform="matrix(1.09657,0.02434604,-0.01952907,0.86234054,-35.533389,-16.814029)" />
     <circle
-       style="opacity:1;fill:#478db2;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:66;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#3f72b5;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:66;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4175"
        cx="512"
        cy="454.36218"
