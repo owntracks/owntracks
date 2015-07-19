@@ -711,6 +711,14 @@
     &quot;allowRemoteLocation&quot; : false,
     &quot;extendedData&quot; : false,
     &quot;remoteConfiguration&quot; : false,
+    &quot;usepolicy&quot; : false,
+    &quot;policymode&quot; : 0,
+    &quot;allowinvalidcerts&quot; : false,
+    &quot;validatedomainname&quot; : false,
+    &quot;validatecertificatechain&quot; : false,
+    &quot;servercer&quot; : &quot;&quot;,
+    &quot;clientpkcs&quot; : &quot;&quot;,
+    &quot;passphrase&quot; : &quot;&quot;,
     &quot;waypoints&quot; : [
                     { &quot;_type&quot; : &quot;waypoint&quot;,
                       &quot;tst&quot;: nnnnnnnnnn,
@@ -763,6 +771,17 @@
 <li><code>allowRemoteLocation</code>             IOS only, respond to remote location request even if monitoring mode is set to manual</li>
 <li><code>extendedData</code>                IOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
 <li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
+<li><code>usepolicy</code>                   IOS only, use user defined security policy</li>
+<li><code>allowinvalidcerts</code>               IOS only, allow self signed certificates in user defined security policy</li>
+<li><code>validatedomainname</code>              IOS only, validate domain main during TLS handshake</li>
+<li><code>validatecertificatechain</code>            IOS only, validate the whole certificate chain or just the server certificate</li>
+<li><code>policymode</code>                  IOS only, 
+<strong> 0 = Do not used pinned certificates to validate servers.
+</strong> 1 = Validate host certificates against public keys of pinned certificates.
+** 2 = Validate host certificates against pinned certificates.</li>
+<li><code>servercer</code>                   IOS only, name of the server cer file in PEM format</li>
+<li><code>clientpkcs</code>                  IOS only, name of the client pkcs12 file or empty </li>
+<li><code>passphrase</code>                  IOS only, passphrase for client pkcs12 file </li>
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.</p>
