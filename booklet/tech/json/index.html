@@ -775,10 +775,12 @@
 <li><code>allowinvalidcerts</code>               IOS only, allow self signed certificates in user defined security policy</li>
 <li><code>validatedomainname</code>              IOS only, validate domain main during TLS handshake</li>
 <li><code>validatecertificatechain</code>            IOS only, validate the whole certificate chain or just the server certificate</li>
-<li><code>policymode</code>                  IOS only, 
-<strong> 0 = Do not used pinned certificates to validate servers.
-</strong> 1 = Validate host certificates against public keys of pinned certificates.
-** 2 = Validate host certificates against pinned certificates.</li>
+<li><code>policymode</code>                  IOS only, <ul>
+<li>0 = Do not used pinned certificates to validate servers.</li>
+<li>1 = Validate host certificates against public keys of pinned certificates.</li>
+<li>2 = Validate host certificates against pinned certificates.</li>
+</ul>
+</li>
 <li><code>servercer</code>                   IOS only, name of the server cer file in PEM format</li>
 <li><code>clientpkcs</code>                  IOS only, name of the client pkcs12 file or empty </li>
 <li><code>passphrase</code>                  IOS only, passphrase for client pkcs12 file </li>
