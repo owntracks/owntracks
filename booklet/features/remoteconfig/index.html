@@ -263,6 +263,9 @@
                 <li class="toctree-l3"><a href="#remote-config">Remote config</a></li>
                 
             
+                <li class="toctree-l3"><a href="#setwaypoints">setWaypoints</a></li>
+                
+            
             </ul>
         
     </li>
@@ -438,6 +441,29 @@ defaults if not specified.</p>
 </code></pre>
 
 <p>A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
+<h2 id="setwaypoints">setWaypoints</h2>
+<p>(iOS only)</p>
+<p>Waypoints can be configured remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing waypoints. (Note: the "key" for a waypoint is the <code>tst</code> timestamp, so overwriting an existing <code>tst</code> actually overwrites an existing waypoint.)</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;cmd&quot;,
+  &quot;action&quot;: &quot;setWaypoints&quot;,
+  &quot;payload&quot;: {
+    &quot;waypoints&quot;: [
+      {
+        &quot;desc&quot;: &quot;Some place&quot;,
+        &quot;rad&quot;: 8867,
+        &quot;lon&quot;: 10.428771973,
+        &quot;lat&quot;: 46.935260881,
+        &quot;tst&quot;: 1437552714,
+        &quot;_type&quot;: &quot;waypoint&quot;
+      }
+    ],
+    &quot;_type&quot;: &quot;waypoints&quot;
+  }
+}
+</code></pre>
+
+<p>Publishing the above payload to an OwnTracks iOS device will create/modify said waypoint. This also works for Beacon configurations, which are basically waypoints.</p>
               
             </div>
           </div>
