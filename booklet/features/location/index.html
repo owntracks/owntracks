@@ -420,6 +420,7 @@ If you move more than 500 meters in 5 minutes you'll get a PUB after 10 minutes.
 <h3 id="ios">iOS</h3>
 <p>The iOS app offers 3 modes of location publication:</p>
 <ul>
+<li><em>Quiet</em> mode</li>
 <li><em>Manual</em> mode</li>
 <li><em>Significant location change</em> mode</li>
 <li><em>Move</em> mode</li>
@@ -449,8 +450,11 @@ with respect to battery usage.</p>
 <h4 id="manual-mode"><em>Manual</em> mode</h4>
 <p>The app doesn't monitor location changes in <em>manual</em> mode while in background.
 The user has to publish the current location explicitly via the UI. You use this if
-you want to (temporarily) avoid friends seeing where you are. Note that Beacon events
+you want to (temporarily) avoid friends seeing where you are. Note that Region events
+triggered by entering or leaving Geo Fence or Beacon regions
 are still published automatically whilst in <em>Manual</em> mode.</p>
+<h4 id="quiet-mode"><em>Quiet</em> mode</h4>
+<p>Same as <em>Manual</em> mode except that even</p>
 <h4 id="region-monitoring"><em>Region</em> monitoring</h4>
 <p>The app user may mark a previously manually published or manually created 
 location as a monitored circular region by specifying a monitoring radius in meters. (See <a href="../waypoints/">Waypoints</a>.)
