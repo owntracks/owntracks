@@ -106,6 +106,12 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/features/tlscert/</loc>
+     <lastmod>2015-07-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/features/location/</loc>
      <lastmod>2015-07-22</lastmod>
      <changefreq>daily</changefreq>

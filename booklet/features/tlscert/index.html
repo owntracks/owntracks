@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Friends - OwnTracks Booklet</title>
+  <title>TLS client - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -171,8 +171,25 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../tlscert/">TLS client</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">TLS client</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#client-certificates">Client certificates</a></li>
+                
+                    <li><a class="toctree-l4" href="#mosquitto">Mosquitto</a></li>
+                
+                    <li><a class="toctree-l4" href="#client-certs">Client certs</a></li>
+                
+                    <li><a class="toctree-l4" href="#pkcs12">PKCS#12</a></li>
+                
+                    <li><a class="toctree-l4" href="#android">Android</a></li>
+                
+                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -192,20 +209,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Friends</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#friends">Friends</a></li>
-                
-                    <li><a class="toctree-l4" href="#faces">Faces</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#who-is-that">Who is that?</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../friends/">Friends</a>
         
     </li>
 
@@ -395,7 +400,7 @@
         
       
     
-    <li>Friends</li>
+    <li>TLS client</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -409,80 +414,46 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="friends">Friends</h2>
-<p>OwnTracks has a so-called <em>Friends and Family</em> capability which is enabled by
-default. The way this works is friends and/or family members who share a single
-<a href="../../guide/broker/">MQTT broker</a> can "see" eachother on the map, respectively on a
-list of friends held by the app.  (This can be done either by configuring all
-apps to use the same broker or by what is called <em>bridging</em>.)</p>
-<p>Let's assume for a moment, that a user Jane (user name <code>jjolie</code>) has an iPhone 4s (device name <code>4s</code>), and that she publishes location data to a topic at</p>
-<pre><code>owntracks/jjolie/4s
+                <h2 id="client-certificates">Client certificates</h2>
+<p>The OwnTracks iOS and Android clients can be configured to use TLS client
+certificates to authenticate against their MQTT broker. This is the next best
+thing to two-factor authentication, where the apps have a TLS key and a
+certificate which has to be presented to the broker for successful
+authentication.</p>
+<h3 id="mosquitto">Mosquitto</h3>
+<p>When using the Mosquitto <a href="../../guide/broker/">broker</a> support for TLS
+certificates can be enabled as follows:</p>
+<pre><code>require_certificate true
+use_identity_as_username true
 </code></pre>
 
-<p>Let us further assume, that her friend John (user name <code>john</code>) has an Android Nexus 4 (device name <code>nex4</code>) and he therefore publishes on the <em>same broker</em> to a topic called</p>
-<pre><code>owntracks/john/nex4
+<h3 id="client-certs">Client certs</h3>
+<p>To create a client certificate and key, you can use, say, <code>generate-CA.sh</code> from
+our <a href="https://github.com/owntracks/tools/tree/master/TLS">tools repository</a>.</p>
+<pre><code class="bash">./generate-CA.sh client jjolie
 </code></pre>
 
-<p>Let us further assume that access control on the <a href="../../guide/broker/">MQTT broker</a> allows both users to subscribe to eachother's topics.</p>
-<p>Now, if <em>both</em> friends subscribe to a topic called <code>owntracks/+/+</code> (which the
-apps do by default) their devices will effectively receive published location
-messages to either topic. So when either Jane or John publish their location,
-the other's device will receive it.</p>
-<p>What OwnTracks then does is to list these topic names (e.g. <code>owntracks/jjolie/4s</code>) with the last received position and a time stamp. A click on a particular entry will take you to that entry's location on the map. Neat, eh?</p>
-<h3 id="faces">Faces</h3>
-<p>It gets better.</p>
-<p>You probably don't want to remember the (sometimes cryptic) topic names of your friends or family members, but you would like to see their names and a matching face. That's no problem: OwnTracks can do that.</p>
-<p>Depending on the device you're using, the procedure differs slightly.</p>
-<h4 id="android">Android</h4>
-<p>The app subscribes to a topic branch <code>owntracks/+/+</code> on the broker per default
-(but this can be configured in advanced preferences) to receive locations of
-other people connected to the the same [[MQTT broker|MQTTbroker]] that publish
-to the default topic of <code>mqttittude/$username/$devicename</code>.</p>
-<p>When the app receives a message published by a different user, it looks for a
-contact with an instant messenger (<code>IM</code>) entry of type "<code>OwnTracks</code>" (case insensitive)
-whose entry value is equal to the topic of the received location
-publish. If a contact is found, the contact is shown with its profile picture
-and name instead of the topic in the list and on the map.</p>
-<p>Note that if you add an IM entry to a contact via, say, Google, you have to
-sync the contact to your phone (phone preferences/accounts/google/sync untick
-and tick contacts, wait a few seconds) and restart the app. In other words, the
-contact's data must be on your device.</p>
-<p>Add an instant-messaging (<code>IM</code>) entry to the contact you want to associate with
-a particular MQTT topic name. The tag of the <code>IM</code> should be "<code>OwnTracks</code>" (case
-independent), and the value is the topic name.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-contact-address.png" /></p>
-<p>The <em>Locations</em> list will then show you your contact's name and photo:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-locations01.png" /></p>
-<h4 id="ios">iOS</h4>
-<p>The app "sees" a friend as soon as it receives a publish to the topic branch subscribed to, which by default is <code>owntracks/+/+</code>.</p>
-<p>Select the <em>Friends</em> button to see a list of friends:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-01.png" /></p>
-<p>Tapping on one of the friends, performs a reverse geo-coding to show address. Furthermore, a click on the little right-arrow shows the last location and
-all shared waypoints of that friend.</p>
-<h2 id="who-is-that">Who is that?</h2>
-<p>It's difficult to remember which MQTT topic belongs to which friend, so we can associate a topic with an image of the friend as contained in the iOS address book:</p>
-<p>Select an entry:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-02.png" /></p>
-<p>Then click on the <em>bookmark</em> icon on top right. The Address book opens.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-09.png" /></p>
-<p>Select the entry you want to associate with the OwnTracks topic. In this
-example, I choose Kate Bell.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-04.png" /></p>
-<p>We're back in OwnTracks, and we see the picture from the addressbook.
-If you want to release the association, select the wastepaper basket icon in the address book screen. The display
-changes back from the picture and name of the friend to the mqtt topic (e.g. "owntracks/kate/nexus4").</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-05.png" /></p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-06.png" /></p>
-<p>When you zoom the map out (or near to the friend's location), you see a small rendition of the icon directly on the map.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-07.png" /></p>
-<p>Voila!</p>
-<p>Note: this works only with contacts stored locally -- not with corporate address books associated with your iPhone.</p>
-<p>To support corporate address books (which usually cannot be updated) the ios
-app Version &gt;=5.1 can be set to store the associations locally rather than in
-the address book. You find the respective switch in the expert mode settings.
-Switch it <code>off</code> (i.e. disabled) to keep associations between MQTT topics and 
-your contact within OwnTracks.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-08.png" /></p>
+<p>This produces at least two files which are required on the OwnTracks devices: a <code>.key</code> file and a <code>.crt</code> file.</p>
+<h3 id="pkcs12">PKCS#12</h3>
+<p>In order to safely transport a user's key and certificate to the OwnTracks app,
+we make use of the <a href="https://en.wikipedia.org/wiki/PKCS_12">PKCS#12</a> container
+format. OpenSSL's <code>pkcs12</code> subcommand creates this container and protects it
+with a passphrase you specify. This passphrase we will later require in the app.</p>
+<pre><code class="bash">openssl pkcs12 \
+  -export \
+  -in jjolie.crt \
+  -inkey jjolie.key \
+  -name &quot;Jane's certificate/key&quot; \
+  -out jjolie.p12
+</code></pre>
+
+<p>You now send the PKCS#12 file as attachment to the device, e.g. by e-mail. Note that for iOS, the file must have a <code>.otrp</code> extension so that it can be opened in OwnTracks.
+You also send the CA certificate to the device and install it there, as discussed in <a href="../features/tld.md">TLS</a></p>
+<h3 id="android">Android</h3>
+<p>Save the file
+configure settings</p>
+<h3 id="ios">iOS</h3>
+<p>open the file in OwnTracks.</p>
               
             </div>
           </div>
@@ -490,10 +461,10 @@ your contact within OwnTracks.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../card/" class="btn btn-neutral float-right" title="Card"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../location/" class="btn btn-neutral float-right" title="Location"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tid/" class="btn btn-neutral" title="TID"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tls/" class="btn btn-neutral" title="TLS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -522,10 +493,10 @@ your contact within OwnTracks.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../tid/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../tls/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../card/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../location/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
