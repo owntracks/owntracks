@@ -454,6 +454,22 @@ You also send the CA certificate to the device and install it there, as discusse
 configure settings</p>
 <h3 id="ios">iOS</h3>
 <p>open the file in OwnTracks.</p>
+<p>There are a number of settings available to fine-tune TLS connections between the app and the broker. The button <em>Use Custom Security Policy</em> can be enabled to do so.</p>
+<ul>
+<li>Mode</li>
+<li>None; do not use pinned certificates to validate servers</li>
+<li>Public Key; validate host (broker) certificates against the public keys of the pinned certificate</li>
+<li>Certificate; validate host certificates against pinned certificates</li>
+<li>
+<p>Pinned Server Certificate; select the certificate to use for pinning. Adding pinned SSL certificates to your app helps prevent man-in-the-middle attacks and other vulnerabilities. Applications dealing with sensitive customer data or financial information are strongly encouraged to route all communication over an SSL/TLS connection with SSL pinning configured and enabled.</p>
+</li>
+<li>
+<p>Validate Certificate Chain; if enabled, the entire TLS certificate chain is validated and not just the leaf (host) certificate if disabled.</p>
+</li>
+<li>Allow untrusted Certificates should be disabled if possible. If the app doesn't have the CA certificate in its keychain, you'll have to allow untrusted certificates.</li>
+<li>Validate Domain Name; whether or not to validate the domain name in the certificate's <code>CN</code> field.</li>
+</ul>
+<p>If you wish to use certificate pinning, you must provide a DER-encoded file with an <code>.otre</code> extension to the device containing the pinned certificate.</p>
               
             </div>
           </div>
