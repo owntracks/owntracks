@@ -313,6 +313,8 @@
             
                 <li class="toctree-l3"><a href="#_typeconfiguration">_type=configuration</a></li>
                 
+                    <li><a class="toctree-l4" href="#notes">Notes</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typebeacon">_type=beacon</a></li>
                 
@@ -742,7 +744,7 @@
 
 <ul>
 <li><code>mode</code>                    0 == <em>Private</em> mode, 1 == <em>Hosted</em> mode (for registered users), 2 == <em>Public</em> mode  </li>
-<li><code>locked</code>                  if set to true, locks settings screen on device for editing. View only. Default = false</li>
+<li><code>locked</code>                  if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via <code>.otrc</code> import.</li>
 <li><code>subTopic</code></li>
 <li><code>pubTopicBase</code></li>
 <li><code>username</code></li>
@@ -793,6 +795,10 @@
 <li><code>servercer</code>                   IOS only, blank separated list of certificate file names in DER format, or empty</li>
 <li><code>clientpkcs</code>                  IOS only, name of the client pkcs12 file,or empty </li>
 <li><code>passphrase</code>                  IOS only, passphrase for client pkcs12 file </li>
+</ul>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a <code>locked: true</code> to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.</li>
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.</p>
