@@ -310,7 +310,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#programming">Programming</a></li>
+                <li class="toctree-l3"><a href="#programming-for-hosted">Programming for Hosted</a></li>
                 
             
             </ul>
@@ -411,11 +411,12 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="programming">Programming</h1>
+                <h1 id="programming-for-hosted">Programming for Hosted</h1>
 <p>We've <a href="../program/">shown you how to start with Python</a>, but if you're trying to access our Hosted platform from within Python you'll need a bit more:</p>
 <ul>
 <li>We use TLS only</li>
 <li>We require authentication</li>
+<li>Note also, that we require you use clientIDs which tell us who you are (e.g. as below: <code>username-device-xxx</code>). We do not (yet) enforce adherence that that but may well in future.</li>
 </ul>
 <p>The following small program accounts for that. You will need:</p>
 <ul>
