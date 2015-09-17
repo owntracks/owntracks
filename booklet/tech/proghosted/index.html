@@ -478,6 +478,15 @@ client.connect(&quot;hosted-mqtt.owntracks.org&quot;, 8883, 60)
 
 client.loop_forever()
 </code></pre>
+
+<p>In other words:</p>
+<ol>
+<li>Use TLS with the appropriate CA certificate file.</li>
+<li>The hostname is <code>hosted-mqtt.owntracks.org</code>.</li>
+<li>The TCP port number is <code>8883</code></li>
+<li>The MQTT username for authentication is your <em>Hosted</em> user name and your <em>Hosted</em> device name concatenated together, separated by a vertical bar (<code>|</code>).</li>
+<li>The MQTT password is your <em>Hosted</em> device <em>token</em>.</li>
+</ol>
               
             </div>
           </div>
