@@ -197,7 +197,7 @@
         }, 
         {
             "location": "/guide/apps/", 
-            "text": "OwnTracks apps\n\n\nThe OwnTracks apps operate in one of three modes (discussed in \nscenarios\n], and you tell the app in which mode you want to use it.\n\n\nPublic\n mode is the easiest: you don't have to configure anything. Next up is \nHosted\n mode, in which you configure your \nusername\n, your \ndevice name\n, and the \naccess token\n you got when \nsigning up to Hosted OwnTracks\n.\n\n\nIn \nPrivate\n mode, you configure our iOS and Android app to access your broker.\n\n\niOS\n\n\n\n\nAndroid\n\n\nThere are other \nclients\n you can use with OwnTracks.", 
+            "text": "OwnTracks apps\n\n\nThe OwnTracks apps operate in one of three modes (discussed in \nscenarios\n], and you tell the app in which mode you want to use it.\n\n\nPublic\n mode is the easiest: you don't have to configure anything. Next up is \nHosted\n mode, in which you configure your \nusername\n, your \ndevice name\n, and the \naccess token\n you got when \nsigning up to Hosted OwnTracks\n.\n\n\nIn \nPrivate\n mode, you configure our iOS and Android app to access your broker.\n\n\niOS\n\n\n\n\nAndroid\n\n\n\n\nThere are other \nclients\n you can use with OwnTracks.", 
             "title": "Apps"
         }, 
         {
