@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Remoteconfig - OwnTracks Booklet</title>
+  <title>MQTT - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -151,136 +151,126 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../hosted/">Hosted</a>
+        <a class="" href="../../features/hosted/">Hosted</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../security/">Security</a>
+        <a class="" href="../../features/security/">Security</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tls/">TLS</a>
+        <a class="" href="../../features/tls/">TLS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tlscert/">TLS client</a>
+        <a class="" href="../../features/tlscert/">TLS client</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../location/">Location</a>
+        <a class="" href="../../features/location/">Location</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tid/">TID</a>
+        <a class="" href="../../features/tid/">TID</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
+        <a class="" href="../../features/friends/">Friends</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../card/">Card</a>
+        <a class="" href="../../features/card/">Card</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../waypoints/">Waypoints</a>
+        <a class="" href="../../features/waypoints/">Waypoints</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../beacons/">Beacons</a>
+        <a class="" href="../../features/beacons/">Beacons</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pedometer/">Pedometer</a>
+        <a class="" href="../../features/pedometer/">Pedometer</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../settings/">Settings</a>
+        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../msg/">Messages</a>
+        <a class="" href="../../features/msg/">Messages</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../comparison/">Comparison</a>
+        <a class="" href="../../features/comparison/">Comparison</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../android/">Android</a>
+        <a class="" href="../../features/android/">Android</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../ios/">iOS</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Remoteconfig</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#remote-config">Remote config</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#setwaypoints">setWaypoints</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../features/ios/">iOS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../debug/">Debugging</a>
+        <a class="" href="../../features/remoteconfig/">Remoteconfig</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../features/debug/">Debugging</a>
         
     </li>
 
@@ -295,35 +285,44 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/json/">JSON</a>
+        <a class="" href="../json/">JSON</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">MQTT</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#mqtt">MQTT</a></li>
+                
+                    <li><a class="toctree-l4" href="#keepalives">Keepalives</a></li>
+                
+            
+            </ul>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/mqtt/">MQTT</a>
+        <a class="" href="../qr/">QR</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/qr/">QR</a>
+        <a class="" href="../program/">Code</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/program/">Code</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/proghosted/">Code (Hosted)</a>
+        <a class="" href="../proghosted/">Code (Hosted)</a>
         
     </li>
 
@@ -403,11 +402,11 @@
     
       
         
-          <li>Features &raquo;</li>
+          <li>API &raquo;</li>
         
       
     
-    <li>Remoteconfig</li>
+    <li>MQTT</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -421,70 +420,17 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="remote-config">Remote config</h2>
-<p>Instead of telling others how to edit settings on their device in order to use OwnTracks to connect to your server, you can help them yourself by sending them a ready-to-run configuration which they load onto their device. This is particularly useful in cases of "remote support" for parents, etc.</p>
-<ul>
-<li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtc</code> suffix is also supported.)</li>
-<li>Ensure the JSON is valid by using either of the <a href="http://jsonlint.com">online JSON validator</a>, a utility such as <a href="http://stedolan.github.io/jq/">jq</a> or simply by running</li>
-</ul>
-<pre><code>python -mjson.tool &lt; your.otrc
-</code></pre>
-
-<ul>
-<li>Send the file to the device via e-mail, provide it for download on an HTTP server, send via Dropbox, ... you name it.</li>
-<li>Have the OwnTracks app user open the file on their device with OwnTracks.</li>
-</ul>
-<p>Here is a sample configuration file which contains some of the possible settings.
- The <code>_type</code>
-entry is mandatory, most other entries are optional; they are replaced by built-in
-defaults if not specified.</p>
-<pre><code class="json">{
-  &quot;username&quot;: &quot;jjolie&quot;,
-  &quot;password&quot;: &quot;s1kr3t&quot;,
-  &quot;clientId&quot;: &quot;janecli01&quot;,
-  &quot;pubRetain&quot;: true,
-  &quot;subTopic&quot;: &quot;owntracks/+/+&quot;,
-  &quot;allowRemoteLocation&quot;: true,
-  &quot;cmd&quot;: true,
-  &quot;pubTopicBase&quot;: &quot;&quot;,
-  &quot;_type&quot;: &quot;configuration&quot;,
-  &quot;tid&quot;: &quot;jJ&quot;,
-  &quot;host&quot;: &quot;mybroker.example.org&quot;,
-  &quot;willRetain&quot;: false,
-  &quot;updateAddressBook&quot;: true,
-  &quot;port&quot;: 8883,
-  &quot;pubQos&quot;: 2,
-  &quot;locatorInterval&quot;: 180,
-  &quot;tls&quot;: true,
-  &quot;auth&quot;: true,
-  &quot;cleanSession&quot;: false
-}
-</code></pre>
-
-<p>A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
-<h2 id="setwaypoints">setWaypoints</h2>
-<p>(iOS only)</p>
-<p>Waypoints can be configured remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing waypoints. (Note: the "key" for a waypoint is the <code>tst</code> timestamp, so overwriting an existing <code>tst</code> actually overwrites an existing waypoint.)</p>
-<pre><code class="json">{
-  &quot;_type&quot;: &quot;cmd&quot;,
-  &quot;action&quot;: &quot;setWaypoints&quot;,
-  &quot;payload&quot;: {
-    &quot;waypoints&quot;: [
-      {
-        &quot;desc&quot;: &quot;Some place&quot;,
-        &quot;rad&quot;: 8867,
-        &quot;lon&quot;: 10.428771973,
-        &quot;lat&quot;: 46.935260881,
-        &quot;tst&quot;: 1437552714,
-        &quot;_type&quot;: &quot;waypoint&quot;
-      }
-    ],
-    &quot;_type&quot;: &quot;waypoints&quot;
-  }
-}
-</code></pre>
-
-<p>Publishing the above payload to an OwnTracks iOS device will create/modify said waypoint. This also works for Beacon configurations, which are basically waypoints.</p>
+                <h2 id="mqtt">MQTT</h2>
+<h3 id="keepalives">Keepalives</h3>
+<p>MQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the <em>keepalive</em> interval which is set by the client.</p>
+<p>The server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.</p>
+<p>From the spec:</p>
+<blockquote>
+<p>The actual value of the Keep Alive is application specific; typically this is
+a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
+</blockquote>
+<p>For example, <code>mosquitto_sub</code> uses a default of 60 sec.</p>
+<p>In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.</p>
               
             </div>
           </div>
@@ -492,10 +438,10 @@ defaults if not specified.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../debug/" class="btn btn-neutral float-right" title="Debugging"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../qr/" class="btn btn-neutral float-right" title="QR"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../ios/" class="btn btn-neutral" title="iOS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../json/" class="btn btn-neutral" title="JSON"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -524,10 +470,10 @@ defaults if not specified.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../ios/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../json/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../debug/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../qr/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

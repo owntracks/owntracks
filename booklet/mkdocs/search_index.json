@@ -646,6 +646,16 @@
             "title": "_type=msg"
         }, 
         {
+            "location": "/tech/mqtt/", 
+            "text": "MQTT\n\n\nKeepalives\n\n\nMQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the \nkeepalive\n interval which is set by the client.\n\n\nThe server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.\n\n\nFrom the spec:\n\n\n\n\nThe actual value of the Keep Alive is application specific; typically this is\na few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.\n\n\n\n\nFor example, \nmosquitto_sub\n uses a default of 60 sec.\n\n\nIn addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.", 
+            "title": "MQTT"
+        }, 
+        {
+            "location": "/tech/mqtt/#mqtt", 
+            "text": "Keepalives  MQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the  keepalive  interval which is set by the client.  The server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.  From the spec:   The actual value of the Keep Alive is application specific; typically this is\na few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.   For example,  mosquitto_sub  uses a default of 60 sec.  In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.", 
+            "title": "MQTT"
+        }, 
+        {
             "location": "/tech/qr/", 
             "text": "QR codes\n\n\nTo setup the OwnTracks app (iOS only currently), you can use QR codes or specially-constructed URLs to configure the app. This is currently implemented for\n\n\n\n\nHosted mode and\n\n\niBeacons.\n\n\n\n\nThe QR codes can be scanned from the settings tab within the app\n\n\n\n\nAlternatively, you can use an external QR reader app (such as \nQrafter\n) or, even easier, you provide the URL and view it through the device's mobile Web browser.\n\n\n\n\nQR codes can be prepared with a number of tools: there are online offerings, and there is a standalone C program by the name of \nqrencode\n which works very well:\n\n\nqrencode -l H -v 10 -d 300 -o mybeacon.png 'owntracks:///beacon?name=MyBeacon\nuuid=12345678-1234-1234-1234-123456789A\nmajor=2\nminor=1'\n\n\n\n\niBeacon QR URL\n\n\n\n\nscheme = \nowntracks\n\n\nhost = \nempty\n\n\npath = \n/beacon\n\n\nquery = \nname=\nname\nuuid=\nuuid\nmajor=\nmajor\nminor=\nminor\n\n\n\n\nmajor and minor are optional\n\n\nExample:\n\n\nowntracks:///beacon?name=MyBeacon\nuuid=12345678-1234-1234-1234-123456789A\nmajor=2\nminor=1\n\n\n\n\n\n\nHosted mode QR URL\n\n\n\n\nscheme = \nowntracks\n\n\nhost = \nempty\n\n\npath = \n/hosted\n\n\nquery = \nuser=\nuser\ndevice=\ndevice\ntoken=\ntoken\n\n\n\n\nExample:\n\n\nowntracks:///hosted?user=user\ndevice=device\ntoken=token", 
             "title": "QR"
