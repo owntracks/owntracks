@@ -428,13 +428,20 @@
 <p>If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (<code>0</code>) or a negative value, and add the beacon UUID, major, and minor numbers.</p>
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
-<p>You add the UUID of the beacon to the description, and you can optionally specify the major and/or
+<p>Set the UUID of the beacon, and you can optionally specify the major and/or
 minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
 Setting major or minor number to zero (<code>0</code>) means no major or minor number is specified.</p>
 <p>If the UUID is valid, iBeacon monitoring will start.</p>
 <p>Examples:</p>
-<pre><code>myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959
-mySpecificBeacon:CA271EAE-5FA8-4E80-8F08-2A302A95A959:1:33000
+<pre><code>Name  myBeacons
+UUID  CA271EAE-5FA8-4E80-8F08-2A302A95A959
+Major 0
+Minor 0
+
+Name  mySpecificBeacon
+UUID  CA271EAE-5FA8-4E80-8F08-2A302A95A959
+Major 1
+Minor 33000
 </code></pre>
 
 <p>In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
@@ -445,7 +452,7 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
 <p>Instead of relying solely on the location your smart phone thinks you are at, small, and relatively inexpensive <a href="http://en.m.wikipedia.org/wiki/IBeacon">iBeacons</a> can pinpoint you down to a few meters. OwnTracks for iOS has had support for iBeacons for a few releases now, and it works very reliably.</p>
 <p>Beacons use Bluetooth low energy to transmit a UUID (typically modifiable) together with user-defined <em>major</em> and <em>minor</em> numbers, and these allow us to identify, say, a particular room in a building or even a specific corner of a room. The <em>major</em> number can be used, say, to identify an office building, whereas you'd configure a beacon's <em>minor</em> number to identify a room within that building. Alternatively, if you don't want to bother with identifying rooms, you can e.g. set all beacons to have the same <em>major</em> and <em>minor</em> numbers.</p>
 <p>Let's assume the office we're discussing has a few beacons. Let's further assume we do not want to track people within a particular room; instead we just want to capture whether an employee is in this particular office building. We can configure all beacons with the same UUID, and we will ignore the <em>major</em> and <em>minor</em> numbers. (How a beacon gets it's UUID, <em>major</em>, and <em>minor</em> set depends on the product.)</p>
-<p>We define a UUID, say, <code>DEADBEEF-ABBA-CDEF-1001-000000000001</code> which we assign to all beacons, and configure them accordingly. (The <a href="http://www.blukii.com/beacons_en.html">Blukii</a> iBeacons we use have a utility with which we can configure them accordingly.)</p>
+<p>We define a UUID, say, <code>DEADBEEF-ABBA-CAFE-AFFE-123456789012</code> which we assign to all beacons, and configure them accordingly. (The <a href="http://www.blukii.com/beacons_en.html">Blukii</a> iBeacons we use have a utility with which we can configure them accordingly.)</p>
 <p>What we then do is configure a waypoint within the iOS OwnTracks app. The values for latitude/longitude are irrelevant. What is important is the UUID separated from the name of the beacon (I chose <code>Main@WestWing</code> here) by a colon. A beacon's <em>major</em> and <em>minor</em> are optionally concatenated to that string, also colon-separated.</p>
 <p>Instead of painstakingly configuring this on the device proper, I prepare a small file called <code>office.otrw</code> (the <code>.otrw</code> extension is important), with the following <a href="../../tech/json/">JSON</a> payload:</p>
 <pre><code class="json">{
