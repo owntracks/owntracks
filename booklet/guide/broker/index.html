@@ -460,7 +460,7 @@ on your own infrastructure. As an example, we've written up how to install
 Mosquitto on a Raspberry Pi.</p>
 <h2 id="raspi">RasPi</h2>
 <p><img alt="Mosquitto on a Raspbi" src="../images/raspi-broker.png" /></p>
-<p>The hardest bit is installing an OS, say, <a href="http://jpmens.net/2013/09/01/installing-mosquitto-on-a-raspberry-pi/">Raspbian Wheezy</a>, onto an SD card, but there are many tutorials on how to do that. (Here's an example <a href="http://mqtt.org/wiki/doku.php/public_brokers">using Mac OS X</a>.) A basic install will suffice, and after logging in with Raspbian's default username and password, we'll get started from there.</p>
+<p>The hardest bit is installing an OS, say, <a href="http://jpmens.net/2013/09/01/installing-mosquitto-on-a-raspberry-pi/">Raspbian Wheezy</a>, onto an SD card, but there are many tutorials on how to do that. (Here's an example <a href="http://mqtt.org/wiki/doku.php/public_brokers">using Mac OS X</a>.) A basic install will suffice, and after logging in with Raspbian's default username and password, we'll get started from there. Note that the current Raspbian Wheezy mosquitto package does NOT contain the <code>mosquitto_passwd</code> tool. If you want to use it, make sure you install the package from a mosquitto repo:</p>
 <p>Roger Light, <a href="http://mosquitto.org">Mosquitto</a>'s creator has thankfully (!) set up a few <a href="http://mosquitto.org/download/">Mosquitto repositories</a> we can use to obtain the latest and greatest version, so we'll do just that. We first perform the required steps to add and activate the repository. The last step in particular can take a few moments.</p>
 <pre><code class="bash">curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 sudo apt-key add mosquitto-repo.gpg.key
@@ -476,7 +476,6 @@ sudo apt-get update
 <li><code>mosquitto-clients</code> are the command-line clients, which I recommend you install</li>
 <li>Don't install <code>python-mosquitto</code>; if you want to do programming with Python and MQTT, we <a href="../../tech/program/">show you how to do so with the Paho Python module</a>.</li>
 </ul>
-<p>These packages together require about 665Kb of space, which we can easily afford even on the tiny Pi.</p>
 <pre><code class="bash">sudo apt-get install mosquitto mosquitto-clients
 </code></pre>
 
@@ -489,10 +488,14 @@ its configuration. This section is geared towards a configuration of <a href="ht
 work well with OwnTracks. In particular we want the following features enabled
 by default:</p>
 <ul>
-<li>Connections to the broker must be <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> protected. This requires a TLS certificate and key which will be configured automatically.</li>
+<li>Connections to the broker must be authenticated either against user/password or using client certificates.</li>
+<li>Connections to the broker shall also be <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> protected. This requires a (server-side) TLS certificate and key which will be configured automatically.</li>
 <li>ACLs will restrict who may access what.</li>
 </ul>
-<p>Over at the <a href="https://github.com/owntracks/tools">OwnTracks repository</a>, we've got some utilities which are going to automate this. It's a work-in-progress (of course), but this is what <code>sudo ./mosquitto-setup.sh</code> looks like at the moment:</p>
+<p>To create a <code>mosquitto</code> user database, use <code>sudo mosquitto_passwd -c /etc/mosquitto/passwd &lt;username&gt;</code>.</p>
+<p>You will be prompted to enter a password. That will be the password required to connect to the server (with the username you chose). If you want to add more users, repeat the command without <code>-c</code> as that will create (i.e. overwrite) the passwd file.
+Add a config line <code>password_file /etc/mosquitto/passwd</code> to <code>/etc/mosquitto/mosquitto.conf</code>.</p>
+<p>If you want to use certificates to identify yourself to the broker and/or to TLS-encrypt the TCP session, we've got some utilities over at the <a href="https://github.com/owntracks/tools">OwnTracks repository</a> which are going to automate this process for you. It's a work-in-progress (of course), but this is what <code>sudo ./mosquitto-setup.sh</code> looks like at the moment:</p>
 <pre><code class="bash">Saving previous configuration as mosquitto.conf-20130901-133525
 Generating a 2048 bit RSA private key
 .................................................................................................+++
@@ -519,6 +522,23 @@ Getting CA Private Key
 settings:</p>
 <pre><code>    X509v3 Subject Alternative Name:
         IP Address:192.168.1.189, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1, DNS:broker.example.com, DNS:foo.example.de, DNS:localhost
+</code></pre>
+
+<p>Check for a couple of broker settings in <code>/etc/mosquitto/mosquitto.conf</code>.
+Your mileage may vary, but you might want to set the following parameters:</p>
+<pre><code>listener 8883 &lt;yourIP&gt;
+persistence_file mosquitto.db
+log_dest syslog
+log_dest stdout
+log_dest topic
+log_type error
+log_type warning
+log_type notice
+log_type information```
+connection_messages true
+log_timestamp true
+allow_anonymous false
+password_file /etc/mosquitto/passwd
 </code></pre>
 
 <p>Will it work? Let's start the broker manually to see what it says:</p>
