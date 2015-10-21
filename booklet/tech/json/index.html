@@ -598,7 +598,7 @@
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>p</code> is barometric pressure in kPa (kilo Pascal) (iOS &gt; 8.1.1 only with <em>Extended data</em> enabled)</li>
 </ul>
-<p>(The IOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
+<p>(The iOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
 <p>Notes:
 * A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</p>
 <h3 id="greenwich">Greenwich</h3>
@@ -766,45 +766,45 @@
 <li><code>pubQos</code></li>
 <li><code>willQos</code></li>
 <li><code>pubRetain</code></li>
-<li><code>tlsCrtPath</code>                  not in IOS</li>
+<li><code>tlsCrtPath</code>                  not in iOS</li>
 <li><code>cleanSession</code></li>
 <li><code>willRetain</code></li>
 <li><code>locatorDisplacement</code>             in meters</li>
 <li><code>locatorInterval</code>             in seconds</li>
 <li><code>locatorAccuracyBackground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
 <li><code>locatorAccuracyForeground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
-<li><code>monitoring</code>                  IOS only, set in UI</li>
-<li><code>ranging</code>                 IOS only, set in UI</li>
-<li><code>positions</code>                   IOS only, number of positions to keep and display</li>
+<li><code>monitoring</code>                  iOS only, set in UI</li>
+<li><code>ranging</code>                 iOS only, set in UI</li>
+<li><code>positions</code>                   iOS only, number of positions to keep and display</li>
 <li><code>autostartOnBoot</code>             Android only</li>
-<li><code>pubIncludeBattery</code>               Android only, in IOS alway on</li>
-<li><code>sub</code>                     Android only, subscription enabled for contacts, in IOS always subscribed</li>
-<li><code>pub</code>                     Android only, auto publish, in IOS controlled by <code>monitoring</code></li>
+<li><code>pubIncludeBattery</code>               Android only, in iOS alway on</li>
+<li><code>sub</code>                     Android only, subscription enabled for contacts, in iOS always subscribed</li>
+<li><code>pub</code>                     Android only, auto publish, in iOS controlled by <code>monitoring</code></li>
 <li><code>updateAddressBook</code></li>
 <li><code>notification</code>                Android only, show notifications</li>
-<li><code>notificationLocation</code>            Android only, show last reported location in notification, off in IOS</li>
-<li><code>notificationGeocoder</code>            Android only, resolve location in notification to address, in IOS only resolved when in show details</li>
-<li><code>notificationTickerOnPublish</code>         Android only, show a ticker on successful publishes, always off in IOS", </li>
-<li><code>notificationTickerOnGeofenceTransition</code>  Android only, show a ticker when the devices enters or leaves a geofence, always on in IOS", </li>
+<li><code>notificationLocation</code>            Android only, show last reported location in notification, off in iOS</li>
+<li><code>notificationGeocoder</code>            Android only, resolve location in notification to address, in iOS only resolved when in show details</li>
+<li><code>notificationTickerOnPublish</code>         Android only, show a ticker on successful publishes, always off in iOS", </li>
+<li><code>notificationTickerOnGeofenceTransition</code>  Android only, show a ticker when the devices enters or leaves a geofence, always on in iOS", </li>
 <li><code>remoteCommandReportLocation</code>         Android only, respond to reportLocation remote command</li>
 <li><code>remoteCommandDump</code>               Android only, respond to dump remote command</li>
-<li><code>cmd</code>                     IOS only, respond to remote commands</li>
-<li><code>allowRemoteLocation</code>             IOS only, respond to remote location request even if monitoring mode is set to manual</li>
-<li><code>extendedData</code>                IOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
+<li><code>cmd</code>                     iOS only, respond to remote commands</li>
+<li><code>allowRemoteLocation</code>             iOS only, respond to remote location request even if monitoring mode is set to manual</li>
+<li><code>extendedData</code>                iOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
 <li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
-<li><code>usepolicy</code>                   IOS only, use user defined security policy</li>
-<li><code>allowinvalidcerts</code>               IOS only, allow self signed certificates in user defined security policy</li>
-<li><code>validatedomainname</code>              IOS only, validate domain main during TLS handshake</li>
-<li><code>validatecertificatechain</code>            IOS only, validate the whole certificate chain or just the server certificate</li>
-<li><code>policymode</code>                  IOS only, <ul>
+<li><code>usepolicy</code>                   iOS only, use user defined security policy</li>
+<li><code>allowinvalidcerts</code>               iOS only, allow self signed certificates in user defined security policy</li>
+<li><code>validatedomainname</code>              iOS only, validate domain main during TLS handshake</li>
+<li><code>validatecertificatechain</code>            iOS only, validate the whole certificate chain or just the server certificate</li>
+<li><code>policymode</code>                  iOS only, <ul>
 <li>0 = Do not used pinned certificates to validate servers.</li>
 <li>1 = Validate host certificates against public keys of pinned certificates.</li>
 <li>2 = Validate host certificates against pinned certificates.</li>
 </ul>
 </li>
-<li><code>servercer</code>                   IOS only, blank separated list of certificate file names in DER format, or empty</li>
-<li><code>clientpkcs</code>                  IOS only, name of the client pkcs12 file,or empty </li>
-<li><code>passphrase</code>                  IOS only, passphrase for client pkcs12 file </li>
+<li><code>servercer</code>                   iOS only, blank separated list of certificate file names in DER format, or empty</li>
+<li><code>clientpkcs</code>                  iOS only, name of the client pkcs12 file,or empty </li>
+<li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
 </ul>
 <h4 id="notes">Notes</h4>
 <ul>
