@@ -455,7 +455,15 @@ The last two are used to address sets of topic names.</p>
 <p>Typically an MQTT broker hosts multiple applications. To create a separate name space
 for OwnTracks we use a topic name root as the beginning of a topic name. Per default
 this is <code>owntracks/</code>, but you may choose any other root (e.g. <code>peters/locations/</code>) or,
-if you prefer, the empty string.</p>
+if you prefer, the empty string. In order to change the default behaviour of <code>owntracks/</code>
+create a <a href="features/remoteconfig.md">personalized configuration</a> from scratch or, export
+your current configuration, edit that and re-import to your device. On Android you trigger
+the import function by opening the <code>.otrc</code> file in a file manager; on iOS by, say, opening
+the file in Mail, Dropbox or similar app. The settings which have to be changed are</p>
+<pre><code>pubTopicBase
+subTopic
+</code></pre>
+
 <h2 id="device-name">Device name</h2>
 <p>Locations are captured in OwnTracks by devices (e.g. your Smartphone). The
 device name forms the second component of the topic name. In order to avoid
