@@ -221,10 +221,10 @@
                 <li class="toctree-l3"><a href="#ibeacons">iBeacons</a></li>
                 
             
-                <li class="toctree-l3"><a href="#example-office">Example: office</a></li>
+                <li class="toctree-l3"><a href="#notes">Notes</a></li>
                 
             
-                <li class="toctree-l3"><a href="#notes">Notes</a></li>
+                <li class="toctree-l3"><a href="#example-office">Example: office</a></li>
                 
             
             </ul>
@@ -446,6 +446,10 @@ Minor 33000
 
 <p>In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
 in the second example, OwnTracks would monitor just that one specific beacon with the major number <code>1</code> and the minor number <code>33000</code>.</p>
+<h2 id="notes">Notes</h2>
+<p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
+<p>If you use a <code>-</code> as the first character in your Waypoint description e.g. <code>-MyBeacon</code>, the app will ignore short disruptions of the connection to the beacon (hold down).</p>
+<p>Setting the radius to a negative value (e.g. <code>-1</code>), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
 <h2 id="example-office">Example: office</h2>
 <p>Upon arriving at our Frankfurt location, I see from the monitor panel at the reception that Jane is in the office, so I'll pop in to ask a question.</p>
 <p><img alt="office panel" src="../images/ot-beacons-office-panel.png" /></p>
@@ -494,10 +498,6 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
 <li>a <em>UUID</em> with a <em>major</em> number: the app would report iBeacons with the specified UUID and exactly that <em>major</em> number</li>
 <li>all three: the <em>UUID</em>, the <em>major</em> and <em>minor</em> numbers, in which case the app reports events on precisely that beacon.</li>
 </ul>
-<h2 id="notes">Notes</h2>
-<p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
-<p>If you use a <code>-</code> as the first character in your Waypoint description e.g. <code>-MyBeacon</code>, the app will ignore short disruptions of the connection to the beacon (hold down).</p>
-<p>Setting the radius to a negative value (e.g. <code>-1</code>), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
               
             </div>
           </div>
