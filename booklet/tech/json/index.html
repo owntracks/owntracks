@@ -662,6 +662,7 @@
 <li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
 <li><code>tst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.) It is copied into the <code>wtst</code> of the transition event (<code>type: transition</code>) when an event pertaining to this waypoint fires.</li>
 </ul>
+<p>Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</p>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
 <p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
 <pre><code class="json">{
