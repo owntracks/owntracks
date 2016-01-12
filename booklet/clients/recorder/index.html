@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Comparison - OwnTracks Booklet</title>
+  <title>Docker - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -151,137 +151,126 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../hosted/">Hosted</a>
+        <a class="" href="../../features/hosted/">Hosted</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../security/">Security</a>
+        <a class="" href="../../features/security/">Security</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tls/">TLS</a>
+        <a class="" href="../../features/tls/">TLS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tlscert/">TLS client</a>
+        <a class="" href="../../features/tlscert/">TLS client</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../location/">Location</a>
+        <a class="" href="../../features/location/">Location</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../tid/">TID</a>
+        <a class="" href="../../features/tid/">TID</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
+        <a class="" href="../../features/friends/">Friends</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../card/">Card</a>
+        <a class="" href="../../features/card/">Card</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../waypoints/">Waypoints</a>
+        <a class="" href="../../features/waypoints/">Waypoints</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../beacons/">Beacons</a>
+        <a class="" href="../../features/beacons/">Beacons</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../pedometer/">Pedometer</a>
+        <a class="" href="../../features/pedometer/">Pedometer</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../settings/">Settings</a>
+        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../msg/">Messages</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Comparison</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#ios-android-compared">iOS / Android compared</a></li>
-                
-                    <li><a class="toctree-l4" href="#android">Android</a></li>
-                
-                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
-                
-            
-            </ul>
+        <a class="" href="../../features/msg/">Messages</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../android/">Android</a>
+        <a class="" href="../../features/comparison/">Comparison</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../ios/">iOS</a>
+        <a class="" href="../../features/android/">Android</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../remoteconfig/">Remoteconfig</a>
+        <a class="" href="../../features/ios/">iOS</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../debug/">Debugging</a>
+        <a class="" href="../../features/remoteconfig/">Remoteconfig</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../features/debug/">Debugging</a>
         
     </li>
 
@@ -345,8 +334,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../../clients/recorder/">Docker</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Docker</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#recorder">Recorder</a></li>
+                
+                    <li><a class="toctree-l4" href="#docker">Docker</a></li>
+                
+                    <li><a class="toctree-l4" href="#synology">Synology</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -411,11 +411,11 @@
     
       
         
-          <li>Features &raquo;</li>
+          <li>Sundry &raquo;</li>
         
       
     
-    <li>Comparison</li>
+    <li>Docker</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -429,192 +429,44 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="ios-android-compared">iOS / Android compared</h2>
-<p>The OwnTracks <a href="../android/">Android</a> and <a href="../ios/">iOS</a> apps try to be on par as far as the list
-of supported features is concernened. This table summarizes the current status.</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>iOS</th>
-<th>Android</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../location/">Location reporting</a></td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td><a href="../tls/">TLS</a> with system certificate</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>TLS with cert in filesystem</td>
-<td>-</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Plain connections (no TLS)</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Username/password authentication</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Reconnection to broker</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Automatic PUB after move</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Automatic PUB after time</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Map with marker</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Reverse geocoding on map</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Accuracy of last-known loc</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Button for manual publish</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Button for sharing location</td>
-<td></td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Configurable settings</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Move mode</td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td>Friends list</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Geofencing</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td><a href="../waypoints/">Waypoints</a></td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>Location data (payload) <a href="../../tech/json/">published as JSON</a></td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td><a href="../remoteconfig/">Remote configuration</a></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../beacons/">iBeacons</a></td>
-<td>Y</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../pedometer/">Step-counting, a.k.a pedometer</a></td>
-<td>Y</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="android">Android</h3>
-<ul>
-<li>
-<p>The broker connection works well with:</p>
-</li>
-<li>
-<p>No TLS (i.e. plain)</p>
-</li>
-<li>TLS using the Android built-in certificate authorities (either the shipped
-    ones, or user provided ones that require a lock screen password to be set)</li>
-<li>TLS with user-provided certificates via an absolute path (e.g. to Downloads).
-    This doesn't require a password to be set on the device, but is a bit fiddly
-    to set up.</li>
-<li>
-<p>Username/password authentication to broker.</p>
-</li>
-<li>
-<p>Automatic publishes at configurable intervals (disabled or &gt; 1 minute)</p>
-</li>
-<li>
-<p>Display of a marker at which the app believes the user to be at
-  (lastKnownLocation)</p>
-</li>
-<li>
-<p>Reverse geo coding that displays the address of lastKnownLocation</p>
-</li>
-<li>
-<p>Accuracy of lastKnownLocation (if the accuracy is &gt; 250m, the marker
-  changes to a circle centered around lastKnownLocation with radius == accuracy)</p>
-</li>
-<li>
-<p>Button to manually publish lastKnownLocation</p>
-</li>
-<li>
-<p>Button to share a Google Maps link that places a marker at lastKnownLocation</p>
-</li>
-<li>
-<p>For location the Google Fused Location Provider at Balanced Battery
-  Settings is used. This one can re use GPS or other Position fixes that are
-  requested by other apps in order to save battery and select the most
-  appropriate position source.</p>
-</li>
-</ul>
-<h3 id="ios">iOS</h3>
-<ul>
-<li>Runs on iPhones running iOS &gt;=6.1 (3GS, 4, 4S, 5, ...) and iPads running iOS &gt;=6.1 as an iPhone app. Not tested on iPods yet.</li>
-<li>
-<p>UI is iOS7 compliant</p>
-</li>
-<li>
-<p>Monitors "significant location changes" as defined by Apple Inc. (about 5 minutes AND 
-    "significant location changes" (&gt;500m)) or as described in Move Mode below.
-    In addition version &gt;= 5.3 supports circular region monitoring (aka geo fences).
-    In addition version &gt;= 7.7 supports iBeacon region monitoring and ranging.</p>
-</li>
-<li>
-<p>publishes this locations via MQTT to the configured server while in foreground and background.</p>
-</li>
-<li>
-<p>The current location can be sent (a.k.a. published) on request.</p>
-</li>
-</ul>
+                <h2 id="recorder">Recorder</h2>
+<p>The <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require external an external database.</p>
+<h3 id="docker">Docker</h3>
+<p>We have an <a href="https://hub.docker.com/r/owntracks/backend/">experimental Docker image</a> which you can use to launch the Recorder and its associated <a href="http://mosquitto.org">Mosquitto</a> broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. </p>
+<p>As an example, let's assume the host on which the Docker container will run has two IP addresses, <code>192.168.1.82</code> and <code>10.0.1.83</code>. We will also assume that you want the MQTT port on the host to be <code>11883</code> and its TLS port to be <code>18883</code>. Let's further assume that one of these addresses is DNS accessible as <code>ds415.ww.mens.de</code> and the other as <code>mqtt.ww.mens.de</code>. We want the TLS certificates for the container's Mosquitto broke to contain subjAltNames for these, so we will proceed as follows:</p>
+<ol>
+<li>Create a directory which will be mounted into the container for persistent data: <code>mkdir /var/owntracks</code>, say.</li>
+<li>Launch the Docker container with a script such as this one</li>
+</ol>
+<pre><code class="sh">#!/bin/sh
+
+docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083 \
+    --hostname ds415.ww.mens.de \
+    -e MQTTHOSTNAME=&quot;ds415.ww.mens.de&quot; \
+    -e IPLIST=&quot;192.168.1.1 192.168.1.82&quot; \
+    -e HOSTLIST=&quot;mqtt.ww.mens.de ds415.ww.mens.de&quot; \
+    owntracks/backend:v01
+</code></pre>
+
+<p>That should download the Docker image (if necessary) and launch a container accordingly. At first run, the TLS certificates are created in the <code>/owntracks</code> volume (which was mounted onto <code>/var/owntracks</code> on the host). The host's directory will also contain a <code>mosquitto/</code> directory which Mosquitto's configuration file, and the Recorder will use <code>/owntracks/recorder/</code> as its persistent storage.</p>
+<h3 id="synology">Synology</h3>
+<p>A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, <a href="http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/">this page</a> describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container.</p>
+<p>Launch container creation with the wizard, and give the container a name, e.g. <code>owntracks-recorder</code>.</p>
+<p><img alt="" src="../jmbp-2264.png" /></p>
+<p>Leave the settings in Step 2 as they are.</p>
+<p><img alt="" src="../jmbp-2266.png" /></p>
+<p>Add the TCP ports for MQTT (plain), MQTT (over TLS), and the Recorder's HTTP interface.</p>
+<p><img alt="" src="../jmbp-2273.png" /></p>
+<p>In the <em>Volume</em> tab, add a host folder which will be mounted into the container. Here we've chosen <code>/home/jpm/owntracks</code> which we first created with DSM's file manager.</p>
+<p><img alt="" src="../jmbp-2274.png" /></p>
+<p>In the <em>Environment</em> tab add the variables which will be exported into the container. Note that <code>IPLIST</code> and <code>HOSTLIST</code> (both of which are optional) take a space-separated list of values.</p>
+<p><img alt="" src="../jmbp-2275.png" /></p>
+<p>Check everything and press <em>Apply</em> to have the container created.</p>
+<p><img alt="" src="../jmbp-2276.png" /></p>
+<p>The container can then be launched by pressing the "on" switch.</p>
+<p><img alt="" src="../jmbp-2277.png" /></p>
+<p>The Docker container log will show console output.</p>
+<p><img alt="" src="../jmbp-2278.png" /></p>
               
             </div>
           </div>
@@ -622,10 +474,10 @@ of supported features is concernened. This table summarizes the current status.<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../android/" class="btn btn-neutral float-right" title="Android"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../privacy/" class="btn btn-neutral float-right" title="Privacy"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../msg/" class="btn btn-neutral" title="Messages"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../terminology/" class="btn btn-neutral" title="Terminology"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -654,10 +506,10 @@ of supported features is concernened. This table summarizes the current status.<
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../msg/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../terminology/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../android/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../privacy/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

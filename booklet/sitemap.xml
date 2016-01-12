@@ -240,6 +240,12 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/clients/recorder/</loc>
+     <lastmod>2016-01-12</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/privacy/</loc>
      <lastmod>2016-01-12</lastmod>
      <changefreq>daily</changefreq>
