@@ -457,6 +457,17 @@ docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083
 <li>and the Recorder's Web interface on 8083</li>
 </ul>
 <p>You can assign these as you wish. Recall, that if you use our example, your OwnTracks apps will also have to access 18883 over TLS (instead of the default 8883 over TLS).</p>
+<h4 id="exploring">Exploring</h4>
+<p>If you want to see what's going on within the container, try launching an MQTT subscriber: first obtain the container's ID:</p>
+<pre><code class="sh">docker ps
+CONTAINER ID        IMAGE                   ...
+5c8800a4ab78        owntracks/backend:v01   ...
+</code></pre>
+
+<p>Then, say, point <code>mosquitto_sub</code> to the broker from within the container:</p>
+<pre><code class="sh">docker exec -ti 5c8800a4ab78  mosquitto_sub -d -v -t '#'
+</code></pre>
+
 <h3 id="synology">Synology</h3>
 <p>A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, <a href="http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/">this page</a> describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image and launch a container.</p>
 <p>Launch container creation with the wizard, and give the container a name, e.g. <code>owntracks-recorder</code>.</p>
