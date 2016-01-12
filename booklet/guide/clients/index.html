@@ -459,6 +459,7 @@
 <h2 id="recorder">Recorder</h2>
 <p>We recommend our very own <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> because it's lightweight, relatively simple to set up, and because it offers a lot of features. It stores location data published by the apps by subscribing to an MQTT broker, and it enables you to access that data in a variety of formats. The best part is: it doesn't require a heavy external database of any kind.</p>
 <p><img alt="Recorder" src="../images/demo-geojson-linestring.png" /></p>
+<p>Read <a href="clients/recorder.md">more about the Recorder</a></p>
 <h2 id="o2s">o2s</h2>
 <p>One of the clients we provide as part of the Open Source OwnTracks project is called <em>o2s</em>; the strange name stands for <em>OwnTracks to Storage</em>, and you can use this connected to your <a href="../broker/">MQTT broker</a> in <a href="../scenarios/">Private mode</a>, if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our <em>Recorder</em> (see above).)</p>
 <p>Correctly configured (and it's not trivial), <em>o2s</em> connects to your broker and subscribes to location messages and other <a href="../../tech/json/">OwnTracks payloads</a>. Upon receiving a location update, <em>o2s</em> will do a number of things:</p>
