@@ -446,9 +446,9 @@
 <p>If you want to share location with a friend, both you and your friend need to share the same <em>secret</em>. A <em>secret</em> should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads.</p>
 <h3 id="recorder">Recorder</h3>
 <p>You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.</p>
-<p>Add a key by determining the <em>username</em> and the <em>device name</em> of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the <em>username</em> is <code>jjolie</code> and the <em>device name</em> is <code>iphone</code>, the result will be <code>jjolie-iphone</code>.</p>
+<p>Add a key by determining the <em>username</em> and the <em>device name</em> of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the <em>username</em> is <code>jjolie</code> and the <em>device name</em> is <code>phone</code>, the result will be <code>jjolie-phone</code>.</p>
 <p>Load the key into the (running) Recorder:</p>
-<pre><code class="bash">echo &quot;jjolie-iphone mysecreTpass01&quot; | ocat --load=keys
+<pre><code class="bash">echo &quot;jjolie-phone mysecreTpass01&quot; | ocat --load=keys
 </code></pre>
 
 <p>From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of <code>_type: encrypted</code>. The Recorder will decrypt the payload and will store the result in plain text in its storage.</p>
