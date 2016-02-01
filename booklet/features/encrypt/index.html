@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Debugging - OwnTracks Booklet</title>
+  <title>Encryption - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -262,8 +262,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../encrypt/">Encryption</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Encryption</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#payload-encryption">Payload encryption</a></li>
+                
+                    <li><a class="toctree-l4" href="#recorder">Recorder</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -276,15 +285,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Debugging</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#debugging">Debugging</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../debug/">Debugging</a>
         
     </li>
 
@@ -418,7 +420,7 @@
         
       
     
-    <li>Debugging</li>
+    <li>Encryption</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -432,15 +434,24 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="debugging">Debugging</h2>
-<p>Designing mobile apps is hard. Designing mobile apps which are killed off every once in a while by the underlying OS is harder (iOS). Designing mobile apps which reliable do what they should at all times is hardest. <a href="../../people/">Christoph and Alexander</a> know this and they've done a hell of a job to get stability and reliability of OwnTracks to where it stands today.</p>
-<p>Be that as it may, there are things which can be difficult to test, and in this section we give you some things to watch out for.</p>
-<p>First and foremost, and please don't laugh: does your device have either WiFi or 3G connectivity? No data means no location reported, which ought to be self-explanatory.</p>
-<ul>
-<li>Check whether OwnTracks is connected to your broker. On iOS this is the green mushroom symbol on the map; on Android you can check in preferences. If need be, disconnect and reconnect OwnTracks and check your broker's logfile as you do so.</li>
-<li>Is your broker running and can it be reached by your device? We've <a href="../../guide/broker/">given you tips on configuring your broker</a>.</li>
-<li>Make liberal use of the Mosquitto <a href="../../guide/clients/">clients</a> to test whether your broker is receiving messages, and please ensure your broker ACLs match the settings in OwnTracks.</li>
-</ul>
+                <h2 id="payload-encryption">Payload encryption</h2>
+<p>In addition to the <a href="../tls/">transport encryption via TLS</a>, the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://download.libsodium.org/doc/secret-key_cryptography/authenticated_encryption.html">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
+<p>You configure a <em>secret</em> (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt the <a href="../../tech/json/">JSON</a> with this secret and transport the payload in a new JSON object which looks like this:</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;encrypted&quot;,
+  &quot;data&quot;: &quot;1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg=&quot;
+}
+</code></pre>
+
+<p>If you want to share location with a friend, both you and your friend need to share the same <em>secret</em>. A <em>secret</em> should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads.</p>
+<h3 id="recorder">Recorder</h3>
+<p>You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.</p>
+<p>Add a key by determining the <em>username</em> and the <em>device name</em> of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the <em>username</em> is <code>jjolie</code> and the <em>device name</em> is <code>iphone</code>, the result will be <code>jjolie-iphone</code>.</p>
+<p>Load the key into the (running) Recorder:</p>
+<pre><code class="bash">echo &quot;jjolie-iphone mysecreTpass01&quot; | ocat --load=keys
+</code></pre>
+
+<p>From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of <code>_type: encrypted</code>. The Recorder will decrypt the payload and will store the result in plain text in its storage.</p>
               
             </div>
           </div>
@@ -448,10 +459,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../tech/json/" class="btn btn-neutral float-right" title="JSON"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../remoteconfig/" class="btn btn-neutral float-right" title="Remoteconfig"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../remoteconfig/" class="btn btn-neutral" title="Remoteconfig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ios/" class="btn btn-neutral" title="iOS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -480,10 +491,10 @@
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../remoteconfig/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../ios/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../tech/json/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../remoteconfig/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

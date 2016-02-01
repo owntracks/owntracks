@@ -263,6 +263,13 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../features/encrypt/">Encryption</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../features/remoteconfig/">Remoteconfig</a>
         
     </li>
@@ -330,6 +337,9 @@
                 
             
                 <li class="toctree-l3"><a href="#_typemsg">_type=msg</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#_typeencrypted">_type=encrypted</a></li>
                 
             
             </ul>
@@ -528,6 +538,11 @@
 </tr>
 <tr>
 <td><code>msg</code></td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>`encrypted</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
@@ -932,6 +947,13 @@ The app can export a list of configured waypoints (separate from the configurati
 <li><code>urlicon</code> (iOS only) should be the URL to a 40x40px image, but you should prefer <code>icon</code> as it avoids a HTTP round trip.</li>
 <li><code>ttl</code> defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if <code>now() - ttl &gt;= tst</code>.</li>
 </ul>
+<h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
+<p>This payload type contains a single <code>data</code> element with the original JSON object <code>_type</code> (e.g. <code>_location</code>, <code>msg</code>, etc.) <a href="../../features/encrypt/">encrypted payload</a> in it.</p>
+<pre><code class="json">{
+  &quot;_type&quot;: &quot;encrypted&quot;,
+  &quot;data&quot;: &quot;1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg=&quot;
+}
+</code></pre>
               
             </div>
           </div>
