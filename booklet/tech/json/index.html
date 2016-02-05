@@ -859,7 +859,12 @@
 </li>
 </ul>
 <h2 id="_typecmd"><code>_type=cmd</code></h2>
-<pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
+<pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportLocation&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:[...]}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
 </code></pre>
 
 <ul>
@@ -872,6 +877,8 @@
 <li><code>dump</code> triggers the publish of a configuration message</li>
 <li><code>setWaypoints</code> configures new waypoints. (iOS only; <a href="../../features/remoteconfig/">details</a> )</li>
 <li><code>waypoints</code> triggers a publish of all waypoints configured on the device. These are published in <code>.otrw</code> format to the <code>../waypoints</code> topic.</li>
+<li><code>action</code> inserts an additional 'Featured Content' tab in the UI. The text in <code>"content"</code> is displayed. Links embedded in the text are operational.
+Send <code>"action":"action"</code> without <code>"content"</code> to remove the extra tab.</li>
 </ul>
 </li>
 </ul>
