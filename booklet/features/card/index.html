@@ -206,6 +206,8 @@
             
                 <li class="toctree-l3"><a href="#card">Card</a></li>
                 
+                    <li><a class="toctree-l4" href="#creating-a-card">Creating a card</a></li>
+                
             
             </ul>
         
@@ -446,6 +448,19 @@
 <p>If you are a <em>Hosted</em> user, and you're wondering where your avatar comes from: we obtain it from <a href="http://gravatar.com">Gravatar.com</a> when you sign up.</p>
 <p><img alt="Gravatar sync" src="../images/gravatar-sync.jpg" /></p>
 <p>If you create a Gravatar account <em>after</em> your <em>Hosted</em> account, you can synchronize your Gravatar into <em>Hosted</em> by selecting your <em>Hosted</em> profile, and pressing the <code>Sync</code> button.</p>
+<h3 id="creating-a-card">Creating a card</h3>
+<p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
+<ul>
+<li>If you have an image file you want to use, use <code>image2card.sh</code>, passing <em>image-filename</em> and <em>fullname</em>.</li>
+<li>If you know a user has a Github profile with a name and an avatar, use <code>github2card.py</code> which takes a Github username as argument.</li>
+<li>If you know a user has a Gravatar, use <code>gravatar2card.sh</code>, passing <em>email</em> and <em>fullname</em>.</li>
+</ul>
+<p>These utilities create a <em>card</em> on standard output, and you typically then publish the result as a retained message to your MQTT broker:</p>
+<pre><code>./github2card.py defunkt &gt; my-card.json
+mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
+</code></pre>
+
+<p>Note the topic branch ending in <code>info</code> and note the use of the retain flag (<code>-r</code>).</p>
               
             </div>
           </div>
