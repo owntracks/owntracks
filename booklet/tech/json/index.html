@@ -861,11 +861,13 @@
 <li><code>dump</code> triggers the publish of a configuration message</li>
 <li><code>setWaypoints</code> configures new waypoints. (iOS only; <a href="../../features/remoteconfig/">details</a> )</li>
 <li><code>waypoints</code> triggers a publish of all waypoints configured on the device. These are published in <code>.otrw</code> format to the <code>../waypoints</code> topic.</li>
-<li><code>action</code> inserts an additional 'Featured Content' tab in the UI.
-If <code>"url"</code> is specified, the URL is opened in a full screen web view within the app. 
-If <code>"url"</code> is not specified
-The text in <code>"content"</code> is displayed. Links embedded in the text are operational.  If <code>"content"</code> is HTML, it is rendered.
-Send <code>"action":"action"</code> without <code>"content"</code> and without <code>"url"</code> to remove the extra tab.</li>
+<li><code>action</code> inserts an additional 'Featured Content' tab in the UI.</li>
+<li>If <code>"url"</code> is specified, the URL is opened in a full screen web view within the app. </li>
+<li>If <code>"url"</code> is not specified</li>
+<li>The text in <code>"content"</code> is displayed. Links embedded in the text are operational.  If <code>"content"</code> is HTML, it is rendered.</li>
+<li>Send <code>"action":"action"</code> without <code>"content"</code> and without <code>"url"</code> to remove the extra tab.</li>
+<li>If <code>"notify"</code> is in the payload, it is a string which will be used as notification in the UI</li>
+<li>If the optional <code>"extern"</code> boolean is <code>true</code> a click on the notification will launch an external Web browser; <code>false</code> (the default) opens the <code>url</code> in a Webview within the OwnTracks app.</li>
 </ul>
 </li>
 </ul>
