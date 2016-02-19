@@ -235,13 +235,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../features/msg/">Messages</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../../features/comparison/">Comparison</a>
         
     </li>
@@ -334,9 +327,6 @@
                 
             
                 <li class="toctree-l3"><a href="#_typewaypoints">_type=waypoints</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typemsg">_type=msg</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typeencrypted">_type=encrypted</a></li>
@@ -537,11 +527,6 @@
 <td></td>
 </tr>
 <tr>
-<td><code>msg</code></td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
 <td><code>encrypted</code></td>
 <td>Y</td>
 <td>Y</td>
@@ -562,9 +547,6 @@
 <li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
 <li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
 <li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
-<li><code>owntracks/user/device/msg</code> if messaging is enabled</li>
-<li><code>msg/+/&lt;ghash&gt;</code> if messaging is enabled (see below and <a href="../../features/msg/">Messages</a>)</li>
-<li><code>msg/system</code> if messaging is enabled; for very occasional messages, e.g. maintenance related.</li>
 </ul>
 <p>In addition, the iOS app publishes to:</p>
 <ul>
@@ -937,30 +919,8 @@ The app can export a list of configured waypoints (separate from the configurati
 </code></pre>
 
 <p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
-<h2 id="_typemsg"><code>_type=msg</code></h2>
-<p>The <code>msg/</code> prefix for messaging is not configurable in the apps.</p>
-<pre><code class="json">{
-    &quot;_type&quot;        : &quot;msg&quot;,           // mandatory
-    &quot;title&quot;        : &quot;Lunch&quot;,         // string, title of message; mandatory
-    &quot;desc&quot;         : &quot;special offer&quot;  // string, content of message; mandatory
-    &quot;url&quot;          : &quot;http://xxxx&quot;    // URL on which to click; optional
-    &quot;icon&quot;         : &quot;fa-eye&quot;,        // string, FA icon; optional
-    &quot;iconurl&quot;      : &quot;http://xxx&quot;     // URL to icon if `icon' not set (iOS only)
-    &quot;prio&quot;         : 0,               // background color for `icon'; default: `0`
-    &quot;tst&quot;          : nnnnnn,          // Unix epoch time in seconds when message is published; mandatory
-    &quot;ttl&quot;          : 86400,           // Time to Live (in seconds) until message is expired; default `0`
-    &quot;sender&quot;       : &lt;topic&gt;          // MQTT topic name of sender; optional
-}
-</code></pre>
-
-<ul>
-<li><code>icon</code> is the name of a <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">Font-Awesome icon</a></li>
-<li><code>prio</code> is <code>0</code> (OwnTracks blue), <code>1</code> (Yellow), <code>2</code> (Red)</li>
-<li><code>urlicon</code> (iOS only) should be the URL to a 40x40px image, but you should prefer <code>icon</code> as it avoids a HTTP round trip.</li>
-<li><code>ttl</code> defaults to 0 which means messages don't expire. Otherwise, messages are deleted or grayed out if <code>now() - ttl &gt;= tst</code>.</li>
-</ul>
 <h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
-<p>This payload type contains a single <code>data</code> element with the original JSON object <code>_type</code> (e.g. <code>_location</code>, <code>msg</code>, etc.) <a href="../../features/encrypt/">encrypted payload</a> in it.</p>
+<p>This payload type contains a single <code>data</code> element with the original JSON object <code>_type</code> (e.g. <code>location</code>, <code>beacon</code>, etc.) <a href="../../features/encrypt/">encrypted payload</a> in it.</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;encrypted&quot;,
   &quot;data&quot;: &quot;1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg=&quot;
