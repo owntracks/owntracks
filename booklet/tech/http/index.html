@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Bridging - OwnTracks Booklet</title>
+  <title>HTTP mode - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -59,112 +59,100 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../whathow/">What it does</a>
+        <a class="" href="../../guide/whathow/">What it does</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../ui/">User interface</a>
+        <a class="" href="../../guide/ui/">User interface</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../scenarios/">Scenarios</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/http/">HTTP mode</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../mqtt/">MQTT</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../topics/">Topics</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../broker/">Broker</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../apps/">Apps</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../waypoints/">Waypoints</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../beacons/">Beacons</a>
+        <a class="" href="../../guide/scenarios/">Scenarios</a>
         
     </li>
 
         
             
     <li class="toctree-l1 current">
-        <a class="current" href="./">Bridging</a>
+        <a class="current" href="./">HTTP mode</a>
         
             <ul>
             
-                <li class="toctree-l3"><a href="#bridging">Bridging</a></li>
+                <li class="toctree-l3"><a href="#http">HTTP</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#what-will-happen">What will happen?</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#publishes">Publishes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#events">Events</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#cmd">CMD</a></li>
-                
-                    <li><a class="toctree-l4" href="#mqttitude">MQTTitude</a></li>
+                    <li><a class="toctree-l4" href="#php-example">PHP example</a></li>
                 
             
             </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/mqtt/">MQTT</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/topics/">Topics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/broker/">Broker</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/apps/">Apps</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/clients/">Clients</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/friends/">Friends</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/waypoints/">Waypoints</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/beacons/">Beacons</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../guide/bridge/">Bridging</a>
         
     </li>
 
@@ -306,28 +294,28 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/json/">JSON</a>
+        <a class="" href="../json/">JSON</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/mqtt/">MQTT</a>
+        <a class="" href="../mqtt/">MQTT</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/qr/">QR</a>
+        <a class="" href="../qr/">QR</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../tech/program/">Code</a>
+        <a class="" href="../program/">Code</a>
         
     </li>
 
@@ -418,7 +406,7 @@
         
       
     
-    <li>Bridging</li>
+    <li>HTTP mode</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -432,74 +420,66 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="bridging">Bridging</h2>
-<p>In order to profit from the <a href="../friends">Friends feature</a> in
-OwnTracks, all contacts you want to be able to track on your your device must
-share a broker, but that can be difficult if both you and your friend
-(henceforce "Jane" in the examples that follow) also use your brokers for other
-purposes.</p>
-<p><a href="http://mosquitto.org">Mosquitto</a> (and some other <a href="http://mqtt.org">MQTT</a> brokers) have a feature called bridging
-which basically lets you connect two (or more) brokers together.</p>
-<p>Let's assume that you and Jane want to see each other's location updates while
-maintaining a connection from your devices to your respective MQTT brokers at
-home. In other words, you will use your broker, whereas Jane connects to her broker because, e.g. she has private contacts who use her broker, but she doesn't want you to have access to those.</p>
-<p><img alt="Bridging" src="../images/mosquitto-bridge-mqttitude.png" /></p>
-<h2 id="what-will-happen">What will happen?</h2>
-<p>Setting up a bridge is not difficult, but there are some things we have to keep in mind.  In this example, we'll assume the following:</p>
+                <h2 id="http">HTTP</h2>
+<p>An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:</p>
 <ul>
-<li>Your broker will initiate a connection to Jane's broker</li>
-<li>You'll be using <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> to protect credentials and data in transit</li>
-<li>Jane has given you (e.g. via e-mail) a copy of her TLS CA certificate</li>
-<li>Jane has set up an ACL on her <a href="http://mosquitto.org">Mosquitto</a> broker to ensure you have access only to her OwnTracks location data and nothing else.</li>
-<li>Jane has a username and password for your broker to use when connecting to her broker, and she's given you both.</li>
-<li>Jane has a device called <code>nexus7</code> and she publishes location updates to <em>her</em> broker at <code>owntracks/jane/nexus7</code>.</li>
-<li>You have an iPhone and want to share your location data with Jane. You publish (on your broker) to <code>owntracks/john/iphone</code>.</li>
+<li>There are no "friends". The device can publish only which means you cannot track other people.</li>
+<li>There is no support for <a href="../../features/card/">card</a>s.</li>
 </ul>
-<p>Here's what you configure <em>on your broker</em>'s <code>mosquitto.conf</code>:</p>
-<pre><code># Bridge to Jane
-connection br-me-to-jane
-bridge_cafile /etc/mosquitto/jane/JANE-OwnTracks-ca.crt
-bridge_insecure false
-address jane.example.org:8883
-cleansession false
-clientid br-john-jane
-start_type automatic
-username john
-password s3cr1t
-notifications false
-try_private true
-topic nexus7 in 2 owntracks/jane/ owntracks/jane/
-topic iphone out 2 owntracks/john/ owntracks/john/
+<p>For use with the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> the URL you specify must include parameters for <em>username</em> and <em>devicename</em> (<code>?u=user&amp;d=device</code>), alternatively using the <code>X-Limit-U</code> and <code>X-Limit-D</code> headers.</p>
+<p>The syntax for the URL is:</p>
+<pre><code>http[s]://[user[:password]@]host[:port]/path
 </code></pre>
 
-<p>These last two lines define which topic branches will be published (<code>out</code>) and
-which will be subscribed to (<code>in</code>) from the point of view of your broker. There
-are a lot of things you can tweak in this configuration, but this is should get
-you started.</p>
-<h2 id="publishes">Publishes</h2>
-<p>When your device publishes location data to your broker, it will publish the single topic <code>owntracks/john/iphone</code> to Jane's broker. Conversely, as your broker is now subscribed to Jane's at <code>owntracks/jane/nexus7</code>, it will receive Jane's location data and re-publish that to your connected device.</p>
-<h2 id="events">Events</h2>
-<p>OwnTracks uses more than just a single topic per user <a href="../../tech/json/">as documented</a>. This means we must add more <code>topic</code> statements to our broker (and Jane to her broker) if we additionally want to support transition events (e.g. when did Jane leave home?) and outgoing commands (e.g. tell Jane's device to report its location <em>now</em>).</p>
-<p>Assuming Jane allows this (by configuring appropriate ACLs on her broker), we add one or more of the following. The first line we already had: it bridges Jane's location publishes <em>in</em> to our broker. The second line is new: it bridges Jane's <code>nexus7</code> events into our broker.</p>
-<pre><code>topic nexus7 in 2 owntracks/jane/ owntracks/jane/
-topic event in 2 owntracks/jane/nexus7/ owntracks/jane/nexus7/
+<p>Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (<code>https://</code> scheme).</p>
+<p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payload formats.</p>
+<p>If the HTTP endpoint is reachable (i.e. it responds with <em>any</em> status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.</p>
+<p><a href="../../features/encrypt/">Encryption</a> are supported and can be used with HTTP endpoints.</p>
+<p>If the endpoint returns a status code 200 it will typically return an empty JSON payload object <code>{}</code>. The HTTP endpoint may, however, return a command to the OwnTracks device, in which case it must return a valid <code>_type: cmd</code> as described in <a href="../json/">JSON</a>.</p>
+<p>The OwnTracks Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box.</p>
+<h3 id="php-example">PHP example</h3>
+<p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
+<pre><code>mysql&gt; select * from locations;
++---------------------+------+-----------+----------+
+| dt                  | tid  | lat       | lon      |
++---------------------+------+-----------+----------+
+| 2016-02-20 09:16:05 | JJ   | 48.858330 | 2.295130 |
+| 2016-02-20 09:19:49 | JJ   | 48.860430 | 2.294010 |
++---------------------+------+-----------+----------+
 </code></pre>
 
-<h2 id="cmd">CMD</h2>
-<p>Tapping on OwnTrack's <em>request location update</em> publishes a <code>cmd</code> to the destination device, so we bridge that topic <em>out</em> towards Jane's broker:</p>
-<pre><code>topic cmd out 2 owntracks/jane/nexus7/ owntracks/jane/nexus7/
+<pre><code class="php">&lt;?php
+    # Obtain the JSON payload from an OwnTracks app POSTed via HTTP
+    # and insert into database table.
+
+    header(&quot;Content-type: application/json&quot;);
+
+    $payload = file_get_contents(&quot;php://input&quot;);
+    $data =  @json_decode($payload, true);
+
+    if ($data['_type'] == 'location') {
+
+        # CREATE TABLE locations (dt TIMESTAMP, tid CHAR(2), lat DECIMAL(9,6), lon DECIMAL(9,6));
+        $mysqli = new mysqli(&quot;127.0.0.1&quot;, &quot;user&quot;, &quot;password&quot;, &quot;database&quot;);
+
+        $lat = $data['lat'];
+        $lon = $data['lon'];
+        $tid = $data['tid'];
+
+        $sql = &quot;INSERT INTO locations (tid, lat, lon) VALUES (?, ?, ?)&quot;;
+        $stmt = $mysqli-&gt;prepare($sql);
+        # bind parameters (s = string, i = integer, d = double,  b = blob)
+        $stmt-&gt;bind_param('sdd', $tid, $lat, $lon);
+        $stmt-&gt;execute();
+        $stmt-&gt;close();
+    }
+
+    print json_encode(new stdClass);    # empty object
+?&gt;
 </code></pre>
 
-<h3 id="mqttitude">MQTTitude</h3>
-<p>Let's assume for the moment that you're running a broker with a number of connected OwnTracks clients, some of which are still publishing to the "old" topic branch at `mqttitude/', but you want to "assimilate" these clients into your environment without having to force them to rename the topic to which they publish. You can easily do that in Mosquitto, by adding the following line to your bridge configuration:</p>
-<pre><code>topic # in 2 owntracks/ mqttitude/
-</code></pre>
-
-<p>What this does is: your bridge subscribes to the <em>remote</em> topic <code>mqttitude/#</code> and all received messages will be republished at <code>owntracks/</code> on <em>your</em> broker (note the <code>in</code> direction). </p>
-<p>Neat, eh? </p>
-<p>Consult the manual page for
-<a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> for more
-details.</p>
+<p>Assuming the Web server hosting this example is called <code>example.com</code>, and assuming the above script is in Jane's home directory's <code>public_html</code> saved as <code>loc.php</code>, the URL you configure in the OwnTracks app would be <code>http://example.com/~jane/loc.php</code>. We <em>urge</em> you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of <code>https://user:password@example.com/~jane/loc.php</code>.</p>
+<p>There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we urge you to <a href="../json/">study the API documentation</a>.</p>
               
             </div>
           </div>
@@ -507,10 +487,10 @@ details.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../features/security/" class="btn btn-neutral float-right" title="Security"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../guide/mqtt/" class="btn btn-neutral float-right" title="MQTT"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../beacons/" class="btn btn-neutral" title="Beacons"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../guide/scenarios/" class="btn btn-neutral" title="Scenarios"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -539,10 +519,10 @@ details.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../beacons/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../../guide/scenarios/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../features/security/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../guide/mqtt/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

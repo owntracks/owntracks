@@ -30,6 +30,12 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/tech/http/</loc>
+     <lastmod>2016-02-22</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/guide/mqtt/</loc>
      <lastmod>2016-02-22</lastmod>
      <changefreq>daily</changefreq>
