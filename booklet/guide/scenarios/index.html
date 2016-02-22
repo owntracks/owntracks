@@ -83,7 +83,7 @@
                 <li class="toctree-l3"><a href="#public">Public</a></li>
                 
             
-                <li class="toctree-l3"><a href="#hosted">Hosted</a></li>
+                <li class="toctree-l3"><a href="#http-mode">HTTP mode</a></li>
                 
             
                 <li class="toctree-l3"><a href="#private">Private</a></li>
@@ -163,13 +163,6 @@
             <li>
     <ul class="subnav">
     <li><span>Features</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/hosted/">Hosted</a>
-        
-    </li>
 
         
             
@@ -327,13 +320,6 @@
     </li>
 
         
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/proghosted/">Code (Hosted)</a>
-        
-    </li>
-
-        
     </ul>
 <li>
           
@@ -436,24 +422,15 @@
               
                 <h2 id="scenarios">Scenarios</h2>
 <p>There are three basic scenarios we have for you depending on your needs. It'll help if you keep a copy of the <a href="../../terminology/">technical terminology</a> handy.</p>
-<p><img alt="mode switcher iOS" src="../images/ios-mode-switcher.png" /></p>
 <h2 id="public">Public</h2>
 <p>The very first time you install OwnTracks it will be configured in <em>public mode</em>, and you'll be warned about this when you launch the app. In this mode, the app "just works". It connects to our public MQTT broker, and your location is published there anonymously. In the app you'll also see any other public users, although you won't be able to identify them (nor they you): there are, other than the location data, no personal details of any user. The one exception is a couple of pseudo-users we publish magically so that you have something nice to look at.</p>
 <p><img alt="iPad Public Users" src="../images/b-ipad-public-users.png" /></p>
 <p>We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a feeling for how OwnTracks looks and works. The data published by OwnTracks in this mode is not retained, and we don't store it.</p>
-<p>Using <em>Public</em> mode means you don't <em>have</em> to learn about <a href="../broker/">MQTT brokers</a>, <a href="../topics/">topics</a>, and all the rest of the stuff, but the downside is that you don't get to use any of the neat features <em>Hosted</em> or <em>Private</em> mode come with. For example, you can't set up <a href="../friends/">friends</a> or configure <a href="../clients/">clients to use your data</a> for the sole reason that we don't tell you the address or the authentication credentials for <em>Public</em> mode. Yep, it's as they say: <em>you get what you pay for</em>. :-)</p>
-<p>Honestly, and kidding aside, we really do recommend you switch away from <em>Public</em> mode to either <em>Hosted</em> or, better yet, <em>Private</em> mode as soon as possible.</p>
+<p>Using <em>Public</em> mode means you don't <em>have</em> to learn about <a href="../broker/">MQTT brokers</a>, <a href="../topics/">topics</a>, and all the rest of the stuff, but the downside is that you don't get to use any of the neat features <em>Private</em> mode comes with. For example, you can't set up <a href="../friends/">friends</a> or configure <a href="../clients/">clients to use your data</a> for the sole reason that we don't tell you the address or the authentication credentials for <em>Public</em> mode. Yep, it's as they say: <em>you get what you pay for</em>. :-)</p>
 <p>We think it's best you forget about this as quickly as possible and chose one of the other modes.</p>
-<h2 id="hosted">Hosted</h2>
-<p>If you don't want to go to the trouble of <a href="#private">hosting your own setup</a>, you can use our <em>hosted</em> mode. We provide an MQTT broker for you to use with OwnTracks, and we do so on a <em>best-effort</em> basis. No guarantees whatsoever as to availability, but our track record is pretty good so far.</p>
-<p>The first thing you do in order to use <em>Hosted</em> mode is to sign up at  <a href="https://hosted.owntracks.org">OwnTracks Hosted</a> where you create an account providing a <em>username</em>, a <em>password</em>, a valid <em>e-mail address</em> for yourself, and your <em>name</em>. Simultaneously you specify a name for the device you'll be connecting, something like <code>samsung3</code>, <code>nexus5</code>, <code>iphone5</code>, etc. -- you get the idea.
-You may, of course, register more than just one device.</p>
-<p><img alt="Hosted UI" src="../hosted/11-trackers-list-new-device.png" /></p>
-<p>The <em>password</em> is solely for accessing the Hosted Web site and for nothing else; you will use it there only.</p>
-<p>Upon registering a device, you are shown an <em>access token</em>. This jumble of letters and numbers is case-sensitive and is displayed <em>once only</em>, so write it down somewhere; later this is replaced by a padlock symbol. (But no worries: if you misplace it, you can generate a new access token. And no: we cannot tell you what the token was.)</p>
-<p>In order to use our <a href="../broker/">MQTT broker</a> you will specify these three bits in OwnTracks: the <em>username</em>, the <em>device</em>, and the <em>access token</em>.</p>
-<p>Just in case you're curious: we store neither the Web site <em>password</em> you created, nor any of the <em>access tokens</em> in clear of course; that <em>would</em> be stupid. What we do is we hash them securely and store [PBKDF2] strings. When either you login to our Web site, or your device authenticates to our MQTT broker with the <em>access token</em>, we take the values you connect with, hash them again, and test whether the PBKDF2 we have on record matches what we computed. If it does, you, respectively your device, are in. (And guess what happens if it doesn't match?)</p>
-<p>Detailed instructions for <a href="../../features/hosted/">setting up Hosted mode</a> are available.</p>
+<h2 id="http-mode">HTTP mode</h2>
+<p>If you don't want to go to the trouble of <a href="#private">hosting your own setup</a>, you can use <em>HTTP</em> mode to publish location data to a <a href="tech/http.md">HTTP server of your chosing</a>.</p>
+<p>You may, of course, register more than just one device.</p>
 <p>You will now want to <a href="../clients/">configure a client</a> with which you consume the data which is published by OwnTracks, or if you're feeling very brave, why not <a href="../../tech/program/">write your own client</a>?</p>
 <h2 id="private">Private</h2>
 <p>This is where you say <em>adios!</em> (or whatever you say in your language when you leave) to us, continue to use our app (still free of charge of course -- it's Open Source), and host everything yourself. And to be honest, that's <em>precisely what we think you should do</em> so that you only (and the people you authorize) see where you are. That is the <em>Own</em> in OwnTracks: it's <em>your own data</em> and you only should see it.</p>
@@ -464,7 +441,7 @@ You may, of course, register more than just one device.</p>
 <li>Optionally <a href="../clients/">use existing clients</a> to consume OwnTracks data</li>
 <li>Possibly dig in and <a href="../../tech/program/">write your own client</a> and do really cool stuff!</li>
 </ul>
-<p>We urge you to resist the temptation of using <em>private mode</em> with one of the many public brokers hosted by different organizations. While it <em>is</em> an easy way out (though not easier than our <em><a href="#hosted">hosted mode</a></em> we think) those brokers are publically accessible which means anybody can see where you are if they can identify you. Furthermore, public brokers often don't implement access control, so basically anybody can create a "location" update which looks as though it may be yours. Believe us: it'll drive you crazy.</p>
+<p>We urge you to resist the temptation of using <em>private mode</em> with one of the many public brokers hosted by different organizations. While it <em>is</em> an easy way out those brokers are publically accessible which means anybody can see where you are if they can identify you. Furthermore, public brokers often don't implement access control, so basically anybody can create a "location" update which looks as though it may be yours. Believe us: it'll drive you crazy.</p>
 <p>If you need assistance, we may be able to help you on our <a href="https://community.owntracks.org">Community site</a>.</p>
 <p>Now it's time to <a href="../topics/">discuss topics</a>.</p>
               

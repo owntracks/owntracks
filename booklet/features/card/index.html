@@ -151,13 +151,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../hosted/">Hosted</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../security/">Security</a>
         
     </li>
@@ -320,13 +313,6 @@
     </li>
 
         
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/proghosted/">Code (Hosted)</a>
-        
-    </li>
-
-        
     </ul>
 <li>
           
@@ -430,7 +416,7 @@
                 <h2 id="card">Card</h2>
 <p>OwnTracks typically displays the <em>TID</em> of a <a href="../friends/">friend</a> on the map, but you can associate an address book entry to that friend in order to see a friendly face (if you have you friend's photo in your device's address book) and/or a friendly name.</p>
 <p><img alt="TID on iOS" src="../images/b-ipad-TID-map.png" /></p>
-<p>For <em>Hosted mode</em> we developed a new feature we call a <em>card</em> which you can also make use of when in in <em>Private mode</em>. A card is a retained message which contains a <a href="../../tech/json/">JSON payload</a> which, in absence of an address-book association, will be used to populate your friend on your map. The payload contains a full name (hopefully one you recognize), and an avatar -- a small image. If a card exists it will be used, but you can override its use in OwnTracks by associating your friend with an address book entry of your own device.</p>
+<p>We developed a new feature we call a <em>card</em> which you can use when in in <em>Private mode</em>. A card is a retained message which contains a <a href="../../tech/json/">JSON payload</a> which, in absence of an address-book association, will be used to populate your friend on your map. The payload contains a full name (hopefully one you recognize), and an avatar -- a small image. If a card exists it will be used, but you can override its use in OwnTracks by associating your friend with an address book entry of your own device.</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;card&quot;,
   &quot;name&quot;: &quot;Jane Jolie&quot;
@@ -438,9 +424,6 @@
 }
 </code></pre>
 
-<p>If you are a <em>Hosted</em> user, and you're wondering where your avatar comes from: we obtain it from <a href="http://gravatar.com">Gravatar.com</a> when you sign up.</p>
-<p><img alt="Gravatar sync" src="../images/gravatar-sync.jpg" /></p>
-<p>If you create a Gravatar account <em>after</em> your <em>Hosted</em> account, you can synchronize your Gravatar into <em>Hosted</em> by selecting your <em>Hosted</em> profile, and pressing the <code>Sync</code> button.</p>
 <h3 id="creating-a-card">Creating a card</h3>
 <p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
 <ul>
