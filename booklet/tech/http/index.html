@@ -423,8 +423,7 @@
                 <h2 id="http">HTTP</h2>
 <p>An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:</p>
 <ul>
-<li>There are no "friends". The device can publish only which means you cannot track other people.</li>
-<li>There is no support for <a href="../../features/card/">card</a>s.</li>
+<li>The device publishes location data. "friends" and their <a href="../../features/card/">card</a>s are a hack which is supported by the Recorder.</li>
 </ul>
 <p>For use with the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> the URL you specify must include parameters for <em>username</em> and <em>devicename</em> (<code>?u=user&amp;d=device</code>), alternatively using the <code>X-Limit-U</code> and <code>X-Limit-D</code> headers.</p>
 <p>The syntax for the URL is:</p>
@@ -435,7 +434,7 @@
 <p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same [JSON][json.md] payload formats.</p>
 <p>If the HTTP endpoint is reachable (i.e. it responds with <em>any</em> status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.</p>
 <p><a href="../../features/encrypt/">Encryption</a> are supported and can be used with HTTP endpoints.</p>
-<p>If the endpoint returns a status code 200 it will typically return an empty JSON payload object <code>{}</code>. The HTTP endpoint may, however, return a command to the OwnTracks device, in which case it must return a valid <code>_type: cmd</code> as described in <a href="../json/">JSON</a>.</p>
+<p>If the endpoint returns a status code 200 it will typically return an empty JSON payload array <code>[]</code>. The HTTP endpoint may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid <code>_type</code> as described in <a href="../json/">JSON</a>.</p>
 <p>The OwnTracks Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box.</p>
 <h3 id="php-example">PHP example</h3>
 <p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
@@ -474,7 +473,8 @@
         $stmt-&gt;close();
     }
 
-    print json_encode(new stdClass);    # empty object
+    $response = array();
+    print json_encode($response);
 ?&gt;
 </code></pre>
 
