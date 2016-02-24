@@ -436,30 +436,6 @@
 <p><a href="../../features/encrypt/">Encryption</a> are supported and can be used with HTTP endpoints.</p>
 <p>If the endpoint returns a status code 200 it will typically return an empty JSON payload array <code>[]</code>. The HTTP endpoint may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid <code>_type</code> as described in <a href="../json/">JSON</a>.</p>
 <p>The OwnTracks Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box.</p>
-<table>
-<thead>
-<tr>
-<th>Element</th>
-<th>A</th>
-<th>I</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="location.md">Location reporting</a></td>
-<td>Y</td>
-<td>Y</td>
-<td>The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog. The quick brown fox jumped over the lazy dog.</td>
-</tr>
-<tr>
-<td>Another feature</td>
-<td>Y</td>
-<td></td>
-<td>Lorem ipsum dolor</td>
-</tr>
-</tbody>
-</table>
 <h3 id="php-example">PHP example</h3>
 <p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
 <pre><code>mysql&gt; select * from locations;
