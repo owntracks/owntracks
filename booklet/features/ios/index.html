@@ -458,7 +458,7 @@ contacts data, which you should allow. (If you change your mind later, <em>Priva
 <p>A red, yellow rimmed tachometer indicating the velocity (speed) at the reported location starts at at the 6 o'clock position and works clockwise. It uses a logarithmic scale to show slow speeds
 as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the 12 o'clock posistion a speed of 100 km/h. 3 o'clock means 180 km/h.</p>
 <p>A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.</p>
-<p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the [[Friends]] list, as soon as a location update for Jane is seen by the app.</p>
+<p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the <a href="../friends/">Friends</a> list, as soon as a location update for Jane is seen by the app.</p>
 <p>In order to associate an MQTT topic with our friend (Jane, in this case), edit your addressbook entry on iOS for Jane and do either of the following:</p>
 <ul>
 <li>Create a new relationship (like 'Spouse') called <code>OwnTracks</code> (case insensitive), and add your friend's topic name to that (e.g. <code>owntracks/jane/loc</code>)</li>
@@ -486,7 +486,7 @@ monitors any iBeacon identified with UUID = CA..., with major and minor numbers 
 <h3 id="waypoints">Waypoints</h3>
 <p>All manually published locations can be edited (by tapping on the <code>(I)</code> to add
 a description. If the <em>Share</em> flag is on, this waypoint is published to the
-[[MQTT broker|MQTTbroker]] along with its location information. Setting a
+MQTT broker along with its location information. Setting a
 description helps you remember particular points of interest.</p>
 <p>If a description is entered and the share flag set, the location is published
 to the MQTT broker as a waypoint once. Waypoints shared by other users are
@@ -514,7 +514,7 @@ reports region with description 'myBeacon' when the iBeacon identified with UUID
 reports region with description 'myBeacons' when any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant is in proximity</li>
 </ul>
 <h3 id="remote-configuration">Remote configuration</h3>
-<p>You can help your friends customize their copy of OwnTracks with [[remote configuration|RemoteConfig]].</p>
+<p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
 <h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</h3>
 <p>Here's what happens:</p>
 <p>If the app goes into Background, the connection is disconnected because the app
