@@ -450,7 +450,7 @@ the other's device will receive it.</p>
 <h4 id="android">Android</h4>
 <p>The app subscribes to a topic branch <code>owntracks/+/+</code> on the broker per default
 (but this can be configured in advanced preferences) to receive locations of
-other people connected to the the same [[MQTT broker|MQTTbroker]] that publish
+other people connected to the the same MQTT broker that publish
 to the default topic of <code>mqttittude/$username/$devicename</code>.</p>
 <p>When the app receives a message published by a different user, it looks for a
 contact with an instant messenger (<code>IM</code>) entry of type "<code>OwnTracks</code>" (case insensitive)
@@ -464,31 +464,17 @@ contact's data must be on your device.</p>
 <p>Add an instant-messaging (<code>IM</code>) entry to the contact you want to associate with
 a particular MQTT topic name. The tag of the <code>IM</code> should be "<code>OwnTracks</code>" (case
 independent), and the value is the topic name.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-contact-address.png" /></p>
-<p>The <em>Locations</em> list will then show you your contact's name and photo:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-locations01.png" /></p>
 <h4 id="ios">iOS</h4>
 <p>The app "sees" a friend as soon as it receives a publish to the topic branch subscribed to, which by default is <code>owntracks/+/+</code>.</p>
 <p>Select the <em>Friends</em> button to see a list of friends:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-01.png" /></p>
 <p>Tapping on one of the friends, performs a reverse geo-coding to show address. Furthermore, a click on the little right-arrow shows the last location and
 all shared waypoints of that friend.</p>
 <h2 id="who-is-that">Who is that?</h2>
 <p>It's difficult to remember which MQTT topic belongs to which friend, so we can associate a topic with an image of the friend as contained in the iOS address book:</p>
-<p>Select an entry:</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-02.png" /></p>
-<p>Then click on the <em>bookmark</em> icon on top right. The Address book opens.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-09.png" /></p>
-<p>Select the entry you want to associate with the OwnTracks topic. In this
-example, I choose Kate Bell.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-04.png" /></p>
-<p>We're back in OwnTracks, and we see the picture from the addressbook.
-If you want to release the association, select the wastepaper basket icon in the address book screen. The display
+<p>Select an entrythen click on the <em>bookmark</em> icon on top right. The Address book opens.</p>
+<p>Select the entry you want to associate with the OwnTracks topic. If you want to release the association, select the wastepaper basket icon in the address book screen. The display
 changes back from the picture and name of the friend to the mqtt topic (e.g. "owntracks/kate/nexus4").</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-05.png" /></p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-06.png" /></p>
 <p>When you zoom the map out (or near to the friend's location), you see a small rendition of the icon directly on the map.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-07.png" /></p>
 <p>Voila!</p>
 <p>Note: this works only with contacts stored locally -- not with corporate address books associated with your iPhone.</p>
 <p>To support corporate address books (which usually cannot be updated) the ios
@@ -496,7 +482,6 @@ app Version &gt;=5.1 can be set to store the associations locally rather than in
 the address book. You find the respective switch in the expert mode settings.
 Switch it <code>off</code> (i.e. disabled) to keep associations between MQTT topics and 
 your contact within OwnTracks.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/friends/ios/ios-friends-08.png" /></p>
               
             </div>
           </div>

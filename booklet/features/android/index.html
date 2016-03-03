@@ -248,21 +248,7 @@
             
                 <li class="toctree-l3"><a href="#setup">Setup</a></li>
                 
-                    <li><a class="toctree-l4" href="#reporting">Reporting</a></li>
-                
-                    <li><a class="toctree-l4" href="#contacts">Contacts</a></li>
-                
-                    <li><a class="toctree-l4" href="#notifications">Notifications</a></li>
-                
-                    <li><a class="toctree-l4" href="#advanced">Advanced</a></li>
-                
                     <li><a class="toctree-l4" href="#the-map">The map</a></li>
-                
-                    <li><a class="toctree-l4" href="#beta">Beta</a></li>
-                
-                    <li><a class="toctree-l4" href="#keepalive">Keepalive</a></li>
-                
-                    <li><a class="toctree-l4" href="#development">Development</a></li>
                 
             
             </ul>
@@ -439,32 +425,10 @@
 <p>In the unlikely case that your broker does not require a username and password, you can enable the advanced connection preferences <code>Preferences/Advanced</code>. Afterwards an additional menu to select anonymous authentication appears in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things. </p>
 <p>Per default a [[TLS]] secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device. If you do not want to use TLS, you can enable the advanced connection preferences after which you can disable it in the connection preferences. 
 In recent Android, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and specify the absolute filesystem path to the broker certificate on your device. This will circumvent the Android TLS certificate management by using the certificate directly. </p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-prefs-conn.png" /></p>
-<h4 id="reporting">Reporting</h4>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-prefs02.png" /></p>
-<h4 id="contacts">Contacts</h4>
-<p>A single checkbox here which determines whether or not you wish to have
-location details shown [[for friends|Friends]].</p>
-<h4 id="notifications">Notifications</h4>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-prefs04.png" /></p>
-<p>OwnTracks can optionally show the last reported location in the ticker area,
-from which you can also forcefully publish your current location.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-ticker.png" /></p>
-<h4 id="advanced">Advanced</h4>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-prefs05.png" /></p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-prefs-pubtopic.png" /></p>
 <h3 id="the-map">The map</h3>
 <p>The app's main screen is the map, which displays your location on it as well as
 a reverse geo-coded location if possible.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-mainmap.png" /></p>
-<p>You can zoom in and out of the map, and see [[your friends|Friends]] with their photos.</p>
-<p><img alt="" src="https://raw.github.com/wiki/owntracks/owntracks/assets/android/b-map-all.png" /></p>
-<h3 id="beta">Beta</h3>
-<p>To receive beta versions and help us with testing new features of the app, you have to join our <a href="https://plus.google.com/u/0/communities/102489112826520993343">Google+ Community</a>. Afterwards you can register as a  <a href="https://play.google.com/apps/testing/st.alr.mqttitude">beta tester</a>. After a short time, you will receive the current beta version as a regular update via the Google Play Store. If, for some reason you cannot/do not want to our Google+ community, you can grab the APK by selecting the latest Android tag of our repository from <a href="https://github.com/owntracks/android/tags">https://github.com/owntracks/android/tags</a> and installing the APK from the apps/android/apk/mqttitude.apk. </p>
-<h3 id="keepalive">Keepalive</h3>
-<p>Due to limitations of the Java MQTT library the Android app cannot send native ping messages. As a workaround a one byte long normal message is published to <code>$SYS/keepalive</code> periodically to keep the connection alive. It is important to ensure that this topic is writable by all Android devices.</p>
-<h3 id="development">Development</h3>
-<p>To contribute to the development, fork the project and clone it to your workstation. Continue to import the project into Eclipse/ADT and opt to open all sub-projects. If this does not automatically import the Google Play Services project into your workspace, import it manually as an extra project. Afterwards, check if the play services are references as project in <code>Project Properties &gt; Android</code>. Once imported, create a feature branch, write your changes and commit them to your feature branch. These changes can be pushed to your fork from which you can submit a pull-request to get your changes included in the official code. </p>
+<p>You can zoom in and out of the map, and see your friends with their photos.</p>
               
             </div>
           </div>
