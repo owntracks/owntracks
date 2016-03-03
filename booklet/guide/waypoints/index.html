@@ -430,9 +430,7 @@ contain the elements:</p>
 <p>If you set up a shared waypoint, the app publishes that waypoint (without the retain flag,
 irrespective of your general preference) to the base topic with <code>/waypoints</code>
 tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the
-payload for <code>_type=waypoint</code> as specified in the [[JSON page|JSON]]. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
-<p>For example, If Jane configures a waypoint on her iPhone</p>
-<p>the app will publish the following payload</p>
+payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
 <p>When you set up a shared waypoint (with a <code>desc</code>ription and a <code>rad</code>ius), this
 waypoint is published to the broker with the current time stamp. If you update
 the waypoint definition on the device at a later stage, the waypoint is
