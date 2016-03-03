@@ -421,17 +421,13 @@
             <div class="section">
               
                 <h2 id="http">HTTP</h2>
-<p>An optional HTTP mode is being implemented. This mode, which is like Private, uses HTTP POST requests to a configurable HTTP endpoint which can bei either HTTP or HTTPS. In this mode:</p>
-<ul>
-<li>The device publishes location data.</li>
-<li>Support for Friends and transition events is available only if implemented in the HTTP endpoint you use.</li>
-</ul>
+<p>An optional HTTP mode is being implemented with which the OwnTracks apps use a privately configured HTTP endpoint (a.k.a. a Web server) to which they POST requests over HTTP instead of publishing to MQTT. In this mode all <a href="../json/">JSON</a> payloads reported by the apps are transmitted via HTTP to the endpoint. In particular and most importantly, the apps publish their location data.</p>
 <p>The URL you enter in the setting for HTTP mode has the following syntax:</p>
 <pre><code>http[s]://[user[:password]@]host[:port]/path
 </code></pre>
 
 <p>Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (<code>https://</code> scheme).</p>
-<p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same <a href="../json/">JSON</a> payload formats.</p>
+<p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same <a href="../json/">JSON</a> payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish.</p>
 <p>If the HTTP endpoint is reachable (i.e. it responds with <em>any</em> status code -- even 5xx), the payload is considered POSTed. In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.</p>
 <p>The <a href="../../features/encrypt/">encryption</a> feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.</p>
 <p>If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array <code>[]</code>. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid <code>_type</code> as described in <a href="../json/">JSON</a>. Support for the following <code>_type</code> is implemented:</p>
@@ -484,6 +480,7 @@ When using the Recorder, the URL you specify in the app's configuration <em>must
 +---------------------+------+-----------+----------+
 </code></pre>
 
+<p>For the sake of clarity this example uses a database table with a MySQL timestamp column which is automatically set upon INSERT; keep in mind that the real location event posted by the OwnTracks apps has a <code>tst</code> timestamp when the event actually occurred.</p>
 <pre><code class="php">&lt;?php
     # Obtain the JSON payload from an OwnTracks app POSTed via HTTP
     # and insert into database table.
@@ -511,12 +508,14 @@ When using the Recorder, the URL you specify in the app's configuration <em>must
     }
 
     $response = array();
+    # optionally add objects to return to the app (e.g.
+    # friends or cards)
     print json_encode($response);
 ?&gt;
 </code></pre>
 
 <p>Assuming the Web server hosting this example is called <code>example.com</code>, and assuming the above script is in Jane's home directory's <code>public_html</code> saved as <code>loc.php</code>, the URL you configure in the OwnTracks app would be <code>http://example.com/~jane/loc.php</code>. We <em>urge</em> you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of <code>https://user:password@example.com/~jane/loc.php</code>.</p>
-<p>There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we urge you to <a href="../json/">study the API documentation</a>.</p>
+<p>There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you <a href="../json/">study the API documentation</a>.</p>
               
             </div>
           </div>

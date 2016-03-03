@@ -422,9 +422,10 @@
 <p>OwnTracks and its associated utilities have been designed foremost with data privacy in mind. We think your location or that of your loved ones is something only you respectively they should know. While we cannot help you (or ourselves for that matter) protect against NSA snooping, we do our best to protect your data from other people's eyes.</p>
 <ul>
 <li>If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> when connecting to your broker.</li>
-<li>The apps support authenticating to the broker with <em>username</em> and <em>password</em> which can be as strong (or as convoluted) as your broker supports.</li>
+<li>The apps support authenticating to the MQTT broker with <em>username</em> and <em>password</em> which can be as strong (or as convoluted) as your broker supports.</li>
+<li>In HTTP mode, the apps provide support for HTTP basic authentication with TLS.</li>
 <li>Credentials you configure (i.e. <em>username</em> and <em>password</em>) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.</li>
-<li>The apps support using <a href="../tlscert/">TLS client certificates</a> for authentication to the broker.</li>
+<li>The apps support using <a href="../tlscert/">TLS client certificates</a> for authentication to the MQTT broker.</li>
 <li>The apps support <a href="../encrypt/">payload encryption</a> for privacy.</li>
 </ul>
               

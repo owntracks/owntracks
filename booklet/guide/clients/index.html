@@ -131,9 +131,6 @@
                 <li class="toctree-l3"><a href="#o2s">o2s</a></li>
                 
             
-                <li class="toctree-l3"><a href="#pista">Pista</a></li>
-                
-            
                 <li class="toctree-l3"><a href="#mqttwarn">mqttwarn</a></li>
                 
             
@@ -459,6 +456,7 @@
 <h2 id="recorder">Recorder</h2>
 <p>We recommend our very own <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> because it's lightweight, relatively simple to set up, and because it offers a lot of features. It stores location data published by the apps by subscribing to an MQTT broker, and it enables you to access that data in a variety of formats. The best part is: it doesn't require a heavy external database of any kind.</p>
 <p><img alt="Recorder" src="../images/demo-geojson-linestring.png" /></p>
+<p>And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.</p>
 <p>Read <a href="../../clients/recorder/">more about the Recorder</a>.</p>
 <h2 id="o2s">o2s</h2>
 <p>One of the clients we provide as part of the Open Source OwnTracks project is called <em>o2s</em>; the strange name stands for <em>OwnTracks to Storage</em>, and you can use this connected to your <a href="../broker/">MQTT broker</a> in <a href="../scenarios/">Private mode</a>, if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our <em>Recorder</em> (see above).)</p>
@@ -480,13 +478,12 @@
 </code></pre>
 
 <p>So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter <em>Pista</em>.</p>
-<h2 id="pista">Pista</h2>
-<p><em>Pista</em> is a word which signifies <em>track</em> in Spanish and in Italian. It is, unfortunately, a very difficult bit of software to get installed, but we'll try to help you. <em>Pista</em> contains a whole kitchen-sink of features, most of which you won't need to use with our OwnTracks apps. (These features were built for the OwnTracks Greenwich devices.)</p>
 <h2 id="mqttwarn">mqttwarn</h2>
 <p>You'll recall (we hope) the discussion on <a href="../mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
 <p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>
 <h2 id="openhab">openHAB</h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
+<p><img alt="openHAB" src="../images/openhab.png" /></p>
 <p>This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal <a href="../broker/">MQTT broker</a> where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in <a href="../scenarios/"><em>private mode</em></a>, all your data is 'yours' and yours alone - there is no cloud service collecting, storing and potentially mining your data. </p>
 <p>Read more about <a href="https://github.com/openhab/openhab/wiki/Mqttitude-Binding">openHAB and OwnTracks</a>.</p>
 <h2 id="home-assistant">Home Assistant</h2>

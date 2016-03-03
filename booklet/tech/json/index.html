@@ -527,7 +527,7 @@
 </tbody>
 </table>
 <h2 id="topics">Topics</h2>
-<p>Apps publish to:</p>
+<p>In MQTT mode the apps publish to:</p>
 <ul>
 <li><code>owntracks/user/device</code> with <code>_type=location</code> for location updates, and with <code>_type=lwt</code></li>
 <li><code>owntracks/user/device/cmd</code> with <code>_type=cmd</code>      for remote commands</li>
@@ -547,6 +547,7 @@
 <li><code>owntracks/user/device/beacon</code> for beacon ranging</li>
 <li><code>owntracks/user/device/dump</code> for config dumps</li>
 </ul>
+<p>In HTTP mode the apps POST their data to a single endpoint you configure. That endpoint needs to distinguish which type of payload it is receiving.</p>
 <h2 id="_typelocation"><code>_type=location</code></h2>
 <p>This location object describes the location of the device that published it. <strong>Heads up: as from Android version 0.5.11 and from iOS version 8.0 numeric types are real numeric (<code>float</code>, <code>int</code>, boolean <code>true</code>/<code>false</code>) and no longer strings.</strong></p>
 <pre><code class="json">{
@@ -642,7 +643,7 @@
 
 <p>The timestamp is the Unix epoch time at which the app first connected (and <em>not</em> the time at which the LWT was published).</p>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
-<p>Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint to your broker (if the waypoint is marked <code>shared</code>). OwnTracks also monitors these waypoints and will publish a transition event (<code>_type: transition</code>) when entering or leaving the waypoint. Note, that a waypoint may also define a <a href="../../features/beacons/">Beacon</a>.</p>
+<p>Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint (if the waypoint is marked <code>shared</code>). OwnTracks also monitors these waypoints and will publish a transition event (<code>_type: transition</code>) when entering or leaving the region. Note, that a waypoint may also define a <a href="../../features/beacons/">Beacon</a>.</p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     &quot;desc&quot;   : &quot;Free text entered on device&quot;,
@@ -661,7 +662,7 @@
 </ul>
 <p>Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</p>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
-<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic. In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
+<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic using MQTT. (In HTTP mode the payload is published to the configured endpoint.) In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;transition&quot;,
   &quot;wtst&quot;: 1425042603,           // time of waypoint creation
@@ -809,7 +810,7 @@
 <li>Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a <code>locked: true</code> to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.</li>
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
-<p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages.</p>
+<p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.</p>
 <pre><code class="json">{
         &quot;_type&quot;:&quot;beacon&quot;,
         &quot;uuid&quot;:&quot;CA271EAE-5FA8-4E80-8F08-2A302A95A959&quot;,
