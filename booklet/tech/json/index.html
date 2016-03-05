@@ -652,13 +652,17 @@
     &quot;rad&quot;    : xxx,
     &quot;tst&quot;    : nnnnn,
     &quot;shared&quot; : true,
-    &quot;tid&quot;    : &quot;XX&quot;
+    &quot;tid&quot;    : &quot;XX&quot;,
+    &quot;uuid&quot;   : &quot;YYYYYYYYYYYYYYYYY&quot;,
+    &quot;major&quot;  : 17,
+    &quot;minor&quot;  : 1
 }
 </code></pre>
 
 <ul>
 <li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
 <li><code>tst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.) It is copied into the <code>wtst</code> of the transition event (<code>type: transition</code>) when an event pertaining to this waypoint fires.</li>
+<li>In iOS version &gt;= 9.1.0 and in Android version &gt;= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
 </ul>
 <p>Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</p>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
