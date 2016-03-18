@@ -224,6 +224,9 @@
                 <li class="toctree-l3"><a href="#notes">Notes</a></li>
                 
             
+                <li class="toctree-l3"><a href="#android">Android</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#example-office">Example: office</a></li>
                 
             
@@ -428,7 +431,6 @@
             <div class="section">
               
                 <h2 id="ibeacons">iBeacons</h2>
-<p>Note: currently iOS only.</p>
 <p>If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (<code>0</code>) or a negative value, and add the beacon UUID, major, and minor numbers.</p>
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
@@ -454,6 +456,12 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
 <p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
 <p>If you use a <code>-</code> as the first character in your Waypoint description e.g. <code>-MyBeacon</code>, the app will ignore short disruptions of the connection to the beacon (hold down).</p>
 <p>Setting the radius to a negative value (e.g. <code>-1</code>), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
+<h2 id="android">Android</h2>
+<p>As from version 0.6.4 our Android app also supports beacons using the <em>altbeacon</em> library. From their issues:</p>
+<blockquote>
+<p>the issue is that not 100% of beacon transmissions get received by mobile devices. They get lost due to radio noise and/or low signal. This is one of the many reasons that the best practice is to have beacons advertise as many times per second as possible. If no beacons are detected in the sampling interval, you will get exit notifications followed quickly by entry notifications</p>
+<p>The phone has a WiFi / Bluetooth interference problem. Some phones like the Moto G, the Moto X and the Nexus 4 don't scan for bluetooth devices properly when WiFi is enabled. This can cause intermittent cases where no detections can be made. If you have one of these devices, disable WiFi.</p>
+</blockquote>
 <h2 id="example-office">Example: office</h2>
 <p>Upon arriving at our Frankfurt location, I see from the monitor panel at the reception that Jane is in the office, so I'll pop in to ask a question.</p>
 <p><img alt="office panel" src="../images/ot-beacons-office-panel.png" /></p>
