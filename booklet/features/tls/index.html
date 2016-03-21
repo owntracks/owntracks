@@ -449,7 +449,6 @@ It's so public, that it's perfectly OK to send yourself the file by, say, e-mail
 <p>We'll first show you how to set up TLS on your Mosquitto <a href="../../guide/broker/">broker</a>.
 The basic configuration for TLS in <a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> is:</p>
 <pre><code>listener 8883
-tls_version tlsv1
 cafile .............
 certfile .............
 keyfile .............
@@ -458,7 +457,6 @@ keyfile .............
 <p>(see also: <a href="http://mosquitto.org/man/mosquitto-tls-7.html">mosquitto-tls</a>.)</p>
 <ul>
 <li><code>8883</code> is the standard MQTT port for TLS connections. Change it if you need to, but make sure your OwnTracks app is configured to use the same port.</li>
-<li><code>tls_version</code> specifies TLSv1 which is currently a requirement for the OwnTracks apps, as their APIs support that TLS version.</li>
 <li><code>cafile</code> is the path to the certificate authority file</li>
 <li><code>certfile</code> points to your server's certificate in PEM format</li>
 <li><code>keyfile</code> points to your server's secret key file (which you <em>never</em> divulge!)</li>
@@ -548,7 +546,6 @@ cPZ5pT/WCvGuIOgNdy1VyWJrrlAjeQlbK+GDcNc=
 <p><a href="http://mosquitto.org">Mosquitto</a> will need the certificate chain for <em>startssl.com</em>, which you can find as <a href="http://www.startssl.com/certs/ca-bundle.crt">ca-bundle.crt</a> at <a href="http://www.startssl.com/certs/">www.startssl.com/certs/</a>.</p>
 <p>As far as TLS is concerned, you'll therefore set up your <code>mosquitto.conf</code> as follows, specifying corrrect paths to the files.</p>
 <pre><code>listener 8883
-tls_version tlsv1
 cafile ca-bundle.crt
 certfile server.crt
 keyfile server.key
