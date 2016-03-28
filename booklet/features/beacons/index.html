@@ -432,7 +432,7 @@
               
                 <h2 id="ibeacons">iBeacons</h2>
 <p>If you want to monitor an iBeacon region rather than a circular region set the
-radius to zero (<code>0</code>) or a negative value, and add the beacon UUID, major, and minor numbers.</p>
+radius to zero (<code>0</code>) or a negative value (iOS only), and add the beacon UUID, major, and minor numbers.</p>
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
 <p>Set the UUID of the beacon, and you can optionally specify the major and/or
 minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
@@ -455,7 +455,7 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
 <h2 id="notes">Notes</h2>
 <p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
 <p>If you use a <code>-</code> as the first character in your Waypoint description e.g. <code>-MyBeacon</code>, the app will ignore short disruptions of the connection to the beacon (hold down).</p>
-<p>Setting the radius to a negative value (e.g. <code>-1</code>), the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
+<p>Setting the radius to a negative value (e.g. <code>-1</code>) on iOS, the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
 <h2 id="android">Android</h2>
 <p>As from version 0.6.4 our Android app also supports beacons using the <em>altbeacon</em> library. From their issues:</p>
 <blockquote>
