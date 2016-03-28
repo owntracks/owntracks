@@ -736,6 +736,7 @@
     &quot;remoteConfiguration&quot; : false,
     &quot;usepolicy&quot; : false,
     &quot;policymode&quot; : 0,
+    &quot;beaconMode&quot; : 0,
     &quot;allowinvalidcerts&quot; : false,
     &quot;validatedomainname&quot; : false,
     &quot;validatecertificatechain&quot; : false,
@@ -808,6 +809,7 @@
 <li><code>servercer</code>                   iOS only, blank separated list of certificate file names in DER format, or empty</li>
 <li><code>clientpkcs</code>                  iOS only, name of the client pkcs12 file,or empty </li>
 <li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
+<li><code>beaconMode</code>                  Android only. <code>0</code> = normal Bluetooth mode that enables scanning when regions with UUID are defined, <code>1</code> = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android &lt; 6.x, <code>2</code> = hard disable any Bluetooth functions even if regions with UUID are defined</li>
 </ul>
 <h4 id="notes">Notes</h4>
 <ul>
