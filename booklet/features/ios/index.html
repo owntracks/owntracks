@@ -265,8 +265,6 @@
                 
                     <li><a class="toctree-l4" href="#region-monitoring-and-waypoints">Region Monitoring and Waypoints</a></li>
                 
-                    <li><a class="toctree-l4" href="#waypoints">Waypoints</a></li>
-                
                     <li><a class="toctree-l4" href="#region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</a></li>
                 
                     <li><a class="toctree-l4" href="#region-monitoring-with-ibeacons">Region Monitoring with iBeacons</a></li>
@@ -470,8 +468,7 @@ The entry will be marked with a relationship to the current friend's topic name.
 <h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints</h3>
 <p>For all manually published locations, a description, a region radius and a share flag can be edited.</p>
 <p>Setting the description of a location helps you to remember places.</p>
-<p>If a description is entered and the share flag set, the location is published to the MQTT broker as a <code>waypoint</code> once.
-Waypoints shared by other users are displayed on the map and are visible in the Friends/Locations... table.</p>
+<p>If a description is entered and the share flag set, the location is published to the MQTT broker as a <code>waypoint</code> once.</p>
 <p>If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. A region may be 'waypoint'.
 The regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns red-ish.</p>
 <p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
@@ -483,14 +480,7 @@ monitors any iBeacon identified with UUID = CA..., with major and minor numbers 
 <em> Keep a private note ("Parked Car here").
 </em> Use iBeacons to accurately report enter/leave events for your home
 * Use iBeacons to publish enter/leave events for individual rooms/floors in your home</p>
-<h3 id="waypoints">Waypoints</h3>
-<p>All manually published locations can be edited (by tapping on the <code>(I)</code> to add
-a description. If the <em>Share</em> flag is on, this waypoint is published to the
-MQTT broker along with its location information. Setting a
-description helps you remember particular points of interest.</p>
-<p>If a description is entered and the share flag set, the location is published
-to the MQTT broker as a waypoint once. Waypoints shared by other users are
-displayed on the map and are visible in the <em>Friends/Locations</em> table.</p>
+<p>See also <a href="../waypoints/">Waypoints</a>.</p>
 <h3 id="region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</h3>
 <p>If the waypoint description is non-empty and a radius &gt; 0 (meters) is set, the
 app starts monitoring the circular region around the specified coordinates. 
