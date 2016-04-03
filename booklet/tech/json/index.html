@@ -517,7 +517,7 @@
 <tr>
 <td><code>waypoints</code></td>
 <td>Y</td>
-<td></td>
+<td>Y</td>
 </tr>
 <tr>
 <td><code>encrypted</code></td>
@@ -590,7 +590,7 @@
 <li>"a" or missing <code>t</code> indicates automatic location update</li>
 </ul>
 </li>
-<li><code>tid</code> is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
+<li><code>tid</code> is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
 <li><code>tst</code> is a UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the event as it occurs which may be different from the time it is published (integer, seconds).</li>
 <li><code>vacc</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
@@ -758,19 +758,18 @@
 
 <ul>
 <li><code>mode</code>                    0 == <em>Private</em> mode, 2 == <em>Public</em> mode, 3 == <em>HTTP</em> mode</li>
-<li><code>locked</code>                  if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via <code>.otrc</code> import.</li>
+<li><code>locked</code>                  iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via <code>.otrc</code> import.</li>
 <li><code>subTopic</code>                                    is what the apps subscribe to</li>
 <li><code>pubTopicBase</code>                                is the prefix under which the apps will publish</li>
 <li><code>username</code></li>
 <li><code>password</code></li>
 <li><code>deviceId</code></li>
-<li><code>tid</code>                      is a configurable tracker-ID which is used by the iOS auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
+<li><code>tid</code>                      is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
 <li><code>willTopic</code></li>
 <li><code>subQos</code></li>
 <li><code>pubQos</code></li>
 <li><code>willQos</code></li>
 <li><code>pubRetain</code></li>
-<li><code>tlsCrtPath</code>                  not in iOS</li>
 <li><code>cleanSession</code></li>
 <li><code>willRetain</code></li>
 <li><code>locatorDisplacement</code>             in meters</li>
@@ -781,20 +780,15 @@
 <li><code>ranging</code>                 iOS only, set in UI</li>
 <li><code>positions</code>                   iOS only, number of positions to keep and display</li>
 <li><code>autostartOnBoot</code>             Android only</li>
-<li><code>pubIncludeBattery</code>               Android only, in iOS alway on</li>
 <li><code>sub</code>                     Android only, subscription enabled for contacts, in iOS always subscribed</li>
 <li><code>pub</code>                     Android only, auto publish, in iOS controlled by <code>monitoring</code></li>
 <li><code>updateAddressBook</code></li>
 <li><code>notification</code>                Android only, show notifications</li>
 <li><code>notificationLocation</code>            Android only, show last reported location in notification, off in iOS</li>
 <li><code>notificationGeocoder</code>            Android only, resolve location in notification to address, in iOS only resolved when in show details</li>
-<li><code>notificationTickerOnPublish</code>         Android only, show a ticker on successful publishes, always off in iOS", </li>
-<li><code>notificationTickerOnGeofenceTransition</code>  Android only, show a ticker when the devices enters or leaves a geofence, always on in iOS", </li>
-<li><code>remoteCommandReportLocation</code>         Android only, respond to reportLocation remote command</li>
-<li><code>remoteCommandDump</code>               Android only, respond to dump remote command</li>
-<li><code>cmd</code>                     iOS only, respond to remote commands</li>
+<li><code>cmd</code>                     respond to remote commands</li>
 <li><code>allowRemoteLocation</code>             iOS only, respond to remote location request even if monitoring mode is set to manual</li>
-<li><code>extendedData</code>                iOS only, add altitude, vertical accuracy, velocity and course over ground to published data</li>
+<li><code>extendedData</code>                iOS, add altitude, vertical accuracy, velocity and course over ground to published data. Android, include battery in location publishes</li>
 <li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
 <li><code>usepolicy</code>                   iOS only, use user defined security policy</li>
 <li><code>allowinvalidcerts</code>               iOS only, allow self signed certificates in user defined security policy</li>
@@ -810,6 +804,7 @@
 <li><code>clientpkcs</code>                  iOS only, name of the client pkcs12 file,or empty </li>
 <li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
 <li><code>beaconMode</code>                  Android only. <code>0</code> = normal Bluetooth mode that enables scanning when regions with UUID are defined, <code>1</code> = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android &lt; 6.x, <code>2</code> = hard disable any Bluetooth functions even if regions with UUID are defined</li>
+<li><code>ws</code>                      Android only, connect using WebSocket protocol  </li>
 </ul>
 <h4 id="notes">Notes</h4>
 <ul>
@@ -894,8 +889,7 @@
 
 <p>The <code>name</code> element contains a name which is displayed by the apps to identify a user, and <code>face</code> contains the base64-encoded PNG image (40x40 px) which is displayed instead of a <a href="../../features/tid/">TID</a>.</p>
 <h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
-<p>(currently iOS only)
-The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with <code>.otrw</code> extension. The list of waypoints looks like this.</p>
+<p>The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with <code>.otrw</code> extension. The list of waypoints looks like this.</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;waypoints&quot;,
     &quot;_creator&quot;: &quot;OTwpDraw&quot;,
