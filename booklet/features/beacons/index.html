@@ -436,7 +436,8 @@ radius to zero (<code>0</code>) or a negative value (iOS only), and add the beac
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
 <p>Set the UUID of the beacon, and you can optionally specify the major and/or
 minor identifier numbers of the beacons as a decimal number ranging from 1 to 65535 if you desire finer control over which beacons OwnTracks will monitor.
-Setting major or minor number to zero (<code>0</code>) means no major or minor number is specified.</p>
+Setting major or minor number to zero (<code>0</code>) means no major or minor number is specified.
+Note that you should probably not use major or minor number <code>0</code>, because the meaning of 0 is "any".</p>
 <p>If the UUID is valid, iBeacon monitoring will start.</p>
 <p>Examples:</p>
 <pre><code>Name  myBeacons
