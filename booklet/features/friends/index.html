@@ -449,21 +449,10 @@ the other's device will receive it.</p>
 <p>Depending on the device you're using, the procedure differs slightly.</p>
 <h4 id="android">Android</h4>
 <p>The app subscribes to a topic branch <code>owntracks/+/+</code> on the broker per default
-(but this can be configured in advanced preferences) to receive locations of
+to receive locations of
 other people connected to the the same MQTT broker that publish
-to the default topic of <code>mqttittude/$username/$devicename</code>.</p>
-<p>When the app receives a message published by a different user, it looks for a
-contact with an instant messenger (<code>IM</code>) entry of type "<code>OwnTracks</code>" (case insensitive)
-whose entry value is equal to the topic of the received location
-publish. If a contact is found, the contact is shown with its profile picture
-and name instead of the topic in the list and on the map.</p>
-<p>Note that if you add an IM entry to a contact via, say, Google, you have to
-sync the contact to your phone (phone preferences/accounts/google/sync untick
-and tick contacts, wait a few seconds) and restart the app. In other words, the
-contact's data must be on your device.</p>
-<p>Add an instant-messaging (<code>IM</code>) entry to the contact you want to associate with
-a particular MQTT topic name. The tag of the <code>IM</code> should be "<code>OwnTracks</code>" (case
-independent), and the value is the topic name.</p>
+to the default topic of <code>owntracks/$username/$devicename</code>.</p>
+<p>It then reads <a href="../card/">CARD</a>s to find friends' names and faces.</p>
 <h4 id="ios">iOS</h4>
 <p>The app "sees" a friend as soon as it receives a publish to the topic branch subscribed to, which by default is <code>owntracks/+/+</code>.</p>
 <p>Select the <em>Friends</em> button to see a list of friends:</p>
