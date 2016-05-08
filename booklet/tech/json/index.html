@@ -574,7 +574,7 @@
 <li><code>acc</code> is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>batt</code> is the device's battery level in percent (integer)</li>
-<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.. iOS adds this element only if it &gt;= 0.</li>
+<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>, integer). iOS adds this element only if it is &gt;= 0.</li>
 <li><code>desc</code> is the description of a <a href="../../features/waypoints/">waypoint</a></li>
 <li><code>event</code> is one of <code>"enter"</code> or <code>"leave"</code> and tells if the app is entering or leaving a geofence </li>
 <li><code>lat</code> is latitude as decimal, represented as a floating point number</li>
@@ -629,12 +629,12 @@
 <li><code>T</code> (time) for location published because of time passed (<code>maxInterval</code>); device is stationary</li>
 <li><code>k</code> When transitioning from <em>move</em> to <em>stationary</em> an additional publish is sent marked with trigger <code>k</code> (park)</li>
 <li><code>v</code> When transitioning from <em>stationary</em> to <em>move</em> additional publish is sent marked with trigger <code>v</code> (mo-v-e)</li>
-<li><code>l</code> When device looses GPS fix, an additional publish is sent to transmit the last known position</li>
+<li><code>l</code> When device loses GPS fix, an additional publish is sent to transmit the last known position</li>
 <li><code>L</code> last position before gracefull shutdown</li>
 </ul>
 <p>(The device can be configured to produce or not produce fields marked as <em>optional</em>.)</p>
 <h2 id="_typelwt"><code>_type=lwt</code></h2>
-<p>A <em>last will and testament</em> is published automatically by the MQTT broker when it looses contact with the app. This typically looks like this:</p>
+<p>A <em>last will and testament</em> is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:</p>
 <pre><code class="json">{
     &quot;_type&quot;:&quot;lwt&quot;,
     &quot;tst&quot;: 1380738247
