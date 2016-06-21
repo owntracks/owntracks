@@ -464,8 +464,10 @@ with a passphrase you specify. This passphrase we will later require in the app.
 <p>You now send the PKCS#12 file as attachment to the device, e.g. by e-mail. Note that for iOS, the file must have a <code>.otrp</code> extension so that it can be opened in OwnTracks.
 You also send the CA certificate to the device and install it there, as discussed in <a href="../features/tld.md">TLS</a></p>
 <h3 id="android">Android</h3>
-<p>Save the file
-configure settings</p>
+<ul>
+<li>Save the file to the file system</li>
+<li>Configure OwnTracks settings for the location of the PKCS#12 file and specify its passphrase.</li>
+</ul>
 <h3 id="ios">iOS</h3>
 <p>We recommend you proceed as follows:</p>
 <ol>
@@ -475,7 +477,7 @@ configure settings</p>
 <li>Leave <em>Use Custom Security Policy</em> disabled.</li>
 <li>Verify the connection to your broker.</li>
 </ol>
-<p>If need be, you can adjust a great number of parameters regarding how TLS connections will be verified: there are a number of settings available to fine-tune TLS connections between the app and the broker. The button <em>Use Custom Security Policy</em> can be enabled to do so.</p>
+<p>If need be, you can adjust a great number of parameters regarding how TLS connections will be verified: there are a number of settings available to fine-tune TLS connections between the app and the broker. The button <em>Use Custom Security Policy</em> can be enabled to do so. This switch allows you to control your TLS settings more granularly. If not switched on, it uses the default iOS settings and uses the iOS keychain for certificate validation only.</p>
 <ul>
 <li>Mode<ul>
 <li>None; do not use pinned certificates to validate servers</li>
@@ -492,6 +494,7 @@ configure settings</p>
 <li>Allow untrusted Certificates should be disabled if possible. If the app doesn't have the CA certificate in its keychain, you'll have to allow untrusted certificates.</li>
 <li>Validate Domain Name; whether or not to validate the domain name in the certificate's <code>CN</code> field.</li>
 </ul>
+<p>Client certificates are independent of the custom security policy settings.</p>
 <p>If you wish to use certificate pinning, you must provide a DER-encoded file with an <code>.otre</code> extension to the device containing the pinned certificate.</p>
 <pre><code class="bash">openssl x509 \
    -in ca.crt \
