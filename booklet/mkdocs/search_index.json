@@ -501,6 +501,16 @@
             "title": "Pedometer"
         }, 
         {
+            "location": "/features/featured/", 
+            "text": "Featured\n\n\nThe iOS app has a new tab (hidden by default) which is shown when it receives a particular MQTT message of type \ncmd\n:\n\n\n{\naction\n: \naction\n, \ncontent\n: \nhello there!\n, \n_type\n: \ncmd\n}\n\n\n\n\nYou can use \nurl\n instead of \ncontent\n in the payload, in which case the tab opens with the appropriate URL loaded.\n\n\n{\naction\n: \naction\n, \nurl\n: \nhttp://example.com\n, \n_type\n: \ncmd\n}\n\n\n\n\nThe tab pops up silently, i.e. without notification, and selecting the tab displays it.\n\n\nThe open tab silently disappears if content and url are omitted.\n\n\nSee also:\n\n\n\n\nSwitching lights with OwnTracks, iBeacons, and openHAB", 
+            "title": "Featured"
+        }, 
+        {
+            "location": "/features/featured/#featured", 
+            "text": "The iOS app has a new tab (hidden by default) which is shown when it receives a particular MQTT message of type  cmd :  { action :  action ,  content :  hello there! ,  _type :  cmd }  You can use  url  instead of  content  in the payload, in which case the tab opens with the appropriate URL loaded.  { action :  action ,  url :  http://example.com ,  _type :  cmd }  The tab pops up silently, i.e. without notification, and selecting the tab displays it.  The open tab silently disappears if content and url are omitted.  See also:   Switching lights with OwnTracks, iBeacons, and openHAB", 
+            "title": "Featured"
+        }, 
+        {
             "location": "/features/settings/", 
             "text": "Settings\n\n\nLocation tracking isn't easy, and people's requirements differ. You may be happy with one location report when your device moves a few kilometers, whereas the next person prefers seeing a minute-by-minute report. As described in \nthe introduction\n OwnTracks relies on the device's operating system APIs for this information. What our apps do is to tell the operating system that they're willing to get more or fewer updates if possible. For configuring this, as well as the connection parameters to your MQTT broker and sundry options, we have quite a large number of settings.\n\n\niOS \n Android\n\n\nUser\n\n\nDevice\n\n\nSubscribe topic\n\n\nPublish topic\n\n\nTID\n\n\niOS only\n\n\n\n\nDepending on the \nmode\n you're configuring, iOS will show you all or fewer possible settings:\n\n\n\n\nIn \nPublic mode\n you can configure the \nTrackerID\n only.\n\n\n\n\nAndroid only", 
             "title": "Settings"
