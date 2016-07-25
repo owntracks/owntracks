@@ -430,7 +430,7 @@
             <div class="section">
               
                 <h2 id="recorder">Recorder</h2>
-<p>The <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require external an external database.</p>
+<p>The <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require an external database.</p>
 <h3 id="docker">Docker</h3>
 <p>We have an <a href="https://hub.docker.com/r/owntracks/recorderd/">experimental Docker image</a> which you can use to launch the Recorder and its associated <a href="http://mosquitto.org">Mosquitto</a> broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. </p>
 <p><img alt="architecture" src="../owntracks-docker-host.png" /></p>
