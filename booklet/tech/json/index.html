@@ -764,7 +764,7 @@
 </code></pre>
 
 <ul>
-<li><code>mode</code>                    0 == <em>Private</em> mode, 2 == <em>Public</em> mode, 3 == <em>HTTP</em> mode</li>
+<li><code>mode</code>                    0 == <em>Private</em> mode, 2 == <em>Public</em> mode, 3 == <em>HTTP</em> mode, 4 == <em>Watson-Quickstart</em> mode, 5 == <em>Watson-Registered</em> mode</li>
 <li><code>locked</code>                  iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via <code>.otrc</code> import.</li>
 <li><code>subTopic</code>                                    is what the apps subscribe to</li>
 <li><code>pubTopicBase</code>                                is the prefix under which the apps will publish</li>
@@ -772,6 +772,12 @@
 <li><code>password</code></li>
 <li><code>deviceId</code></li>
 <li><code>tid</code>                      is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
+<li><code>url</code>                     url to POST to in <em>HTTP</em> mode</li>
+<li><code>quickstartId</code>                device id in <em>Watson-Quickstart</em> mode</li>
+<li><code>watsonOrganization</code>              organization in <em>Watson-Registered</em> mode</li>
+<li><code>watsonDeviceType</code>                device type  in <em>Watson-Registered</em> mode</li>
+<li><code>watsonDeviceId</code>              device id in <em>Watson-Registered</em> mode</li>
+<li><code>watsonAuthToken</code>             auth token in <em>Watson-Registered</em> mode</li>
 <li><code>willTopic</code></li>
 <li><code>subQos</code></li>
 <li><code>pubQos</code></li>
@@ -787,7 +793,7 @@
 <li><code>ranging</code>                 iOS only, set to true or false</li>
 <li><code>positions</code>                   iOS only, number of positions to keep and display</li>
 <li><code>autostartOnBoot</code>             Android only</li>
-<li><code>sub</code>                     Android only, subscription enabled for contacts, in iOS always subscribed</li>
+<li><code>sub</code>                     subscription enabled for contacts, etc.</li>
 <li><code>pub</code>                     Android only, auto publish, in iOS controlled by <code>monitoring</code></li>
 <li><code>updateAddressBook</code></li>
 <li><code>notification</code>                Android only, show notifications</li>
@@ -812,6 +818,7 @@
 <li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
 <li><code>beaconMode</code>                  Android only. <code>0</code> = normal Bluetooth mode that enables scanning when regions with UUID are defined, <code>1</code> = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android &lt; 6.x, <code>2</code> = hard disable any Bluetooth functions even if regions with UUID are defined</li>
 <li><code>ws</code>                      Android only, connect using WebSocket protocol  </li>
+<li><code>ignoreStaleLocations</code>            Number of days after which location updates are assumed stale, zero means no stall checking</li>
 </ul>
 <h4 id="notes">Notes</h4>
 <ul>
