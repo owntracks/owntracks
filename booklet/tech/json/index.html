@@ -818,7 +818,8 @@
 <li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
 <li><code>beaconMode</code>                  Android only. <code>0</code> = normal Bluetooth mode that enables scanning when regions with UUID are defined, <code>1</code> = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android &lt; 6.x, <code>2</code> = hard disable any Bluetooth functions even if regions with UUID are defined</li>
 <li><code>ws</code>                      Android only, connect using WebSocket protocol  </li>
-<li><code>ignoreStaleLocations</code>            Number of days after which location updates are assumed stale, zero means no stall checking</li>
+<li><code>ignoreStaleLocations</code>            Number of days after which location updates are assumed stale. zero means no stall checking. Defaults to zero.</li>
+<li><code>ignoreInaccurateLocations</code>           Maximum meters of location inaccuracy. Worse accuracy suppresses publish of location. Zero means no inaccuracy checking. Defaults to zero.</li>
 </ul>
 <h4 id="notes">Notes</h4>
 <ul>
