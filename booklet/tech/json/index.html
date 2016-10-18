@@ -603,7 +603,7 @@
 <li><code>vac</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>p</code> is barometric pressure in kPa (kilo Pascal) (iOS &gt; 8.1.1 only with <em>Extended data</em> enabled)</li>
-<li><code>conn</code> inserted when phone is connected to a network when the message is created (only with <em>Extended data</em> enabled). If present, it will have a single character: <code>w</code> for WiFi connection, <code>o</code> for Offline (no carrier when location was obtained), and <code>m</code> for mobile data.</li>
+<li><code>conn</code> inserted when phone is connected to a network when the message is created (only with <em>Extended data</em> enabled). If present, it will have a single character: <code>w</code> for WiFi connection, <code>o</code> for Offline (no carrier when location was obtained), and <code>m</code> for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. </li>
 </ul>
 <p>(The iOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
 <p>Notes:
