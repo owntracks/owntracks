@@ -304,6 +304,8 @@
             
                 <li class="toctree-l3"><a href="#_typelocation">_type=location</a></li>
                 
+                    <li><a class="toctree-l4" href="#notes">Notes</a></li>
+                
                     <li><a class="toctree-l4" href="#greenwich">Greenwich</a></li>
                 
             
@@ -318,7 +320,7 @@
             
                 <li class="toctree-l3"><a href="#_typeconfiguration">_type=configuration</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_1">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typebeacon">_type=beacon</a></li>
@@ -606,8 +608,10 @@
 <li><code>conn</code> inserted when phone is connected to a network when the message is created (only with <em>Extended data</em> enabled). If present, it will have a single character: <code>w</code> for WiFi connection, <code>o</code> for Offline (no carrier when location was obtained), and <code>m</code> for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. </li>
 </ul>
 <p>(The iOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
-<p>Notes:
-* A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</p>
+<h4 id="notes">Notes</h4>
+<ul>
+<li>A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
+</ul>
 <h3 id="greenwich">Greenwich</h3>
 <p>The OwnTracks-edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="json">{
@@ -823,7 +827,7 @@
 <li><code>ignoreStaleLocations</code>            Number of days after which location updates are assumed stale. zero means no stale checking. Defaults to zero.</li>
 <li><code>ignoreInaccurateLocations</code>           Maximum meters of location inaccuracy. Worse accuracy suppresses publish of location. Zero means no inaccuracy checking. Defaults to zero.</li>
 </ul>
-<h4 id="notes">Notes</h4>
+<h4 id="notes_1">Notes</h4>
 <ul>
 <li>Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a <code>locked: true</code> to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.</li>
 </ul>
