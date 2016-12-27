@@ -452,7 +452,7 @@
                 <h2 id="clients">Clients</h2>
 <p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in <a href="../scenarios/"><em>public mode</em></a>.)</p>
 <p>You know that OwnTracks <em>publishes</em> location information to an MQTT <em>broker</em>. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
-<p>When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilitze for doing that.</p>
+<p>When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
 <h2 id="mosquitto_sub">mosquitto_sub</h2>
 <p><em>mosquitto_sub</em> is a very basic command-line client provided by the <a href="http://mosquitto.org">Mosquitto project</a>. However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with <em>stdout</em> pointing to a file.</p>
 <p>In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in.</p>
@@ -502,7 +502,7 @@
 <p>Here are some projects we know of which use and/or integrate OwnTracks and/or
 which are useful when using MQTT in general or OwnTracks in particular.</p>
 <ul>
-<li><a href="http://jpmens.net/2013/11/19/mqtt-inspector-for-ios/">MQTT Inspector for iOS</a>, written by Christoph Krey, who also did our OwnTracks for iOS app. This is an indispensible utility for all things MQTT.</li>
+<li><a href="http://jpmens.net/2013/11/19/mqtt-inspector-for-ios/">MQTT Inspector for iOS</a>, written by Christoph Krey, who also did our OwnTracks for iOS app. This is an indispensable utility for all things MQTT.</li>
 <li><a href="http://thethingsystem.com">the thing system</a> ( <a href="https://github.com/TheThingSystem/steward">code</a> )</li>
 <li>A Clojure webapp that aims to manage information gathered from OwnTracks; <a href="https://github.com/razorinc/clojure-mqttitude-backend">clojure-mqttitude-backend</a></li>
 <li>An <a href="http://flows.nodered.org/flow/ab31cd939f2e73503fb0">OwnTracks flow</a> by <a href="https://twitter.com/juzam">Giovanni @juzam Angoli</a> for Node-RED which publishes messages to <a href="https://pushover.net">pushover.net</a> upon entering or leaving a geo-fence.</li>
