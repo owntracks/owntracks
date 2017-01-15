@@ -472,8 +472,10 @@ with a passphrase you specify. This passphrase we will later require in the app.
 You also send the CA certificate to the device and install it there, as discussed in <a href="../features/tld.md">TLS</a></p>
 <h3 id="android">Android</h3>
 <ul>
-<li>Save the file to the file system</li>
-<li>Configure OwnTracks settings for the location of the PKCS#12 file and specify its passphrase.</li>
+<li>Save the certificate to your device in an easy accessible location </li>
+<li>Import the certificate into the app (Preferences, Connection, Security, Client certificate, Select) by opening it with the file choser. </li>
+<li>The file will be copied to the secure storage location of the app. If the import is successfull, the original file can be removed from the device. </li>
+<li>Specify the certificate password (certificates without password are not supported). </li>
 </ul>
 <h3 id="ios">iOS</h3>
 <p>We recommend you proceed as follows:</p>
