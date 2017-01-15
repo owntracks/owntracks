@@ -449,7 +449,7 @@ of supported features is concernened. This table summarizes the current status.<
 <tr>
 <td>HTTP mode</td>
 <td align="center">Y</td>
-<td align="center"></td>
+<td align="center">Y</td>
 </tr>
 <tr>
 <td><a href="../location/">Location reporting</a></td>
@@ -459,11 +459,6 @@ of supported features is concernened. This table summarizes the current status.<
 <tr>
 <td><a href="../tls/">TLS</a> with system certificate</td>
 <td align="center">Y</td>
-<td align="center">Y</td>
-</tr>
-<tr>
-<td>TLS with cert in filesystem</td>
-<td align="center">-</td>
 <td align="center">Y</td>
 </tr>
 <tr>
@@ -512,11 +507,6 @@ of supported features is concernened. This table summarizes the current status.<
 <td align="center">Y</td>
 </tr>
 <tr>
-<td>Button for sharing location</td>
-<td align="center"></td>
-<td align="center">Y</td>
-</tr>
-<tr>
 <td>Configurable settings</td>
 <td align="center">Y</td>
 <td align="center">Y</td>
@@ -549,12 +539,12 @@ of supported features is concernened. This table summarizes the current status.<
 <tr>
 <td><a href="../remoteconfig/">Remote configuration</a></td>
 <td align="center">Y</td>
-<td align="center"></td>
+<td align="center">Y</td>
 </tr>
 <tr>
 <td><a href="../beacons/">iBeacons</a></td>
 <td align="center">Y</td>
-<td align="center"></td>
+<td align="center">Y</td>
 </tr>
 <tr>
 <td><a href="../pedometer/">Step-counting, a.k.a pedometer</a></td>
@@ -578,9 +568,7 @@ of supported features is concernened. This table summarizes the current status.<
 </li>
 <li>TLS using the Android built-in certificate authorities (either the shipped
     ones, or user provided ones that require a lock screen password to be set)</li>
-<li>TLS with user-provided certificates via an absolute path (e.g. to Downloads).
-    This doesn't require a password to be set on the device, but is a bit fiddly
-    to set up.</li>
+<li>TLS with side-loaded user-provided certificates </li>
 <li>
 <p>Username/password authentication to broker.</p>
 </li>
