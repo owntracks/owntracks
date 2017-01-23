@@ -861,8 +861,10 @@
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;payload&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;payload&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;payload&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
@@ -876,8 +878,8 @@
   (see <a href="../../features/pedometer/">Pedometer</a>).</li>
 <li><code>reportLocation</code> triggers the publish of the current location</li>
 <li><code>dump</code> triggers the publish of a configuration message</li>
-<li><code>setWaypoints</code> configures new waypoints. (iOS only; <a href="../../features/remoteconfig/">details</a> )</li>
-<li><code>setConfiguration</code> configures the app. <a href="../../features/remoteconfig/">details</a> </li>
+<li><code>setWaypoints</code> configures new waypoints. (<a href="../../features/remoteconfig/">details</a> ). The variant with <code>"payload"</code> only exists for backward compatibility </li>
+<li><code>setConfiguration</code> configures the app. <a href="../../features/remoteconfig/">details</a>. The variant with <code>"payload"</code> only exists for backward compatibility </li>
 <li><code>waypoints</code> triggers a publish of all waypoints configured on the device. These are published in <code>.otrw</code> format to the <code>../waypoints</code> topic.</li>
 <li><code>action</code> inserts an additional 'Featured Content' tab in the UI.</li>
 <li>If <code>"url"</code> is specified, the URL is opened in a full screen web view within the app. </li>
