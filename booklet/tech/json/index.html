@@ -582,7 +582,7 @@
 
 <ul>
 <li><code>acc</code> is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it &gt;= 0.</li>
-<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
+<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0. iOS only.</li>
 <li><code>batt</code> is the device's battery level in percent (integer)</li>
 <li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>, integer). iOS adds this element only if it is &gt;= 0.</li>
 <li><code>desc</code> is the description of a <a href="../../features/waypoints/">waypoint</a></li>
@@ -606,6 +606,7 @@
 <li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
 <li><code>p</code> is barometric pressure in kPa (kilo Pascal) (iOS &gt; 8.1.1 only with <em>Extended data</em> enabled)</li>
 <li><code>conn</code> inserted when phone is connected to a network when the message is created (only with <em>Extended data</em> enabled). If present, it will have a single character: <code>w</code> for WiFi connection, <code>o</code> for Offline (no carrier when location was obtained), and <code>m</code> for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. </li>
+<li><code>doze</code> indicates if the message was queued (and thus delayed) when the device was on power-saving mode. (Android only) </li>
 </ul>
 <p>(The iOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
 <h4 id="notes">Notes</h4>
