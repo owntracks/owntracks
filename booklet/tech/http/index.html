@@ -407,7 +407,7 @@
 
 <p>Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (<code>https://</code> scheme).</p>
 <p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same <a href="../json/">JSON</a> payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish. (Support for friends and optionally their cards is implemented in the Recorder.)</p>
-<p>If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) the payload is considered POSTed, whereby on iOS only codes <code>2xx</code> are worthy of success (other codes indicate failure and the payload is queued). In the event that the endpoint is unreachable (e.g. no connectivity), the payload will be queued and posted at a later time.</p>
+<p>If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) and a successfull return code (<code>2xx</code>) is returned  the payload is considered POSTed. In the event that the endpoint is unreachable, the payload will be queued and posted at a later time.</p>
 <p>The <a href="../../features/encrypt/">encryption</a> feature is supported, and you can use it HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption in the endpoint yourself.</p>
 <p>If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array <code>[]</code>. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid <code>_type</code> as described in <a href="../json/">JSON</a>. Support for the following <code>_type</code> is implemented:</p>
 <table>
@@ -423,25 +423,25 @@
 <tr>
 <td align="left"><code>location</code></td>
 <td align="left">Y</td>
-<td align="left">-</td>
+<td align="left">Y</td>
 <td align="left">Can return friend location objects.</td>
 </tr>
 <tr>
 <td align="left"><code>cmd</code></td>
 <td align="left">Y</td>
-<td align="left">-</td>
+<td align="left">Y</td>
 <td align="left">with <code>action</code> set to <code>dump</code>, <code>reportLocation</code>, <code>reportSteps</code>, <code>action</code>, and <code>setWaypoints</code></td>
 </tr>
 <tr>
 <td align="left"><code>card</code></td>
 <td align="left">Y</td>
-<td align="left">-</td>
+<td align="left">Y</td>
 <td align="left">Can return <a href="../../features/card/">card</a> objects for self and friends</td>
 </tr>
 <tr>
 <td align="left"><code>transition</code></td>
 <td align="left">Y</td>
-<td align="left">-</td>
+<td align="left">Y</td>
 <td align="left">Obtain friends' transition events.</td>
 </tr>
 </tbody>
