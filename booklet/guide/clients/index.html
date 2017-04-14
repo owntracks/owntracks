@@ -66,13 +66,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../ui/">User interface</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../scenarios/">Scenarios</a>
         
     </li>
@@ -81,13 +74,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../tech/http/">HTTP mode</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../mqtt/">MQTT</a>
         
     </li>
 
@@ -147,13 +133,6 @@
                 
             
             </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
         
     </li>
 
@@ -260,13 +239,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../features/featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
@@ -451,8 +423,8 @@
               
                 <h2 id="clients">Clients</h2>
 <p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in <a href="../scenarios/"><em>public mode</em></a>.)</p>
-<p>You know that OwnTracks <em>publishes</em> location information to an MQTT <em>broker</em>. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
-<p>When you've got your broker set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
+<p>You know that OwnTracks <em>publishes</em> location information to an MQTT or HTTP endpoint. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
+<p>When you've got your endpoint set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
 <h2 id="mosquitto_sub">mosquitto_sub</h2>
 <p><em>mosquitto_sub</em> is a very basic command-line client provided by the <a href="http://mosquitto.org">Mosquitto project</a>. However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with <em>stdout</em> pointing to a file.</p>
 <p>In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in.</p>
@@ -486,7 +458,7 @@
 
 <p>So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter <em>Pista</em>.</p>
 <h2 id="mqttwarn">mqttwarn</h2>
-<p>You'll recall (we hope) the discussion on <a href="../mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
+<p>You'll recall (we hope) the discussion on <a href="mqtt.md">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
 <p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>
 <h2 id="openhab">openHAB</h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
@@ -517,7 +489,7 @@ which are useful when using MQTT in general or OwnTracks in particular.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../friends/" class="btn btn-neutral float-right" title="Friends"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../waypoints/" class="btn btn-neutral float-right" title="Waypoints"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../apps/" class="btn btn-neutral" title="Apps"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -552,7 +524,7 @@ which are useful when using MQTT in general or OwnTracks in particular.</p>
         <span><a href="../apps/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../friends/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../waypoints/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

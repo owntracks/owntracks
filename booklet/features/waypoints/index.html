@@ -66,13 +66,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../guide/ui/">User interface</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../../guide/scenarios/">Scenarios</a>
         
     </li>
@@ -81,13 +74,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../tech/http/">HTTP mode</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/mqtt/">MQTT</a>
         
     </li>
 
@@ -116,13 +102,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../guide/clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/friends/">Friends</a>
         
     </li>
 
@@ -213,14 +192,15 @@
             
                 <li class="toctree-l3"><a href="#waypoints">Waypoints</a></li>
                 
-                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
+                    <li><a class="toctree-l4" href="#adding-on-ios">Adding on iOS</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#setting-up-ibeacons">Setting up iBeacons</a></li>
+                    <li><a class="toctree-l4" href="#adding-on-android">Adding on Android</a></li>
                 
                     <li><a class="toctree-l4" href="#remote-loading-of-waypoints">Remote loading of waypoints</a></li>
                 
                     <li><a class="toctree-l4" href="#deleting-waypoints">Deleting waypoints</a></li>
+                
+                    <li><a class="toctree-l4" href="#beacons-ranging">Beacons Ranging</a></li>
                 
             
             </ul>
@@ -245,13 +225,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../settings/">Settings</a>
         
     </li>
 
@@ -436,11 +409,9 @@
               
                 <h2 id="waypoints">Waypoints</h2>
 <p>The <em>base topic</em> for publishes from the devices (OwnTracks apps) is what you configure it
-to be in the app's preferences/settings. For argument's sake we'll use
-<code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
+to be in the app's preferences/settings. For argument's sake we'll use the default <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
 <p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
-All messages published to this base topic are retained if you have configured
-the app to retain them.</p>
+All messages published to this base topic are retained if you have configured the app to retain them.</p>
 <p>Additionally, if you've configured a waypoint or geo-fence, a transition event will be published upon
 entering or leaving a waypoint:</p>
 <ul>
@@ -476,48 +447,17 @@ prohibit access to <code>owntracks/+/+/waypoints</code> for particular users if 
 Conversely, all messages published by the apps (<code>location</code> and <code>waypoint</code>) are
 available with a subscription to <code>owntracks/#</code>.</p>
 <p>The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. </p>
-<h3 id="ios">iOS</h3>
+<h3 id="adding-on-ios">Adding on iOS</h3>
 <p>On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name <code>Center</code>, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.</p>
-<h1 id="setting-up-ibeacons">Setting up iBeacons</h1>
-<p>On iOS you can <a href="../beacons/">monitor an iBeacon region</a> in addition to circular regions.</p>
-<h2 id="remote-loading-of-waypoints">Remote loading of waypoints</h2>
-<p>Do you want to prepare your waypoints at home and load to your device?</p>
-<p>Here's what you can do with OwnTracks for iOS:</p>
-<ul>
-<li>Create a configuration file in JSON with an <code>.otrw</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtw</code> suffix is also supported.)</li>
-<li>Send the file to the device via e-mail, HTTP, Dropbox, ... you name it.</li>
-<li>Open the file on the device with OwnTracks</li>
-</ul>
-<p>Here is a sample waypoints file which follows the settings as explained in
-<a href="../../tech/json/">JSON</a>  The <code>_type</code> entry is mandatory, all other entries are
-optional; they are replaced by built-in
-defaults if not specified.</p>
-<pre><code class="json">{
-  &quot;_type&quot;: &quot;waypoints&quot;,
-  &quot;waypoints&quot;: [
-    {
-      &quot;desc&quot;: &quot;fifty/eight&quot;,
-      &quot;rad&quot;: &quot;100&quot;,
-      &quot;lon&quot;: &quot;8.0&quot;,
-      &quot;lat&quot;: &quot;50.0&quot;,
-      &quot;tst&quot;: &quot;100000000&quot;,
-      &quot;_type&quot;: &quot;waypoint&quot;
-    },
-    {
-      &quot;desc&quot;: &quot;forty/minus-eight&quot;,
-      &quot;rad&quot;: &quot;500&quot;,
-      &quot;lon&quot;: &quot;-8.0&quot;,
-      &quot;lat&quot;: &quot;40.0&quot;,
-      &quot;tst&quot;: &quot;100000001&quot;,
-      &quot;_type&quot;: &quot;waypoint&quot;
-    }
-  ]
-}
-</code></pre>
-
+<h3 id="adding-on-android">Adding on Android</h3>
+<p>On Android, waypoints can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  </p>
+<h3 id="remote-loading-of-waypoints">Remote loading of waypoints</h3>
+<p>Instead of configuring multiple waypoints on the device, they can be loaded <a href="../remoteconfig/">remotely</a> with the <code>setWaypoints</code> cmd message if remote configuration is enabled on the device. </p>
 <p>You can use this to import individual waypoints or groups of pre-configured waypoints which are merged into the existing waypoint definitions on the device. Recall, however, that the <code>tst</code> element is like a <em>key</em> which uniquely identifies each waypoint.</p>
-<h2 id="deleting-waypoints">Deleting waypoints</h2>
-<p>On both iOS and Android, you delete a waypoint by swiping it away in the user-interface.</p>
+<h3 id="deleting-waypoints">Deleting waypoints</h3>
+<p>On both iOS waypoints can be deleted by swiping it away. On Android, a long press is required. </p>
+<h3 id="beacons-ranging">Beacons Ranging</h3>
+<p>In addition to circular regions, the apps can monitor their proximity for <a href="../beacons/">BLE Beacons</a>. </p>
               
             </div>
           </div>

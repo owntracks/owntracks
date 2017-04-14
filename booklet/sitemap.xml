@@ -18,12 +18,6 @@
     </url>
         
     <url>
-     <loc>http://owntracks.org/guide/ui/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>http://owntracks.org/guide/scenarios/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
@@ -31,12 +25,6 @@
         
     <url>
      <loc>http://owntracks.org/tech/http/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/guide/mqtt/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -61,12 +49,6 @@
         
     <url>
      <loc>http://owntracks.org/guide/clients/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/guide/friends/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -155,12 +137,6 @@
         
     <url>
      <loc>http://owntracks.org/features/featured/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/features/settings/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>

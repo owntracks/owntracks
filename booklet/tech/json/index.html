@@ -66,13 +66,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../guide/ui/">User interface</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../../guide/scenarios/">Scenarios</a>
         
     </li>
@@ -81,13 +74,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../http/">HTTP mode</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/mqtt/">MQTT</a>
         
     </li>
 
@@ -116,13 +102,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../guide/clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/friends/">Friends</a>
         
     </li>
 
@@ -229,13 +208,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../features/featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
@@ -825,6 +797,7 @@
 <h4 id="notes_3">Notes</h4>
 <ul>
 <li>When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a <code>mode</code> element, the mode is changed first and all remaining elements are imported for the new mode. </li>
+<li>In MQTT mode the server will consider the client as dead if it the keepalive interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if <code>keepalive</code> was 60). Afterwards, an <code>lwt</code> message will be send. </li>
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.</p>

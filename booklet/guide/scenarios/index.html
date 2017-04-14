@@ -65,13 +65,6 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../ui/">User interface</a>
-        
-    </li>
-
-        
-            
     <li class="toctree-l1 current">
         <a class="current" href="./">Scenarios</a>
         
@@ -103,13 +96,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../mqtt/">MQTT</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../topics/">Topics</a>
         
     </li>
@@ -132,13 +118,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
         
     </li>
 
@@ -245,13 +224,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../features/featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/settings/">Settings</a>
         
     </li>
 
@@ -440,7 +412,7 @@
 <p>The very first time you install OwnTracks it will be configured in <em>public mode</em>. In this mode, the app "just works". It connects to our public MQTT broker, and your location is published there anonymously. In the app you'll also see any other public users, although you won't be able to identify them (nor they you): there are, other than the location data, no personal details of any user. The one exception is a couple of pseudo-users we publish magically so that you have something nice to look at.</p>
 <p><img alt="iPad Public Users" src="../images/b-android-friends.png" /></p>
 <p>We mentioned earlier that this is not a mode in which you want to run OwnTracks; it's basically just a demonstration mode for you to get a feeling for how OwnTracks looks and works. The data published by OwnTracks in this mode is not retained, and we don't store it.</p>
-<p>Using <em>Public</em> mode means you don't <em>have</em> to learn about <a href="../broker/">MQTT brokers</a>, <a href="../topics/">topics</a>, and all the rest of the stuff, but the downside is that you don't get to use any of the neat features <em>MQTT</em> mode or <em>HTTP</em> mode come with. For example, you can't set up <a href="../friends/">friends</a> or configure <a href="../clients/">clients to use your data</a> for the sole reason that we don't tell you the address or the authentication credentials for <em>Public</em> mode. Yep, it's as they say: <em>you get what you pay for</em>. :-)</p>
+<p>Using <em>Public</em> mode means you don't <em>have</em> to learn about <a href="../broker/">MQTT brokers</a>, <a href="../topics/">topics</a>, and all the rest of the stuff, but the downside is that you don't get to use any of the neat features <em>MQTT</em> mode or <em>HTTP</em> mode come with. For example, you can't set up <a href="friends.md">friends</a> or configure <a href="../clients/">clients to use your data</a> for the sole reason that we don't tell you the address or the authentication credentials for <em>Public</em> mode. Yep, it's as they say: <em>you get what you pay for</em>. :-)</p>
 <p>We think it's best you forget about this as quickly as possible and chose one of the other modes.</p>
 <h2 id="http-mode">HTTP mode</h2>
 <p>If you don't want to go to the trouble of hosting your own MQTT setup, you can use <em>HTTP</em> mode to publish location data to a <a href="../../tech/http/">HTTP server of your chosing</a>.</p>
@@ -467,7 +439,7 @@
         <a href="../../tech/http/" class="btn btn-neutral float-right" title="HTTP mode"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../ui/" class="btn btn-neutral" title="User interface"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../whathow/" class="btn btn-neutral" title="What it does"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -496,7 +468,7 @@
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../ui/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../whathow/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../../tech/http/" style="color: #fcfcfc">Next &raquo;</a></span>

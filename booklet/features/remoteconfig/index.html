@@ -66,13 +66,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../../guide/ui/">User interface</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../../guide/scenarios/">Scenarios</a>
         
     </li>
@@ -81,13 +74,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../tech/http/">HTTP mode</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/mqtt/">MQTT</a>
         
     </li>
 
@@ -116,13 +102,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../../guide/clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/friends/">Friends</a>
         
     </li>
 
@@ -235,13 +214,6 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../settings/">Settings</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
         <a class="" href="../comparison/">Comparison</a>
         
     </li>
@@ -274,7 +246,10 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#remote-config">Remote config</a></li>
+                <li class="toctree-l3"><a href="#configuration-file">Configuration file</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#setconfiguration">setConfiguration</a></li>
                 
             
                 <li class="toctree-l3"><a href="#setwaypoints">setWaypoints</a></li>
@@ -428,50 +403,28 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="remote-config">Remote config</h2>
-<p>Instead of telling others how to edit settings on their device in order to use OwnTracks to connect to your server, you can help them yourself by sending them a ready-to-run configuration which they load onto their device. This is particularly useful in cases of "remote support" for parents, etc.</p>
+                <h2 id="configuration-file">Configuration file</h2>
+<p>The configuration can be send to the device as a file that can by imported into the apps. This can be used to initially configure the device or chane detailed settings later. </p>
 <ul>
-<li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration). (The legacy <code>.mqtc</code> suffix is also supported.)</li>
-<li>Ensure the JSON is valid by using either of the <a href="http://jsonlint.com">online JSON validator</a>, a utility such as <a href="http://stedolan.github.io/jq/">jq</a> or simply by running</li>
-</ul>
-<pre><code>python -mjson.tool &lt; your.otrc
-</code></pre>
-
-<ul>
-<li>Send the file to the device via e-mail, provide it for download on an HTTP server, send via Dropbox, ... you name it.</li>
+<li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration)</li>
+<li>Ensure the JSON is valid with <a href="http://jsonlint.com">online JSON validator</a>, <a href="http://stedolan.github.io/jq/">jq</a> or simply by running <code>python -mjson.tool &lt; your.otrc</code></li>
+<li>Send the file to the devices via e-mail, provide it for download on an HTTP server, send via Dropbox, ... you name it.</li>
 <li>Have the OwnTracks app user open the file on their device with OwnTracks.</li>
 </ul>
-<p>Here is a sample configuration file which contains some of the possible settings.
- The <code>_type</code>
-entry is mandatory, most other entries are optional; they are replaced by built-in
-defaults if not specified.</p>
+<p>Here is a sample configuration file which contains some of the possible settings.</p>
 <pre><code class="json">{
+  &quot;auth&quot;: true,
   &quot;username&quot;: &quot;jjolie&quot;,
   &quot;password&quot;: &quot;s1kr3t&quot;,
-  &quot;clientId&quot;: &quot;janecli01&quot;,
-  &quot;pubRetain&quot;: true,
-  &quot;subTopic&quot;: &quot;owntracks/+/+&quot;,
-  &quot;allowRemoteLocation&quot;: true,
-  &quot;cmd&quot;: true,
-  &quot;pubTopicBase&quot;: &quot;&quot;,
-  &quot;_type&quot;: &quot;configuration&quot;,
-  &quot;tid&quot;: &quot;jJ&quot;,
   &quot;host&quot;: &quot;mybroker.example.org&quot;,
-  &quot;willRetain&quot;: false,
-  &quot;updateAddressBook&quot;: true,
   &quot;port&quot;: 8883,
-  &quot;pubQos&quot;: 2,
-  &quot;locatorInterval&quot;: 180,
-  &quot;tls&quot;: true,
-  &quot;auth&quot;: true,
-  &quot;cleanSession&quot;: false
 }
 </code></pre>
 
-<p>A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
-<p>Over the Air configuration is possible on Android using JSON payloads with <code>_type: configuration</code> which is described <a href="../../tech/json/">on the JSON page</a>.</p>
+<p>The <code>_type</code>entry is mandatory, most other entries are optional. They are replaced by built-in defaults or previously configured values if not specified. A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
+<h2 id="setconfiguration">setConfiguration</h2>
+<p>The configuration of a connected app can also be changed remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing configuration. A <code>_type: configuration</code> as described <a href="../../tech/json/">on the JSON page</a> can be send to the device. </p>
 <h2 id="setwaypoints">setWaypoints</h2>
-<p>(iOS only)</p>
 <p>Waypoints can be configured remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing waypoints. (Note: the "key" for a waypoint is the <code>tst</code> timestamp, so overwriting an existing <code>tst</code> actually overwrites an existing waypoint.)</p>
 <pre><code class="json">{
   &quot;_type&quot;: &quot;cmd&quot;,
