@@ -279,6 +279,8 @@
                 
                     <li><a class="toctree-l4" href="#keepalives">Keepalives</a></li>
                 
+                    <li><a class="toctree-l4" href="#aws-iot">AWS IOT</a></li>
+                
             
             </ul>
         
@@ -410,6 +412,23 @@ a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
 </blockquote>
 <p>For example, <code>mosquitto_sub</code> uses a default of 60 sec.</p>
 <p>In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.</p>
+<h3 id="aws-iot">AWS IOT</h3>
+<p>The OwnTracks apps are partially compatible to the AWS IOT in private MQTT mode. However, as AWS IOT does not support some MQTT features, some restrictions apply. </p>
+<p>The following settings are required to connect </p>
+<pre><code>{
+    &quot;_type&quot;:&quot;configuration&quot;, 
+    &quot;mode&quot;:0, 
+    &quot;subQos&quot;:0,
+    &quot;pubQos&quot;:0, 
+    &quot;pubRetain&quot;:false, 
+    &quot;cleanSession&quot;:true, 
+    &quot;tls&quot;:true
+    &quot;clientId&quot;:&quot;CLIENTID&quot;,
+    &quot;host&quot;: &quot;ENDPOINT.amazonaws.com&quot;
+}
+</code></pre>
+
+<p>Additionaly, you need to configure the app to use a client TLS certificate and the AWS TLS ca. </p>
               
             </div>
           </div>
