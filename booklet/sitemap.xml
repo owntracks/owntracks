@@ -18,13 +18,19 @@
     </url>
         
     <url>
+     <loc>http://owntracks.org/guide/clients/</loc>
+     <lastmod>2017-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>http://owntracks.org/guide/scenarios/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>http://owntracks.org/tech/http/</loc>
+     <loc>http://owntracks.org/guide/apps/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -42,13 +48,7 @@
     </url>
         
     <url>
-     <loc>http://owntracks.org/guide/apps/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/guide/clients/</loc>
+     <loc>http://owntracks.org/guide/bridge/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -65,15 +65,27 @@
      <changefreq>daily</changefreq>
     </url>
         
+    
+
+    
+        
     <url>
-     <loc>http://owntracks.org/guide/bridge/</loc>
+     <loc>http://owntracks.org/features/comparison/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
-    
-
-    
+    <url>
+     <loc>http://owntracks.org/features/ios/</loc>
+     <lastmod>2017-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/features/android/</loc>
+     <lastmod>2017-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
         
     <url>
      <loc>http://owntracks.org/features/security/</loc>
@@ -142,24 +154,6 @@
     </url>
         
     <url>
-     <loc>http://owntracks.org/features/comparison/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/features/android/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://owntracks.org/features/ios/</loc>
-     <lastmod>2017-04-14</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
      <loc>http://owntracks.org/features/encrypt/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
@@ -183,6 +177,12 @@
         
     <url>
      <loc>http://owntracks.org/tech/json/</loc>
+     <lastmod>2017-04-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://owntracks.org/tech/http/</loc>
      <lastmod>2017-04-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
