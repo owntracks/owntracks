@@ -296,7 +296,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#json">JSON</a></li>
+                <li class="toctree-l3"><a href="#types">Types</a></li>
                 
             
                 <li class="toctree-l3"><a href="#topics">Topics</a></li>
@@ -314,22 +314,30 @@
             
                 <li class="toctree-l3"><a href="#_typewaypoint">_type=waypoint</a></li>
                 
+                    <li><a class="toctree-l4" href="#notes_2">Notes</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typetransition">_type=transition</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typeconfiguration">_type=configuration</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_1">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_3">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typebeacon">_type=beacon</a></li>
                 
+                    <li><a class="toctree-l4" href="#notes_4">Notes</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typecmd">_type=cmd</a></li>
                 
+                    <li><a class="toctree-l4" href="#notes_5">Notes</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typesteps">_type=steps</a></li>
+                
+                    <li><a class="toctree-l4" href="#notes_6">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typecard">_type=card</a></li>
@@ -467,7 +475,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="json">JSON</h2>
+                <h2 id="types">Types</h2>
 <p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a <code>_type</code> element. Depending on the app platform, different payload types are supported. </p>
 <table>
 <thead>
@@ -479,6 +487,31 @@
 </thead>
 <tbody>
 <tr>
+<td><code>beacon</code></td>
+<td align="center">Y</td>
+<td align="center">N</td>
+</tr>
+<tr>
+<td><code>card</code></td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+<tr>
+<td><code>cmd</code></td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+<tr>
+<td><code>encrypted</code></td>
+<td align="center">Y</td>
+<td align="center">Y</td>
+</tr>
+<tr>
 <td><code>location</code></td>
 <td align="center">Y</td>
 <td align="center">Y</td>
@@ -489,9 +522,9 @@
 <td align="center">Y</td>
 </tr>
 <tr>
-<td><code>waypoint</code></td>
+<td><code>steps</code></td>
 <td align="center">Y</td>
-<td align="center">Y</td>
+<td align="center">N</td>
 </tr>
 <tr>
 <td><code>transition</code></td>
@@ -499,37 +532,12 @@
 <td align="center">Y</td>
 </tr>
 <tr>
-<td><code>beacon</code></td>
-<td align="center">Y</td>
-<td align="center">N</td>
-</tr>
-<tr>
-<td><code>cmd</code></td>
-<td align="center">Y</td>
-<td align="center">Y</td>
-</tr>
-<tr>
-<td><code>steps</code></td>
-<td align="center">Y</td>
-<td align="center">N</td>
-</tr>
-<tr>
-<td><code>configuration</code></td>
-<td align="center">Y</td>
-<td align="center">Y</td>
-</tr>
-<tr>
-<td><code>card</code></td>
+<td><code>waypoint</code></td>
 <td align="center">Y</td>
 <td align="center">Y</td>
 </tr>
 <tr>
 <td><code>waypoints</code></td>
-<td align="center">Y</td>
-<td align="center">Y</td>
-</tr>
-<tr>
-<td><code>encrypted</code></td>
 <td align="center">Y</td>
 <td align="center">Y</td>
 </tr>
@@ -539,323 +547,311 @@
 <p>In MQTT mode the apps publish to:</p>
 <ul>
 <li><code>owntracks/user/device</code> with <code>_type=location</code> for location updates, and with <code>_type=lwt</code></li>
-<li><code>owntracks/user/device/cmd</code> with <code>_type=cmd</code>      for remote commands</li>
+<li><code>owntracks/user/device/cmd</code> with <code>_type=cmd</code> for remote commands</li>
 <li><code>owntracks/user/device/event</code> with <code>_type=transition</code> for enter/leave events</li>
-</ul>
-<p>Apps subscribe to:</p>
-<ul>
-<li><code>owntracks/user/device/cmd</code> if remote commands are enabled</li>
-<li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
-<li><code>owntracks/+/+/event</code> (singular) for transition messages (<code>enter</code>/<code>leave</code>)</li>
-<li><code>owntracks/+/+/waypoint</code>  (singular) for Waypoint definitions/modifications</li>
-<li><code>owntracks/+/+/info</code>  for obtaining <a href="../../features/card/">cards</a>.</li>
-</ul>
-<p>In addition, the iOS app publishes to:</p>
-<ul>
 <li><code>owntracks/user/device/step</code> to report step counter</li>
 <li><code>owntracks/user/device/beacon</code> for beacon ranging</li>
 <li><code>owntracks/user/device/dump</code> for config dumps</li>
 </ul>
-<p>In HTTP mode the apps POST their data to a single endpoint you configure. That endpoint needs to distinguish which type of payload it is receiving.</p>
+<p>In MQTT mode apps subscribe to:</p>
+<ul>
+<li><code>owntracks/user/device/cmd</code> if remote commands are enabled</li>
+<li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
+<li><code>owntracks/+/+/event</code> for transition messages (<code>enter</code>/<code>leave</code>)</li>
+<li><code>owntracks/+/+/waypoint</code> for Waypoint definitions/modifications</li>
+<li><code>owntracks/+/+/info</code> for obtaining <a href="../../features/card/">cards</a>.</li>
+</ul>
+<p>In HTTP mode the apps POST their data to a single endpoint you configure. </p>
 <h2 id="_typelocation"><code>_type=location</code></h2>
-<p>This location object describes the location of the device that published it. </p>
+<p>This location object describes the location of the device that reported it. </p>
 <pre><code class="json">{
-    &quot;_type&quot; : &quot;location&quot;,        
-    &quot;acc&quot;   : 75,              
-    &quot;alt&quot;   : 13,
-    &quot;batt&quot;  : nnn,              
-    &quot;cog&quot;   : 270,
-    &quot;desc&quot;  : &quot;sssss&quot;,
-    &quot;event&quot; : &quot;sssss&quot;,
-    &quot;lat&quot;   : x.xxxxxx,       
-    &quot;lon&quot;   : y.yyyyyy,        
-    &quot;rad&quot;   : nnn, 
-    &quot;t&quot;     : &quot;x&quot;,
-    &quot;tid&quot;   : &quot;YY&quot;,
-    &quot;tst&quot;   : 1376715317,      
-    &quot;vac&quot;   : 10,
-    &quot;vel&quot;   : 54,
-    &quot;p&quot;     : nnn,
-    &quot;conn&quot; : &quot;w&quot;
+    &quot;_type&quot; : &quot;location&quot;,           
+    elements
 }
 </code></pre>
 
 <ul>
-<li><code>acc</code> is accuracy of the reported location in meters without unit (integer). iOS adds this element only if it &gt;= 0.</li>
-<li><code>alt</code> is the altitude measured in meters above sea level (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0. iOS only.</li>
-<li><code>batt</code> is the device's battery level in percent (integer)</li>
-<li><code>cog</code> is the heading (course over ground) in degrees, 0 = North (<em>Optional</em>, integer). iOS adds this element only if it is &gt;= 0.</li>
-<li><code>desc</code> is the description of a <a href="../../features/waypoints/">waypoint</a></li>
-<li><code>event</code> is one of <code>"enter"</code> or <code>"leave"</code> and tells if the app is entering or leaving a geofence </li>
-<li><code>lat</code> is latitude as decimal, represented as a floating point number</li>
-<li><code>lon</code> is longitude as decimal, represented as a floating point number</li>
-<li><code>rad</code> is the radius in meters around around the geo-fence when entering/leaving a geofence (integer)</li>
-<li><code>t</code> is the trigger for the publish x = <ul>
-<li>"p" ping, issued randomly by background task. Note, that the <code>tst</code> in a ping is a <a href="https://github.com/owntracks/ios/issues/197">current timestamp</a>, so that it doesn't look like a duplicate.</li>
-<li>"c" circular region enter/leave event </li>
-<li>"b" beacon region enter/leave event</li>
-<li>"r" response to a "reportLocation" request</li>
-<li>"u" manual publish requested by the user</li>
-<li>"t" timer based publish in move move</li>
-<li>"a" or missing <code>t</code> indicates automatic location update</li>
+<li><code>acc</code> Accuracy of the reported location in meters without unit <em>(iOS/integer/meters/optional)</em></li>
+<li><code>alt</code> Altitude measured above sea level <em>(iOS/integer/meters/optional)</em></li>
+<li><code>batt</code> Device battery level <em>(iOS,Android/integer/percent/optional)</em></li>
+<li><code>cog</code> Course over ground <em>(iOS/integer/degree/optional)</em></li>
+<li><code>lat</code> latitude <em>(iOS/float/meters/required)</em></li>
+<li><code>lon</code> longitude <em>(iOS/float/meters/required)</em></li>
+<li><code>rad</code> radius around the region when entering/leaving <em>(iOS/integer/meters/optional)</em></li>
+<li>
+<p><code>t</code> trigger for the location report <em>(iOS/string/optional)</em> </p>
+<ul>
+<li><code>p</code> ping issued randombly by background task <em>(iOS)</em></li>
+<li><code>c</code> circular region enter/leave event <em>(iOS/Android)</em></li>
+<li><code>b</code> beacon region enter/leave event <em>(iOS/Android)</em></li>
+<li><code>r</code> response to a reportLocation cmd message <em>(iOS/Android)</em></li>
+<li><code>u</code> manual publish requested by the user <em>(iOS/Android)</em></li>
+<li><code>t</code> timer based publish in move move <em>(iOS)</em></li>
+<li><code>a</code> automatic location update <em>(iOS/Android)</em></li>
 </ul>
 </li>
-<li><code>tid</code> is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
-<li><code>tst</code> is a UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the event as it occurs which may be different from the time it is published (integer, seconds).</li>
-<li><code>vac</code> is the vertical accuracy of the reported altitude in meters (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
-<li><code>vel</code> is the velocity (speed) in km/h (<em>Optional</em>, integer). iOS adds this element only if it &gt;= 0.</li>
-<li><code>p</code> is barometric pressure in kPa (kilo Pascal) (iOS &gt; 8.1.1 only with <em>Extended data</em> enabled)</li>
-<li><code>conn</code> inserted when phone is connected to a network when the message is created (only with <em>Extended data</em> enabled). If present, it will have a single character: <code>w</code> for WiFi connection, <code>o</code> for Offline (no carrier when location was obtained), and <code>m</code> for mobile data. These represent the status of the Internet connectivity (aka route to host) of the device the moment the messages was triggered. </li>
-<li><code>doze</code> indicates if the message was queued (and thus delayed) when the device was on power-saving mode. (Android only) </li>
+<li>
+<p><code>tid</code> Tracker ID used to display the initials of a user <em>(iOS,Android/string/optional)</em></p>
+</li>
+<li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> of the location fix <em>(iOS,Android/integer/epoch/required)</em></li>
+<li><code>vac</code> vertical accuracy of the <code>alt</code> element <em>(iOS/integer/meters/optional)</em></li>
+<li><code>vel</code> velocity <em>(iOS/integer/kmh/optional)</em> </li>
+<li><code>p</code> barometric pressure <em>(iOS/integer/kPa/optional/extended data)</em></li>
+<li><code>conn</code> Internet connectivity status (route to host) when the message is created <em>(iOS,Android/string/optional/extended data)</em> <ul>
+<li><code>w</code> phone is connected to a WiFi connection <em>(iOS, Android)</em></li>
+<li><code>o</code> phone is offline <em>(iOS, Android)</em></li>
+<li><code>m</code> mobile data <em>(iOS, Android)</em></li>
 </ul>
-<p>(The iOS device can be configured to produce or not produce fields marked as <em>optional</em> with the Extended Data setting.)</p>
+</li>
+</ul>
 <h4 id="notes">Notes</h4>
 <ul>
+<li>The <code>tst</code> in a ping is a <a href="https://github.com/owntracks/ios/issues/197">current timestamp</a>, so that it doesn't look like a duplicate.</li>
+<li>The <code>tid</code> dfaults to the last two characters of the topic </li>
+<li>A missing <code>t</code> element also indicates an automatic location update</li>
 <li>A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
+<li>The <code>acc</code>, <code>alt</code>, <code>cog</code>, <code>vac</code>, <code>vel</code> elements are only added if they are not zero</li>
+<li>Elements marked with <em>extended data</em> are only added if <code>extendedData=true</code> is configured</li>
 </ul>
 <h3 id="greenwich">Greenwich</h3>
-<p>The OwnTracks-edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
+<p>The OwnTracks edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;location&quot;,
-    &quot;alt&quot;: 160,
-    &quot;cog&quot;: 0,
-    &quot;dist&quot;: 189,
-    &quot;trip&quot;: 279122,
-    &quot;lat&quot;: xx.xxxxxx,
-    &quot;lon&quot;: y.yyyyyy,
-    &quot;vel&quot;: 12,
-    &quot;t&quot;: &quot;t&quot;,
-    &quot;tst&quot;: 1406803894
+    elements
 }
 </code></pre>
 
 <ul>
-<li><code>alt</code> is altitude in meters. (<em>Optional</em>)</li>
-<li><code>batt</code> is the external battery voltage. (<em>Optional</em>)</li>
-<li><code>cog</code> is the course over ground (heading) in degrees. (<em>Optional</em>)</li>
-<li><code>dist</code> is the distance travelled in meters since the last location publish. (<em>Optional</em>)</li>
-<li><code>trip</code> is the distance travelled in meters since the last reboot. (<em>Optional</em>)</li>
-<li><code>vel</code> is the speed (velocity) in km/h. (<em>Optional</em>)</li>
-<li><code>t</code> is the trigger of the published message:</li>
-<li><code>f</code> first publish after reboot</li>
-<li><code>m</code> for manually requested locations (e.g. by publishing to <code>/cmd</code>)</li>
-<li><code>t</code> (time) for location published because device is moving.</li>
-<li><code>T</code> (time) for location published because of time passed (<code>maxInterval</code>); device is stationary</li>
-<li><code>k</code> When transitioning from <em>move</em> to <em>stationary</em> an additional publish is sent marked with trigger <code>k</code> (park)</li>
-<li><code>v</code> When transitioning from <em>stationary</em> to <em>move</em> additional publish is sent marked with trigger <code>v</code> (mo-v-e)</li>
-<li><code>l</code> When device loses GPS fix, an additional publish is sent to transmit the last known position</li>
-<li><code>L</code> last position before gracefull shutdown</li>
+<li><code>alt</code> Altitude measured above sea level <em>(integer/meters/optional)</em></li>
+<li><code>batt</code> Device battery level <em>(integer/percent/optional)</em></li>
+<li><code>cog</code> Course over ground <em>(integer/degree/optional)</em></li>
+<li><code>dist</code> Distance travelled since the last location report <em>(integer/meters/optional)</em></li>
+<li><code>trip</code> Distance travelled since the last reboot <em>(integer/meters/optional)</em></li>
+<li><code>vel</code> velocity <em>(integer/kmh/optional)</em> </li>
+<li><code>t</code> trigger for the location report <em>(string/optional)</em> </li>
+<li><code>f</code> First publish after reboot</li>
+<li><code>m</code> Manually requested locations (e.g. by publishing to <code>/cmd</code>)</li>
+<li><code>t</code> Time for location published because device is moving.</li>
+<li><code>T</code> Time for location published because of time passed while device is stationary (<code>maxInterval</code>)</li>
+<li><code>k</code> Transitioning from <em>move</em> to <em>stationary</em> (park)</li>
+<li><code>v</code> Transitioning from <em>stationary</em> to <em>move</em> (mo-v-e)</li>
+<li><code>l</code> Last known position when device lost GPS fix</li>
+<li><code>L</code> Last known position before gracefull shutdown</li>
 </ul>
-<p>(The device can be configured to produce or not produce fields marked as <em>optional</em>.)</p>
+<h4 id="notes_1">Notes</h4>
+<ul>
+<li>The device can be configured to produce or not produce fields marked as <em>optional</em></li>
+</ul>
 <h2 id="_typelwt"><code>_type=lwt</code></h2>
 <p>A <em>last will and testament</em> is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:</p>
 <pre><code class="json">{
     &quot;_type&quot;:&quot;lwt&quot;,
-    &quot;tst&quot;: 1380738247
+    elements
 }
 </code></pre>
 
-<p>The timestamp is the Unix epoch time at which the app first connected (and <em>not</em> the time at which the LWT was published).</p>
+<ul>
+<li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
+</ul>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
-<p>Waypoints denote specific geographical locations that you want to keep track of. You define a waypoint on the OwnTracks device, and OwnTracks publishes this waypoint (if the waypoint is marked <code>shared</code>). OwnTracks also monitors these waypoints and will publish a transition event (<code>_type: transition</code>) when entering or leaving the region. Note, that a waypoint may also define a <a href="../../features/beacons/">Beacon</a>.</p>
+<p>Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint if the waypoint is marked as <code>shared</code>. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region. </p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
-    &quot;desc&quot;   : &quot;Free text entered on device&quot;,
-    &quot;lat&quot;    : x.xxxxxx,       
-    &quot;lon&quot;    : y.yyyyyy,        
-    &quot;rad&quot;    : xxx,
-    &quot;tst&quot;    : nnnnn,
-    &quot;shared&quot; : true,
-    &quot;tid&quot;    : &quot;XX&quot;,
-    &quot;uuid&quot;   : &quot;YYYYYYYYYYYYYYYYY&quot;,
-    &quot;major&quot;  : 17,
-    &quot;minor&quot;  : 1
+    elements
 }
 </code></pre>
 
 <ul>
-<li><code>shared</code> location messages of shared waypoints contain a desc and event attribute. Not shared ones contain an event attribute only</li>
-<li><code>tst</code> is the timestamp of waypoint <em>creation</em> even if it was subsequently modified by the user. (See <a href="../../features/waypoints/">Waypoints</a>.) It is copied into the <code>wtst</code> of the transition event (<code>type: transition</code>) when an event pertaining to this waypoint fires.</li>
-<li>In iOS version &gt;= 9.1.0 and in Android version &gt;= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
+<li><code>desc</code> Name of the waypoint that is included in the sent transition message <em>(iOS,Android,string/required)</em></li>
+<li><code>lat</code> Latitude  <em>(iOS,Android/float/meters/optional)</em></li>
+<li><code>lon</code> Longitude <em>(iOS,Android/float/meters/optional)</em></li>
+<li><code>rad</code> Radius around the latitude and longitude coordinates <em>(iOS,Android/integer/meters/optional)</em>  </li>
+<li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> elemnt of the transition message </em>(iOS,Android/integer/epoch/required)_  </li>
+<li><code>shared</code> Share status of the waypoint  <em>(iOS,Android/boolen/required)</em>  </li>
+<li><code>tid</code> Tracker ID that is included in the sent transition message <em>(iOS/string/optional)</em></li>
+<li><code>uuid</code> UUID of the BLE Beacon <em>(iOS,Android/string/optional)</em></li>
+<li><code>major</code> Major number of the BLE Beacon <em>(iOS,Android/integer/optional)</em></li>
+<li><code>minor</code>  Minor number of the BLE Beacon_(iOS,Android/integer/optional)_</li>
 </ul>
-<p>Waypoints are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</p>
+<h4 id="notes_2">Notes</h4>
+<ul>
+<li>In iOS version &gt;= 9.1.0 and in Android version &gt;= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
+<li>If <code>lat</code>, <code>lon</code> and <code>rad</code> elements are present, transition messages are sent when entering and leaving the geographical region </li>
+<li>If <code>uuid</code>, <code>major</code>, <code>minor</code> elements are present, BLE becons with that specifications are monitored</li>
+<li>Beacons and Geographical regions can be defined together </li>
+<li>Waypoint messages are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</li>
+<li>Shared Waypoint are sent to the broker and transition messages contain a <code>desc</code> and <code>event</code> element. Not shared ones are not sent to the broker and transition messages contain an <code>event</code> attribute only</li>
+</ul>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
-<p>A transition into or out of a previously configured waypoint is effected by publishing a <em>transition</em> to the <code>../event</code> subtopic using MQTT. (In HTTP mode the payload is published to the configured endpoint.) In addition to the coordinates where the event fired (<code>lat</code>, <code>lon</code>, and <code>acc</code> of these), the message contains the timestamp of the waypoint creation (<code>wtst</code>) as well as the <code>event</code> (which can be either <code>enter</code> or <code>leave</code>) and, in the case of a shared waypoint, it's description in <code>desc</code>. Transition messages are published with <code>retain=0</code>.</p>
+<p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message. If the corresponding waypoint is shared, it's description in <code>desc</code> is included too. MQTT transition messages are published non retained. </p>
 <pre><code class="json">{
-  &quot;_type&quot;: &quot;transition&quot;,
-  &quot;wtst&quot;: 1425042603,           // time of waypoint creation
-  &quot;lat&quot;: 12.34,                 // transition coordinates i.e. &quot;here&quot;
-  &quot;lon&quot;: 44.5,
-  &quot;tst&quot;: 1427634603,            // timestamp of transition (e.g. &quot;now&quot;)
-  &quot;acc&quot;: 130,                   // accuracy of lat, lon
-  &quot;tid&quot;: &quot;JP&quot;,
-  &quot;event&quot;: &quot;enter&quot;,
-  &quot;desc&quot;: &quot;my Indian restaurant&quot;,
-  &quot;t&quot;: &quot;b&quot;          // trigger (&quot;c&quot; -default- for circular regions, &quot;b&quot; for beacons, &quot;w&quot; for WiFi (Android only))
+    &quot;_type&quot;: &quot;transition&quot;,
+    elements
 }
 </code></pre>
 
-<p>A transition event published as a result of a Beacon movement will have a <code>"t" : "b"</code> associated with it.</p>
+<ul>
+<li><code>wtst</code> Timestamp of waypoint creation <em>(iOS,Android/integer/epoch/required)</em>  </li>
+<li><code>lat</code> Latitude at which the event occured <em>(iOS,Android/float/meters/optional)</em></li>
+<li><code>lon</code> Longitue at which the event occured <em>(iOS,Android/float/meters/optional)</em></li>
+<li><code>tst</code> Timestamp at which the event occured <em>(iOS,Android/integer/epoch/required)</em>  </li>
+<li><code>acc</code> Accuracy of the geographical coordinates <em>(iOS,Android/float/meters/required)</em>  </li>
+<li><code>tid</code> Tracker ID of the waypoint <em>(iOS/string/none/optional)</em>  </li>
+<li><code>event</code> Event that triggered the transition (iOS,Android/string/required)</li>
+<li><code>enter</code> The device entered the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
+<li><code>leave</code> The device left the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
+<li><code>desc</code> Name of the waypoint <em>(iOS,Android/string/optional)</em></li>
+<li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em></li>
+<li><code>c</code> Circular geographical region  <em>(iOS, Android)</em></li>
+<li><code>b</code> BLE Beacon <em>(iOS, Android)</em></li>
+</ul>
 <h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
-<p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. </p>
+<p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.  </p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;configuration&quot;,
-    &quot;mode&quot;: 0,
-    &quot;locked&quot;: false,
-    &quot;deviceId&quot;: &quot;phone&quot;,
-    &quot;clientId&quot;: &quot;jane-phone&quot;,
-    &quot;tid&quot;: &quot;xx&quot;,
-    &quot;subTopic&quot;: &quot;owntracks/#&quot;,
-    &quot;pubTopicBase&quot;: &quot;owntracks/jane/phone&quot;,
-    &quot;host&quot;: &quot;broker.my.net&quot;,
-    &quot;username&quot;: &quot;jane&quot;,
-    &quot;password&quot;: &quot;secr3t&quot;,
-    &quot;willTopic&quot;: &quot;&quot;,
-    &quot;subQos&quot;: 1,
-    &quot;pubQos&quot;: 2,
-    &quot;pubInterval&quot; : 30,
-    &quot;port&quot;: 8883,
-    &quot;keepalive&quot;: 60,
-    &quot;willQos&quot;: 1,
-    &quot;pubRetain&quot;: true,
-    &quot;tls&quot;: true,
-    &quot;tlsCrtPath&quot; : &quot;/foo/bar&quot;,
-    &quot;auth&quot;: true,
-    &quot;cleanSession&quot;: false,
-    &quot;willRetain&quot;: false,
-    &quot;locatorDisplacement&quot;: 200,
-    &quot;locatorInterval&quot;: 180,
-    &quot;locatorAccuracyBackground&quot; : 2,
-    &quot;locatorAccuracyForeground&quot; : 0,
-    &quot;messaging&quot;: true,
-    &quot;monitoring&quot;: 1,
-    &quot;ranging&quot;: false,
-    &quot;positions&quot;: 50,
-    &quot;connectionAdvancedMode&quot; : false,
-    &quot;autostartOnBoot&quot; : false,
-    &quot;pubIncludeBattery&quot; : false,
-    &quot;sub&quot; : false,
-    &quot;pub&quot; : false,
-    &quot;updateAddressBook&quot; : false,
-    &quot;notification&quot; : false,
-    &quot;notificationLocation&quot; : false,
-    &quot;notificationGeocoder&quot; : false,
-    &quot;notificationTickerOnPublish&quot; : false,
-    &quot;notificationTickerOnGeofenceTransition&quot; : false,
-    &quot;remoteCommandReportLocation&quot; : false,
-    &quot;remoteCommandDump&quot; : false,
-    &quot;cmd&quot; : false,
-    &quot;allowRemoteLocation&quot; : false,
-    &quot;extendedData&quot; : false,
-    &quot;remoteConfiguration&quot; : false,
-    &quot;usepolicy&quot; : false,
-    &quot;policymode&quot; : 0,
-    &quot;beaconMode&quot; : 0,
-    &quot;allowinvalidcerts&quot; : false,
-    &quot;validatedomainname&quot; : false,
-    &quot;validatecertificatechain&quot; : false,
-    &quot;servercer&quot; : &quot;&quot;,
-    &quot;clientpkcs&quot; : &quot;&quot;,
-    &quot;passphrase&quot; : &quot;&quot;,
-    &quot;waypoints&quot; : [
-                    { &quot;_type&quot; : &quot;waypoint&quot;,
-                      &quot;tst&quot;: nnnnnnnnnn,
-                      &quot;lat&quot;: nn.nnn,
-                      &quot;lon&quot;: nn.nnn,
-                      &quot;rad&quot;: nnn,
-                      &quot;shared&quot;: true,
-                      &quot;desc&quot; : &quot;blabla&quot;
-                    } 
-                  ]
+    elements
 }
 </code></pre>
 
 <ul>
-<li><code>mode</code>                    0 == <em>Private</em> mode, 2 == <em>Public</em> mode, 3 == <em>HTTP</em> mode, 4 == <em>Watson-Quickstart</em> mode, 5 == <em>Watson-Registered</em> mode</li>
-<li><code>locked</code>                  iOS only, if set to true, locks settings screen on device for editing. View only. Default = false. Can only be set via <code>.otrc</code> import.</li>
-<li><code>subTopic</code>                                    is what the apps subscribe to</li>
-<li><code>pubTopicBase</code>                                is the prefix under which the apps will publish</li>
-<li><code>username</code></li>
-<li><code>password</code></li>
-<li><code>deviceId</code></li>
-<li><code>tid</code>                      is a configurable tracker-ID which is used by the auto-faces feature to display, say, initials of a user. If it isn't explicitly configured, it defaults to the last two characters of the device's publish topic. </li>
-<li><code>url</code>                     url to POST to in <em>HTTP</em> mode</li>
-<li><code>quickstartId</code>                device id in <em>Watson-Quickstart</em> mode</li>
-<li><code>watsonOrganization</code>              organization in <em>Watson-Registered</em> mode</li>
-<li><code>watsonDeviceType</code>                device type  in <em>Watson-Registered</em> mode</li>
-<li><code>watsonDeviceId</code>              device id in <em>Watson-Registered</em> mode</li>
-<li><code>watsonAuthToken</code>             auth token in <em>Watson-Registered</em> mode</li>
-<li><code>willTopic</code></li>
-<li><code>subQos</code></li>
-<li><code>pubQos</code></li>
-<li><code>willQos</code></li>
-<li><code>pubRetain</code></li>
-<li><code>cleanSession</code></li>
-<li><code>willRetain</code></li>
-<li><code>locatorDisplacement</code>             in meters</li>
-<li><code>locatorInterval</code>             in seconds</li>
-<li><code>locatorAccuracyBackground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
-<li><code>locatorAccuracyForeground</code>           0 == high power, 1 == balanced power, 2 == low power, 3 == no power</li>
-<li><code>monitoring</code>                  iOS only, set in UI. The four modes are: Quiet (-1), Manual (0), Significant (1), and Move (2)</li>
-<li><code>ranging</code>                 iOS only, set to true or false</li>
-<li><code>positions</code>                   iOS only, number of positions to keep and display</li>
-<li><code>autostartOnBoot</code>             Android only</li>
-<li><code>sub</code>                     subscription enabled for contacts, etc.</li>
-<li><code>pub</code>                     Android only, auto publish, in iOS controlled by <code>monitoring</code></li>
-<li><code>updateAddressBook</code></li>
-<li><code>notification</code>                Android only, show notifications</li>
-<li><code>notificationLocation</code>            Android only, show last reported location in notification, off in iOS</li>
-<li><code>notificationGeocoder</code>            Android only, resolve location in notification to address, in iOS only resolved when in show details</li>
-<li><code>cmd</code>                     respond to remote commands</li>
-<li><code>allowRemoteLocation</code>             iOS only, respond to remote location request even if monitoring mode is set to manual</li>
-<li><code>extendedData</code>                iOS, add altitude, vertical accuracy, velocity and course over ground to published data. Android, include battery in location publishes</li>
-<li><code>remoteConfiguration</code>             Android only, respond to remote configuration messages</li>
-<li><code>usepolicy</code>                   iOS only, use user defined security policy</li>
-<li><code>allowinvalidcerts</code>               iOS only, allow self signed certificates in user defined security policy</li>
-<li><code>validatedomainname</code>              iOS only, validate domain main during TLS handshake</li>
-<li><code>validatecertificatechain</code>            iOS only, validate the whole certificate chain or just the server certificate</li>
-<li><code>policymode</code>                  iOS only, <ul>
-<li>0 = Do not used pinned certificates to validate servers.</li>
-<li>1 = Validate host certificates against public keys of pinned certificates.</li>
-<li>2 = Validate host certificates against pinned certificates.</li>
+<li><code>allowRemoteLocation</code> Respond to reportLocation cmd message   <em>(iOS,Android/boolean)</em></li>
+<li><code>allowinvalidcerts</code> Allow self signed certificates in user defined security policy <em>(iOS/boolean)</em> </li>
+<li><code>auth</code> Use <code>username</code> and <code>password</code> for endpoint authentication <em>(iOS,Android/boolean)</em> </li>
+<li><code>autostartOnBoot</code> Autostart the app on device boot    <em>(Android/boolean)</em></li>
+<li>
+<p><code>beaconLayout</code> AltBeacon <a href="https://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconParser.html">parser layout</a> to understand different beacon advertisements other than the default iBeacons  <em>(Android/string)</em></p>
+</li>
+<li>
+<p><code>beaconMode</code> Backend mode for BLE beacon scanning (Android/Integer)</p>
+<ul>
+<li><code>0</code> Normal bluetooth scanning for regions with UUID </li>
+<li><code>1</code> Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android &lt; 6.x</li>
+<li><code>2</code> Hard disable any Bluetooth functions even if regions with UUID are defined</li>
 </ul>
 </li>
-<li><code>servercer</code>                   iOS only, blank separated list of certificate file names in DER format, or empty</li>
-<li><code>clientpkcs</code>                  iOS only, name of the client pkcs12 file,or empty </li>
-<li><code>passphrase</code>                  iOS only, passphrase for client pkcs12 file </li>
-<li><code>beaconMode</code>                  Android only. <code>0</code> = normal Bluetooth mode that enables scanning when regions with UUID are defined, <code>1</code> = Same as 0 but uses legacy beacon scanning instead of Android 6 scanning. Has no effect on devices not running Android &lt; 6.x, <code>2</code> = hard disable any Bluetooth functions even if regions with UUID are defined</li>
-<li><code>ws</code>                      Android only, connect using WebSocket protocol  </li>
-<li><code>ignoreStaleLocations</code>            Number of days after which location updates are assumed stale. zero means no stale checking. Defaults to zero.</li>
-<li><code>ignoreInaccurateLocations</code>           Maximum meters of location inaccuracy. Worse accuracy suppresses publish of location. Zero means no inaccuracy checking. Defaults to zero.</li>
+<li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
+<li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
+<li><code>cmd</code> Respond to cmd messages <em>(iOS,Android/boolean)</em></li>
+<li><code>deviceId</code> MQTT client ID  <em>(iOS,Android/string)</em></li>
+<li><code>extendedData</code> Add extended data attributes to location messages <em>(iOS,Android/boolean)</em></li>
+<li><code>host</code> MQTT endpoint host <em>(iOS,Android/string)</em></li>
+<li><code>httpSchedulerConsiderStrategyDirect</code> Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists <em>(Android/boolean)</em></li>
+<li><code>ignoreInaccurateLocations</code> Location accuracy below which reports are supressed   <em>(iOS,Android/integer/days)</em></li>
+<li><code>ignoreStaleLocations</code> Number of days after which location updates are assumed stale <em>(iOS,Android/integer/days)</em> </li>
+<li><code>keepalive</code> MQTT endpoint keepalive <em>(iOS,Android/integer/seconds)</em></li>
+<li><code>locatorDisplacement</code> maximum distance between location source updates <em>(Android/integer/meters)</em></li>
+<li><code>locatorAccuracyBackground</code> Location source power mode when the app is in the background <em>(Android/integer)</em><ul>
+<li><code>0</code> High power likely based on GPS location</li>
+<li><code>1</code> Balanced power based on multiple location sources </li>
+<li><code>2</code> Low power based on cell tower location</li>
+<li><code>3</code> No power  based on locations requested by other apps </li>
 </ul>
-<h4 id="notes_1">Notes</h4>
+</li>
+<li><code>locatorAccuracyForeground</code> Location source power mode when the app is in the foreground <em>(Android/integer)</em><ul>
+<li><code>0</code> High power likely based on GPS location</li>
+<li><code>1</code> Balanced power based on multiple location sources </li>
+<li><code>2</code> Low power based on cell tower location</li>
+<li><code>3</code> No power  based on locations requested by other apps </li>
+</ul>
+</li>
+<li><code>locatorInterval</code> maximum interval between location source updates <em>(Android/integer/seconds)</em></li>
+<li><code>locked</code> Locks settings screen on device for editing <em>(iOS/boolean)</em></li>
+<li><code>mode</code>    Endpoint protocol mode <em>(iOS,Android/integer)</em><ul>
+<li><code>0</code> Private  MQTT <em>(iOS, Android)</em></li>
+<li><code>2</code> Public  MQTT <em>(iOS, Android)</em></li>
+<li><code>0</code> Private  HTPP <em>(iOS, Android)</em></li>
+<li><code>4</code> Watson IOT Quickstart <em>(iOS)</em></li>
+<li><code>4</code> Watson IOT Registered <em>(iOS)</em></li>
+</ul>
+</li>
+<li><code>monitoring</code> Location reporting mode <em>(iOS,integer)</em>      <ul>
+<li><code>-1</code> Quiet</li>
+<li><code>0</code> Manual</li>
+<li><code>1</code> Significant </li>
+<li><code>2</code> Move </li>
+</ul>
+</li>
+<li>
+<p><code>mqttProtocolLevel</code> MQTT broker protocol level <em>(iOS,Android/integer)</em></p>
 <ul>
-<li>Imagine you are operating an OwnTracks backend for e.g. your family, and you want to avoid your family members accidentally switching modes or modifying settings locally on the device. You can export their configuration, add a <code>locked: true</code> to it and re-import it onto the iOS device. The settings will then be visible, but cannot be changed.</li>
+<li><code>3</code> MQTT 3</li>
+<li><code>4</code> MQTT 3.1.1 </li>
+</ul>
+</li>
+<li>
+<p><code>notification</code> Show ongoing notification. Required to keep running in the background  <em>(Android/boolean)</em> </p>
+</li>
+<li><code>notificationGeocoder</code> Resolve last reported location in ongoing notification to an address  <em>(Android/boolean)</em>  </li>
+<li><code>notificationLocation</code>    Show last reported location in ongoing notification <em>(Android/boolean)</em></li>
+<li><code>passphrase</code> Passphrase of the client pkcs12 file <em>(iOS/string)</em></li>
+<li><code>password</code> Endpoint password <em>(iOS,Android/string)</em></li>
+<li><code>policymode</code>  User defined securiy policy mode <em>(iOS/integer)</em><ul>
+<li><code>0</code> Do not used pinned certificates to validate servers</li>
+<li><code>1</code> Validate host certificates against public keys of pinned certificates</li>
+<li><code>2</code> Validate host certificates against pinned certificates</li>
+</ul>
+</li>
+<li><code>port</code> MQTT endpoint port <em>(iOS,Android/integer)</em></li>
+<li><code>positions</code>   Number of locatoins to keep and display <em>(iOS/integer)</em> </li>
+<li><code>pub</code> Automatic reporting <em>(Android/boolean)</em>             </li>
+<li><code>pubTopicBase</code> MQTT topic base to which the app publishes   <em>(iOS,Android/string)</em>    </li>
+<li><code>pubRetain</code> MQTT retain flag for reported messages <em>(iOS,Android/boolean)</em></li>
+<li><code>pubQos</code> MQTT QoS level for reported messages <em>(iOS,Android/boolean)</em></li>
+<li><code>ranging</code> Beacon ranging <em>(iOS/boolean)</em></li>
+<li><code>remoteConfiguration</code> Allow remote configuration by sending a setConfiguration cmd message <em>(Android/boolean)</em></li>
+<li><code>servercer</code> Blank separated list of certificate file names in DER format <em>(iOS/string)</em></li>
+<li><code>sub</code> MQTT subscription <em>(Android/boolean)</em></li>
+<li><code>subTopic</code> MQTT topic to which the app subscribes   <em>(iOS,Android/string)</em></li>
+<li><code>subQos</code> <em>(iOS,Android/boolean)</em></li>
+<li><code>tid</code> Two digit Tracker ID used to display short name and default face of a user <em>(iOS,Android/string)</em></li>
+<li><code>tls</code> MQTT endpoint TLS connection <em>(Android/boolean)</em></li>
+<li><code>tlsClientCrtPassword</code> Passphrase of the client pkcs12 file <em>(Android/string)</em></li>
+<li><code>url</code> HTTP endpoint URL    to which messages are POSTed <em>(iOS,Android/string)</em></li>
+<li><code>updateAddressBook</code> <em>(iOS/boolean)</em></li>
+<li><code>usepolicy</code> Use user defined security policy <em>(iOS/boolean)</em></li>
+<li><code>username</code> Endpoint username <em>(iOS,Android/string)</em></li>
+<li><code>validatedomainname</code> Validate domain name during TLS handshake <em>(iOS/boolean)</em></li>
+<li><code>validatecertificatechain</code> Validate the whole certificate chain or just the server certificate <em>(iOS/boolean)</em></li>
+<li><code>watsonAuthToken</code> Auth token Watson IOT Registered mode <em>(iOS/string)</em></li>
+<li><code>watsonDeviceType</code> Device type in Watson IOT Registered mode <em>(iOS/string)</em></li>
+<li><code>watsonDeviceId</code>  Device ID in Watson IOT Registered mode <em>(iOS/string)</em></li>
+<li><code>watsonOrganization</code> Organization in Watson IOT Registered mode <em>(iOS/string)</em></li>
+<li><code>willRetain</code></li>
+<li><code>willTopic</code> </li>
+<li><code>willQos</code></li>
+<li><code>waypoints</code> Array of waypoint messages <em>(iOS,Android/array)</em></li>
+<li><code>quickstartId</code> Device ID in Watson IOT Quickstart mode <em>(iOS/string)</em></li>
+</ul>
+<h4 id="notes_3">Notes</h4>
+<ul>
+<li>When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a <code>mode</code> element, the mode is changed first and all remaining elements are imported for the new mode. </li>
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.</p>
 <pre><code class="json">{
-        &quot;_type&quot;:&quot;beacon&quot;,
-        &quot;uuid&quot;:&quot;CA271EAE-5FA8-4E80-8F08-2A302A95A959&quot;,
-        &quot;major&quot;:1,
-        &quot;minor&quot;:1,
-        &quot;tst&quot;: 1399028969,
-        &quot;acc&quot;:n,
-        &quot;rssi&quot;:n,
-        &quot;prox&quot;:n,
+    &quot;_type&quot;:&quot;beacon&quot;,
+    elements
 }
 </code></pre>
 
 <ul>
-<li><code>acc</code> The accuracy of the proximity value, measured in meters from the beacon.</li>
-<li><code>rssi</code>    The received signal strength of the beacon, measured in decibels. The theoretical relationship between RSSI and distance is something like this: <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI 1 meter point away from the Bluetooth Low Energy device.</li>
-<li><code>prox</code>    The relative distance to the beacon where n indicates<ul>
-<li>0 = the proximity of the beacon could not be determined.</li>
-<li>1 = the beacon is in the user’s immediate vicinity.</li>
-<li>2 = the beacon is relatively close to the user.</li>
-<li>3 = the beacon is far away."</li>
+<li><code>uuid</code> UUID of the seen beacon <em>(iOS/String)</em></li>
+<li><code>major</code> Major number of the seen beacon <em>(iOS/integer/epoch)</em></li>
+<li><code>minor</code> Minor number of the seen beacon <em>(iOS/integer/epoch)</em></li>
+<li><code>tst</code> Timestamp at which the beacon was seen <em>(iOS/integer/epoch)</em></li>
+<li><code>acc</code> Accuracy of the proximity value <em>(iOS/integer/meters)</em></li>
+<li><code>rssi</code>    Received signal strength of the beacon <em>(iOS/integer/decibel)</em></li>
+<li><code>prox</code>Relative distance to the beacon <em>(iOS/integer)</em><ul>
+<li><code>0</code> Proximity of the beacon could not be determined</li>
+<li><code>1</code> Beacon is in the immediate vicinity</li>
+<li><code>2</code> Beacon is relatively close to the user</li>
+<li><code>3</code> Beacon is far away</li>
 </ul>
 </li>
+</ul>
+<h4 id="notes_4">Notes</h4>
+<ul>
+<li>The theoretical relationship between RSSI and distance is <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.</li>
 </ul>
 <h2 id="_typecmd"><code>_type=cmd</code></h2>
 <pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportLocation&quot;}
@@ -863,90 +859,94 @@
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}  // iOS
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;payload&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;payload&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}  // iOS
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}  // iOS
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}  // iOS
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
 </code></pre>
 
 <ul>
-<li><code>action</code>      action to be performed by the device<ul>
-<li><code>reportSteps</code> reports steps walked on iPhone 5s devices. <br>
-  You may add "from":<em>timestamp</em> and/or "to":<em>timestamp</em>" 
-  which defaults to current time, from defaults to current date 00:00 am
-  (see <a href="../../features/pedometer/">Pedometer</a>).</li>
-<li><code>reportLocation</code> triggers the publish of the current location</li>
-<li><code>dump</code> triggers the publish of a configuration message</li>
-<li><code>setWaypoints</code> configures new waypoints. (<a href="../../features/remoteconfig/">details</a> ). The variant with <code>"payload"</code> only exists for backward compatibility </li>
-<li><code>setConfiguration</code> configures the app. <a href="../../features/remoteconfig/">details</a>. The variant with <code>"payload"</code> only exists for backward compatibility </li>
-<li><code>waypoints</code> triggers a publish of all waypoints configured on the device. These are published in <code>.otrw</code> format to the <code>../waypoints</code> topic.</li>
-<li><code>action</code> inserts an additional 'Featured Content' tab in the UI.</li>
-<li>If <code>"url"</code> is specified, the URL is opened in a full screen web view within the app. </li>
-<li>If <code>"url"</code> is not specified the text in <code>"content"</code> is displayed. Links embedded in the text are operational.  If <code>"content"</code> is HTML, it is rendered.</li>
-<li>Send <code>"action":"action"</code> without <code>"content"</code> and without <code>"url"</code> to remove the extra tab.</li>
-<li>If <code>"notify"</code> is in the payload, it is a string which will be used as notification in the UI</li>
-<li>If the optional <code>"extern"</code> boolean is <code>true</code> a click on the notification will launch an external Web browser; <code>false</code> (the default) opens the <code>url</code> in a Webview within the OwnTracks app.</li>
+<li><code>action</code> action to be performed by the device <em>(iOS,Android/string)</em></li>
+<li><code>action</code> Inserts an additional <em>Featured Content</em> tab in the UI <em>(iOS)</em></li>
+<li><code>dump</code> Triggers the publish of a <code>configuration</code> message <em>(iOS)</em></li>
+<li><code>reportSteps</code> Triggers the report of a <code>steps</code> messages_(iOS)_<ul>
+<li><code>from</code> Timestamp <em>(iOS/epoch/optional)</em></li>
+<li><code>to</code> Timestamp <em>(iOS/epoch/optional)</em></li>
 </ul>
 </li>
+<li><code>reportLocation</code> Triggers the publish of a <code>location</code> messages <em>(iOS,Android)</em></li>
+<li><code>setWaypoints</code> Imports and actives new waypoints_(iOS,Android)_<ul>
+<li><code>waypoints</code> Array of <code>waypoint</code> messages to import <em>(iOS,Android/array/required)</em></li>
+</ul>
+</li>
+<li><code>setConfiguration</code> Imports and actives new configuration values (iOS,Android)_<ul>
+<li><code>configuration</code> Configuration message to import <em>(iOS,Android/required)</em></li>
+</ul>
+</li>
+<li><code>waypoints</code> Triggers publish of a <code>waypoints</code> message <em>(iOS,Android)</em></li>
+</ul>
+<h4 id="notes_5">Notes</h4>
+<ul>
+<li>If <code>url</code> for the <code>action</code> cmd message is specified, the URL is opened in a full screen web view within the app</li>
+<li>If the optional <code>extern</code> boolean is <code>true</code> a click on the notification will launch an external browser instead</li>
+<li>If <code>url</code> is not specified the text of the <code>content</code> element is displayed. Links embedded in the text are operational.  </li>
+<li>If the <code>content</code> consists of HTML, it is rendered</li>
+<li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
-<pre><code class="json">{&quot;_type&quot;:&quot;steps&quot;,&quot;tst&quot;:1400455130,&quot;steps&quot;:1234,&quot;from&quot;:1400455130,&quot;to&quot;:1400458000}
+<pre><code class="json">{
+    &quot;_type&quot;:&quot;steps&quot;,
+    elements
+}
 </code></pre>
 
 <ul>
-<li><code>tst</code>         timestamp of the request</li>
-<li><code>steps</code>   the number of steps walked with the device in the specfied time period or
-                -1 if device does not support step counting or specified time period
-                is invalid</li>
-<li><code>from</code>        effective start of time period</li>
-<li><code>to</code>          effective end of time period</li>
+<li><code>tst</code> Timestamp of the request <em>(iOS/integer/epoch)</em></li>
+<li><code>steps</code> Steps walked with the device in the specfied time period  <em>(iOS/integer/steps)</em></li>
+<li><code>from</code> Effective start of time period <em>(iOS/integer/epoch)</em></li>
+<li><code>to</code>  Effective end of time period <em>(iOS/integer/epoch)</em></li>
+</ul>
+<h4 id="notes_6">Notes</h4>
+<ul>
+<li><code>steps</code> is -1 if device does not support step counting or specified time period is invalid</li>
 </ul>
 <h2 id="_typecard"><code>_type=card</code></h2>
-<p>As described in <a href="../../features/card/">Card</a>, apps read retained messages of <code>_type=card</code> on <code>owntracks/+/+/info</code> to find the <em>name</em> and avatar (<em>face</em>) of a user.</p>
+<p>Apps read <a href="../../features/card/">Card</a> to display a name and icon for a user. </p>
 <pre><code class="json">{
-  &quot;_type&quot;: &quot;card&quot;,
-  &quot;name&quot;: &quot;Jane Jolie&quot;
-  &quot;face&quot;: &quot;iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==&quot;,
+    &quot;_type&quot;: &quot;card&quot;,
+    elements
 }
 </code></pre>
 
-<p>The <code>name</code> element contains a name which is displayed by the apps to identify a user, and <code>face</code> contains the base64-encoded PNG image (40x40 px) which is displayed instead of a <a href="../../features/tid/">TID</a>.</p>
+<ul>
+<li><code>name</code> Name to identify a user <em>(iOS,Android/string/optional)</em> </li>
+<li><code>face</code> Base64 encoded PNG image that is displayed instead of the Tracker ID <em>(iOS,Android/string/optional)</em></li>
+</ul>
 <h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
-<p>The app can export a list of configured waypoints (separate from the configuration) in order to share these, for example. Similarly, the app can import a list of waypoints, merging them into the current list, from a JSON file with <code>.otrw</code> extension. The list of waypoints looks like this.</p>
+<p>The app can export a list of configured waypoints to the endpoint.</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;waypoints&quot;,
-    &quot;_creator&quot;: &quot;OTwpDraw&quot;,
-    &quot;waypoints&quot;: [
-        {
-            &quot;_type&quot;: &quot;waypoint&quot;,
-            &quot;tst&quot;: 1433598071,
-            &quot;lat&quot;: 47.580231298,
-            &quot;lon&quot;: 9.525146484,
-            &quot;rad&quot;: 25186,
-            &quot;desc&quot;: &quot;I went swimming here&quot;
-        },
-        {
-            &quot;_type&quot;: &quot;waypoint&quot;,
-            &quot;tst&quot;: 1430398091,
-            &quot;lat&quot;: 46.517295754,
-            &quot;lon&quot;: 9.871215820,
-            &quot;rad&quot;: 500,
-            &quot;desc&quot;: &quot;Cheese fondue&quot;
-        }
-    ]
+    elements
 }
 </code></pre>
 
-<p>Note that <code>_type=waypoints</code> is <em>plural</em>.</p>
+<ul>
+<li><code>_creator</code> Identification of what created the array. Ignored by the apps <em>(iOS,Android/string/optional)</em></li>
+<li><code>waypoints</code> Array of <code>waypoint</code> messages <em>(iOS,Android/array/required)</em></li>
+</ul>
 <h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
-<p>This payload type contains a single <code>data</code> element with the original JSON object <code>_type</code> (e.g. <code>location</code>, <code>beacon</code>, etc.) <a href="../../features/encrypt/">encrypted payload</a> in it.</p>
+<p>Apps can optionally <a href="../../features/encrypt/">encrypt</a> outgoing messages with a shared symmetric key. 
+The encrypted message is contained in the <code>data</code>element.<br />
+For security reasons, the encryption key is not exported with configuration messages and cannot be imported. </p>
 <pre><code class="json">{
-  &quot;_type&quot;: &quot;encrypted&quot;,
-  &quot;data&quot;: &quot;1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg=&quot;
+    &quot;_type&quot;: &quot;encrypted&quot;, 
+    elements 
 }
 </code></pre>
+
+<ul>
+<li><code>data</code> Encrypted and Base64 encoded original JSON message <em>(iOS,Android/string/required)</em></li>
+</ul>
               
             </div>
           </div>
