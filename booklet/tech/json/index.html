@@ -639,7 +639,7 @@
 <li><code>lat</code> Latitude  <em>(iOS,Android/float/meters/optional)</em></li>
 <li><code>lon</code> Longitude <em>(iOS,Android/float/meters/optional)</em></li>
 <li><code>rad</code> Radius around the latitude and longitude coordinates <em>(iOS,Android/integer/meters/optional)</em>  </li>
-<li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> elemnt of the transition message </em>(iOS,Android/integer/epoch/required)_  </li>
+<li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> element of the transition message </em>(iOS,Android/integer/epoch/required)_  </li>
 <li><code>tid</code> Tracker ID that is included in the sent transition message <em>(iOS/string/optional)</em></li>
 <li><code>uuid</code> UUID of the BLE Beacon <em>(iOS,Android/string/optional)</em></li>
 <li><code>major</code> Major number of the BLE Beacon <em>(iOS,Android/integer/optional)</em></li>
@@ -834,7 +834,8 @@
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}  // iOS
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;
+&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
@@ -850,11 +851,11 @@
 </ul>
 </li>
 <li><code>reportLocation</code> Triggers the publish of a <code>location</code> messages <em>(iOS,Android)</em></li>
-<li><code>setWaypoints</code> Imports and actives new waypoints_(iOS,Android)_<ul>
+<li><code>setWaypoints</code> Imports and actives new waypoints <em>(iOS,Android)</em><ul>
 <li><code>waypoints</code> Array of <code>waypoint</code> messages to import <em>(iOS,Android/array/required)</em></li>
 </ul>
 </li>
-<li><code>setConfiguration</code> Imports and actives new configuration values (iOS,Android)_<ul>
+<li><code>setConfiguration</code> Imports and actives new configuration values <em>(iOS,Android)</em><ul>
 <li><code>configuration</code> Configuration message to import <em>(iOS,Android/required)</em></li>
 </ul>
 </li>
