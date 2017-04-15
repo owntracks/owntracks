@@ -547,11 +547,11 @@
 <li><code>alt</code> Altitude measured above sea level <em>(iOS/integer/meters/optional)</em></li>
 <li><code>batt</code> Device battery level <em>(iOS,Android/integer/percent/optional)</em></li>
 <li><code>cog</code> Course over ground <em>(iOS/integer/degree/optional)</em></li>
-<li><code>lat</code> latitude <em>(iOS/float/meters/required)</em></li>
-<li><code>lon</code> longitude <em>(iOS/float/meters/required)</em></li>
+<li><code>lat</code> latitude <em>(iOS,Android/float/meters/required)</em></li>
+<li><code>lon</code> longitude <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>rad</code> radius around the region when entering/leaving <em>(iOS/integer/meters/optional)</em></li>
 <li>
-<p><code>t</code> trigger for the location report <em>(iOS/string/optional)</em> </p>
+<p><code>t</code> trigger for the location report <em>(iOS,Android/string/optional)</em> </p>
 <ul>
 <li><code>p</code> ping issued randombly by background task <em>(iOS)</em></li>
 <li><code>c</code> circular region enter/leave event <em>(iOS/Android)</em></li>
@@ -559,7 +559,6 @@
 <li><code>r</code> response to a reportLocation cmd message <em>(iOS/Android)</em></li>
 <li><code>u</code> manual publish requested by the user <em>(iOS/Android)</em></li>
 <li><code>t</code> timer based publish in move move <em>(iOS)</em></li>
-<li><code>a</code> automatic location update <em>(iOS/Android)</em></li>
 </ul>
 </li>
 <li>
@@ -581,7 +580,7 @@
 <li>The <code>tst</code> in a ping is a <a href="https://github.com/owntracks/ios/issues/197">current timestamp</a>, so that it doesn't look like a duplicate.</li>
 <li>The <code>tid</code> dfaults to the last two characters of the topic </li>
 <li>A missing <code>t</code> element also indicates an automatic location update</li>
-<li>A publish with of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
+<li>A publish of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
 <li>The <code>acc</code>, <code>alt</code>, <code>cog</code>, <code>vac</code>, <code>vel</code> elements are only added if they are not zero</li>
 <li>Elements marked with <em>extended data</em> are only added if <code>extendedData=true</code> is configured</li>
 </ul>
@@ -600,7 +599,7 @@
 <li><code>dist</code> Distance travelled since the last location report <em>(integer/meters/optional)</em></li>
 <li><code>trip</code> Distance travelled since the last reboot <em>(integer/meters/optional)</em></li>
 <li><code>vel</code> velocity <em>(integer/kmh/optional)</em> </li>
-<li><code>t</code> trigger for the location report <em>(string/optional)</em> </li>
+<li><code>t</code> trigger for the location report <em>(string/optional)</em> <ul>
 <li><code>f</code> First publish after reboot</li>
 <li><code>m</code> Manually requested locations (e.g. by publishing to <code>/cmd</code>)</li>
 <li><code>t</code> Time for location published because device is moving.</li>
@@ -609,6 +608,8 @@
 <li><code>v</code> Transitioning from <em>stationary</em> to <em>move</em> (mo-v-e)</li>
 <li><code>l</code> Last known position when device lost GPS fix</li>
 <li><code>L</code> Last known position before gracefull shutdown</li>
+</ul>
+</li>
 </ul>
 <h4 id="notes_1">Notes</h4>
 <ul>
@@ -639,7 +640,6 @@
 <li><code>lon</code> Longitude <em>(iOS,Android/float/meters/optional)</em></li>
 <li><code>rad</code> Radius around the latitude and longitude coordinates <em>(iOS,Android/integer/meters/optional)</em>  </li>
 <li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> elemnt of the transition message </em>(iOS,Android/integer/epoch/required)_  </li>
-<li><code>shared</code> Share status of the waypoint  <em>(iOS,Android/boolen/required)</em>  </li>
 <li><code>tid</code> Tracker ID that is included in the sent transition message <em>(iOS/string/optional)</em></li>
 <li><code>uuid</code> UUID of the BLE Beacon <em>(iOS,Android/string/optional)</em></li>
 <li><code>major</code> Major number of the BLE Beacon <em>(iOS,Android/integer/optional)</em></li>
@@ -673,9 +673,11 @@
 <li><code>enter</code> The device entered the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
 <li><code>leave</code> The device left the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
 <li><code>desc</code> Name of the waypoint <em>(iOS,Android/string/optional)</em></li>
-<li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em></li>
+<li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em><ul>
 <li><code>c</code> Circular geographical region  <em>(iOS, Android)</em></li>
 <li><code>b</code> BLE Beacon <em>(iOS, Android)</em></li>
+</ul>
+</li>
 </ul>
 <h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.  </p>
@@ -746,7 +748,7 @@
 <li>
 <p><code>mqttProtocolLevel</code> MQTT broker protocol level <em>(iOS,Android/integer)</em></p>
 <ul>
-<li><code>3</code> MQTT 3</li>
+<li><code>3</code> MQTT 3 (default)</li>
 <li><code>4</code> MQTT 3.1.1 </li>
 </ul>
 </li>
