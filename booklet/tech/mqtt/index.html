@@ -279,7 +279,12 @@
                 
                     <li><a class="toctree-l4" href="#keepalives">Keepalives</a></li>
                 
+            
+                <li class="toctree-l3"><a href="#broker">Broker</a></li>
+                
                     <li><a class="toctree-l4" href="#aws-iot">AWS IOT</a></li>
+                
+                    <li><a class="toctree-l4" href="#aws-iot_1">AWS IOT</a></li>
                 
             
             </ul>
@@ -412,23 +417,51 @@ a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
 </blockquote>
 <p>For example, <code>mosquitto_sub</code> uses a default of 60 sec.</p>
 <p>In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.</p>
+<h2 id="broker">Broker</h2>
+<p>Below is a list of known configuration values that are required to connect to certain MQTT endpoints </p>
 <h3 id="aws-iot">AWS IOT</h3>
-<p>The OwnTracks apps are partially compatible to the AWS IOT in private MQTT mode. However, as AWS IOT does not support some MQTT features, some restrictions apply. </p>
+<p>The OwnTracks apps are partially compatible to the <a href="https://aws.amazon.com/de/iot/">AWS IOT</a> broker in MQTT private mode. 
+As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
 <p>The following settings are required to connect </p>
 <pre><code>{
     &quot;_type&quot;:&quot;configuration&quot;, 
     &quot;mode&quot;:0, 
+    &quot;host&quot;: &quot;ENDPOINT.amazonaws.com&quot;,
+    &quot;port&quot;: 8883,
     &quot;subQos&quot;:0,
     &quot;pubQos&quot;:0, 
+    &quot;auth&quot;:false,
     &quot;pubRetain&quot;:false, 
     &quot;cleanSession&quot;:true, 
     &quot;tls&quot;:true
     &quot;clientId&quot;:&quot;CLIENTID&quot;,
-    &quot;host&quot;: &quot;ENDPOINT.amazonaws.com&quot;
 }
 </code></pre>
 
-<p>Additionaly, you need to configure the app to use a client TLS certificate and the AWS TLS ca. </p>
+<p>Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca. </p>
+<h3 id="aws-iot_1">AWS IOT</h3>
+<p>The OwnTracks apps are partially compatible to the <a href="https://www.losant.com/">Losant IoT Developer Platform</a> in MQTT private mode. 
+As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
+<p>The following settings are required to connect </p>
+<pre><code>{
+    &quot;_type&quot;: &quot;configuration&quot;,
+    &quot;mode&quot;:0,
+    &quot;mqttProtocolLevel&quot;: 4,
+    &quot;host&quot;:&quot;broker.losant.com&quot;,
+    &quot;port&quot;:8883,
+    &quot;tls&quot;:true,
+    &quot;pubRetain&quot;: false,
+    &quot;pubQos&quot;: 0,
+    &quot;subQos&quot;:0,
+    &quot;cleanSession&quot;: true,
+    &quot;clientId&quot;:&quot;CLIENT_ID&quot;,
+    &quot;auth&quot;:true,
+    &quot;username&quot;:&quot;ACCESS_KEY&quot;,
+    &quot;password&quot;:&quot;ACCESS_SECRET&quot;
+}
+</code></pre>
+
+<p>See the <a href="https://docs.losant.com/applications/access-keys/">official documentation</a> how to obtain the <code>ACCESS_KEY</code> and <code>ACCESS_SECRET</code>. </p>
               
             </div>
           </div>
