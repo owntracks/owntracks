@@ -422,6 +422,21 @@ a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
 <h3 id="aws-iot">AWS IOT</h3>
 <p>The OwnTracks apps are partially compatible to the <a href="https://aws.amazon.com/de/iot/">AWS IOT</a> broker in MQTT private mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
+<p>Before connecting, a so called <em>thing</em> has to be configured which represents the connecting client. 
+The thing needs to have a client certificate generated for authentication and a policy attached that allows some actions. 
+The most basic policy allows all actions for the <em>thing</em>. </p>
+<pre><code>{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;iot:*&quot;,
+      &quot;Resource&quot;: &quot;*&quot;
+    }
+  ]
+}
+</code></pre>
+
 <p>The following settings are required to connect </p>
 <pre><code>{
     &quot;_type&quot;:&quot;configuration&quot;, 
@@ -438,7 +453,9 @@ As AWS IOT does not support some MQTT features (notable retained messages), some
 }
 </code></pre>
 
-<p>Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca. </p>
+<p>The <code>ENDPOINT</code> can be obtained in the <em>thing</em> details under <em>Interact</em>.<br />
+Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca.
+Before importing it into the app, you need to set a password to the client TLS certificate. </p>
 <h3 id="losant-iot-developer-platform">Losant IoT Developer Platform</h3>
 <p>The OwnTracks apps are partially compatible to the <a href="https://www.losant.com/">Losant IoT Developer Platform</a> in MQTT private mode. 
 As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
