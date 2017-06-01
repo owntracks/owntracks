@@ -700,9 +700,10 @@
 </ul>
 </li>
 <li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
+<li><code>clientId</code> client id to use for MQTT connect. Defaults to "<em>user</em> <em>deviceId</em>" <em>(iOS,Android/string)</em></li>
 <li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>cmd</code> Respond to cmd messages <em>(iOS,Android/boolean)</em></li>
-<li><code>deviceId</code> MQTT client ID  <em>(iOS,Android/string)</em></li>
+<li><code>deviceId</code> id of the device used for <code>pubTopicBase</code> and <code>clientId</code> construction. Defaults to the os name of the device  <em>(iOS,Android/string)</em></li>
 <li><code>extendedData</code> Add extended data attributes to location messages <em>(iOS,Android/boolean)</em></li>
 <li><code>host</code> MQTT endpoint host <em>(iOS,Android/string)</em></li>
 <li><code>httpSchedulerConsiderStrategyDirect</code> Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists <em>(Android/boolean)</em></li>
