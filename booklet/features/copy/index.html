@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Waypoints - OwnTracks Booklet</title>
+  <title>Copy - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -199,25 +199,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Waypoints</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#waypoints">Waypoints</a></li>
-                
-                    <li><a class="toctree-l4" href="#adding-on-ios">Adding on iOS</a></li>
-                
-                    <li><a class="toctree-l4" href="#adding-on-android">Adding on Android</a></li>
-                
-                    <li><a class="toctree-l4" href="#remote-loading-of-waypoints">Remote loading of waypoints</a></li>
-                
-                    <li><a class="toctree-l4" href="#deleting-waypoints">Deleting waypoints</a></li>
-                
-                    <li><a class="toctree-l4" href="#beacons-ranging">Beacons Ranging</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../waypoints/">Waypoints</a>
         
     </li>
 
@@ -237,8 +220,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../copy/">Copy</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Copy</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#copy">Copy</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -400,7 +390,7 @@
         
       
     
-    <li>Waypoints</li>
+    <li>Copy</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -414,57 +404,38 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="waypoints">Waypoints</h2>
-<p>The <em>base topic</em> for publishes from the devices (OwnTracks apps) is what you configure it
-to be in the app's preferences/settings. For argument's sake we'll use the default <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
-<p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
-All messages published to this base topic are retained if you have configured the app to retain them.</p>
-<p>Additionally, if you've configured a waypoint or geo-fence, a transition event will be published upon
-entering or leaving a waypoint:</p>
-<ul>
-<li><code>rad</code>ius (if its value is greater than 0)</li>
-<li><code>desc</code>ription with the name you set for the waypoint</li>
-<li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
-   whether the device is entering or leaving a configured region, respectively.</li>
-</ul>
-<p>If you set up a shared waypoint, the app publishes that waypoint (with <code>retain=0</code> 
-irrespective of your general preference) to the base topic with <code>/waypoints</code>
-tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the
-payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
-<p>For example, If Jane configures a waypoint on her iPhone, the app could publish the following payload</p>
+                <h2 id="copy">Copy</h2>
+<p>To allow some friends to see your location temporarily, even if they don't have OwnTracks installed on their devices (but do ask them why they don't :) you can toggle a <code>_cp</code> switch in the UI of both Android and iOS apps.</p>
+<p>When this switch is active, the apps add a <code>{ "_cp" : true }</code> JSON element to outgoing publishes (via MQTT) or POSTs (via HTTP). Other than setting this value the apps don't do anything with the switch.</p>
 <pre><code class="json">{
-    &quot;_type&quot;: &quot;waypoint&quot;,
-    &quot;desc&quot;: &quot;Paris is lovely&quot;,
-    &quot;lat&quot;: &quot;48.858330&quot;,
-    &quot;lon&quot;: &quot;2.295130&quot;,
-    &quot;rad&quot;: &quot;50&quot;,
-    &quot;tst&quot;: &quot;1385997757&quot;
+  &quot;_type&quot;: &quot;location&quot;,
+  &quot;lat&quot;: 48.85833,
+  &quot;t&quot;: &quot;u&quot;,
+  &quot;lon&quot;: 3.29513,
+  &quot;cp&quot;: true,
+  &quot;tid&quot;: &quot;JJ&quot;,
+  &quot;tst&quot;: 1496473278
 }
 </code></pre>
 
-<p>When you set up a shared waypoint (with a <code>desc</code>ription and a <code>rad</code>ius), this
-waypoint is published to the broker with the current time stamp. If you update
-the waypoint definition on the device at a later stage, the waypoint is
-re-published, with the <em>original</em> timestamp, but with possibly new
-<code>desc</code>ription and/or <code>rad</code>ius. To be precise, the <code>tst</code> timestamp is used as an
-identifier of the waypoint even if it is later modified on the device. For waypoints that are not shared, the above obviously does not apply. </p>
-<p>Subscribers to the broker (our apps and any other program) can avoid getting
-waypoints by subscribing to, say, <code>owntracks/+/+</code>; also broker ACLs can
-prohibit access to <code>owntracks/+/+/waypoints</code> for particular users if so desired.
-Conversely, all messages published by the apps (<code>location</code> and <code>waypoint</code>) are
-available with a subscription to <code>owntracks/#</code>.</p>
-<p>The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. </p>
-<h3 id="adding-on-ios">Adding on iOS</h3>
-<p>On iOS you can navigate to the place where you want to put a waypoint, Tap long and edit the Waypoint. The waypoint is always placed at the center of the map (hence it's predefined name <code>Center</code>, which you should change to something meaningful). With a bit of practice, you can then drag the waypoint to it's final destination on the map or, and this may be easier, edit the waypoint and specify its exact coordinates.</p>
-<h3 id="adding-on-android">Adding on Android</h3>
-<p>On Android, waypoints can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  </p>
-<h3 id="remote-loading-of-waypoints">Remote loading of waypoints</h3>
-<p>Instead of configuring multiple waypoints on the device, they can be loaded <a href="../remoteconfig/">remotely</a> with the <code>setWaypoints</code> cmd message if remote configuration is enabled on the device. </p>
-<p>You can use this to import individual waypoints or groups of pre-configured waypoints which are merged into the existing waypoint definitions on the device. Recall, however, that the <code>tst</code> element is like a <em>key</em> which uniquely identifies each waypoint.</p>
-<h3 id="deleting-waypoints">Deleting waypoints</h3>
-<p>On both iOS waypoints can be deleted by swiping it away. On Android, a long press is required. </p>
-<h3 id="beacons-ranging">Beacons Ranging</h3>
-<p>In addition to circular regions, the apps can monitor their proximity for <a href="../beacons/">BLE Beacons</a>. </p>
+<p>What this <code>_cp</code> element basically does is to tell your backend software: "hey, (s)he says it's ok to share this location!", and your software can then, say, copy the location just published to a special Web site for your friends to see, or send them an e-mail, or do any amount of other neat stuff: let your imagination run free. Note this is something you implement depending on what you want to do with the data.</p>
+<p>To show you how easy it could be, here's a bit of Python code:</p>
+<pre><code class="python">def on_message(client, userdata, msg):
+
+    topic = msg.topic
+
+    try:
+        data = json.loads(str(msg.payload))
+
+        if '_cp' in data:
+            # tell friends where we are
+            print &quot;public: TID = {0} is currently at {1}, {2}&quot;.format(data['tid'], data['lat'], data['lon'])
+        else:
+            # handle data privately
+
+    except:
+        return
+</code></pre>
               
             </div>
           </div>
@@ -472,10 +443,10 @@ available with a subscription to <code>owntracks/#</code>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../beacons/" class="btn btn-neutral float-right" title="Beacons"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../featured/" class="btn btn-neutral float-right" title="Featured"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../card/" class="btn btn-neutral" title="Card"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pedometer/" class="btn btn-neutral" title="Pedometer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -504,10 +475,10 @@ available with a subscription to <code>owntracks/#</code>.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../card/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../pedometer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../beacons/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../featured/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
