@@ -418,7 +418,14 @@
 
 <p>In Traccar proper, you configure your tracking deviceId as <code>tid</code> respectively in post-June 2017 versions of our apps, as your configured <code>topic</code>:</p>
 <p><img alt="Traccar device configuration" src="../images/traccar-device.jpg" /></p>
-<p>Encryption is not supported nor are friends.</p>
+<p>HTTP POST payloads shall contain at least the elements <code>lat</code>, <code>lon</code>, <code>_type:location</code>, <code>tst</code>, and either or both of <code>tid</code> and <code>topic</code>. If <code>topic</code> is given in the payload, that will be used as Traccar's <em>uniqueId</em> (in which case <code>tid</code> will be added to attributes), else <code>tid</code>.</p>
+<pre><code class="json">{&quot;lon&quot;:2.29513,&quot;lat&quot;:48.85833,&quot;_type&quot;:&quot;location&quot;,&quot;tst&quot;:1497476456, &quot;tid&quot;:&quot;JJ&quot;}
+</code></pre>
+
+<pre><code class="json">{&quot;lon&quot;:2.29513,&quot;lat&quot;:48.85833,&quot;_type&quot;:&quot;location&quot;,&quot;topic&quot;:&quot;owntracks/jane/phone&quot;, &quot;tid&quot;: &quot;JJ&quot;}
+</code></pre>
+
+<p>Neither encryption nor friends are supported.</p>
               
             </div>
           </div>
