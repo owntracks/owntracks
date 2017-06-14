@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Android - OwnTracks Booklet</title>
+  <title>Traccar - OwnTracks Booklet</title>
   
 
   <link rel="shortcut icon" href="../../favicon.ico">
@@ -143,17 +143,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Android</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#setup">Setup</a></li>
-                
-                    <li><a class="toctree-l4" href="#the-map">The map</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../android/">Android</a>
         
     </li>
 
@@ -264,8 +255,15 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../traccar/">Traccar</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Traccar</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#traccar">Traccar</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -399,7 +397,7 @@
         
       
     
-    <li>Android</li>
+    <li>Traccar</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -413,15 +411,14 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="setup">Setup</h2>
-<p>The most important step to configure the OwnTracks Android app is to configure the broker connection. To do so, specify the hostname and port of your broker in the connection preferences. Additionally, specify a name of your device and the username and password that is used to authenticate yourself on the broker.</p>
-<p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things. </p>
-<p>Per default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device. </p>
-<p>In recent Android, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system. </p>
-<h3 id="the-map">The map</h3>
-<p>The app's main screen is the map, which displays your location on it as well as
-a reverse geo-coded location if possible.</p>
-<p>You can zoom in and out of the map, and see your friends with their photos.</p>
+                <h2 id="traccar">Traccar</h2>
+<p><a href="https://www.traccar.org">Traccar</a> is a free and open source GPS tracking system for which there exists an <code>OwnTracks</code> plugin which, by default, runs on TCP port 5144. You configure our apps <a href="../../tech/http/">in HTTP mode</a> to your Traccar server on that port, using a URL such as</p>
+<pre><code>http://traccar.example.net:5144
+</code></pre>
+
+<p>In Traccar proper, you configure your tracking deviceId as <code>tid</code> respectively in post-June 2017 versions of our apps, as your configured <code>topic</code>:</p>
+<p><img alt="Traccar device configuration" src="../images/traccar-device.jpg" /></p>
+<p>Encryption is not supported nor are friends.</p>
               
             </div>
           </div>
@@ -429,10 +426,10 @@ a reverse geo-coded location if possible.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../security/" class="btn btn-neutral float-right" title="Security"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../tech/json/" class="btn btn-neutral float-right" title="JSON"/>Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../ios/" class="btn btn-neutral" title="iOS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../debug/" class="btn btn-neutral" title="Debugging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -461,10 +458,10 @@ a reverse geo-coded location if possible.</p>
           <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../ios/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../debug/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../security/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../tech/json/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

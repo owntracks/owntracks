@@ -177,6 +177,12 @@
      <changefreq>daily</changefreq>
     </url>
         
+    <url>
+     <loc>http://owntracks.org/features/traccar/</loc>
+     <lastmod>2017-06-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
     
