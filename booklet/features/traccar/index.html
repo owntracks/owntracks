@@ -425,6 +425,57 @@
 <pre><code class="json">{&quot;lon&quot;:2.29513,&quot;lat&quot;:48.85833,&quot;_type&quot;:&quot;location&quot;,&quot;topic&quot;:&quot;owntracks/jane/phone&quot;, &quot;tid&quot;: &quot;JJ&quot;}
 </code></pre>
 
+<p>The following JSON elements, if they're contained in the HTTP payload, will be added to Traccar's position attributes: <code>vel</code>, <code>alt</code>, <code>cog</code>, <code>acc</code>, <code>t</code>, <code>batt</code>, so with an HTTP payload that an OwnTracks app produces like</p>
+<pre><code class="json">{
+  &quot;cog&quot;: 271,
+  &quot;batt&quot;: 41,
+  &quot;lon&quot;: 2.29513,
+  &quot;acc&quot;: 5,
+  &quot;vel&quot;: 61,
+  &quot;vac&quot;: 21,
+  &quot;lat&quot;: 48.85833,
+  &quot;t&quot;: &quot;u&quot;,
+  &quot;tst&quot;: 1497508651,
+  &quot;alt&quot;: 167,
+  &quot;_type&quot;: &quot;location&quot;,
+  &quot;topic&quot;: &quot;owntracks/jane/iphone&quot;,
+  &quot;p&quot;: 71,
+  &quot;tid&quot;: &quot;JJ&quot;
+}
+</code></pre>
+
+<p>a query on the Traccar API could produce something like this:</p>
+<pre><code class="json">[
+  {
+    &quot;id&quot;: 475,
+    &quot;attributes&quot;: {
+      &quot;t&quot;: &quot;u&quot;,
+      &quot;battery&quot;: 41,
+      &quot;tid&quot;: &quot;JJ&quot;,
+      &quot;ip&quot;: &quot;127.0.0.1&quot;,
+      &quot;distance&quot;: 0,
+      &quot;totalDistance&quot;: 0
+    },
+    &quot;deviceId&quot;: 4,
+    &quot;type&quot;: null,
+    &quot;protocol&quot;: &quot;owntracks&quot;,
+    &quot;serverTime&quot;: &quot;2017-06-15T06:37:32.000+0000&quot;,
+    &quot;deviceTime&quot;: &quot;2017-06-15T06:37:31.000+0000&quot;,
+    &quot;fixTime&quot;: &quot;2017-06-15T06:37:31.000+0000&quot;,
+    &quot;outdated&quot;: false,
+    &quot;valid&quot;: true,
+    &quot;latitude&quot;: 48.85833,
+    &quot;longitude&quot;: 2.29513,
+    &quot;altitude&quot;: 167,
+    &quot;speed&quot;: 1.18575,
+    &quot;course&quot;: 271,
+    &quot;address&quot;: &quot;9 Avenue Anatole France, Paris, Île-de-France, FR&quot;,
+    &quot;accuracy&quot;: 5,
+    &quot;network&quot;: null
+  }
+]
+</code></pre>
+
 <p>Neither encryption nor friends are supported.</p>
               
             </div>
