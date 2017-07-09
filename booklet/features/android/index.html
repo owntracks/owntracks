@@ -421,35 +421,35 @@
             <div class="section">
               
                 <h2 id="restrictions">Restrictions</h2>
-<p>Since Android 6 and higher the operating systems enforces stricter restrictions for apps running in the background. Most importabtly, network access and background jobs are restricted to certain time slots. As a result certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from energy optimizations. </p>
+<p>Since Android 6 and higher the operating systems enforces stricter restrictions for apps running in the background. Most importabtly, network access and background jobs are restricted to certain time slots. As a result certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from energy optimizations.</p>
 <ul>
-<li>It is highly recommended to use HTTP mode on Android 6 and higher.  </li>
-<li>The ongoing notification is required to run in the background. </li>
-<li>Outgoing messages will only be send in batched intervals. Location updates or event messages may be delayed. </li>
-<li>Incomming messages such as events might be delayed. </li>
-<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a messages is sent. Changing the keepalive intervall does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected. </li>
+<li>It is highly recommended to use HTTP mode on Android 6 and higher.</li>
+<li>The ongoing notification is required to run in the background.</li>
+<li>Outgoing messages will only be send in batched intervals. Location updates or event messages may be delayed.</li>
+<li>Incomming messages such as events might be delayed.</li>
+<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a messages is sent. Changing the keepalive intervall does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.</li>
-<li>It is highly recommended to use HTTP mode on Android 6 and higher.  </li>
-<li>Beacon detection might not work reliable because background scanning intervals are severely restricted. </li>
+<li>It is highly recommended to use HTTP mode on Android 6 and higher.</li>
+<li>Beacon detection might not work reliable because background scanning intervals are severely restricted.</li>
 </ul>
 <h2 id="google-play-services">Google Play Services</h2>
-<p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency. </p>
-<p>They are used for 
+<p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.</p>
+<p>They are used for
 <em> Battery efficient location access
-</em> Geofencing 
-<em> Scheduling of background jobs 
+</em> Geofencing
+<em> Scheduling of background jobs
 </em> Resolving coordinates to adresses
 * Displaying the map</p>
 <h2 id="beacon-scanning">Beacon Scanning</h2>
-<p>Beacon detection might cause all sorts of problems due to bad implementation by the device vendor. 
-This includes WiFi issues, intermittently working beacon detection or beacon detection not working at all. 
-In the default settings, iBeacons and AltBeacons can be detected. A custom <code>beaconLayout</code> can be provided to detect other types. </p>
+<p>Beacon detection might cause all sorts of problems due to bad implementation by the device vendor.
+This includes WiFi issues, intermittently working beacon detection or beacon detection not working at all.
+In the default settings, iBeacons and AltBeacons can be detected. A custom <code>beaconLayout</code> can be provided to detect other types.</p>
 <h2 id="setup">Setup</h2>
-<p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things. </p>
-<p>Per default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device. </p>
-<p>In recent Android, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system. </p>
-<p>In HTTP mode the <code>url</code> is required to connect. 
-In MQTT mode the <code>host</code> and <code>username</code> is required to connect. If <code>authentication</code> is enabled, a <code>password</code> is required too.  </p>
+<p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things.</p>
+<p>Per default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device.</p>
+<p>In recent Android, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.</p>
+<p>In HTTP mode the <code>url</code> is required to connect.
+In MQTT mode the <code>host</code> and <code>username</code> is required to connect. If <code>authentication</code> is enabled, a <code>password</code> is required too.</p>
               
             </div>
           </div>
