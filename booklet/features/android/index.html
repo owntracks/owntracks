@@ -428,7 +428,7 @@
 <ul>
 <li>It is highly recommended to use HTTP mode on Android 6 and higher.</li>
 <li>The ongoing notification is required to run in the background.</li>
-<li>App standby or battery optimization may interfer with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimizations feature for OwnTracks. </li>
+<li>App standby or battery optimization may interfer with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimizations feature for OwnTracks in Settings &gt; Battery &gt; Battery Optimization.  </li>
 <li>Outgoing messages will only be send in batched intervals. Location updates or event messages may be delayed.</li>
 <li>Incomming messages such as events might be delayed.</li>
 <li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a messages is sent. Changing the keepalive intervall does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
