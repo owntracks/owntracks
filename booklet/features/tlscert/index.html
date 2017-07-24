@@ -489,6 +489,7 @@ You also send the CA certificate to the device and install it there, as discusse
 <li>Allow untrusted Certificates should be disabled if possible. If the app doesn't have the CA certificate in its keychain, you'll have to allow untrusted certificates.</li>
 <li>Validate Domain Name; whether or not to validate the domain name in the certificate's <code>CN</code> field.</li>
 </ul>
+<p>Note: on iOS self-signed certificates <strong>require</strong> <em>Custom Security Policy</em> to be set. (There seems to be a problem we have not tracked down yet. Using Custom Security Policy once does mark a self signed certificate as valid until the app is restarted. This isn't reset even when Custom Security Policy is switched off afterwards.)</p>
 <p>Client certificates are independent of the custom security policy settings.</p>
 <p>If you wish to use certificate pinning, you must provide a DER-encoded file with an <code>.otre</code> extension to the device containing the pinned certificate.</p>
 <pre><code class="bash">openssl x509 \
