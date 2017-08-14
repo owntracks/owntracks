@@ -882,7 +882,7 @@
 <li>If <code>url</code> is not specified the text of the <code>content</code> element is displayed. Links embedded in the text are operational.</li>
 <li>If the <code>content</code> consists of HTML, it is rendered</li>
 <li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
-<li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> the waypoint is deleted.</li>
+<li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
 <pre><code class="json">{
