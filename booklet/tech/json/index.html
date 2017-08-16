@@ -565,7 +565,7 @@
 <li><code>lon</code> longitude <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>rad</code> radius around the region when entering/leaving <em>(iOS/integer/meters/optional)</em></li>
 <li><code>t</code> trigger for the location report <em>(iOS,Android/string/optional)</em><ul>
-<li><code>p</code> ping issued randombly by background task <em>(iOS)</em></li>
+<li><code>p</code> ping issued randomly by background task <em>(iOS)</em></li>
 <li><code>c</code> circular region enter/leave event <em>(iOS/Android)</em></li>
 <li><code>b</code> beacon region enter/leave event <em>(iOS/Android)</em></li>
 <li><code>r</code> response to a reportLocation cmd message <em>(iOS/Android)</em></li>
@@ -591,7 +591,7 @@
 <h4 id="notes">Notes</h4>
 <ul>
 <li>The <code>tst</code> in a ping is a <a href="https://github.com/owntracks/ios/issues/197">current timestamp</a>, so that it doesn't look like a duplicate.</li>
-<li>The <code>tid</code> dfaults to the last two characters of the topic</li>
+<li>The <code>tid</code> defaults to the last two characters of the topic</li>
 <li>A missing <code>t</code> element also indicates an automatic location update</li>
 <li>A publish of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
 <li>The <code>acc</code>, <code>alt</code>, <code>cog</code>, <code>vac</code>, <code>vel</code> elements are only added if they are not zero</li>
