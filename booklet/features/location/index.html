@@ -498,144 +498,18 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <p>If a <em>waypoint</em> is not a <em>circular region</em> and the waypoint's description contains a valid iBeacon specification, a <em>beacon region</em> is monitored for enter/leave events.</p>
 <p>If an enter/leave event occurs an event message is published with the <code>type</code> attribute set to <code>c</code>or <code>b</code>for (<em>circular region_or _beacon region</em>). The message contains an <code>event</code> attribute specifying either <code>enter</code>or <code>leave</code>.</p>
 <p>If the <em>waypoint_is _shared</em>, the description of the <em>waypoint</em> is added to the published <code>event</code> message.</p>
-<table>
-<thead>
-<tr>
-<th>Automatic</th>
-<th>Description</th>
-<th>iBeacon</th>
-<th>Radius</th>
-<th>Shared</th>
-<th>Event Message</th>
-<th>/w Description</th>
-<th>Waypoint Message</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Y</td>
-<td>n/a</td>
-<td>n/a</td>
-<td>n/a</td>
-<td>n/a</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>N</td>
-<td>n/a</td>
-<td>n/a</td>
-<td>n/a</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td><code>c</code></td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>Y</td>
-<td>Y</td>
-<td><code>c</code></td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td><code>b</code></td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td>Y</td>
-<td><code>b</code></td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>N</td>
-<td><code>c</code></td>
-<td>N</td>
-<td>N</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-<td><code>c</code></td>
-<td>Y</td>
-<td>Y</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>Automatic | Description | iBeacon | Radius | Shared | Event Message | /w Description | Waypoint Message | 
+---|---|---|---|---|---|---|---|---|
+Y | n/a |  n/a |  n/a |  n/a | N | N | N |
+N | N   | n/a |   n/a |  n/a | N | N | N |
+N | Y | N | N | N | N | N | N |
+N | Y | N | N | Y | N | N | Y |
+N | Y | N | Y | N | <code>c</code> | N | N |
+N | Y | N | Y | Y | <code>c</code> | Y | Y |
+N | Y | Y | N | N | <code>b</code> | N | N |
+N | Y | Y | N | Y | <code>b</code> | Y | Y |
+N | Y | Y | Y | N | <code>c</code> | N | N |
+N | Y | Y | Y | Y | <code>c</code> | Y | Y |</p>
               
             </div>
           </div>
