@@ -682,9 +682,11 @@
 <li><code>tst</code> Timestamp at which the event occured <em>(iOS,Android/integer/epoch/required)</em></li>
 <li><code>acc</code> Accuracy of the geographical coordinates <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>tid</code> Tracker ID of the waypoint <em>(iOS/string/none/optional)</em></li>
-<li><code>event</code> Event that triggered the transition (iOS,Android/string/required)</li>
+<li><code>event</code> Event that triggered the transition (iOS,Android/string/required)<ul>
 <li><code>enter</code> The device entered the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
 <li><code>leave</code> The device left the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
+</ul>
+</li>
 <li><code>desc</code> Name of the waypoint <em>(iOS,Android/string/optional)</em></li>
 <li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em><ul>
 <li><code>c</code> Circular geographical region  <em>(iOS, Android)</em></li>
