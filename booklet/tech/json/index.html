@@ -544,7 +544,6 @@
 <li><code>owntracks/user/device/cmd</code> if remote commands are enabled</li>
 <li><code>owntracks/+/+</code> for seeing other user's locations, depending on broker ACL</li>
 <li><code>owntracks/+/+/event</code> for transition messages (<code>enter</code>/<code>leave</code>)</li>
-<li><code>owntracks/+/+/waypoint</code> for Waypoint definitions/modifications</li>
 <li><code>owntracks/+/+/info</code> for obtaining <a href="../../features/card/">cards</a>.</li>
 </ul>
 <p>In HTTP mode the apps POST their data to a single endpoint you configure.</p>
@@ -791,8 +790,8 @@
 <li><code>ranging</code> Beacon ranging <em>(iOS/boolean)</em></li>
 <li><code>remoteConfiguration</code> Allow remote configuration by sending a <code>setConfiguration</code> cmd message <em>(Android/boolean)</em></li>
 <li><code>servercer</code> Blank separated list of certificate file names in DER format <em>(iOS/string)</em></li>
-<li><code>sub</code> MQTT subscription <em>(Android/boolean)</em></li>
-<li><code>subTopic</code> MQTT topic to which the app subscribes   <em>(iOS,Android/string)</em></li>
+<li><code>sub</code> subscribe to <code>subTopic</code> via MQTT <em>(iOS,Android/boolean)</em></li>
+<li><code>subTopic</code> A whitespace separated list of MQTT topics to which the app subscribes if <code>sub</code> is true (defaults see <a href="#topics">topics</a>)   <em>(iOS,Android/string)</em></li>
 <li><code>subQos</code> <em>(iOS,Android/boolean)</em></li>
 <li><code>tid</code> Two digit Tracker ID used to display short name and default face of a user <em>(iOS,Android/string)</em></li>
 <li><code>tls</code> MQTT endpoint TLS connection <em>(iOS,Android/boolean)</em></li>
