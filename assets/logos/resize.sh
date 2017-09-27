@@ -1,7 +1,7 @@
 #!/bin/bash
 
-INK=/Applications/Inkscape.app/Contents/Resources/bin/inkscape
-IMAGEW=imagew
+INK="/Applications/Inkscape.app/Contents/Resources/bin/inkscape --export-background=ffffff" 
+IMAGEW="imagew -bkgd ffffff"
 
 if [[ -z "$1" ]] 
 then
