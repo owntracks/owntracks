@@ -425,7 +425,7 @@ If you move more than 500 meters in 5 minutes you'll get a PUB after 10 minutes.
 <p>Thus, when the app goes into the background, a new location is received. Most likely, this will not result in a publish as the last publish was not longer ago than 10 minutes. Say the last update was exactly 9 minutes ago when the background mode is enabled. In this case no publish will be sent. However, the next location will probably only be received after the specified 10 minutes. At this point, the time of the last publish is longer than 10 minutes ago. So in this worst case, around 20 will pass before a location will be sent. </p>
 <p>If you switch on the app after one minute in the background (11 minutes after the last publish), a new report will be sent immediately as soon as a new location is available. </p>
 <h3 id="ios">iOS</h3>
-<p>The iOS app offers 3 modes of location publication:</p>
+<p>The iOS app offers 4 modes of location publication:</p>
 <ul>
 <li><em>Quiet</em> mode</li>
 <li><em>Manual</em> mode</li>
