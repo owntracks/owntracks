@@ -566,7 +566,7 @@
 <li><code>t</code> trigger for the location report <em>(iOS,Android/string/optional)</em><ul>
 <li><code>p</code> ping issued randomly by background task <em>(iOS)</em></li>
 <li><code>c</code> circular region enter/leave event <em>(iOS/Android)</em></li>
-<li><code>b</code> beacon region enter/leave event <em>(iOS/Android)</em></li>
+<li><code>b</code> beacon region enter/leave event <em>(iOS)</em></li>
 <li><code>r</code> response to a reportLocation cmd message <em>(iOS/Android)</em></li>
 <li><code>u</code> manual publish requested by the user <em>(iOS/Android)</em></li>
 <li><code>t</code> timer based publish in move move <em>(iOS)</em></li>
@@ -653,13 +653,13 @@
 <li><code>rad</code> Radius around the latitude and longitude coordinates <em>(iOS,Android/integer/meters/optional)</em></li>
 <li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> element of the transition message </em>(iOS,Android/integer/epoch/required)_</li>
 <li><code>tid</code> Tracker ID that is included in the sent transition message <em>(iOS/string/optional)</em></li>
-<li><code>uuid</code> UUID of the BLE Beacon <em>(iOS,Android/string/optional)</em></li>
-<li><code>major</code> Major number of the BLE Beacon <em>(iOS,Android/integer/optional)</em></li>
-<li><code>minor</code>  Minor number of the BLE Beacon_(iOS,Android/integer/optional)_</li>
+<li><code>uuid</code> UUID of the BLE Beacon <em>(iOS/string/optional)</em></li>
+<li><code>major</code> Major number of the BLE Beacon <em>(iOS/integer/optional)</em></li>
+<li><code>minor</code>  Minor number of the BLE Beacon_(iOS/integer/optional)_</li>
 </ul>
 <h4 id="notes_2">Notes</h4>
 <ul>
-<li>In iOS version &gt;= 9.1.0 and in Android version &gt;= 0.6.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
+<li>In iOS version &gt;= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
 <li>If <code>lat</code>, <code>lon</code> and <code>rad</code> elements are present, transition messages are sent when entering and leaving the geographical region</li>
 <li>If <code>uuid</code>, <code>major</code>, <code>minor</code> elements are present, BLE becons with that specifications are monitored</li>
 <li>Beacons and Geographical regions can be defined together</li>
@@ -682,14 +682,14 @@
 <li><code>acc</code> Accuracy of the geographical coordinates <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>tid</code> Tracker ID of the waypoint <em>(iOS/string/none/optional)</em></li>
 <li><code>event</code> Event that triggered the transition (iOS,Android/string/required)<ul>
-<li><code>enter</code> The device entered the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
-<li><code>leave</code> The device left the defined geographical region or BLE Beacon range <em>(iOS, Android)</em></li>
+<li><code>enter</code> The device entered the defined geographical region or BLE Beacon range <em>(iOS)</em></li>
+<li><code>leave</code> The device left the defined geographical region or BLE Beacon range <em>(iOS)</em></li>
 </ul>
 </li>
 <li><code>desc</code> Name of the waypoint <em>(iOS,Android/string/optional)</em></li>
 <li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em><ul>
 <li><code>c</code> Circular geographical region  <em>(iOS, Android)</em></li>
-<li><code>b</code> BLE Beacon <em>(iOS, Android)</em></li>
+<li><code>b</code> BLE Beacon <em>(iOS)</em></li>
 </ul>
 </li>
 </ul>
@@ -705,12 +705,11 @@
 <li><code>allowRemoteLocation</code> Respond to reportLocation cmd message <em>(iOS,Android/boolean)</em></li>
 <li><code>allowinvalidcerts</code> Allow self signed certificates in user defined security policy <em>(iOS/boolean)</em></li>
 <li><code>auth</code> Use <code>username</code> and <code>password</code> for endpoint authentication <em>(iOS,Android/boolean)</em></li>
-<li><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></li>
 <li>
-<p><code>beaconLayout</code> AltBeacon <a href="https://altbeacon.github.io/android-beacon-library/javadoc/org/altbeacon/beacon/BeaconParser.html">parser layout</a> to understand different beacon advertisements other than the default iBeacons  <em>(Android/string)</em></p>
+<p><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></p>
 </li>
 <li>
-<p><code>beaconMode</code> Backend mode for BLE beacon scanning (Android/Integer)</p>
+<p><code>beaconMode</code> Backend mode for BLE beacon scanning (Android/Integer/obsolete)</p>
 <ul>
 <li><code>0</code> Normal bluetooth scanning for regions with UUID</li>
 <li><code>1</code> Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android &lt; 6.x</li>

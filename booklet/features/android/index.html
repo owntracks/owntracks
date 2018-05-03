@@ -154,9 +154,6 @@
                 <li class="toctree-l3"><a href="#restrictions-on-huawei-phones">Restrictions on Huawei Phones</a></li>
                 
             
-                <li class="toctree-l3"><a href="#beacon-scanning">Beacon Scanning</a></li>
-                
-            
                 <li class="toctree-l3"><a href="#google-play-services">Google Play Services</a></li>
                 
             
@@ -433,14 +430,10 @@
 <li>Incoming messages such as events might be delayed.</li>
 <li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.</li>
-<li>Beacon detection might not work reliably because background scanning intervals are severely restricted.</li>
+<li>Beacons are no long supported in OwnTracks for Android and will be removed in future releases.</li>
 </ul>
 <h2 id="restrictions-on-huawei-phones">Restrictions on Huawei Phones</h2>
 <p>Huawei Phones will stop apps in the background. OwnTracks needs to be whitelisted as a protected app in order to run in the background. </p>
-<h2 id="beacon-scanning">Beacon Scanning</h2>
-<p>Beacon detection might cause all sorts of problems due to bad implementation by the device vendor.
-This includes WiFi issues, intermittently working beacon detection or beacon detection not working at all.
-In the default settings, iBeacons and AltBeacons can be detected. A custom <code>beaconLayout</code> can be provided to detect other types.</p>
 <h2 id="google-play-services">Google Play Services</h2>
 <p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.</p>
 <p>They are used for
