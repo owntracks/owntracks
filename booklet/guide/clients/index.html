@@ -79,9 +79,6 @@
                 <li class="toctree-l3"><a href="#recorder">Recorder</a></li>
                 
             
-                <li class="toctree-l3"><a href="#o2s">o2s</a></li>
-                
-            
                 <li class="toctree-l3"><a href="#mqttwarn">mqttwarn</a></li>
                 
             
@@ -436,7 +433,7 @@
             <div class="section">
               
                 <h2 id="clients">Clients</h2>
-<p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions. (Do remember however, that you cannot do this in <a href="../scenarios/"><em>public mode</em></a>.)</p>
+<p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions.</p>
 <p>You know that OwnTracks <em>publishes</em> location information to an MQTT or HTTP endpoint. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
 <p>When you've got your endpoint set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
 <h2 id="mosquitto_sub">mosquitto_sub</h2>
@@ -451,26 +448,6 @@
 <p><img alt="Recorder" src="../images/demo-geojson-linestring.png" /></p>
 <p>And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.</p>
 <p>Read <a href="../../clients/recorder/">more about the Recorder</a>.</p>
-<h2 id="o2s">o2s</h2>
-<p>One of the clients we provide as part of the Open Source OwnTracks project is called <em>o2s</em>; the strange name stands for <em>OwnTracks to Storage</em>, and you can use this connected to your <a href="../broker/">MQTT broker</a> in <a href="../scenarios/">Private mode</a>, if you need a MySQL or PostgreSQL database. (We do recommend, however, that you use our <em>Recorder</em> (see above).)</p>
-<p>Correctly configured (and it's not trivial), <em>o2s</em> connects to your broker and subscribes to location messages and other <a href="../../tech/json/">OwnTracks payloads</a>. Upon receiving a location update, <em>o2s</em> will do a number of things:</p>
-<ul>
-<li>Perform a reverse-geo lookup (using your choice of either Google or XXX to do so) for the geographical coordinates received from the OwnTracks app</li>
-<li>Store the message and its details into a database (MySQL and PostgreSQL are supported)</li>
-<li>Alert via (future) plugins that a geographical region (<a href="../waypoints/">waypoint</a>) has been entered or left</li>
-</ul>
-<p>The result of using <em>o2s</em> is that you get a database table (several actually) in which your OwnTracks locations are stored.</p>
-<pre><code>+---------------------+-----+------------+------------+------+--------------------------------------+
-| tst                 | tid | lat        | lon        | cc   | addr                                 |
-+---------------------+-----+------------+------------+------+--------------------------------------+
-| 2015-05-27 06:23:36 | jJ  | 46.7835540 | 17.2073088 | HU   | Keszthely, Hévízi út, 8360 Ungarn    |
-| 2015-05-26 20:10:52 | jJ  | 46.7710135 | 17.1829915 | HU   | Alsópáhok, 760, 8394 Ungarn          |
-| 2015-05-26 14:32:50 | jJ  | 46.9557636 | 19.4132377 | HU   | Kerekegyháza, 5211, 6041 Ungarn      |
-| 2015-05-23 22:42:27 | jJ  | 47.4986630 | 19.0438124 | HU   | Budapest, Eötvös tér, 1051 Ungarn    |
-+---------------------+-----+------------+------------+------+--------------------------------------+
-</code></pre>
-
-<p>So, now that you have the OwnTracks locations being neatly stored for you, how do you visualize them on, say, a map, at a later point in time? Enter <em>Pista</em>.</p>
 <h2 id="mqttwarn">mqttwarn</h2>
 <p>You'll recall (we hope) the discussion on <a href="mqtt.md">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
 <p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>

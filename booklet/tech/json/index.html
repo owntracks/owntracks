@@ -573,7 +573,7 @@
 <li><code>v</code> updated by <code>Settings/Privacy/Locations Services/System Services/Frequent Locations</code> monitoring <em>(iOS)</em></li>
 </ul>
 </li>
-<li><code>tid</code> Tracker ID used to display the initials of a user <em>(iOS,Android/string/optional)</em></li>
+<li><code>tid</code> Tracker ID used to display the initials of a user <em>(iOS,Android/string/optional)</em> required for <code>http</code> mode</li>
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> in seconds of the location fix <em>(iOS,Android/integer/epoch/required)</em></li>
 <li><code>vac</code> vertical accuracy of the <code>alt</code> element <em>(iOS/integer/meters/optional)</em></li>
 <li><code>vel</code> velocity <em>(iOS/integer/kmh/optional)</em></li>
@@ -687,6 +687,7 @@
 </ul>
 </li>
 <li><code>desc</code> Name of the waypoint <em>(iOS,Android/string/optional)</em></li>
+<li><code>tid</code> TrackerID required in http mode.</li>
 <li><code>t</code> Trigger of the event <em>(iOS,Android/string/optional)</em><ul>
 <li><code>c</code> Circular geographical region  <em>(iOS, Android)</em></li>
 <li><code>b</code> BLE Beacon <em>(iOS)</em></li>
@@ -913,6 +914,7 @@
 <ul>
 <li><code>name</code> Name to identify a user <em>(iOS,Android/string/optional)</em></li>
 <li><code>face</code> Base64 encoded PNG image that is displayed instead of the Tracker ID <em>(iOS,Android/string/optional)</em></li>
+<li><code>tid</code> The tracker ID with which a friend is associated in the apps</li>
 </ul>
 <h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
 <p>The app can export a list of configured waypoints to the endpoint.</p>
