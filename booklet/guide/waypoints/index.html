@@ -413,16 +413,16 @@ contain the elements:</p>
 <li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
    whether the device is entering or leaving a configured region, respectively.</li>
 </ul>
-<p>If you set up a shared waypoint, the app publishes that waypoint (without the retain flag,
+<p>If you set up a waypoint, the app publishes that waypoint (without the retain flag,
 irrespective of your general preference) to the base topic with <code>/waypoint</code>
 tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoint</code>) with the
-payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. For waypoints with disabled sharing, no waypoint message is published. These can be used to note down locations privately. But note that entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
-<p>When you set up a shared waypoint (with a <code>desc</code>ription and a <code>rad</code>ius), this
+payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>.</p>
+<p>When you set up a waypoint (with a <code>desc</code>ription and a <code>rad</code>ius), this
 waypoint is published to the broker with the current time stamp. If you update
 the waypoint definition on the device at a later stage, the waypoint is
 re-published, with the <em>original</em> timestamp, but with possibly new
 <code>desc</code>ription and/or <code>rad</code>ius. To be precise, the <code>tst</code> timestamp is used as an
-identifier of the waypoint even if it is later modified on the device. For waypoints that are not shared, the above obviously does not apply. </p>
+identifier of the waypoint even if it is later modified on the device.</p>
 <p>Subscribers to the broker (our apps and any other program) can avoid getting
 waypoints by subscribing to, say, <code>owntracks/+/+</code>; also broker ACLs can
 prohibit access to <code>owntracks/+/+/waypoint</code> for particular users if so desired.

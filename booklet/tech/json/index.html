@@ -633,7 +633,7 @@
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
 </ul>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
-<p>Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint if the waypoint is marked as <code>shared</code>. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
+<p>Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     elements
@@ -658,10 +658,10 @@
 <li>If <code>uuid</code>, <code>major</code>, <code>minor</code> elements are present, BLE becons with that specifications are monitored</li>
 <li>Beacons and Geographical regions can be defined together</li>
 <li>Waypoint messages are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</li>
-<li>Shared Waypoint are sent to the broker and transition messages contain a <code>desc</code> and <code>event</code> element. Not shared ones are not sent to the broker and transition messages contain an <code>event</code> attribute only</li>
+<li>Waypoints are sent to the broker and transition messages contain a <code>desc</code> and <code>event</code> element.</li>
 </ul>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
-<p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message. If the corresponding waypoint is shared, it's description in <code>desc</code> is included too. MQTT transition messages are published non retained.</p>
+<p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;transition&quot;,
     elements

@@ -486,11 +486,11 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <li>a <em>manual location</em> created by the user</li>
 </ul>
 <p>A <em>manual location</em> with a non-zero length remark (description) is a <em>waypoint</em>.</p>
-<p>If a <em>waypoint</em> is <em>shared</em>, its attributes are published when the waypoint is created or changed.</p>
+<p>A <em>waypoint</em>'s attributes are published when the waypoint is created or changed.</p>
 <p>If a <em>waypoint</em> specifies a radius, a <em>circular region</em> is monitored for <em>enter/leave events</em>.</p>
 <p>If a <em>waypoint</em> is not a <em>circular region</em> and the waypoint's description contains a valid iBeacon specification, a <em>beacon region</em> is monitored for enter/leave events.</p>
 <p>If an enter/leave event occurs an event message is published with the <code>type</code> attribute set to <code>c</code>or <code>b</code>for (<em>circular region_or _beacon region</em>). The message contains an <code>event</code> attribute specifying either <code>enter</code>or <code>leave</code>.</p>
-<p>If the <em>waypoint_is _shared</em>, the description of the <em>waypoint</em> is added to the published <code>event</code> message.</p>
+<p>The description of the <em>waypoint</em> is added to the published <code>event</code> message.</p>
 <table>
 <thead>
 <tr>
@@ -498,7 +498,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <th>Description</th>
 <th>iBeacon</th>
 <th>Radius</th>
-<th>Shared</th>
 <th>Event Message</th>
 <th>/w Description</th>
 <th>Waypoint Message</th>
@@ -510,7 +509,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>n/a</td>
 <td>n/a</td>
 <td>n/a</td>
-<td>n/a</td>
 <td>N</td>
 <td>N</td>
 <td>N</td>
@@ -520,7 +518,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>N</td>
 <td>n/a</td>
 <td>n/a</td>
-<td>n/a</td>
 <td>N</td>
 <td>N</td>
 <td>N</td>
@@ -532,17 +529,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>N</td>
 <td>N</td>
 <td>N</td>
-<td>N</td>
-<td>N</td>
-</tr>
-<tr>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
-<td>Y</td>
-<td>N</td>
-<td>N</td>
 <td>Y</td>
 </tr>
 <tr>
@@ -550,7 +536,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>Y</td>
 <td>N</td>
 <td>Y</td>
-<td>N</td>
 <td><code>c</code></td>
 <td>N</td>
 <td>N</td>
@@ -560,7 +545,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>Y</td>
 <td>N</td>
 <td>Y</td>
-<td>Y</td>
 <td><code>c</code></td>
 <td>Y</td>
 <td>Y</td>
@@ -569,7 +553,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
-<td>N</td>
 <td>N</td>
 <td><code>b</code></td>
 <td>N</td>
@@ -580,7 +563,6 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>Y</td>
 <td>Y</td>
 <td>N</td>
-<td>Y</td>
 <td><code>b</code></td>
 <td>Y</td>
 <td>Y</td>
@@ -590,14 +572,12 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
-<td>N</td>
 <td><code>c</code></td>
 <td>N</td>
 <td>N</td>
 </tr>
 <tr>
 <td>N</td>
-<td>Y</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
