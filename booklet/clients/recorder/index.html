@@ -421,7 +421,7 @@
 <pre><code class="sh">#!/bin/sh
 
 docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083 \
-    --name owntracks-recorder
+    --name owntracks-recorder \
     --hostname ds415.ww.mens.de \
     -e MQTTHOSTNAME=&quot;ds415.ww.mens.de&quot; \
     -e IPLIST=&quot;192.168.1.1 192.168.1.82&quot; \
