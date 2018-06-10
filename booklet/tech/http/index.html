@@ -481,14 +481,18 @@ When using the Recorder, the URL you specify in the app's configuration <em>must
         # CREATE TABLE locations (dt TIMESTAMP, tid CHAR(2), lat DECIMAL(9,6), lon DECIMAL(9,6));
         $mysqli = new mysqli(&quot;127.0.0.1&quot;, &quot;user&quot;, &quot;password&quot;, &quot;database&quot;);
 
+        $tst = $data['tst'];
         $lat = $data['lat'];
         $lon = $data['lon'];
         $tid = $data['tid'];
 
-        $sql = &quot;INSERT INTO locations (tid, lat, lon) VALUES (?, ?, ?)&quot;;
+        # Convert timestamp to a format suitable for mysql
+        $dt = date('Y-m-d H:i:s', $tst);
+
+        $sql = &quot;INSERT INTO locations (dt, tid, lat, lon) VALUES (?, ?, ?, ?)&quot;;
         $stmt = $mysqli-&gt;prepare($sql);
         # bind parameters (s = string, i = integer, d = double,  b = blob)
-        $stmt-&gt;bind_param('sdd', $tid, $lat, $lon);
+        $stmt-&gt;bind_param('ssdd', $dt, $tid, $lat, $lon);
         $stmt-&gt;execute();
         $stmt-&gt;close();
     }
