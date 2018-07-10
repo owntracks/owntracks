@@ -549,19 +549,19 @@
 </code></pre>
 
 <ul>
-<li><code>acc</code> Accuracy of the reported location in meters without unit <em>(iOS/integer/meters/optional)</em></li>
-<li><code>alt</code> Altitude measured above sea level <em>(iOS/integer/meters/optional)</em></li>
+<li><code>acc</code> Accuracy of the reported location in meters without unit <em>(iOS,Android/integer/meters/optional)</em></li>
+<li><code>alt</code> Altitude measured above sea level <em>(iOS,Android/integer/meters/optional)</em></li>
 <li><code>batt</code> Device battery level <em>(iOS,Android/integer/percent/optional)</em></li>
 <li><code>cog</code> Course over ground <em>(iOS/integer/degree/optional)</em></li>
 <li><code>lat</code> latitude <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>lon</code> longitude <em>(iOS,Android/float/meters/required)</em></li>
 <li><code>rad</code> radius around the region when entering/leaving <em>(iOS/integer/meters/optional)</em></li>
 <li><code>t</code> trigger for the location report <em>(iOS,Android/string/optional)</em><ul>
-<li><code>p</code> ping issued randomly by background task <em>(iOS)</em></li>
-<li><code>c</code> circular region enter/leave event <em>(iOS/Android)</em></li>
+<li><code>p</code> ping issued randomly by background task <em>(iOS,Android)</em></li>
+<li><code>c</code> circular region enter/leave event <em>(iOS,Android)</em></li>
 <li><code>b</code> beacon region enter/leave event <em>(iOS)</em></li>
-<li><code>r</code> response to a reportLocation cmd message <em>(iOS/Android)</em></li>
-<li><code>u</code> manual publish requested by the user <em>(iOS/Android)</em></li>
+<li><code>r</code> response to a reportLocation cmd message <em>(iOS,Android)</em></li>
+<li><code>u</code> manual publish requested by the user <em>(iOS,Android)</em></li>
 <li><code>t</code> timer based publish in move move <em>(iOS)</em></li>
 <li><code>v</code> updated by <code>Settings/Privacy/Locations Services/System Services/Frequent Locations</code> monitoring <em>(iOS)</em></li>
 </ul>
@@ -569,12 +569,12 @@
 <li><code>tid</code> Tracker ID used to display the initials of a user <em>(iOS,Android/string/optional)</em> required for <code>http</code> mode</li>
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> in seconds of the location fix <em>(iOS,Android/integer/epoch/required)</em></li>
 <li><code>vac</code> vertical accuracy of the <code>alt</code> element <em>(iOS/integer/meters/optional)</em></li>
-<li><code>vel</code> velocity <em>(iOS/integer/kmh/optional)</em></li>
+<li><code>vel</code> velocity <em>(iOS,Android/integer/kmh/optional)</em></li>
 <li><code>p</code> barometric pressure <em>(iOS/float/kPa/optional/extended data)</em></li>
 <li><code>conn</code> Internet connectivity status (route to host) when the message is created <em>(iOS,Android/string/optional/extended data)</em><ul>
-<li><code>w</code> phone is connected to a WiFi connection <em>(iOS, Android)</em></li>
-<li><code>o</code> phone is offline <em>(iOS, Android)</em></li>
-<li><code>m</code> mobile data <em>(iOS, Android)</em></li>
+<li><code>w</code> phone is connected to a WiFi connection <em>(iOS,Android)</em></li>
+<li><code>o</code> phone is offline <em>(iOS,Android)</em></li>
+<li><code>m</code> mobile data <em>(iOS,Android)</em></li>
 </ul>
 </li>
 <li><code>cp</code> <a href="../features/copy.md">copy mode</a> enabled; only if <code>true</code>, missing otherwise <em>(iOS)</em></li>
@@ -588,6 +588,7 @@
 <li>A missing <code>t</code> element also indicates an automatic location update</li>
 <li>A publish of <code>"_type": "location"</code> with a <code>"b"</code> trigger is sent when an iOS device enters or leaves a beacon in addition to a <code>"_type": "transition"</code>: if somebody leaves and enters his home without having left the radius of detection for significant changes, a subscriber to his main topic would otherwise not get notified of any location change although beacon or circular region enter and leave transitions were generated.</li>
 <li>The <code>acc</code>, <code>alt</code>, <code>cog</code>, <code>vac</code>, <code>vel</code> elements are only added if they are not zero</li>
+<li>Some Android devices always return 0 for <code>alt</code> or <code>vel</code></li>
 <li>Elements marked with <em>extended data</em> are only added if <code>extendedData=true</code> is configured</li>
 </ul>
 <h3 id="greenwich">Greenwich</h3>
@@ -714,12 +715,11 @@
 <li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
 <li><code>clientId</code> client id to use for MQTT connect. Defaults to "<em>user</em> <em>deviceId</em>" <em>(iOS,Android/string)</em></li>
 <li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
-<li><code>cp</code> Copy mode <em>(iOS,Android/boolean)</em></li>
+<li><code>cp</code> Copy mode <em>(iOS/boolean)</em></li>
 <li><code>cmd</code> Respond to cmd messages <em>(iOS,Android/boolean)</em></li>
 <li><code>deviceId</code> id of the device used for <code>pubTopicBase</code> and <code>clientId</code> construction. Defaults to the os name of the device  <em>(iOS,Android/string)</em></li>
 <li><code>extendedData</code> Add extended data attributes to location messages <em>(iOS,Android/boolean)</em></li>
 <li><code>host</code> MQTT endpoint host <em>(iOS,Android/string)</em></li>
-<li><code>httpSchedulerConsiderStrategyDirect</code> Directly send messages in HTTP mode and bypass the default scheduler if a network connection exists <em>(Android/boolean)</em></li>
 <li><code>ignoreInaccurateLocations</code> Location accuracy below which reports are supressed <em>(iOS,Android/integer/days)</em></li>
 <li><code>ignoreStaleLocations</code> Number of days after which location updates are assumed stale <em>(iOS,Android/integer/days)</em></li>
 <li><code>keepalive</code> MQTT endpoint keepalive <em>(iOS,Android/integer/seconds)</em></li>
@@ -742,7 +742,6 @@
 <li><code>locked</code> Locks settings screen on device for editing <em>(iOS/boolean)</em></li>
 <li><code>mode</code> Endpoint protocol mode <em>(iOS,Android/integer)</em><ul>
 <li><code>0</code> Private  MQTT <em>(iOS, Android)</em></li>
-<li><code>2</code> Public  MQTT <em>(iOS, Android)</em></li>
 <li><code>3</code> Private  HTTP <em>(iOS, Android)</em></li>
 <li><code>4</code> Watson IOT Quickstart <em>(iOS)</em></li>
 <li><code>4</code> Watson IOT Registered <em>(iOS)</em></li>
@@ -755,20 +754,17 @@
 <li><code>2</code> Move</li>
 </ul>
 </li>
-<li>
-<p><code>mqttProtocolLevel</code> MQTT broker protocol level <em>(iOS,Android/integer)</em></p>
-<ul>
+<li><code>mqttProtocolLevel</code> MQTT broker protocol level <em>(iOS,Android/integer)</em><ul>
 <li><code>3</code> MQTT 3 (default)</li>
 <li><code>4</code> MQTT 3.1.1</li>
 </ul>
 </li>
-<li>
-<p><code>notification</code> Show ongoing notification. Required to keep running in the background <em>(Android/boolean)</em></p>
-</li>
 <li><code>notificationGeocoder</code> Resolve last reported location in ongoing notification to an address  <em>(Android/boolean)</em></li>
 <li><code>notificationLocation</code> Show last reported location in ongoing notification <em>(Android/boolean)</em></li>
+<li><code>opencageApiKey</code> API key for alternate Geocoding provider. See https://opencagedata.com/ for details. <em>(Android/string)</em></li>
 <li><code>passphrase</code> Passphrase of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>password</code> Endpoint password <em>(iOS,Android/string)</em></li>
+<li><code>ping</code> Interval in which location messages of with <code>t</code>:<code>p</code> are reported <em>(Android/integer)</em></li>
 <li><code>policymode</code> User defined securiy policy mode <em>(iOS/integer)</em><ul>
 <li><code>0</code> Do not used pinned certificates to validate servers</li>
 <li><code>1</code> Validate host certificates against public keys of pinned certificates</li>
