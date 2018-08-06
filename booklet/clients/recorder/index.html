@@ -437,6 +437,7 @@ docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083
 <li>and the Recorder's Web interface on 8083</li>
 </ul>
 <p>You can assign these as you wish. Recall, that if you use our example, your OwnTracks apps will also have to access 18883 over TLS (instead of the default 8883 over TLS).</p>
+<p>You may want to modify the default ACLs under <code>owntracks/mosquitto/mosquitto.acl</code>. For more please check <a href="https://owntracks.org/booklet/guide/broker/#acls">Broker Configurations</a>.</p>
 <h4 id="exploring">Exploring</h4>
 <p>If you want to see what's going on within the container, try launching an MQTT subscriber: first obtain the container's ID:</p>
 <pre><code class="sh">docker ps
