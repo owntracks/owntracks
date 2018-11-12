@@ -280,13 +280,15 @@
                 
                     <li><a class="toctree-l4" href="#greenwich">Greenwich</a></li>
                 
+                    <li><a class="toctree-l4" href="#queclink">Queclink</a></li>
+                
             
                 <li class="toctree-l3"><a href="#_typelwt">_type=lwt</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typewaypoint">_type=waypoint</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_2">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_3">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typetransition">_type=transition</a></li>
@@ -294,22 +296,22 @@
             
                 <li class="toctree-l3"><a href="#_typeconfiguration">_type=configuration</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_3">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_4">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typebeacon">_type=beacon</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_4">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_5">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typecmd">_type=cmd</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_5">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_6">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typesteps">_type=steps</a></li>
                 
-                    <li><a class="toctree-l4" href="#notes_6">Notes</a></li>
+                    <li><a class="toctree-l4" href="#notes_7">Notes</a></li>
                 
             
                 <li class="toctree-l3"><a href="#_typecard">_type=card</a></li>
@@ -621,6 +623,84 @@
 <ul>
 <li>The device can be configured to produce or not produce fields marked as <em>optional</em></li>
 </ul>
+<h3 id="queclink">Queclink</h3>
+<p>OwnTracks works with a selection of traccers by <a href="http://www.queclink.com">Queclink</a>. The protocol conversion is done via <a href="https://github.com/jpmens/qtripp">qtripp</a>.
+Queclink devices report the following additional elements in a <code>_type=location</code> message:</p>
+<pre><code class="json">{
+    &quot;_type&quot;: &quot;location&quot;,
+    elements
+}
+</code></pre>
+
+<ul>
+<li>
+<p><code>t</code> trigger for the location report <em>(string/optional)</em></p>
+<ul>
+<li><code>o</code> Corner</li>
+<li><code>M</code> Mileage</li>
+<li><code>!</code> Tow or fake tow or sensor without ignition</li>
+<li><code>a</code> motionless (aka park)</li>
+<li><code>i</code> ignition on</li>
+<li><code>I</code> ignition off</li>
+<li><code>e</code> external power off</li>
+<li><code>E</code> external power ON</li>
+<li><code>1</code> Devices powered up</li>
+<li><code>2</code> Battery stop charging</li>
+<li><code>3</code> Battery start charging</li>
+<li><code>9</code> Battery power low</li>
+<li><code>h</code> harsh behavior</li>
+<li><code>s</code> speed alarm</li>
+</ul>
+</li>
+<li>
+<p><code>odometer</code> total distance of the device <em>(float/kilometers/optional)</em></p>
+</li>
+<li><code>hmc</code> total hours of operation <em>(float/seconds/optional)</em></li>
+<li><code>ubatt</code> voltage of the battery <em>(float/volts/optional)</em></li>
+<li><code>uext</code> voltage of the external power source <em>(float/volts/optional)</em></li>
+<li><code>vin</code> vehicle identification number <em>(string/optional)</em></li>
+<li><code>imei</code> identification number <em>(string/optional)</em></li>
+<li><code>name</code> vehicle name <em>(string/optional)</em></li>
+<li><code>don</code> is duration since ignition on <em>(float/seconds/optional)</em></li>
+<li><code>doff</code> is duration since ignition off <em>(float/seconds/optional)</em></li>
+<li><code>aiv</code> is analog input voltage <em>(float/volts/optional)</em></li>
+<li><code>rpm</code> is engine rounds per minute <em>(float/rounds per minute/optional)</em></li>
+<li><code>fcon</code> is fuel consumption <em>(float/L per 100km/optional)</em></li>
+<li><code>flvl</code> is fuel level <em>(float/percent/optional)</em></li>
+<li><code>anum</code> is number of analog inputs <em>(integer/optional)</em></li>
+<li><code>adid-xx</code> is id of analog input number xx <em>(string/optional)</em></li>
+<li><code>adty-xx</code> is type of analog input number xx <em>(string/optional)</em></li>
+<li><code>adda-xx</code> is data of analog input number xx <em>(string/optional)</em></li>
+<li><code>temp_c-xx</code> is temperature of analog input number xx <em>(float/celsius/optional)</em></li>
+<li><code>can</code> is can data <em>(string/optional)</em></li>
+<li><code>din1</code> is status of digital input 1 <em>(boolean/optional)</em></li>
+<li><code>din2</code> is status of digital input 2 <em>(boolean/optional)</em></li>
+<li><code>dout1</code> is status of digital output 1 <em>(boolean/optional)</em></li>
+<li><code>dout2</code> is status of digital output 2 <em>(boolean/optional)</em></li>
+<li><code>ign</code> is status of ignition <em>(boolean/optional)</em></li>
+<li><code>motion</code> is motion status <em>(boolean/optional)</em></li>
+<li><code>tow</code> is status of tow sensor <em>(boolean/optional)</em></li>
+<li><code>fake</code> is status of fake tow sensor <em>(boolean/optional)</em></li>
+<li><code>sens</code> is status of motion sensor <em>(boolean/optional)</em></li>
+<li><code>sent</code> is epoch when message was sent <em>(integer/epoch/optional)</em></li>
+<li><code>mcc</code> is mobile country code <em>(integer/optional)</em></li>
+<li><code>mnc</code> is mobile network code <em>(integer/optional)</em></li>
+<li><code>lac</code> is location area code <em>(string/optional)</em></li>
+<li><code>cid</code> is cell id <em>(string/optional)</em></li>
+<li><code>nmds</code> is non movement detection status <em>(boolean/optional)</em></li>
+<li><code>rit</code> queclink record id and type <em>(integer/optional)</em></li>
+<li><code>rty</code> queclink record type <em>(integer/optional)</em></li>
+<li><code>rid</code> queclink record id <em>(integer/optional)</em></li>
+<li><code>mst</code> queclink motion state <em>(integer/optional)</em></li>
+<li><code>count</code> is counter of message <em>(string/optional)</em></li>
+<li><code>raw_line</code> raw data <em>(string/optional)</em></li>
+<li><code>counter</code> number of ignored positions <em>(integer/optional)</em></li>
+<li><code>ignored</code> indicates counter positions have been ignored <em>(boolean/optional)</em></li>
+</ul>
+<h4 id="notes_2">Notes</h4>
+<ul>
+<li>The device can be configured to produce or not produce fields marked as <em>optional</em></li>
+</ul>
 <h2 id="_typelwt"><code>_type=lwt</code></h2>
 <p>A <em>last will and testament</em> is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:</p>
 <pre><code class="json">{
@@ -650,7 +730,7 @@
 <li><code>major</code> Major number of the BLE Beacon <em>(iOS/integer/optional)</em></li>
 <li><code>minor</code>  Minor number of the BLE Beacon_(iOS/integer/optional)_</li>
 </ul>
-<h4 id="notes_2">Notes</h4>
+<h4 id="notes_3">Notes</h4>
 <ul>
 <li>In iOS version &gt;= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
 <li>If <code>lat</code>, <code>lon</code> and <code>rad</code> elements are present, transition messages are sent when entering and leaving the geographical region</li>
@@ -792,7 +872,7 @@
 <li><code>willQos</code></li>
 <li><code>waypoints</code> Array of waypoint messages <em>(iOS,Android/array)</em></li>
 </ul>
-<h4 id="notes_3">Notes</h4>
+<h4 id="notes_4">Notes</h4>
 <ul>
 <li>When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a <code>mode</code> element, the mode is changed first and all remaining elements are imported for the new mode.</li>
 <li>In MQTT mode the server will consider the client as dead if it the keepalive interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if <code>keepalive</code> was 60). Afterwards, an <code>lwt</code> message will be send.</li>
@@ -821,7 +901,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="notes_4">Notes</h4>
+<h4 id="notes_5">Notes</h4>
 <ul>
 <li>The theoretical relationship between RSSI and distance is <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.</li>
 </ul>
@@ -857,7 +937,7 @@
 </li>
 <li><code>waypoints</code> Triggers publish of a <code>waypoints</code> message <em>(iOS,Android)</em></li>
 </ul>
-<h4 id="notes_5">Notes</h4>
+<h4 id="notes_6">Notes</h4>
 <ul>
 <li>If <code>url</code> for the <code>action</code> cmd message is specified, the URL is opened in a full screen web view within the app</li>
 <li>If the optional <code>extern</code> boolean is <code>true</code> a click on the notification will launch an external browser instead</li>
@@ -879,7 +959,7 @@
 <li><code>from</code> Effective start of time period <em>(iOS/integer/epoch)</em></li>
 <li><code>to</code>  Effective end of time period <em>(iOS/integer/epoch)</em></li>
 </ul>
-<h4 id="notes_6">Notes</h4>
+<h4 id="notes_7">Notes</h4>
 <ul>
 <li><code>steps</code> is -1 if device does not support step counting or specified time period is invalid</li>
 </ul>
