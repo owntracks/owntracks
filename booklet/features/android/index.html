@@ -421,9 +421,9 @@
 <li>App standby or battery optimization may interfere with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimization feature for OwnTracks in Settings &gt; Battery &gt; Battery Optimization.  </li>
 <li>Outgoing messages will only be sent in batched intervals. Location updates or event messages may be delayed.</li>
 <li>Incoming messages such as events might be delayed.</li>
-<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 10 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
+<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 15 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.</li>
-<li>Beacons are no long supported in OwnTracks for Android and will be removed in future releases.</li>
+<li>Beacons are no long supported in OwnTracks for Android</li>
 </ul>
 <h2 id="restrictions-on-huawei-phones">Restrictions on Huawei Phones</h2>
 <p>Huawei Phones will stop apps in the background. OwnTracks needs to be whitelisted as a protected app in order to run in the background. </p>
@@ -433,10 +433,10 @@
 <em> Battery efficient location access
 </em> Geofencing
 <em> Scheduling of background jobs
-</em> Resolving coordinates to addresses
+</em> Resolving coordinates to addresses (an alterative Geocoding service can be configured)
 * Displaying the map</p>
 <h2 id="setup">Setup</h2>
-<p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the connection preferences. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things.</p>
+<p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the configuration editor. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things.</p>
 <p>By default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device.</p>
 <p>In recent Android versions, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.</p>
 <p>In HTTP mode the <code>url</code> is required to connect.
