@@ -783,14 +783,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <p><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></p>
 </li>
 <li>
-<p><code>beaconMode</code> Backend mode for BLE beacon scanning (Android/Integer/obsolete)</p>
-<ul>
-<li><code>0</code> Normal bluetooth scanning for regions with UUID</li>
-<li><code>1</code> Legacy beacon scanning instead of Android 6 scanning. Has no effect on devices running Android &lt; 6.x</li>
-<li><code>2</code> Hard disable any Bluetooth functions even if regions with UUID are defined</li>
-</ul>
+<p><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></p>
 </li>
-<li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
 <li><code>clientId</code> client id to use for MQTT connect. Defaults to "<em>user</em> <em>deviceId</em>" <em>(iOS,Android/string)</em></li>
 <li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>cp</code> Copy mode <em>(iOS/boolean)</em></li>
@@ -802,20 +796,6 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>ignoreStaleLocations</code> Number of days after which location updates are assumed stale <em>(iOS,Android/integer/days)</em></li>
 <li><code>keepalive</code> MQTT endpoint keepalive <em>(iOS,Android/integer/seconds)</em></li>
 <li><code>locatorDisplacement</code> maximum distance between location source updates <em>(iOS,Android/integer/meters)</em></li>
-<li><code>locatorAccuracyBackground</code> Location source power mode when the app is in the background <em>(Android/integer)</em><ul>
-<li><code>0</code> High power likely based on GPS location</li>
-<li><code>1</code> Balanced power based on multiple location sources</li>
-<li><code>2</code> Low power based on cell tower location</li>
-<li><code>3</code> No power  based on locations requested by other apps</li>
-</ul>
-</li>
-<li><code>locatorAccuracyForeground</code> Location source power mode when the app is in the foreground <em>(Android/integer)</em><ul>
-<li><code>0</code> High power likely based on GPS location</li>
-<li><code>1</code> Balanced power based on multiple location sources</li>
-<li><code>2</code> Low power based on cell tower location</li>
-<li><code>3</code> No power  based on locations requested by other apps</li>
-</ul>
-</li>
 <li><code>locatorInterval</code> maximum interval between location source updates <em>(iOS,Android/integer/seconds)</em></li>
 <li><code>locked</code> Locks settings screen on device for editing <em>(iOS/boolean)</em></li>
 <li><code>mode</code> Endpoint protocol mode <em>(iOS,Android/integer)</em><ul>
@@ -823,7 +803,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>3</code> Private  HTTP <em>(iOS, Android)</em></li>
 </ul>
 </li>
-<li><code>monitoring</code> Location reporting mode <em>(iOS,integer)</em><ul>
+<li><code>monitoring</code> Location reporting mode <em>(iOS,Android/integer)</em><ul>
 <li><code>-1</code> Quiet</li>
 <li><code>0</code> Manual</li>
 <li><code>1</code> Significant</li>
@@ -849,7 +829,6 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </li>
 <li><code>port</code> MQTT endpoint port <em>(iOS,Android/integer)</em></li>
 <li><code>positions</code> Number of locatoins to keep and display <em>(iOS/integer)</em></li>
-<li><code>pub</code> Automatic reporting <em>(Android/boolean)</em></li>
 <li><code>pubTopicBase</code> MQTT topic base to which the app publishes; <code>%u</code> is replaced by the user name, <code>%d</code> by device   <em>(iOS,Android/string)</em></li>
 <li><code>pubRetain</code> MQTT retain flag for reported messages <em>(iOS,Android/boolean)</em></li>
 <li><code>pubQos</code> MQTT QoS level for reported messages <em>(iOS,Android/boolean)</em></li>
