@@ -277,6 +277,8 @@
             
                 <li class="toctree-l3"><a href="#http">HTTP</a></li>
                 
+                    <li><a class="toctree-l4" href="#distinguishing-payloads">Distinguishing payloads</a></li>
+                
                     <li><a class="toctree-l4" href="#php-example">PHP example</a></li>
                 
             
@@ -455,6 +457,12 @@
 </table>
 <p>The OwnTracks Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box, as long as it is built with HTTP support and a <code>--http-port</code> is configured.
 When using the Recorder, the URL you specify in the app's configuration <em>must</em> include parameters for <em>username</em> and <em>devicename</em> (<code>?u=user&amp;d=device</code>), alternatively using the <code>X-Limit-U</code> and <code>X-Limit-D</code> headers respectively. You can also force <em>username</em> using a proxy as described in the Recorder's documentation.</p>
+<h3 id="distinguishing-payloads">Distinguishing payloads</h3>
+<p>When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic. Instead, the iOS and Android app each have their own approach to help you figure out where the message came from:</p>
+<ul>
+<li>On iOS, a new <code>topic</code> key is added to the payload if the payload is unencrypted. If the payload is encrypted, the <code>topic</code> key is only available in the decrypted payload.</li>
+<li>The Android app will include headers to identify the user (<code>x-limit-u</code>) and the device (<code>x-limit-d</code>) if the user has entered this information in the "Identification" section of the connection settings.</li>
+</ul>
 <h3 id="php-example">PHP example</h3>
 <p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
 <pre><code>mysql&gt; select * from locations;
