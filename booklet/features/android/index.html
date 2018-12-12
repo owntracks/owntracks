@@ -160,6 +160,9 @@
                 <li class="toctree-l3"><a href="#setup">Setup</a></li>
                 
             
+                <li class="toctree-l3"><a href="#debug-log">Debug Log</a></li>
+                
+            
             </ul>
         
     </li>
@@ -441,6 +444,15 @@
 <p>In recent Android versions, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.</p>
 <p>In HTTP mode the <code>url</code> is required to connect.
 In MQTT mode the <code>host</code> and <code>username</code> is required to connect. If <code>authentication</code> is enabled, a <code>password</code> is required too.</p>
+<h2 id="debug-log">Debug Log</h2>
+<p>Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app. </p>
+<p>To generate the logs, follow the next steps 
+<em> Open the configuration editor at Preferences &gt; Configuration Management &gt; Menu on the right top &gt; Editor
+</em> Under key enter <code>debugLog</code>
+<em> As value enter <code>true</code>
+</em> Restart the app at Menu on the right top &gt; Restart</p>
+<p>Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
+The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor. </p>
               
             </div>
           </div>
