@@ -461,7 +461,7 @@ When using the Recorder, the URL you specify in the app's configuration <em>must
 <p>When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic. Instead, the iOS and Android app each have their own approach to help you figure out where the message came from:</p>
 <ul>
 <li>On iOS, a new <code>topic</code> key is added to the payload if the payload is unencrypted. If the payload is encrypted, the <code>topic</code> key is only available in the decrypted payload.</li>
-<li>The Android app will include headers to identify the user (<code>x-limit-u</code>) and the device (<code>x-limit-d</code>) if the user has entered this information in the "Identification" section of the connection settings.</li>
+<li>Both the Android and iOS apps (iOS after <a href="https://github.com/owntracks/ios/issues/560">#560</a> is implemented) include headers to identify the user (<code>X-Limit-U</code>) and the device (<code>X-Limit-D</code>) if the user has entered this information in the "Identification" section of the connection settings.</li>
 </ul>
 <h3 id="php-example">PHP example</h3>
 <p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
