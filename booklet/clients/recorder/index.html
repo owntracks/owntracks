@@ -322,8 +322,6 @@
                 
                     <li><a class="toctree-l4" href="#docker">Docker</a></li>
                 
-                    <li><a class="toctree-l4" href="#synology">Synology</a></li>
-                
             
             </ul>
         
@@ -411,63 +409,8 @@
                 <h2 id="recorder">Recorder</h2>
 <p>The <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require an external database.</p>
 <h3 id="docker">Docker</h3>
-<p>We have an <a href="https://hub.docker.com/r/owntracks/recorderd/">experimental Docker image</a> which you can use to launch the Recorder and its associated <a href="http://mosquitto.org">Mosquitto</a> broker. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. </p>
-<p><img alt="architecture" src="../owntracks-docker-host.png" /></p>
-<p>As an example, let's assume the host on which the Docker container will run has two IP addresses, <code>192.168.1.82</code> and <code>10.0.1.83</code>. We will also assume that you want the MQTT port on the host to be <code>11883</code> and its TLS port to be <code>18883</code>. Let's further assume that one of these addresses is DNS accessible as <code>ds415.ww.mens.de</code> and the other as <code>mqtt.ww.mens.de</code>. We want the TLS certificates for the container's Mosquitto broke to contain subjAltNames for these, so we will proceed as follows:</p>
-<ol>
-<li>Create a directory which will be mounted into the container for persistent data: <code>mkdir /var/owntracks</code>, say.</li>
-<li>Launch the Docker container with a script such as this one</li>
-</ol>
-<pre><code class="sh">#!/bin/sh
-
-docker run -v /var/owntracks:/owntracks -p 11883:1883 -p 18883:8883 -p 8083:8083 \
-    --name owntracks-recorder \
-    --hostname ds415.ww.mens.de \
-    -e MQTTHOSTNAME=&quot;ds415.ww.mens.de&quot; \
-    -e IPLIST=&quot;192.168.1.1 192.168.1.82&quot; \
-    -e HOSTLIST=&quot;mqtt.ww.mens.de ds415.ww.mens.de&quot; \
-    owntracks/recorderd
-</code></pre>
-
-<p>That should download the Docker image (if necessary) and launch a container accordingly. At first run, the TLS certificates are created in the <code>/owntracks</code> volume (which was mounted onto <code>/var/owntracks</code> on the host). The host's directory will also contain a <code>mosquitto/</code> directory which Mosquitto's configuration file, and the Recorder will use <code>/owntracks/recorder/</code> as its persistent storage.</p>
-<p>The above script will surface the port numbers as follows:</p>
-<ul>
-<li>MQTT will be on 11883</li>
-<li>MQTT over TLS on 18883</li>
-<li>and the Recorder's Web interface on 8083</li>
-</ul>
-<p>You can assign these as you wish. Recall, that if you use our example, your OwnTracks apps will also have to access 18883 over TLS (instead of the default 8883 over TLS).</p>
-<p>You may want to modify the default ACLs under <code>owntracks/mosquitto/mosquitto.acl</code>. For more please check <a href="https://owntracks.org/booklet/guide/broker/#acls">Broker Configurations</a>.</p>
-<h4 id="exploring">Exploring</h4>
-<p>If you want to see what's going on within the container, try launching an MQTT subscriber: first obtain the container's ID:</p>
-<pre><code class="sh">docker ps
-CONTAINER ID        IMAGE                   ...
-5c8800a4ab78        owntracks/recorderd     ...
-</code></pre>
-
-<p>Then, say, point <code>mosquitto_sub</code> to the broker from within the container:</p>
-<pre><code class="sh">docker exec -ti 5c8800a4ab78  mosquitto_sub -d -v -t '#'
-</code></pre>
-
-<h3 id="synology">Synology</h3>
-<p>A number of Synology devices with newer DSM support Docker; please refer to the original documentation to determine if yours has Docker support. If it does, <a href="http://blog.pavelsklenar.com/how-to-install-and-use-docker-on-synology/">this page</a> describes how to use Docker. Once you've installed the package, you can proceed to download the Recorder image (search for <code>owntracks-recorder</code>; the image you want is called <code>owntracks-recorderd</code> with a trailing <code>d</code> on it) and launch a container. (This was tested on DSM 5.2.)</p>
-<p>Launch container creation with the wizard, and give the container a name, e.g. <code>owntracks-recorder</code>.</p>
-<p><img alt="" src="../jmbp-2264.png" /></p>
-<p>Leave the settings in Step 2 as they are.</p>
-<p><img alt="" src="../jmbp-2266.png" /></p>
-<p>Add the TCP ports for MQTT (plain), MQTT (over TLS), and the Recorder's HTTP interface.</p>
-<p><img alt="" src="../jmbp-2273.png" /></p>
-<p>In the <em>Volume</em> tab, add a host folder which will be mounted into the container. Here we've chosen <code>/home/jpm/owntracks</code> which we first created with DSM's file manager.</p>
-<p><img alt="" src="../jmbp-2274.png" /></p>
-<p>In the <em>Environment</em> tab add the variables which will be exported into the container. Note that <code>IPLIST</code> and <code>HOSTLIST</code> (both of which are optional) take a space-separated list of values.</p>
-<p><img alt="" src="../jmbp-2275.png" /></p>
-<p>Check everything and press <em>Apply</em> to have the container created.</p>
-<p><img alt="" src="../jmbp-2276.png" /></p>
-<p>The container can then be launched by pressing the "on" switch.</p>
-<p><img alt="" src="../jmbp-2277.png" /></p>
-<p>The Docker container log will show console output.</p>
-<p><img alt="" src="../jmbp-2278.png" /></p>
-<p>The Recorder running on the Synology DiskStation will be accessible via the host port numbers you configured (see above for more information).</p>
+<p>We have a <a href="https://hub.docker.com/r/owntracks/recorder">Docker image</a> which you can use to launch the Recorder. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. </p>
+<p>This is documented <a href="https://github.com/owntracks/docker-recorder">on the docker-recorder</a> repository.</p>
               
             </div>
           </div>
