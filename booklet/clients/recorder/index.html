@@ -429,6 +429,11 @@
 <p><img alt="" src="../jmbp-4955.png" /></p>
 <p>You should then be able to access the Recorder's Web interface at the address of your Synology DiskStation and the port 8083 you specified above.</p>
 <p><img alt="" src="../jmbp-4956.png" /></p>
+<p>Upgrades to the container running on your Synology DiskStation are easily done from the command line:</p>
+<pre><code class="bash">$ docker stop owntracks-recorder1
+$ docker pull owntracks/recorder:latest
+$ docker start owntracks-recorder1
+</code></pre>
               
             </div>
           </div>
