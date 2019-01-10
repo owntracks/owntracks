@@ -322,6 +322,8 @@
                 
                     <li><a class="toctree-l4" href="#docker">Docker</a></li>
                 
+                    <li><a class="toctree-l4" href="#synology">Synology</a></li>
+                
             
             </ul>
         
@@ -411,6 +413,22 @@
 <h3 id="docker">Docker</h3>
 <p>We have a <a href="https://hub.docker.com/r/owntracks/recorder">Docker image</a> which you can use to launch the Recorder. The image expects a volume which you mount into it into which it will write persistent data. Furthermore, you pass environment variables into the container at first launch with which TLS certificates are created with subject (and subjAltNames) according to your preference. </p>
 <p>This is documented <a href="https://github.com/owntracks/docker-recorder">on the docker-recorder</a> repository.</p>
+<h3 id="synology">Synology</h3>
+<p>After installing Docker on your compatible Synology DiskStation, click on <em>Image</em> and <em>Add</em> the Recorder image from the URL <code>https://hub.docker.com/r/owntracks/recorder</code>; you do not have to specify a username/password. Select <code>latest</code> when prompted to choose a tag.</p>
+<p>In list of images you should then see one called <code>owntracks/recorder:latest</code> as shown below.</p>
+<p><img alt="" src="../jmbp-4953.png" /></p>
+<p>Then, click on <em>Launch</em> in the same window, select a container name (or leave it as <code>owntracks-recorder1</code>) and click on <em>Advanced Settings</em>.</p>
+<ol>
+<li>Under <em>Volume</em>, add a folder. Select a folder you created and have reserved for the recorder, and associate (mount) that folder onto the <code>/store</code> mount path.</li>
+<li>Under <em>Port Settings</em>, ensure <em>Local Port</em> <code>8083</code> is mapped to <em>Container Port</em> <code>8083</code>; you will have to replace <code>Auto</code> by <code>8083</code>.</li>
+<li>Under <em>Environment</em>, add two variables: <code>OTR_HOST</code> with the address or host name of your MQTT broker and <code>OTR_PORT</code> with its port number (typically <code>1883</code>). If you need authentication, check the <a href="https://github.com/owntracks/recorder">Recorder documentation</a> for further variables you can set to configure that.</li>
+</ol>
+<p>Just before running the container, you should see something like this with the settings you specified:</p>
+<p><img alt="" src="../jmbp-4954.png" /></p>
+<p>When you launch the container, it will show up in the <em>Container</em> tab:</p>
+<p><img alt="" src="../jmbp-4955.png" /></p>
+<p>You should then be able to access the Recorder's Web interface at the address of your Synology DiskStation and the port 8083 you specified above.</p>
+<p><img alt="" src="../jmbp-4956.png" /></p>
               
             </div>
           </div>
