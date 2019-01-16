@@ -151,7 +151,7 @@
                 <li class="toctree-l3"><a href="#general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.</a></li>
                 
             
-                <li class="toctree-l3"><a href="#restrictions-on-huawei-phones">Restrictions on Huawei Phones</a></li>
+                <li class="toctree-l3"><a href="#vendor-background-restrictions">Vendor background restrictions</a></li>
                 
             
                 <li class="toctree-l3"><a href="#google-play-services">Google Play Services</a></li>
@@ -424,12 +424,13 @@
 <li>App standby or battery optimization may interfere with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimization feature for OwnTracks in Settings &gt; Battery &gt; Battery Optimization.  </li>
 <li>Outgoing messages will only be sent in batched intervals. Location updates or event messages may be delayed.</li>
 <li>Incoming messages such as events might be delayed.</li>
-<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted every 15 minutes or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
+<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted regularly or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.</li>
 <li>Beacons are no long supported in OwnTracks for Android</li>
 </ul>
-<h2 id="restrictions-on-huawei-phones">Restrictions on Huawei Phones</h2>
-<p>Huawei Phones will stop apps in the background. OwnTracks needs to be whitelisted as a protected app in order to run in the background. </p>
+<h2 id="vendor-background-restrictions">Vendor background restrictions</h2>
+<p>Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits. </p>
+<p>A list of vendors known to interfer with background apps and a number of workarounds can be found at (Don’t kill my app!)[https://dontkillmyapp.com/]. </p>
 <h2 id="google-play-services">Google Play Services</h2>
 <p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.</p>
 <p>They are used for
@@ -443,7 +444,7 @@
 <p>By default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device.</p>
 <p>In recent Android versions, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.</p>
 <p>In HTTP mode the <code>url</code> is required to connect.
-In MQTT mode the <code>host</code> and <code>username</code> is required to connect. If <code>authentication</code> is enabled, a <code>password</code> is required too.</p>
+In MQTT mode the <code>host</code> and <code>username</code>  and <code>password</code> is required to connect. </p>
 <h2 id="debug-log">Debug Log</h2>
 <p>Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app. </p>
 <p>To generate the logs, follow the next steps 
