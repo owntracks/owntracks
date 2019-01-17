@@ -157,6 +157,8 @@
                 
                     <li><a class="toctree-l4" href="#region-monitoring-with-ibeacons">Region Monitoring with iBeacons</a></li>
                 
+                    <li><a class="toctree-l4" href="#region-monitoring-with-follow">Region Monitoring with +follow</a></li>
+                
                     <li><a class="toctree-l4" href="#remote-configuration">Remote configuration</a></li>
                 
                     <li><a class="toctree-l4" href="#why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</a></li>
@@ -481,6 +483,9 @@ reports region with description 'myBeacon' when the iBeacon identified with UUID
 <li>'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
 reports region with description 'myBeacons' when any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant is in proximity</li>
 </ul>
+<h3 id="region-monitoring-with-follow">Region Monitoring with <code>+follow</code></h3>
+<p>Create a region with a name begining with a <code>+</code> character, e.g. <code>+follow</code> and set an initial radius to be greater than zero. From this moment onwards, <em>lat</em> and <em>lon</em> will be set dynamically at each location publish and <em>radius</em> will be the distance you've covered in 30 seconds, at least 50 meters.</p>
+<p>This <em>follow</em>-type region will not trigger <code>enter/leave</code> events or notifications, and location publishes will have a type setting of <code>"t" : "C"</code>.</p>
 <h3 id="remote-configuration">Remote configuration</h3>
 <p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
 <h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</h3>
