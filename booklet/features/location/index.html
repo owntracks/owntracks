@@ -471,12 +471,7 @@ unmarked (by setting their radius to 0).</p>
 <p>Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.</p>
 <h3 id="android">Android</h3>
-<p>The way it currently works is by specifying an interval in which you want to receive updates (the one you configure in the settings). You only receive updates if this amount of time has passed and you moved more than 500m (when the app is in the background. The movement restriction is set to 50m or so when in the foreground).</p>
-<p>Say I set an interval of 10min and I don't move; will I get a PUBlish? No. 
-If you move more than 500 meters in 5 minutes you'll get a PUB after 10 minutes. You won't get a PUB after 5 minutes though.</p>
-<p>Additional restrictions apply regarding the update intervall. When switching into the background or foreground, a new location request is setup with a different granularity and energy requirement. As a result, a new location is received immedeately by the app. </p>
-<p>Thus, when the app goes into the background, a new location is received. Most likely, this will not result in a publish as the last publish was not longer ago than 10 minutes. Say the last update was exactly 9 minutes ago when the background mode is enabled. In this case no publish will be sent. However, the next location will probably only be received after the specified 10 minutes. At this point, the time of the last publish is longer than 10 minutes ago. So in this worst case, around 20 will pass before a location will be sent. </p>
-<p>If you switch on the app after one minute in the background (11 minutes after the last publish), a new report will be sent immediately as soon as a new location is available. </p>
+<p>Todo</p>
 <h3 id="ios">iOS</h3>
 <h4 id="ibeacon-monitoring">iBeacon monitoring</h4>
 <p>The app user may mark a previously manually published or manually created location
