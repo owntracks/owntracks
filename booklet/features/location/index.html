@@ -178,19 +178,9 @@
             
                 <li class="toctree-l3"><a href="#location-data">Location data</a></li>
                 
-                    <li><a class="toctree-l4" href="#move-mode">Move mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#significant-location-change-mode">Significant location change mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#manual-mode">Manual mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#quiet-mode">Quiet mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#region-monitoring">Region monitoring</a></li>
+                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
                 
                     <li><a class="toctree-l4" href="#android">Android</a></li>
-                
-                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
                 
             
             </ul>
@@ -422,12 +412,13 @@
 <p>Location data is obtained by your smartphone and published to the <a href="../../guide/broker/">MQTT broker</a> as follows:</p>
 <p>The Android and iOS apps offer 4 modes of location publication as well as region monitoring:</p>
 <ul>
-<li><em>Quiet</em> mode</li>
-<li><em>Manual</em> mode</li>
-<li><em>Significant location change</em> mode</li>
-<li><em>Move</em> mode</li>
+<li><em>Quiet</em> mode: Only manual location reports. Icon []</li>
+<li><em>Manual</em> mode: Manual location reports and automated reports with region monitoring. Icon ||</li>
+<li><em>Significant location change</em> mode: Standard tracking mode with automated location reports. Icon |&gt;</li>
+<li><em>Move</em> mode: Frequent location  ||&gt;</li>
 </ul>
-<p>In addition to this, there's also <em>Region Monitoring</em> (a.k.a. Geo Fence) and <em>iBeacon Monitoring</em> and <em>iBeacon Ranging</em>.</p>
+<p>All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. </p>
+<h3 id="ios">iOS</h3>
 <h4 id="move-mode"><em>Move</em> mode</h4>
 <p>In <em>move</em> mode, the app monitors location permanently and publishes a new
 location as soon as the device moves <code>x</code> meters or after <code>t</code> seconds, whatever
@@ -470,9 +461,6 @@ and radius. To switch region monitoring off, all regions have to be
 unmarked (by setting their radius to 0).</p>
 <p>Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.</p>
-<h3 id="android">Android</h3>
-<p>Todo</p>
-<h3 id="ios">iOS</h3>
 <h4 id="ibeacon-monitoring">iBeacon monitoring</h4>
 <p>The app user may mark a previously manually published or manually created location
 as a monitored beacon region by appending a beacon UUID to the region's name.
@@ -592,6 +580,24 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="android">Android</h3>
+<h4 id="move-mode_1"><em>Move</em> mode</h4>
+<p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 30s in high power mode and publishes a new location as soon as it arrives but at most every 10 seconds. </p>
+<p>This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
+It is recommend to use <em>move</em> mode while charging or during periods that require highly accurate tracking while moving quickly. </p>
+<h4 id="significant-location-change-mode_1"><em>Significant location change</em> mode</h4>
+<p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. </p>
+<p>This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. </p>
+<p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.<br />
+<em> <code>locatorInterval</code>: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
+</em> <code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved. 
+* <code>locatorPriority</code>: The priority of the request is a strong hint to the LocationClient for which location sources to use. </p>
+<h4 id="manual-mode_1"><em>Manual</em> mode</h4>
+<p>In <em>manual</em> mode, the app monitors device location with a low power location request. It uses the same interval configured for <em>significant mode</em> to receive low accuracy updates to use minimal battery power. </p>
+<p>The user has to publish the current location explicitly via the UI. You use this if you want to (temporarily) avoid friends seeing where you are. Note that Region events triggered by entering or leaving Geo Fence are still published automatically whilst in <em>Manual</em> mode.</p>
+<p>Remote <code>reportLocation</code> commands are ignored. </p>
+<h4 id="quiet-mode_1"><em>Quiet</em> mode</h4>
+<p>Same as <em>Manual</em> mode except that no region events are published.</p>
               
             </div>
           </div>
