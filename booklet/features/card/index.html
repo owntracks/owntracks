@@ -201,6 +201,8 @@
                 
                     <li><a class="toctree-l4" href="#creating-a-card">Creating a card</a></li>
                 
+                    <li><a class="toctree-l4" href="#cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode</a></li>
+                
             
             </ul>
         
@@ -430,6 +432,13 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 </code></pre>
 
 <p>Note the topic branch ending in <code>info</code> and note the use of the retain flag (<code>-r</code>).</p>
+<h3 id="cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode</h3>
+<p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in</p>
+<pre><code>&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;.json
+</code></pre>
+
+<p>So, if <code>"jane"</code> is a friend, the Recorder will load Jane's JSON card machine from the path <code>&lt;STORAGEDIR&gt;/cards/jane/jane.json.</code> (The same card is loaded for all devices a user has.)</p>
+<p>In <code>contrib/faces/</code> of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the <code>.json</code> file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with <code>jq . &lt; file.json</code> or <code>python -mjson.tool file.json</code>.)</p>
               
             </div>
           </div>

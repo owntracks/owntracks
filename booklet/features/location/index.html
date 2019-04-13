@@ -589,8 +589,8 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
 <p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. </p>
 <p>This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. </p>
 <p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.<br />
-<em> <code>locatorInterval</code>: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
-</em> <code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved. 
+* <code>locatorInterval</code>: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
+* <code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved. 
 * <code>locatorPriority</code>: The priority of the request is a strong hint to the LocationClient for which location sources to use. </p>
 <h4 id="manual-mode_1"><em>Manual</em> mode</h4>
 <p>In <em>manual</em> mode, the app monitors device location with a low power location request. It uses the same interval configured for <em>significant mode</em> to receive low accuracy updates to use minimal battery power. </p>

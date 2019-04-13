@@ -419,7 +419,7 @@
 <blockquote>
 <p><em>waits for the smart phone to tell it that the device has moved</em></p>
 </blockquote>
-<p>It is very important to understand that OwnTracks literally waits for the device's operating system to inform it of a movement; only then can OwnTracks react and do something. To make matters even more complicated<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>, OwnTracks on Android runs in the background, all the time, whereas on iOS it is "killed off" by the operating system and woken up every several hundred seconds, in which it gets a teeny tiny time slot to do its thing.</p>
+<p>It is very important to understand that OwnTracks literally waits for the device's operating system to inform it of a movement; only then can OwnTracks react and do something. To make matters even more complicated<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, OwnTracks on Android runs in the background, all the time, whereas on iOS it is "killed off" by the operating system and woken up every several hundred seconds, in which it gets a teeny tiny time slot to do its thing.</p>
 <p>That's basically all OwnTracks does.</p>
 <h2 id="more">More</h2>
 <p>That last sentence isn't true. Strike it.</p>
@@ -428,7 +428,7 @@
 <p>OwnTracks reports the device's battery level remotely so you can add that to your monitoring setup, if you have one. (No worries if you don't -- you probably don't need it then.)</p>
 <p>And finally, though for us this is <em>very</em> important, OwnTracks does all this securely.</p>
 <h2 id="how-owntracks-works">How OwnTracks works</h2>
-<p>The OwnTracks apps run on your smart phone (but we've already mentioned that at least once, haven't we?). When the device determines that it's <em>moved</em> a significant distance<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>, it contacts a server via 3G or WiFi (hopefully one of those is available, but we queue messages many thousands on the app until connectivity can be established) and says "<em>hey, I'm here</em>", whereby "<em>here</em>" is specified with a bit more precision. This server is either a HTTP Web server or an MQTT server. This last server is called a <em>broker</em> and the contact is made with an open, lightweight, <a href="mqtt.md">standardized protocol called MQTT</a>. (If you think that's bad it isn't: the protocol you use to surf the Web is called HTTP; does that sound much better?) So the smart phone sends your location (this operation is called <em>publish</em> in MQTT-speak) to the broker and goes back to sleep until it realizes you've again moved a significant distance whereupon the whole procedure starts anew. This broker is ideally something you provide, but we can help you out to start with by lending you the use of ours, free of charge for a while.</p>
+<p>The OwnTracks apps run on your smart phone (but we've already mentioned that at least once, haven't we?). When the device determines that it's <em>moved</em> a significant distance<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, it contacts a server via 3G or WiFi (hopefully one of those is available, but we queue messages many thousands on the app until connectivity can be established) and says "<em>hey, I'm here</em>", whereby "<em>here</em>" is specified with a bit more precision. This server is either a HTTP Web server or an MQTT server. This last server is called a <em>broker</em> and the contact is made with an open, lightweight, <a href="mqtt.md">standardized protocol called MQTT</a>. (If you think that's bad it isn't: the protocol you use to surf the Web is called HTTP; does that sound much better?) So the smart phone sends your location (this operation is called <em>publish</em> in MQTT-speak) to the broker and goes back to sleep until it realizes you've again moved a significant distance whereupon the whole procedure starts anew. This broker is ideally something you provide, but we can help you out to start with by lending you the use of ours, free of charge for a while.</p>
 <p><img alt="OwnTracks architecture" src="../images/owntracks-iotconf-arch.png" /></p>
 <p>Instead of using MQTT, you can configure the apps to use HTTP, whereupon they then speak HTTP to your server.</p>
 <p><img alt="OwnTracks architecture" src="../images/owntracks-iotconf-http-arch.png" /></p>
@@ -442,7 +442,7 @@
 <hr />
 <ol>
 <li id="fn:1">
-<p>This is a relative amount, but you can tune it a bit.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>This is a relative amount, but you can tune it a bit.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
