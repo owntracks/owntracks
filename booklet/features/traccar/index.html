@@ -409,7 +409,11 @@
             <div class="section">
               
                 <h2 id="traccar">Traccar</h2>
-<p><a href="https://www.traccar.org">Traccar</a> is a free and open source GPS tracking system for which there exists an <code>OwnTracks</code> plugin which, by default, runs on TCP port 5144. Thus you need to configure owntracks <a href="../../tech/http/">in HTTP mode</a> to connect to your Traccar server at this port, using a URL such as</p>
+<p><a href="https://www.traccar.org">Traccar</a> is a free and open source GPS tracking system for which there exists an <code>OwnTracks</code> protocol decoder (called <code>owntracks</code>)  which, by default, runs on TCP port 5144 on the Traccar server:</p>
+<pre><code class="xml">&lt;entry key='owntracks.port'&gt;5144&lt;/entry&gt;
+</code></pre>
+
+<p>Thus you need to configure OwnTracks clients <a href="../../tech/http/">in HTTP mode</a> to connect to your Traccar server at this port, using a URL such as</p>
 <pre><code>http://traccar.example.net:5144
 </code></pre>
 
