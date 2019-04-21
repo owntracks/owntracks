@@ -281,6 +281,8 @@
                 
                     <li><a class="toctree-l4" href="#php-example">PHP example</a></li>
                 
+                    <li><a class="toctree-l4" href="#testing-your-http-endpoint">Testing your HTTP endpoint</a></li>
+                
             
             </ul>
         
@@ -519,6 +521,25 @@ X-Limit-D: myphone
 
 <p>Assuming the Web server hosting this example is called <code>example.com</code>, and assuming the above script is in Jane's home directory's <code>public_html</code> saved as <code>loc.php</code>, the URL you configure in the OwnTracks app would be <code>http://example.com/~jane/loc.php</code>. We <em>urge</em> you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of <code>https://user:password@example.com/~jane/loc.php</code>.</p>
 <p>There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you <a href="../json/">study the API documentation</a>.</p>
+<h3 id="testing-your-http-endpoint">Testing your HTTP endpoint</h3>
+<p>An simple example for testing a HTTP endpoint you set up:</p>
+<pre><code class="bash">#!/bin/sh
+
+user=jane
+device=phone
+
+payload=$(jo _type=location \
+   t=u \
+   batt=11 \
+   lat=48.856826 \
+   lon=2.292713 \
+   tid=JJ \
+   tst=$(date +%s) \
+   topic=&quot;owntracks/$user/$device&quot;)
+
+curl --data &quot;${payload}&quot; http://127.0.0.1:8085/pub?u=${user}&amp;d=${device}
+</code></pre>
+
 <ul>
 <li>see also: <a href="../../features/traccar/">Traccar</a></li>
 </ul>
