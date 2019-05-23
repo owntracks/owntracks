@@ -420,6 +420,8 @@
 </code></pre>
 
 <h3 id="creating-a-card">Creating a card</h3>
+<p>Cards can be created with shell scripts or with a webapp.</p>
+<h4 id="shell-script">Shell Script</h4>
 <p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
 <ul>
 <li>If you have an image file you want to use, use <code>image2card.sh</code>, passing <em>image-filename</em> and <em>fullname</em>.</li>
@@ -432,6 +434,8 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 </code></pre>
 
 <p>Note the topic branch ending in <code>info</code> and note the use of the retain flag (<code>-r</code>).</p>
+<h4 id="webapp">Webapp</h4>
+<p>A <a href="https://avanc.github.io/owntracks-cards">webapp</a> is available to create cards in your browser and optionally publish them directly to your MQTT broker.</p>
 <h3 id="cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode</h3>
 <p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in</p>
 <pre><code>&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;.json

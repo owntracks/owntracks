@@ -88,6 +88,9 @@
                 <li class="toctree-l3"><a href="#home-assistant">Home Assistant</a></li>
                 
             
+                <li class="toctree-l3"><a href="#owntracks-cards">OwnTracks-Cards</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#roll-your-own">Roll your own</a></li>
                 
             
@@ -452,6 +455,11 @@
 <h2 id="home-assistant">Home Assistant</h2>
 <p>Another home automation solution that can be used with OwnTracks is Home Assistant. Home Assistant allows you to track the location of people connected to your personal <a href="../broker/">MQTT broker</a>. It has a map to show their current location and can trigger automations based on entering and leaving zones. In order to use the internal broker of Home Assistant, the MQTT protocol level has to be set to 4. </p>
 <p>See the <a href="https://home-assistant.io/demo/">demo</a> for an example of the map with OwnTracks devices or read more about how Home Assistant <a href="https://home-assistant.io/components/mqtt/">connects to your private MQTT broker</a>, how to <a href="https://home-assistant.io/components/device_tracker.owntracks/">enable OwnTracks support in Home Assistant</a> and how to <a href="https://home-assistant.io/components/automation/#zone-trigger">configure automations based on zones</a>.</p>
+<h2 id="owntracks-cards">OwnTracks-Cards</h2>
+<p>This is a webapp to create and edit <a href=".../features/card.md">OwnTracks cards</a>.
+It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
+Just head over to the <a href="https://avanc.github.io/owntracks-cards/">demo</a> and create a card. Configure your MQTT broker by clicking the connection state.
+The source code can be found on <a href="https://github.com/avanc/owntracks-cards">Github</a>.</p>
 <h2 id="roll-your-own">Roll your own</h2>
 <p>If you feel really brave, you can <a href="../../tech/program/">write your own program</a> which subscribes to OwnTracks data, but don't forget to tell us about it!</p>
 <h2 id="related">Related</h2>
@@ -463,7 +471,6 @@ which are useful when using MQTT in general or OwnTracks in particular.</p>
 <li>A Clojure webapp that aims to manage information gathered from OwnTracks; <a href="https://github.com/razorinc/clojure-mqttitude-backend">clojure-mqttitude-backend</a></li>
 <li>An <a href="http://flows.nodered.org/flow/ab31cd939f2e73503fb0">OwnTracks flow</a> by <a href="https://twitter.com/juzam">Giovanni @juzam Angoli</a> for Node-RED which publishes messages to <a href="https://pushover.net">pushover.net</a> upon entering or leaving a geo-fence.</li>
 <li><a href="https://play.google.com/store/apps/details?id=at.tripwire.mqtt.client">MyMQTT</a> is an app for Android which enables you to subscribe and publish to an MQTT broker.</li>
-<li>Stefano Costa cooks Italian pasta <a href="https://github.com/bluewindthings/butta-la-pasta">using OwnTracks</a>.</li>
 <li>Matthew Bordignon made a small <a href="https://github.com/matbor/Owntracks-Barometer">Web page which uses Websockets to display the barometer reading</a> published by OwnTracks for iOS. (<a href="https://twitter.com/OwnTracks/status/623823420053172224">Screenshot</a>.)</li>
 <li><a href="https://github.com/tomyvi/php-owntracks-recorder">PHP front &amp; backend for OwnTracks payloads</a></li>
 <li>Orion, an alternative to OwnTracks Recorder with powerful visualization features (<a href="https://github.com/LINKIWI/orion-server">server</a>, <a href="https://github.com/LINKIWI/orion-web">web client</a>, <a href="https://linkiwi.github.io/orion-web">demo</a>)</li>
