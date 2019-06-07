@@ -447,12 +447,14 @@
 In MQTT mode the <code>host</code> and <code>username</code>  and <code>password</code> is required to connect.</p>
 <h2 id="debug-log">Debug Log</h2>
 <p>Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app.</p>
-<p>To generate the logs, follow the next steps
-* Temporarily grant write access to local storage. Go to Android App Info &gt; Permissions and enable the storage permission.
-* Open the configuration editor at Preferences &gt; Configuration Management &gt; Menu on the right top &gt; Editor
-* Under key enter <code>debugLog</code>
-* As value enter <code>true</code>
-* Restart the app at Menu on the right top &gt; Restart</p>
+<p>To generate the logs, follow the next steps:</p>
+<ul>
+<li>Temporarily grant write access to local storage. Go to Android App Info &gt; Permissions and enable the storage permission.</li>
+<li>Open the configuration editor at Preferences &gt; Configuration Management &gt; Menu on the right top &gt; Editor</li>
+<li>Under key enter <code>debugLog</code></li>
+<li>As value enter <code>true</code></li>
+<li>Restart the app at Menu on the right top &gt; Restart</li>
+</ul>
 <p>Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
 The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
               
