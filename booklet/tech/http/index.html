@@ -416,10 +416,14 @@
 <pre><code>http[s]://[user[:password]@]host[:port]/path
 </code></pre>
 
-<p>Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (<code>https://</code> scheme).</p>
+<p>Authentication to the endpoint is performed with HTTP Basic authentication and, as such, we very strongly recommend the use of TLS (<code>https://</code> scheme). The <a href="../../features/encrypt/">encryption</a> feature is supported, and you can use it with HTTP endpoints; the Owntracks Recorder supports decryption, but if you implement your own endpoint you have to perform decryption at the endpoint yourself.</p>
+<p>The Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box at the <code>/pub</code> end point, as long as it is built with HTTP support and a <code>--http-port</code> is configured. When using Recorder in this mode, set the URL to:</p>
+<pre><code>http[s]://recorder_host[:port]/pub
+</code></pre>
+
+<p>The username and password for HTTP Basic authentication can be configured in application settings, under <em>Identification</em>. Device name and tracker name can also be configured there. Username and device name are <em>required</em> when using the Recorder. Parameters for <em>username</em> and <em>devicename</em> can also be included in the URL (<code>?u=user&amp;d=device</code>), or alternatively using the <code>X-Limit-U</code> and <code>X-Limit-D</code> headers respectively. You can also force <em>username</em> using a proxy as described in the Recorder's documentation.</p>
 <p>All publishes which are currently done with MQTT will then be POSTed to the endpoint with exactly the same <a href="../json/">JSON</a> payload formats. Support for Friends is available if your HTTP endpoint can produce appropriate data which is consumed by the app whenever it POSTs a location. This differs greatly from MQTT mode wherein the app subscribes to topics and is informed of data on those topics whenever it's available; in HTTP mode the apps do not periodically poll your HTTP endpoint; rather it is contacted only when the app is ready to publish its location or when you manually trigger a publish. (Support for friends and optionally their cards is implemented in the Recorder.)</p>
 <p>If the HTTP endpoint is reachable (no exception, no timeout, DNS name exists, etc.) and a successfull return code (<code>2xx</code>) is returned  the payload is considered POSTed. In the event that the endpoint is unreachable, the payload will be queued and posted at a later time.</p>
-<p>The <a href="../../features/encrypt/">encryption</a> feature is supported, and you can use it with HTTP endpoints; the Recorder supports decryption, but if you implement your own endpoint you have to perform decryption at the endpoint yourself.</p>
 <p>If the HTTP endpoint returns a status code 200 it will typically return an empty JSON payload array <code>[]</code>. It may, however, return an array of JSON objects to the OwnTracks device, each of which must be a valid <code>_type</code> as described in <a href="../json/">JSON</a>. Support for the following <code>_type</code> is implemented:</p>
 <table>
 <thead>
@@ -457,8 +461,6 @@
 </tr>
 </tbody>
 </table>
-<p>The OwnTracks Recorder supports <a href="https://github.com/owntracks/recorder#http-mode">HTTP mode</a> out of the box, as long as it is built with HTTP support and a <code>--http-port</code> is configured.
-When using the Recorder, the URL you specify in the app's configuration <em>must</em> include parameters for <em>username</em> and <em>devicename</em> (<code>?u=user&amp;d=device</code>), alternatively using the <code>X-Limit-U</code> and <code>X-Limit-D</code> headers respectively. You can also force <em>username</em> using a proxy as described in the Recorder's documentation.</p>
 <h3 id="distinguishing-payloads">Distinguishing payloads</h3>
 <p>When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic; instead, the iOS and Android apps use a different approach to help you figure out where the message came from:</p>
 <ul>
