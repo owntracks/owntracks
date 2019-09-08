@@ -903,6 +903,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;notification&quot;:&quot;Warning! Battery low&quot;}
 </code></pre>
 
 <ul>
@@ -932,7 +933,12 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>If <code>url</code> is not specified the text of the <code>content</code> element is displayed. Links embedded in the text are operational.</li>
 <li>If the <code>content</code> consists of HTML, it is rendered</li>
 <li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
-<li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
+<li>
+<p>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app</p>
+</li>
+<li>
+<p>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</p>
+</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
 <pre><code class="json">{
