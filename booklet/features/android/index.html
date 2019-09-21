@@ -163,6 +163,11 @@
                 <li class="toctree-l3"><a href="#debug-log">Debug Log</a></li>
                 
             
+                <li class="toctree-l3"><a href="#automation-via-tasker-etc">Automation via Tasker, etc.</a></li>
+                
+                    <li><a class="toctree-l4" href="#example">Example:</a></li>
+                
+            
             </ul>
         
     </li>
@@ -430,7 +435,7 @@
 </ul>
 <h2 id="vendor-background-restrictions">Vendor background restrictions</h2>
 <p>Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.</p>
-<p>A list of vendors known to interfer with background apps and a number of workarounds can be found at (Don’t kill my app!)[https://dontkillmyapp.com/].</p>
+<p>A list of vendors known to interfer with background apps and a number of workarounds can be found at <a href="https://dontkillmyapp.com/">Don’t kill my app!</a>.</p>
 <h2 id="google-play-services">Google Play Services</h2>
 <p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.</p>
 <p>They are used for
@@ -457,6 +462,47 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </ul>
 <p>Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
 The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
+<h2 id="automation-via-tasker-etc">Automation via Tasker, etc.</h2>
+<p>Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined <a href="https://owntracks.org/booklet/features/location/">modes</a>: <code>Move</code>, <code>Significant location change</code>,<code>Manual</code>,<code>Quiet</code>.</p>
+<h3 id="example">Example:</h3>
+<p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:
+* Action: <code>org.owntracks.android.CHANGE_MONITORING</code>
+* Cat: <code>None</code>
+* Mime Type: [LEAVE FIELD BLANK]
+* Data: [LEAVE FIELD BLANK]
+* Extra(1): <code>monitoring:2</code>
+* Extra(2): [LEAVE FIELD BLANK]
+* Extra(3): [LEAVE FIELD BLANK]
+* Package: [LEAVE FIELD BLANK]
+* Class: [LEAVE FIELD BLANK]
+* Target: <code>Service</code></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Send This Extra Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quiet</td>
+<td><code>monitoring:-1</code></td>
+</tr>
+<tr>
+<td>Manual</td>
+<td><code>monitoring:0</code></td>
+</tr>
+<tr>
+<td>Significant Changes</td>
+<td><code>monitoring:1</code></td>
+</tr>
+<tr>
+<td>Move</td>
+<td><code>monitoring:2</code></td>
+</tr>
+</tbody>
+</table>
+<p>To set other monitoring modes, use the same example and simply substitute the Extra in the table above that coresponding to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
               
             </div>
           </div>
