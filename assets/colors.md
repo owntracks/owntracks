@@ -5,5 +5,7 @@
 * priority0: #B0BEC5
 * priority1: #FFB74D
 * priority2: #ef5350
+* Primary-darkmode: #385686
+* Primary-darkmode-text: #BFBFBF
 
 

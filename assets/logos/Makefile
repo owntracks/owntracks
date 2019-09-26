@@ -1,4 +1,5 @@
-all: OwnTracks-29.png 
+all: OwnTracks-29.png \
+	OwnTracks-darkmode-29.png 
 #	OwnTracksCTRL-29.png \
 #	OwnTracksRecorder-29.png \
 #	OwnTracksActivo-29.png \
@@ -7,6 +8,9 @@ all: OwnTracks-29.png
 
 OwnTracks-29.png:OwnTracks.svg
 	./resize.sh OwnTracks.svg
+
+OwnTracks-darkmode-29.png:OwnTracks-darkmode.svg
+	./resize.sh OwnTracks-darkmode.svg
 
 OwnTracksCTRL-29.png:OwnTracksCTRL.svg
 	./resize.sh OwnTracksCTRL.svg
