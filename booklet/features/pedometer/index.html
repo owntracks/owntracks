@@ -470,6 +470,31 @@ print json.dumps(payload)
 deliver the message to the the phone.</p>
 <pre><code>50 22 * * * /usr/local/bin/reportsteps | mosquitto_pub -q 2 -t owntracks/jpm/5s/cmd -l
 </code></pre>
+
+<h4 id="daily-reports-with-openhab">Daily reports with Openhab</h4>
+<p>With openhab it's quite easy to user rules engine from openhab and to not rely on servers crontab.</p>
+<p>At first you have to define mqtt retain broker (MQTT v. 1 is used) - simply add configuration to /etc/openhab2/services/mqtt.cfg</p>
+<pre><code>mqtt-retain.url=tcp://192.168.1.1:1884
+mqtt-retain.qos=2
+</code></pre>
+
+<p>After that make a simple rule in /etc/openhab2/rules/ directory. Lets say the filename is /etc/openhab2/rules/owntracks.rules with contents:</p>
+<pre><code>rule &quot;MQTT_OWNTRACKS_STEPS&quot;
+when
+    // every day at 23:59
+    Time cron &quot;0 59 23 * * ? *&quot;
+then
+    val long from1 = DateTime.now().withTimeAtStartOfDay().millis / 1000
+    val long to1 = (now.millis / 1000)
+    publish(&quot;mqtt-retain&quot;,&quot;owntracks/jj/5s/cmd&quot;,'{&quot;action&quot;: &quot;reportSteps&quot;, &quot;to&quot;: '+ to1 +', &quot;_type&quot;: &quot;cmd&quot;, &quot;from&quot;: '+ from1 +'}')
+end
+</code></pre>
+
+<p>For usage the info in sitemaps or anywhere else 1 more item has to be made into file /etc/openhab2/items/owntracks.items</p>
+<pre><code>Number Steps_Yesterday &quot;[%d]&quot;  { mqtt=&quot;&lt;[mqtt:owntracks/jj/5s/step:state:JSONPATH($.steps)]&quot; }
+</code></pre>
+
+<p>Now You can make use of yesterday's steps count.</p>
               
             </div>
           </div>
