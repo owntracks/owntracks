@@ -1,5 +1,6 @@
 all: OwnTracks-29.png \
-	OwnTracks-darkmode-29.png 
+	OwnTracks-darkmode-29.png \
+	OwnTracksCLI-192.png 
 #	OwnTracksCTRL-29.png \
 #	OwnTracksRecorder-29.png \
 #	OwnTracksActivo-29.png \
@@ -20,6 +21,9 @@ OwnTracksActivo-29.png:OwnTracksActivo.svg
 
 OwnTracksRecorder-29.png:OwnTracksRecorder.svg
 	./resize.sh OwnTracksRecorder.svg
+
+OwnTracksCLI-192.png:OwnTracksCLI.svg
+	./resize.sh OwnTracksCLI.svg 192
 
 OwnTracksActivo-Outline-29.png:OwnTracksActivo-Outline.svg
 	./resize.sh OwnTracksActivo-Outline.svg
