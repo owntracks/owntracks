@@ -163,9 +163,11 @@
                 <li class="toctree-l3"><a href="#debug-log">Debug Log</a></li>
                 
             
-                <li class="toctree-l3"><a href="#automation-via-tasker-etc">Automation via Tasker, etc.</a></li>
+                <li class="toctree-l3"><a href="#automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.</a></li>
                 
-                    <li><a class="toctree-l4" href="#example">Example:</a></li>
+                    <li><a class="toctree-l4" href="#tasker-example">Tasker example:</a></li>
+                
+                    <li><a class="toctree-l4" href="#automagic-example">Automagic example:</a></li>
                 
             
             </ul>
@@ -462,20 +464,23 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </ul>
 <p>Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
 The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
-<h2 id="automation-via-tasker-etc">Automation via Tasker, etc.</h2>
+<h2 id="automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.</h2>
 <p>Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined <a href="https://owntracks.org/booklet/features/location/">modes</a>: <code>Move</code>, <code>Significant location change</code>,<code>Manual</code>,<code>Quiet</code>.</p>
-<h3 id="example">Example:</h3>
-<p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:
-* Action: <code>org.owntracks.android.CHANGE_MONITORING</code>
-* Cat: <code>None</code>
-* Mime Type: [LEAVE FIELD BLANK]
-* Data: [LEAVE FIELD BLANK]
-* Extra(1): <code>monitoring:2</code>
-* Extra(2): [LEAVE FIELD BLANK]
-* Extra(3): [LEAVE FIELD BLANK]
-* Package: [LEAVE FIELD BLANK]
-* Class: [LEAVE FIELD BLANK]
-* Target: <code>Service</code></p>
+<p>To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
+<h3 id="tasker-example">Tasker example:</h3>
+<p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:</p>
+<ul>
+<li>Action: <code>org.owntracks.android.CHANGE_MONITORING</code></li>
+<li>Cat: <code>None</code></li>
+<li>Mime Type: [LEAVE FIELD BLANK]</li>
+<li>Data: [LEAVE FIELD BLANK]</li>
+<li>Extra(1): <code>monitoring:2</code></li>
+<li>Extra(2): [LEAVE FIELD BLANK]</li>
+<li>Extra(3): [LEAVE FIELD BLANK]</li>
+<li>Package: [LEAVE FIELD BLANK]</li>
+<li>Class: [LEAVE FIELD BLANK]</li>
+<li>Target: <code>Service</code></li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -502,7 +507,45 @@ The file is appended after application restarts and degrades application perform
 </tr>
 </tbody>
 </table>
-<p>To set other monitoring modes, use the same example and simply substitute the Extra in the table above that coresponding to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
+<h3 id="automagic-example">Automagic example:</h3>
+<p>To trigger <code>Move</code> mode in Automagic, create a <code>Start Service</code> action and enter the following information:</p>
+<ul>
+<li>Action: <code>org.owntracks.android.CHANGE_MONITORING</code></li>
+<li>Category List: [LEAVE FIELD BLANK]</li>
+<li>Data URI: [LEAVE FIELD BLANK]</li>
+<li>Data MIME Type: [LEAVE FIELD BLANK]</li>
+<li>Explicit Component: ticked</li>
+<li>Package Name: <code>org.owntracks.android</code></li>
+<li>Class Name: [LEAVE FIELD BLANK]</li>
+<li>Flag List: [LEAVE FIELD BLANK]</li>
+<li>Extra: <code>putInt("MONITORING": 2)</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Send This Extra Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quiet</td>
+<td><code>putInt("MONITORING": -1)</code></td>
+</tr>
+<tr>
+<td>Manual</td>
+<td><code>putInt("MONITORING": 0)</code></td>
+</tr>
+<tr>
+<td>Significant Changes</td>
+<td><code>putInt("MONITORING": 1)</code></td>
+</tr>
+<tr>
+<td>Move</td>
+<td><code>putInt("MONITORING": 2)</code></td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
