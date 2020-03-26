@@ -419,7 +419,7 @@
 to be in the app's preferences/settings. For argument's sake we'll use the default <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
 <p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
 All messages published to this base topic are retained if you have configured the app to retain them.</p>
-<p>Additionally, if you've configured a waypoint or geo-fence, a transition event will be published upon
+<p>Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon
 entering or leaving a waypoint:</p>
 <ul>
 <li><code>rad</code>ius (if its value is greater than 0)</li>
@@ -427,10 +427,7 @@ entering or leaving a waypoint:</p>
 <li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
    whether the device is entering or leaving a configured region, respectively.</li>
 </ul>
-<p>If you set up a waypoint, the app publishes that waypoint (with <code>retain=0</code> 
-irrespective of your general preference) to the base topic with <code>/waypoints</code>
-tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the
-payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
+<p>If you set up a waypoint (or region or geo-fence, you get the drift), the app publishes that waypoint (with <code>retain=0</code> irrespective of your general preference) to the base topic with <code>/waypoints</code> tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>location</code> message as described above.</p>
 <p>For example, If Jane configures a waypoint on her iPhone, the app could publish the following payload</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;waypoint&quot;,
