@@ -138,6 +138,12 @@ $INK -z -D --batch-process -o "$MYPWD/$BASE-98@2x.png" -w 196 -h 196 $SVG
 $IMAGEW "$MYPWD/$BASE-98@2x.png"	"$MYPWD/$BASE-98-noalpha@2x.png"
 fi
 
+if [[ -z "$2" || "$2" == "108" ]]
+then
+$INK -z -D --batch-process -o "$MYPWD/$BASE-108@2x.png" -w 216 -h 216 $SVG
+$IMAGEW "$MYPWD/$BASE-108@2x.png"	"$MYPWD/$BASE-108-noalpha@2x.png"
+fi
+
 if [[ -z "$2" || "$2" == "192" ]]
 then
 $INK -z -D --batch-process -o "$MYPWD/$BASE-192.png" -w 192 -h 192 $SVG
