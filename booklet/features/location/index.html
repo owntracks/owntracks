@@ -585,13 +585,34 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 <p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 30s in high power mode and publishes a new location as soon as it arrives but at most every 10 seconds. </p>
 <p>This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use <em>move</em> mode while charging or during periods that require highly accurate tracking while moving quickly. </p>
+<p>The <code>locatorDisplacement</code> option is ignored in this mode.</p>
 <h4 id="significant-location-change-mode_1"><em>Significant location change</em> mode</h4>
 <p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. </p>
 <p>This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. </p>
-<p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.<br />
-* <code>locatorInterval</code>: Maximum time between new location fixes. This interval is inexact and updates may arrive faster. 
-* <code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved. 
-* <code>locatorPriority</code>: The priority of the request is a strong hint to the LocationClient for which location sources to use. </p>
+<p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.  </p>
+<ul>
+<li>
+<p><code>locatorInterval</code>: The <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-locationrequest-setinterval-long-millis">desired interval</a> for active location updates.</p>
+<blockquote>
+<p>"The location client will actively try to obtain location updates for your application at this interval, so it has a direct influence on the amount of power used by your application. Choose your interval wisely."</p>
+</blockquote>
+</li>
+<li>
+<p><code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved.</p>
+<ul>
+<li>This means if the user has not moved by more than the displacement value, the location will not be reported at <code>locatorInterval</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>locatorPriority</code>: The priority of the request is a strong hint to the LocationClient for which location sources to use (e.g. wifi, cellular or gps). The accepted values are:</p>
+<ul>
+<li><code>0</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power">No power usage</a> "No locations will be returned unless a different client has requested location updates"</li>
+<li><code>1</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power">Low power usage</a> "City level accuracy is considered to be about 10km accuracy."</li>
+<li><code>2</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy">Balanced power usage</a> "Block level accuracy is considered to be about 100 meter accuracy." (default)</li>
+<li><code>3</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy">High power usage</a> "This will return the finest location available."</li>
+</ul>
+</li>
+</ul>
 <h4 id="manual-mode_1"><em>Manual</em> mode</h4>
 <p>In <em>manual</em> mode, the app monitors device location with a low power location request. It uses the same interval configured for <em>significant mode</em> to receive low accuracy updates to use minimal battery power. </p>
 <p>The user has to publish the current location explicitly via the UI. You use this if you want to (temporarily) avoid friends seeing where you are. Note that Region events triggered by entering or leaving Geo Fence are still published automatically whilst in <em>Manual</em> mode.</p>
