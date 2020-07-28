@@ -594,7 +594,7 @@
 <li>Elements marked with <em>extended data</em> are only added if <code>extendedData=true</code> is configured</li>
 </ul>
 <h3 id="greenwich">Greenwich</h3>
-<p>The OwnTracks edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>\_type=location</code> message:</p>
+<p>The OwnTracks edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;location&quot;,
     elements
@@ -634,9 +634,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </code></pre>
 
 <ul>
-<li>
-<p><code>t</code> trigger for the location report <em>(string/optional)</em></p>
-<ul>
+<li><code>t</code> trigger for the location report <em>(string/optional)</em><ul>
 <li><code>o</code> Corner</li>
 <li><code>M</code> Mileage</li>
 <li><code>!</code> Tow or fake tow or sensor without ignition</li>
@@ -653,9 +651,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>s</code> speed alarm</li>
 </ul>
 </li>
-<li>
-<p><code>odometer</code> total distance of the device <em>(float/kilometers/optional)</em></p>
-</li>
+<li><code>odometer</code> total distance of the device <em>(float/kilometers/optional)</em></li>
 <li><code>hmc</code> total hours of operation <em>(float/seconds/optional)</em></li>
 <li><code>ubatt</code> voltage of the battery <em>(float/volts/optional)</em></li>
 <li><code>uext</code> voltage of the external power source <em>(float/volts/optional)</em></li>
@@ -781,12 +777,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>allowRemoteLocation</code> Respond to reportLocation cmd message <em>(iOS,Android/boolean)</em></li>
 <li><code>allowinvalidcerts</code> Allow self signed certificates in user defined security policy <em>(iOS/boolean)</em></li>
 <li><code>auth</code> Use <code>username</code> and <code>password</code> for endpoint authentication <em>(iOS,Android/boolean)</em></li>
-<li>
-<p><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></p>
-</li>
-<li>
-<p><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></p>
-</li>
+<li><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></li>
+<li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
 <li><code>clientId</code> client id to use for MQTT connect. Defaults to "<em>user</em> <em>deviceId</em>" <em>(iOS,Android/string)</em></li>
 <li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>cmd</code> Respond to cmd messages <em>(iOS,Android/boolean)</em></li>
@@ -933,12 +925,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>If <code>url</code> is not specified the text of the <code>content</code> element is displayed. Links embedded in the text are operational.</li>
 <li>If the <code>content</code> consists of HTML, it is rendered</li>
 <li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
-<li>
-<p>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app <em>(iOS)</em></p>
-</li>
-<li>
-<p>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</p>
-</li>
+<li>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app <em>(iOS)</em></li>
+<li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
 <pre><code class="json">{
@@ -983,8 +971,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>waypoints</code> Array of <code>waypoint</code> messages <em>(iOS,Android/array/required)</em></li>
 </ul>
 <h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
-<p>Apps can optionally <a href="../../features/encrypt/">encrypt</a> outgoing messages with a shared symmetric key.
-The encrypted message is contained in the <code>data</code>element.
+<p>Apps can optionally <a href="../../features/encrypt/">encrypt</a> outgoing messages with a shared symmetric key.  The encrypted message is contained in the <code>data</code>element.
 For security reasons, the encryption key is not exported with configuration messages and cannot be imported.</p>
 <pre><code class="json">{
     &quot;_type&quot;: &quot;encrypted&quot;,
