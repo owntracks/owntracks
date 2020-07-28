@@ -932,7 +932,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>If the <code>content</code> consists of HTML, it is rendered</li>
 <li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
 <li>
-<p>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app</p>
+<p>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app <em>(iOS)</em></p>
 </li>
 <li>
 <p>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</p>
