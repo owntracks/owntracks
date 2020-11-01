@@ -457,13 +457,13 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 <p>To generate the logs, follow the next steps:</p>
 <ul>
 <li>Temporarily grant write access to local storage. Go to Android App Info &gt; Permissions and enable the storage permission.</li>
-<li>Open the configuration editor at Preferences &gt; Configuration Management &gt; Menu on the right top &gt; Editor</li>
+<li>Open the configuration editor at <em>Preferences</em> &gt; <em>Configuration Management</em> &gt; <em>Menu</em> on the right top &gt; Editor</li>
 <li>Under key enter <code>debugLog</code></li>
 <li>As value enter <code>true</code></li>
-<li>Restart the app at Menu on the right top &gt; Restart</li>
+<li>Restart the app at Menu on the right top &gt; <em>Restart</em>.</li>
 </ul>
-<p>Application logs are written to the local Download folder at Downloads/owntracks_debug DD-MM-YYY.html
-The file is appended after application restarts and degrades application performance. It should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
+<p>Application logs are written to the local storage and can be viewed in <em>Status</em> -&gt; <em>View Logs</em>, from which they can be exported or shared via typical Android functions, e.g. by Mail.</p>
+<p>Enabled logging degrades application performance, so it should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
 <h2 id="automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.</h2>
 <p>Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined <a href="https://owntracks.org/booklet/features/location/">modes</a>: <code>Move</code>, <code>Significant location change</code>,<code>Manual</code>,<code>Quiet</code>.</p>
 <p>To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
