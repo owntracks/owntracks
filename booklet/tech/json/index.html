@@ -777,7 +777,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 
 <ul>
 <li><code>allowRemoteLocation</code> Respond to reportLocation cmd message <em>(iOS,Android/boolean)</em></li>
-<li><code>allowinvalidcerts</code> Allow self signed certificates in user defined security policy <em>(iOS/boolean)</em></li>
+<li><code>allowinvalidcerts</code> disable TLS certificate checks <strong>insecure</strong>  <em>(iOS/boolean)</em></li>
 <li><code>auth</code> Use <code>username</code> and <code>password</code> for endpoint authentication <em>(iOS,Android/boolean)</em></li>
 <li><code>autostartOnBoot</code> Autostart the app on device boot <em>(Android/boolean)</em></li>
 <li><code>cleanSession</code> MQTT endpoint clean session <em>(iOS,Android/boolean)</em></li>
@@ -815,6 +815,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>mqttProtocolLevel</code> MQTT broker protocol level <em>(iOS,Android/integer)</em><ul>
 <li><code>3</code> MQTT 3 (default)</li>
 <li><code>4</code> MQTT 3.1.1</li>
+<li><code>5</code> MQTT 5 (iOS only)</li>
 </ul>
 </li>
 <li><code>notificationLocation</code> Show last reported location in ongoing notification <em>(Android/boolean)</em></li>
@@ -822,12 +823,6 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>passphrase</code> Passphrase of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>password</code> Endpoint password <em>(iOS,Android/string)</em></li>
 <li><code>ping</code> Interval in which location messages of with <code>t</code>:<code>p</code> are reported <em>(Android/integer)</em></li>
-<li><code>policymode</code> User defined securiy policy mode <em>(iOS/integer)</em><ul>
-<li><code>0</code> Do not used pinned certificates to validate servers</li>
-<li><code>1</code> Validate host certificates against public keys of pinned certificates</li>
-<li><code>2</code> Validate host certificates against pinned certificates</li>
-</ul>
-</li>
 <li><code>port</code> MQTT endpoint port <em>(iOS,Android/integer)</em></li>
 <li><code>positions</code> Number of locations to keep and display <em>(iOS/integer)</em></li>
 <li><code>pubTopicBase</code> MQTT topic base to which the app publishes; <code>%u</code> is replaced by the user name, <code>%d</code> by device   <em>(iOS,Android/string)</em></li>
@@ -843,10 +838,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>tls</code> MQTT endpoint TLS connection <em>(iOS,Android/boolean)</em></li>
 <li><code>tlsClientCrtPassword</code> Passphrase of the client pkcs12 file <em>(Android/string)</em></li>
 <li><code>url</code> HTTP endpoint URL to which messages are POSTed <em>(iOS,Android/string)</em></li>
-<li><code>usepolicy</code> Use user defined security policy <em>(iOS/boolean)</em></li>
 <li><code>username</code> Endpoint username <em>(iOS,Android/string)</em></li>
-<li><code>validatedomainname</code> Validate domain name during TLS handshake <em>(iOS/boolean)</em></li>
-<li><code>validatecertificatechain</code> Validate the whole certificate chain or just the server certificate <em>(iOS/boolean)</em></li>
 <li><code>willRetain</code></li>
 <li><code>willTopic</code></li>
 <li><code>willQos</code></li>
