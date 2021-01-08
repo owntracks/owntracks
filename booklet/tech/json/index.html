@@ -712,7 +712,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
 </ul>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
-<p>Waypoints denote specific geographical regions that you want to keep track of. You define a waypoint in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
+<p>Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
 <pre><code class="json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     elements
@@ -720,14 +720,15 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </code></pre>
 
 <ul>
-<li><code>desc</code> Name of the waypoint that is included in the sent transition message <em>(iOS,Android,string/required)</em></li>
+<li><code>desc</code> Name of the waypoint that is included in the sent transition message, copied into the <code>location</code> message <code>inregions</code> array when a current position is within a region. <em>(iOS,Android,string/required)</em></li>
 <li><code>lat</code> Latitude  <em>(iOS,Android/float/meters/optional)</em></li>
 <li><code>lon</code> Longitude <em>(iOS,Android/float/meters/optional)</em></li>
 <li><code>rad</code> Radius around the latitude and longitude coordinates <em>(iOS,Android/integer/meters/optional)</em></li>
-<li><code>tst</code> Timestamp of waypoint <em>creation to identify the waypoint. Copied into the <code>wtst</code> element of the transition message </em>(iOS,Android/integer/epoch/required)_</li>
+<li><code>tst</code> Timestamp of creation of region, copied into the <code>wtst</code> element of the transition message <em>(iOS,Android/integer/epoch/required)</em></li>
 <li><code>uuid</code> UUID of the BLE Beacon <em>(iOS/string/optional)</em></li>
 <li><code>major</code> Major number of the BLE Beacon <em>(iOS/integer/optional)</em></li>
 <li><code>minor</code>  Minor number of the BLE Beacon_(iOS/integer/optional)_</li>
+<li><code>rid</code>  region ID, created automatically, copied into the <code>location</code> payload <code>inrids</code> array (iOS/string)_</li>
 </ul>
 <h4 id="notes_3">Notes</h4>
 <ul>
@@ -766,6 +767,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>l</code> Loction update <em>(Android)</em></li>
 </ul>
 </li>
+<li><code>rid</code> Region ID <em>(iOS/Android, after January 2021)</em></li>
 </ul>
 <h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.</p>
