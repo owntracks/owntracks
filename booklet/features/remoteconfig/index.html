@@ -458,13 +458,13 @@
 
 <p>Publishing the above payload to an OwnTracks iOS device will create/modify said waypoint. This also works for Beacon configurations, which are basically waypoints.</p>
 <h2 id="url-config">URL config</h2>
-<p>Since January 2021, both iOS and Android apps can be configured by having the user click on an <code>owntracks:///config?inline=</code> URL containing a base64 and URL-encoded version of the content of an <code>.otrc</code> file.</p>
-<p>Say we have a file called <code>j.otrc</code> with the JSON <code>_type: configuration</code> shown above. We can use, say, the <em>openssl</em> and <em>jq</em> utilities to first base64-encode and then URL-encode the configuration.</p>
-<pre><code class="console">echo &quot;owntracks:///config?inline=$(openssl enc -a -A -in j.otrc | jq -sRr @uri)&quot;
+<p>Since January 2021, both iOS and Android apps can be configured by having the user click on an <code>owntracks:///config?inline=</code> URL containing a base64-encoded version of the content of an <code>.otrc</code> file.</p>
+<p>Say we have a file called <code>j.otrc</code> with the JSON <code>_type: configuration</code> shown above. We can use, say, the <em>openssl</em> and <em>jq</em> utilities to base64-encode encode the configuration.</p>
+<pre><code class="console">echo &quot;owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)&quot;
 </code></pre>
 
 <p>which results in this text:</p>
-<pre><code>owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg%3D%3D
+<pre><code>owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg==
 </code></pre>
 
 <p>We can then paste that text into the <code>@@</code> placeholder on an HTML like this:</p>
