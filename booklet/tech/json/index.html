@@ -901,7 +901,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>to</code> Timestamp <em>(iOS/epoch/optional)</em></li>
 </ul>
 </li>
-<li><code>reportLocation</code> Triggers the publish of a <code>location</code> messages <em>(iOS,Android)</em></li>
+<li><code>reportLocation</code> Triggers the publish of a <code>location</code> messages <em>(iOS,Android)</em>
+  Don‘t expect device to be online. Send with QoS&gt;0. Device will receive and repond when activated next time.</li>
 <li><code>setWaypoints</code> Imports (merge) and activates new waypoints <em>(iOS,Android)</em><ul>
 <li><code>waypoints</code> Array of <code>waypoint</code> messages to import <em>(iOS,Android/array/required)</em></li>
 </ul>
