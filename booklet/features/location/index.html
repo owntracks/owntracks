@@ -582,12 +582,12 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 </table>
 <h3 id="android">Android</h3>
 <h4 id="move-mode_1"><em>Move</em> mode</h4>
-<p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 30s in high power mode and publishes a new location as soon as it arrives but at most every 10 seconds. </p>
+<p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 10s (by default, configurable in the settings through <code>moveModeLocatorInterval</code>) in high power mode and publishes a new location as soon as it arrives. </p>
 <p>This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use <em>move</em> mode while charging or during periods that require highly accurate tracking while moving quickly. </p>
 <p>The <code>locatorDisplacement</code> option is ignored in this mode.</p>
 <h4 id="significant-location-change-mode_1"><em>Significant location change</em> mode</h4>
-<p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives but at most every 10 seconds. </p>
+<p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives. </p>
 <p>This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. </p>
 <p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.  </p>
 <ul>
@@ -596,6 +596,9 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
 <blockquote>
 <p>"The location client will actively try to obtain location updates for your application at this interval, so it has a direct influence on the amount of power used by your application. Choose your interval wisely."</p>
 </blockquote>
+</li>
+<li>
+<p><code>moveModeLocatorInterval</code>: The requested location interval in <em>move</em> mode.</p>
 </li>
 <li>
 <p><code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved.</p>
