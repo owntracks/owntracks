@@ -167,6 +167,8 @@
                 
                     <li><a class="toctree-l4" href="#tasker-example">Tasker example:</a></li>
                 
+                    <li><a class="toctree-l4" href="#macrodroid-example">Macrodroid example:</a></li>
+                
                     <li><a class="toctree-l4" href="#automagic-example">Automagic example:</a></li>
                 
             
@@ -426,26 +428,27 @@
                 <h2 id="general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.</h2>
 <p>Since Android 6 and higher, the operating systems enforces stricter restrictions for apps running in the background. Most importantly, network access and background jobs are restricted to certain time slots. As a result, certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from battery optimizations.</p>
 <ul>
-<li>It is highly recommended to use HTTP mode on Android 6 and higher.</li>
+<li>You may find HTTP mode more reliable on Android 6 and higher.</li>
 <li>The ongoing notification is required to run in the background.</li>
 <li>App standby or battery optimization may interfere with OwnTracks due to broken implementation on some devices. It is recommended to disable the Android battery optimization feature for OwnTracks in Settings &gt; Battery &gt; Battery Optimization.</li>
-<li>Outgoing messages will only be sent in batched intervals. Location updates or event messages may be delayed.</li>
+<li>Outgoing messages may only be sent in batched intervals. Location updates or event messages may be delayed.</li>
 <li>Incoming messages such as events might be delayed.</li>
-<li>When using MQTT, the broker connection is not maintained permanently. A reconnect will be attempted regularly or when a message is sent. Changing the keepalive interval does not change this behavior. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
-<li>The app cannot attempt to connect if the network connection changes because it is not possible to receive the network change event.</li>
+<li>When using MQTT, the broker connection is not guaranteed to be maintained permanently. A reconnect will be attempted regularly or when a message is sent. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>Beacons are no long supported in OwnTracks for Android</li>
 </ul>
 <h2 id="vendor-background-restrictions">Vendor background restrictions</h2>
 <p>Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.</p>
 <p>A list of vendors known to interfer with background apps and a number of workarounds can be found at <a href="https://dontkillmyapp.com/">Don’t kill my app!</a>.</p>
 <h2 id="google-play-services">Google Play Services</h2>
-<p>Google Play Services are required to use OwnTracks. There are no plans to remove the dependency.</p>
-<p>They are used for
-* Battery efficient location access
-* Geofencing
-* Scheduling of background jobs
-* Resolving coordinates to addresses (an alterative Geocoding service can be configured)
-* Displaying the map</p>
+<p>Google Play Services are required to use OwnTracks that's distributed on the Google Play Store.</p>
+<p>They are used for:</p>
+<ul>
+<li>Battery efficient location access</li>
+<li>Scheduling of background jobs</li>
+<li>Resolving coordinates to addresses (an alterative Geocoding service can be configured)</li>
+<li>Displaying the map</li>
+</ul>
+<p>A separate "flavour" of OwnTracks called "OSS" aims to remove this dependency for people that can't or prefer not to use Google Play Services. This version will use other providers for maps, geocoding and location and is currently in development. The plan is to release this via the <a href="https://www.f-droid.org/">F-Droid</a> app catalogue.</p>
 <h2 id="setup">Setup</h2>
 <p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the configuration editor. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things.</p>
 <p>By default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device.</p>
@@ -457,13 +460,10 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 <p>To generate the logs, follow the next steps:</p>
 <ul>
 <li>Temporarily grant write access to local storage. Go to Android App Info &gt; Permissions and enable the storage permission.</li>
-<li>Open the configuration editor at <em>Preferences</em> &gt; <em>Configuration Management</em> &gt; <em>Menu</em> on the right top &gt; Editor</li>
-<li>Under key enter <code>debugLog</code></li>
-<li>As value enter <code>true</code></li>
-<li>Restart the app at Menu on the right top &gt; <em>Restart</em>.</li>
+<li>Open the log viewer at <em>Status</em> &gt; <em>View Logs</em></li>
+<li>The most recent logs are displayed. To view debug log entries as well, select the <em>Debug Logs</em> option in the top right menu.</li>
+<li>The <em>Share</em> button (bottom right) allows the logs to be exported and shared, either to disk (via a suitable file manager app such as <em>Total Commander</em>) or sent over email.</li>
 </ul>
-<p>Application logs are written to the local storage and can be viewed in <em>Status</em> -&gt; <em>View Logs</em>, from which they can be exported or shared via typical Android functions, e.g. by Mail.</p>
-<p>Enabled logging degrades application performance, so it should be disabled after gathering enough information. To do so, follow the steps above but enter <code>false</code> as value in the configuration editor.</p>
 <h2 id="automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.</h2>
 <p>Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined <a href="https://owntracks.org/booklet/features/location/">modes</a>: <code>Move</code>, <code>Significant location change</code>,<code>Manual</code>,<code>Quiet</code>.</p>
 <p>To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
@@ -504,6 +504,47 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 <tr>
 <td>Move</td>
 <td><code>monitoring:2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="macrodroid-example">Macrodroid example:</h3>
+<p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:</p>
+<ul>
+<li>Target: <code>Service</code></li>
+<li>Action: <code>org.owntracks.android.CHANGE_MONITORING</code></li>
+<li>Package: <code>org.owntracks.android</code></li>
+<li>Class: [LEAVE FIELD BLANK]</li>
+<li>Mime Type: [LEAVE FIELD BLANK]</li>
+<li>Data: [LEAVE FIELD BLANK]</li>
+<li>Extra 1 parameter name: <code>monitoring</code></li>
+<li>Extra 1 value: <code>2</code></li>
+<li>Extra(2): [LEAVE FIELD BLANK]</li>
+<li>Extra(3): [LEAVE FIELD BLANK]</li>
+<li>Extra(4): [LEAVE FIELD BLANK]</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Send This Extra Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quiet</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td>Manual</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>Significant Changes</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>Move</td>
+<td><code>2</code></td>
 </tr>
 </tbody>
 </table>
