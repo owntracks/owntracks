@@ -171,6 +171,8 @@
                 
                     <li><a class="toctree-l4" href="#automagic-example">Automagic example:</a></li>
                 
+                    <li><a class="toctree-l4" href="#adb-example">ADB example</a></li>
+                
             
             </ul>
         
@@ -587,6 +589,11 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </tr>
 </tbody>
 </table>
+<h3 id="adb-example">ADB example</h3>
+<p>It's possible to send an intent to OwnTracks using the <code>am</code> command on the device shell. You just need to call <code>start-service</code> with the correct action, and optionally the extra that you need to set the specific mode.</p>
+<p>E.g. to set move mode:</p>
+<pre><code>am start-service -a org.owntracks.android.CHANGE_MONITORING --ei monitoring 2
+</code></pre>
               
             </div>
           </div>
