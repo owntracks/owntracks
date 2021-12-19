@@ -485,6 +485,7 @@ reports region with description 'myBeacons' when any iBeacon identified with UUI
 </ul>
 <h3 id="region-monitoring-with-follow">Region Monitoring with <code>+follow</code></h3>
 <p>Create a region with a name begining with a <code>+</code> character, e.g. <code>+follow</code> and set an initial radius to be greater than zero. From this moment onwards, <em>lat</em> and <em>lon</em> will be set dynamically at each location publish and <em>radius</em> will be the distance you've covered in 30 seconds, at least 50 meters.</p>
+<p>Available in version &gt; 15.x.x: If the name of such a region starts with a <em>number</em> (e.g. <code>+60follow</code>), the dynamically set new <em>radius</em> will be the distance you've covered in <em>number</em> seconds (minimum 50 meters). </p>
 <p>This <em>follow</em>-type region will not trigger <code>enter/leave</code> events or notifications, and location publishes will have a type setting of <code>"t" : "C"</code>.</p>
 <h3 id="remote-configuration">Remote configuration</h3>
 <p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
