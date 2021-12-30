@@ -582,6 +582,7 @@
 </li>
 <li><code>topic</code> (only in HTTP payloads) contains the original publish topic (e.g. <code>owntracks/jane/phone</code>). <em>(iOS,Android &gt;= 2.4,string)</em></li>
 <li><code>inregions</code> contains a list of regions the device is currently in (e.g. <code>["Home","Garage"]</code>). Might be empty. <em>(iOS,Android/list of strings/optional)</em></li>
+<li><code>inrids</code> contains a list of region IDs the device is currently in (e.g. <code>["6da9cf","3defa7"]</code>). Might be empty. <em>(iOS,Android/list of strings/optional)</em></li>
 <li><code>SSID</code>, if available, is the unique name of the WLAN. <em>(iOS,string/optional)</em></li>
 <li><code>BSSID</code>, if available, identifies the access point. <em>(iOS,string/optional)</em></li>
 <li><code>created_at</code> identifies the time at which the message is constructed (vs. <code>tst</code> which is the timestamp of the GPS fix) <em>(iOS,Android)</em></li>
