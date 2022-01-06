@@ -465,7 +465,7 @@ monitors any iBeacon identified with UUID = CA..., with major and minor numbers 
 <p>See also <a href="../waypoints/">Waypoints</a>.</p>
 <h3 id="region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</h3>
 <p>If the waypoint description is non-empty and a radius &gt; 0 (meters) is set, the
-app starts monitoring the circular region around the specified coordinates. 
+app starts monitoring the circular region around the specified coordinates.
 Regions are shown on the map as blue-ish circles. If the
 device is within a region, the corresponding circle turns red-ish. Every time
 the devices enters or leaves a monitored region, an additional location message
@@ -487,13 +487,13 @@ reports region with description 'myBeacons' when any iBeacon identified with UUI
 </ul>
 <h3 id="region-monitoring-with-follow">Region Monitoring with <code>+follow</code></h3>
 <p>Create a region with a name begining with a <code>+</code> character, e.g. <code>+follow</code> and set an initial radius to be greater than zero. From this moment onwards, <em>lat</em> and <em>lon</em> will be set dynamically at each location publish and <em>radius</em> will be the distance you've covered in 30 seconds, at least 50 meters.</p>
-<p>Available in version &gt; 15.x.x: If the name of such a region starts with a <em>number</em> (e.g. <code>+60follow</code>), the dynamically set new <em>radius</em> will be the distance you've covered in <em>number</em> seconds (minimum 50 meters). </p>
+<p>Available in version &gt; 15.x.x: If the name of such a region starts with a <em>number</em> (e.g. <code>+60follow</code>), the dynamically set new <em>radius</em> will be the distance you've covered in <em>number</em> seconds (minimum 50 meters).</p>
 <p>This <em>follow</em>-type region will not trigger <code>enter/leave</code> events or notifications, and location publishes will have a type setting of <code>"t" : "C"</code>.</p>
 <h3 id="region-monitoring-with-automatic-monitoring-mode-change">Region Monitoring with automatic monitoring mode change</h3>
 <p><em>Available in version &gt; 16.x.x</em></p>
-<p>Create a region with a name ending with '|<monitoring mode on enter>|<monitoring mode on exit><code>. E.g. 'Home|1|2' will
-switch to monitoring mode 2 (Move Mode) when exiting the region</code>Home<code>and will switch back to monitoring mode 1 (Significant
-Mode) when entering the region</code>Home`.</p>
+<p>Create a region with a name ending with <code>'|&lt;monitoring mode on enter&gt;|&lt;monitoring mode on exit&gt;</code>. E.g. <code>Home|1|2</code> will
+switch to monitoring mode 2 (Move Mode) when exiting the region <code>Home</code> and will switch back to monitoring mode 1 (Significant
+Mode) when entering the region <code>Home</code>.</p>
 <p>Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all further region detection.</p>
 <p>As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a <code>+follow</code> region, which will trigger a wake up of the app when moving.</p>
