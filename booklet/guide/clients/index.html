@@ -445,7 +445,7 @@
 <p>And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.</p>
 <p>Read <a href="../../clients/recorder/">more about the Recorder</a>.</p>
 <h2 id="mqttwarn">mqttwarn</h2>
-<p>You'll recall (we hope) the discussion on <a href="mqtt.md">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
+<p>You'll recall (we hope) the discussion on <a href="../../tech/mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
 <p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>
 <h2 id="openhab">openHAB</h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
@@ -456,7 +456,7 @@
 <p>Another home automation solution that can be used with OwnTracks is Home Assistant. Home Assistant allows you to track the location of people connected to your personal <a href="../broker/">MQTT broker</a>. It has a map to show their current location and can trigger automations based on entering and leaving zones. In order to use the internal broker of Home Assistant, the MQTT protocol level has to be set to 4. </p>
 <p>See the <a href="https://home-assistant.io/demo/">demo</a> for an example of the map with OwnTracks devices or read more about how Home Assistant <a href="https://home-assistant.io/components/mqtt/">connects to your private MQTT broker</a>, how to <a href="https://home-assistant.io/components/device_tracker.owntracks/">enable OwnTracks support in Home Assistant</a> and how to <a href="https://home-assistant.io/components/automation/#zone-trigger">configure automations based on zones</a>.</p>
 <h2 id="owntracks-cards">OwnTracks-Cards</h2>
-<p>This is a webapp to create and edit <a href=".../features/card.md">OwnTracks cards</a>.
+<p>This is a webapp to create and edit <a href="../../features/card/">OwnTracks cards</a>.
 It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
 Just head over to the <a href="https://avanc.github.io/owntracks-cards/">demo</a> and create a card. Configure your MQTT broker by clicking the connection state.
 The source code can be found on <a href="https://github.com/avanc/owntracks-cards">Github</a>.</p>

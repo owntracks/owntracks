@@ -161,6 +161,8 @@
                 
                     <li><a class="toctree-l4" href="#region-monitoring-with-automatic-monitoring-mode-change">Region Monitoring with automatic monitoring mode change</a></li>
                 
+                    <li><a class="toctree-l4" href="#region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change">Region Monitoring with automatic battery level controlled monitoring mode change</a></li>
+                
                     <li><a class="toctree-l4" href="#remote-configuration">Remote configuration</a></li>
                 
                     <li><a class="toctree-l4" href="#why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</a></li>
@@ -497,6 +499,13 @@ Mode) when entering the region <code>Home</code>.</p>
 <p>Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all further region detection.</p>
 <p>As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a <code>+follow</code> region, which will trigger a wake up of the app when moving.</p>
+<h3 id="region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change">Region Monitoring with automatic battery level controlled monitoring mode change</h3>
+<p><em>Available in version &gt; 16.x.x</em></p>
+<p>A new Settings parameter "downgrade" indicates the percentage of battery level which is the threshold.</p>
+<p>If the phone is in Move Mode and the battery level drops below "downgrade" percent, the app will automatically switch from Move Mode to Significant Mode.</p>
+<p>If the phone did that automatic switch and detects the charges is connected, it will automatically switch back to Move Mode.
+This will happen when then next location update in Significant mode is processed. </p>
+<p>The fact the app is in "downgraded" mode is indicated in the UI by a trailing <code>!</code> to the <code>Significant</code> mode (e.g. <code>Significant!</code>).</p>
 <h3 id="remote-configuration">Remote configuration</h3>
 <p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
 <h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</h3>
