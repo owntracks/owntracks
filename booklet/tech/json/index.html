@@ -3,28 +3,31 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>JSON - OwnTracks Booklet</title>
-  
-
+  <meta name="author" content="OwnTracks.org">
+  <link rel="canonical" href="http://owntracks.org/tech/json/">
   <link rel="shortcut icon" href="../../favicon.ico">
   
+  <title>JSON - OwnTracks Booklet</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/highlight.css">
-  <link href="../../css/custom.css" rel="stylesheet">
-
-  <script src="../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
-  <script src="../../js/theme.js"></script> 
-
+  <script>
+    // Current page data
+    var mkdocs_page_name = "JSON";
+    var mkdocs_page_input_path = "tech/json.md";
+    var mkdocs_page_url = "/tech/json/";
+  </script>
   
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,392 +36,115 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> OwnTracks Booklet</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../..">Intro</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Guide</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/whathow/">What it does</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/scenarios/">Scenarios</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/apps/">Apps</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/topics/">Topics</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/broker/">Broker</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/bridge/">Bridging</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/waypoints/">Waypoints</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/beacons/">Beacons</a>
-        
-    </li>
-
-        
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Intro</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/whathow/">What it does</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/topics/">Topics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/broker/">Broker</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/bridge/">Bridging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/waypoints/">Waypoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/beacons/">Beacons</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Features</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/comparison/">Comparison</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/ios/">iOS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/android/">Android</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/security/">Security</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/tls/">TLS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/tlscert/">TLS client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/location/">Location</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/tid/">Tracker ID</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/friends/">Friends</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/card/">Card</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/waypoints/">Waypoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/beacons/">Beacons</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/pedometer/">Pedometer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/featured/">Featured</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/encrypt/">Encryption</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/remoteconfig/">Remoteconfig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/debug/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../features/traccar/">Traccar</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">JSON</a>
+    <ul class="current">
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Features</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/comparison/">Comparison</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/ios/">iOS</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/security/">Security</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/tls/">TLS</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/tlscert/">TLS client</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/location/">Location</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/tid/">Tracker ID</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/friends/">Friends</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/card/">Card</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/waypoints/">Waypoints</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/beacons/">Beacons</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/pedometer/">Pedometer</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/encrypt/">Encryption</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/remoteconfig/">Remoteconfig</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/debug/">Debugging</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../features/traccar/">Traccar</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>API</span></li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">JSON</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#types">Types</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#topics">Topics</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typelocation">_type=location</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes">Notes</a></li>
-                
-                    <li><a class="toctree-l4" href="#greenwich">Greenwich</a></li>
-                
-                    <li><a class="toctree-l4" href="#queclink">Queclink</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typelwt">_type=lwt</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typewaypoint">_type=waypoint</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes_3">Notes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typetransition">_type=transition</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typeconfiguration">_type=configuration</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes_4">Notes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typebeacon">_type=beacon</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes_5">Notes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typecmd">_type=cmd</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes_6">Notes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typesteps">_type=steps</a></li>
-                
-                    <li><a class="toctree-l4" href="#notes_7">Notes</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typecard">_type=card</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typewaypoints">_type=waypoints</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#_typeencrypted">_type=encrypted</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../http/">HTTP</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../mqtt/">MQTT</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../qr/">URIs and QR codes</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../program/">Code</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Sundry</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../terminology/">Terminology</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../clients/recorder/">Docker</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../privacy/">Privacy</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../people/">People</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../ideas/">Ideas</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../faq/">Answers</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../press/">Press</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-        </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../qr/">URIs and QR codes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../program/">Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sundry</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../terminology/">Terminology</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/recorder/">Docker</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../privacy/">Privacy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../people/">People</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ideas/">Ideas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">Answers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../press/">Press</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -445,14 +171,15 @@
     <li>JSON</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/owntracks" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/owntracks/edit/master/docs/tech/json.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
+  
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -544,12 +271,11 @@
 <p>In HTTP mode the apps POST their data to a single endpoint you configure.</p>
 <h2 id="_typelocation"><code>_type=location</code></h2>
 <p>This location object describes the location of the device that reported it.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot; : &quot;location&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>acc</code> Accuracy of the reported location in meters without unit <em>(iOS,Android/integer/meters/optional)</em></li>
 <li><code>alt</code> Altitude measured above sea level <em>(iOS,Android/integer/meters/optional)</em></li>
@@ -600,12 +326,11 @@
 </ul>
 <h3 id="greenwich">Greenwich</h3>
 <p>The OwnTracks edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;location&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>alt</code> Altitude measured above sea level <em>(integer/meters/optional)</em></li>
 <li><code>batt</code> Device battery level <em>(integer/percent/optional)</em></li>
@@ -632,12 +357,11 @@
 <h3 id="queclink">Queclink</h3>
 <p>OwnTracks works with a selection of trackers by <a href="http://www.queclink.com">Queclink</a>, for which the protocol conversion is done via <a href="https://github.com/jpmens/qtripp">qtripp</a>.
 Queclink devices report the following additional elements in a <code>_type=location</code> message:</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;location&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>t</code> trigger for the location report <em>(string/optional)</em><ul>
 <li><code>o</code> Corner</li>
@@ -705,23 +429,21 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typelwt"><code>_type=lwt</code></h2>
 <p>A <em>last will and testament</em> is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;:&quot;lwt&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
 </ul>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
 <p>Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>desc</code> Name of the waypoint that is included in the sent transition message, copied into the <code>location</code> message <code>inregions</code> array when a current position is within a region. <em>(iOS,Android,string/required)</em></li>
 <li><code>lat</code> Latitude  <em>(iOS,Android/float/meters/optional)</em></li>
@@ -744,12 +466,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typetransition"><code>_type=transition</code></h2>
 <p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;transition&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>wtst</code> Timestamp of waypoint creation <em>(iOS,Android/integer/epoch/required)</em></li>
 <li><code>lat</code> Latitude at which the event occured <em>(iOS,Android/float/meters/optional)</em></li>
@@ -774,12 +495,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;configuration&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>allowRemoteLocation</code> Respond to reportLocation cmd message <em>(iOS,Android/boolean)</em></li>
 <li><code>allowinvalidcerts</code> disable TLS certificate checks <strong>insecure</strong>  <em>(iOS/boolean)</em></li>
@@ -858,12 +578,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typebeacon"><code>_type=beacon</code></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;:&quot;beacon&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>desc</code> name of the seen beacon <em>(iOS/String)</em></li>
 <li><code>uuid</code> UUID of the seen beacon <em>(iOS/String)</em></li>
@@ -885,7 +604,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>The theoretical relationship between RSSI and distance is <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.</li>
 </ul>
 <h2 id="_typecmd"><code>_type=cmd</code></h2>
-<pre><code class="json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportLocation&quot;}
+<pre><code class="language-json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportLocation&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
@@ -896,7 +615,6 @@ Queclink devices report the following additional elements in a <code>_type=locat
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;notification&quot;:&quot;Warning! Battery low&quot;}
 </code></pre>
-
 <ul>
 <li><code>action</code> action to be performed by the device <em>(iOS,Android/string)</em><ul>
 <li><code>action</code> Inserts an additional <em>Featured Content</em> tab in the UI <em>(iOS)</em></li>
@@ -931,12 +649,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;:&quot;steps&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>tst</code> Timestamp of the request <em>(iOS/integer/epoch)</em></li>
 <li><code>steps</code> Steps walked with the device in the specfied time period  <em>(iOS/integer/steps)</em></li>
@@ -949,12 +666,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typecard"><code>_type=card</code></h2>
 <p>Apps read <a href="../../features/card/">Card</a> to display a name and icon for a user.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;card&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>name</code> Name to identify a user <em>(iOS,Android/string/optional)</em></li>
 <li><code>face</code> Base64 encoded PNG image that is displayed instead of the Tracker ID <em>(iOS,Android/string/optional)</em></li>
@@ -962,12 +678,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 <h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
 <p>The app can export a list of configured waypoints to the endpoint.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;waypoints&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>_creator</code> Identification of what created the array. Ignored by the apps <em>(iOS,Android/string/optional)</em></li>
 <li><code>waypoints</code> Array of <code>waypoint</code> messages <em>(iOS,Android/array/required)</em></li>
@@ -975,12 +690,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
 <p>Apps can optionally <a href="../../features/encrypt/">encrypt</a> outgoing messages with a shared symmetric key.  The encrypted message is contained in the <code>data</code>element.
 For security reasons, the encryption key is not exported with configuration messages and cannot be imported.</p>
-<pre><code class="json">{
+<pre><code class="language-json">{
     &quot;_type&quot;: &quot;encrypted&quot;,
     elements
 }
 </code></pre>
-
 <ul>
 <li><code>data</code> Encrypted and Base64 encoded original JSON message <em>(iOS,Android/string/required)</em></li>
 </ul>
@@ -991,7 +705,7 @@ For security reasons, the encryption key is not exported with configuration mess
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../http/" class="btn btn-neutral float-right" title="HTTP"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../http/" class="btn btn-neutral float-right" title="HTTP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../features/traccar/" class="btn btn-neutral" title="Traccar"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -1002,14 +716,13 @@ For security reasons, the encryption key is not exported with configuration mess
   <hr/>
 
   <div role="contentinfo">
-    <p>
     <!-- Copyright etc -->
-    </p>
+    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
@@ -1017,19 +730,30 @@ For security reasons, the encryption key is not exported with configuration mess
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../../features/traccar/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../http/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/owntracks/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../features/traccar/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../http/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

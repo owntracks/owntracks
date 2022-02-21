@@ -3,28 +3,31 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TLS - OwnTracks Booklet</title>
-  
-
+  <meta name="author" content="OwnTracks.org">
+  <link rel="canonical" href="http://owntracks.org/features/tls/">
   <link rel="shortcut icon" href="../../favicon.ico">
   
+  <title>TLS - OwnTracks Booklet</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
   
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/highlight.css">
-  <link href="../../css/custom.css" rel="stylesheet">
-
-  <script src="../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
-  <script src="../../js/theme.js"></script> 
-
+  <script>
+    // Current page data
+    var mkdocs_page_name = "TLS";
+    var mkdocs_page_input_path = "features/tls.md";
+    var mkdocs_page_url = "/features/tls/";
+  </script>
   
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -33,357 +36,115 @@
 
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
         <a href="../.." class="icon icon-home"> OwnTracks Booklet</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../..">Intro</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Guide</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/whathow/">What it does</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/clients/">Clients</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/scenarios/">Scenarios</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/apps/">Apps</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/topics/">Topics</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/broker/">Broker</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/bridge/">Bridging</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/waypoints/">Waypoints</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../guide/beacons/">Beacons</a>
-        
-    </li>
-
-        
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Intro</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Guide</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/whathow/">What it does</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/topics/">Topics</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/broker/">Broker</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/bridge/">Bridging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/waypoints/">Waypoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../guide/beacons/">Beacons</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Features</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../comparison/">Comparison</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../ios/">iOS</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../android/">Android</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../security/">Security</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">TLS</a>
+    <ul class="current">
     </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Features</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../comparison/">Comparison</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../ios/">iOS</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../android/">Android</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../security/">Security</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">TLS</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#tls">TLS</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</a></li>
-                
-                    <li><a class="toctree-l4" href="#android">Android</a></li>
-                
-                    <li><a class="toctree-l4" href="#ios">iOS</a></li>
-                
-                    <li><a class="toctree-l4" href="#manual-configuration-on-android">manual configuration on Android</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#the-nitty-gritty">The nitty gritty</a></li>
-                
-                    <li><a class="toctree-l4" href="#obtain-a-certificate-and-key">Obtain a certificate and key</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../tlscert/">TLS client</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../location/">Location</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../tid/">Tracker ID</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../friends/">Friends</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../card/">Card</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../waypoints/">Waypoints</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../beacons/">Beacons</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../pedometer/">Pedometer</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../featured/">Featured</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../encrypt/">Encryption</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../remoteconfig/">Remoteconfig</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../debug/">Debugging</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../traccar/">Traccar</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>API</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/json/">JSON</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/http/">HTTP</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/mqtt/">MQTT</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/qr/">URIs and QR codes</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../tech/program/">Code</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Sundry</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../terminology/">Terminology</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../clients/recorder/">Docker</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../privacy/">Privacy</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../people/">People</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../ideas/">Ideas</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../faq/">Answers</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../../press/">Press</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-        </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tlscert/">TLS client</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../beacons/">Beacons</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../featured/">Featured</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../debug/">Debugging</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../traccar/">Traccar</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">API</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tech/qr/">URIs and QR codes</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Sundry</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../terminology/">Terminology</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../clients/recorder/">Docker</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../privacy/">Privacy</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../people/">People</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../ideas/">Ideas</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../faq/">Answers</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../press/">Press</a>
+                    </li>
+                </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
@@ -410,14 +171,15 @@
     <li>TLS</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/owntracks" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/owntracks/edit/master/docs/features/tls.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
+  
   <hr/>
 </div>
+
           <div role="main">
             <div class="section">
               
@@ -439,7 +201,6 @@ cafile .............
 certfile .............
 keyfile .............
 </code></pre>
-
 <p>(see also: <a href="http://mosquitto.org/man/mosquitto-tls-7.html">mosquitto-tls</a>.)</p>
 <ul>
 <li><code>8883</code> is the standard MQTT port for TLS connections. Change it if you need to, but make sure your OwnTracks app is configured to use the same port.</li>
@@ -488,7 +249,6 @@ pjGM/XgBs62UhqXnoHrHh/AHIiHieuNFwOhUg0fD/vQ5O6UZkJTWY5LLmEyPN5sS
 cPZ5pT/WCvGuIOgNdy1VyWJrrlAjeQlbK+GDcNc=
 -----END CERTIFICATE-----
 </code></pre>
-
 <p>That's plain text, even though it might be hard to believe. Actually, it's all sorts of magic wrapped into ASCII bytes, but we can look inside that, and we'll give you a sneak peak:</p>
 <pre><code>Certificate:
     Data:
@@ -522,7 +282,6 @@ cPZ5pT/WCvGuIOgNdy1VyWJrrlAjeQlbK+GDcNc=
         74:12:f8:d0:51:3a:c6:f8:62:75:61:d1:56:2f:bf:e3:64:3c:
         ...
 </code></pre>
-
 <p>Better, huh? Well, at least parts of it are now readable. Hope you liked this.</p>
 <h3 id="obtain-a-certificate-and-key">Obtain a certificate and key</h3>
 <p>The following sections are not an endorsement of a particular Certification Authority, but rather are a few tips on getting you set up with <a href="http://mosquitto.org">Mosquitto</a>.</p>
@@ -536,7 +295,6 @@ cafile ca-bundle.crt
 certfile server.crt
 keyfile server.key
 </code></pre>
-
 <p>Then download the <em>startssl.com</em> CA certificate (<a href="http://www.startssl.com/certs/ca.crt">ca.crt</a>) and install that on your device as described above.</p>
               
             </div>
@@ -545,7 +303,7 @@ keyfile server.key
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tlscert/" class="btn btn-neutral float-right" title="TLS client"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tlscert/" class="btn btn-neutral float-right" title="TLS client">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../security/" class="btn btn-neutral" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -556,14 +314,13 @@ keyfile server.key
   <hr/>
 
   <div role="contentinfo">
-    <p>
     <!-- Copyright etc -->
-    </p>
+    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+      
         </div>
       </div>
 
@@ -571,19 +328,30 @@ keyfile server.key
 
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../security/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../tlscert/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/owntracks/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../security/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../tlscert/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
