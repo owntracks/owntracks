@@ -196,6 +196,13 @@
 <pre><code class="language-bash">echo &quot;jjolie-phone mysecreTpass01&quot; | ocat --load=keys
 </code></pre>
 <p>From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of <code>_type: encrypted</code>. The Recorder will decrypt the payload and will store the result in plain text in its storage.</p>
+<p>You can check which decryption keys you have stored by running:</p>
+<pre><code class="language-bash">ocat --dump=keys
+</code></pre>
+<p>You can also delete entries for specific devices by replacing the encryption key with <code>DELETE</code>:</p>
+<pre><code class="language-bash">echo &quot;jjolie-phone DELETE&quot; | ocat --load=keys
+</code></pre>
+<p>Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!</p>
               
             </div>
           </div>
