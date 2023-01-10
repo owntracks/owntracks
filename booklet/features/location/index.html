@@ -221,8 +221,8 @@
 <h3 id="ios">iOS</h3>
 <h4 id="move-mode"><em>Move</em> mode</h4>
 <p>In <em>move</em> mode, the app monitors location permanently and publishes a new
-location as soon as the device moves <code>x</code> meters or after <code>t</code> seconds, whatever
-happens first. <code>x</code> and <code>t</code> can be adjusted by the user in the systems settings for
+location as soon as the device moves <code>locatorDisplacement</code> meters or after <code>locatorInterval</code> seconds, whatever
+happens first. <code>locatorDisplacement</code> and <code>locatorInterval</code> can be adjusted by the user in the systems settings for
 OwnTracks. The defaults are 100m and 300 seconds (5 minutes). </p>
 <p>The payoff is higher battery usage as high as in navigation or tracker app.
 So it is recommend to use <em>move</em> mode while charging or during moves only - hence the name.</p>
