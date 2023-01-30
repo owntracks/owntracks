@@ -406,15 +406,6 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
 <li>This means if the user has not moved by more than the displacement value, the location will not be reported at <code>locatorInterval</code>.</li>
 </ul>
 </li>
-<li>
-<p><code>locatorPriority</code>: The priority of the request is a strong hint to the LocationClient for which location sources to use (e.g. wifi, cellular or gps). The accepted values are:</p>
-<ul>
-<li><code>0</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_no_power">No power usage</a> "No locations will be returned unless a different client has requested location updates"</li>
-<li><code>1</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_low_power">Low power usage</a> "City level accuracy is considered to be about 10km accuracy."</li>
-<li><code>2</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_balanced_power_accuracy">Balanced power usage</a> "Block level accuracy is considered to be about 100 meter accuracy." (default)</li>
-<li><code>3</code>: <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#public-static-final-int-priority_high_accuracy">High power usage</a> "This will return the finest location available."</li>
-</ul>
-</li>
 </ul>
 <h4 id="manual-mode_1"><em>Manual</em> mode</h4>
 <p>In <em>manual</em> mode, the app monitors device location with a low power location request. It uses the same interval configured for <em>significant mode</em> to receive low accuracy updates to use minimal battery power. </p>
