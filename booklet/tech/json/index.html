@@ -297,12 +297,14 @@
 <li><code>vac</code> vertical accuracy of the <code>alt</code> element <em>(iOS/integer/meters/optional)</em></li>
 <li><code>vel</code> velocity <em>(iOS,Android/integer/kmh/optional)</em></li>
 <li><code>p</code> barometric pressure <em>(iOS/float/kPa/optional/extended data)</em></li>
+<li><code>poi</code> point of interest name <em>(iOS/string/optional)</em></li>
 <li><code>conn</code> Internet connectivity status (route to host) when the message is created <em>(iOS,Android/string/optional/extended data)</em><ul>
 <li><code>w</code> phone is connected to a WiFi connection <em>(iOS,Android)</em></li>
 <li><code>o</code> phone is offline <em>(iOS,Android)</em></li>
 <li><code>m</code> mobile data <em>(iOS,Android)</em></li>
 </ul>
 </li>
+<li><code>tag</code> name of the tag <em>(iOS/string/optional)</em></li>
 <li><code>topic</code> (only in HTTP payloads) contains the original publish topic (e.g. <code>owntracks/jane/phone</code>). <em>(iOS,Android &gt;= 2.4,string)</em></li>
 <li><code>inregions</code> contains a list of regions the device is currently in (e.g. <code>["Home","Garage"]</code>). Might be empty. <em>(iOS,Android/list of strings/optional)</em></li>
 <li><code>inrids</code> contains a list of region IDs the device is currently in (e.g. <code>["6da9cf","3defa7"]</code>). Might be empty. <em>(iOS,Android/list of strings/optional)</em></li>
