@@ -437,7 +437,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
 </ul>
 <h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
-<p>Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint. OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
+<p>Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint to the topic branch <code>../waypoint</code> (singular). OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
     elements
@@ -675,7 +675,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>face</code> Base64 encoded PNG image that is displayed instead of the Tracker ID <em>(iOS,Android/string/optional)</em></li>
 </ul>
 <h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
-<p>The app can export a list of configured waypoints to the endpoint.</p>
+<p>The app can export a list of configured waypoints to the endpoint <code>../waypoints</code> (plural).</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;waypoints&quot;,
     elements

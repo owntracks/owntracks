@@ -197,8 +197,7 @@
 to be in the app's preferences/settings. For argument's sake we'll use the default <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
 <p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
 All messages published to this base topic are retained if you have configured the app to retain them.</p>
-<p>Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon
-entering or leaving a waypoint:</p>
+<p>Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon entering or leaving a waypoint, containing:</p>
 <ul>
 <li><code>rad</code>ius (if its value is greater than 0)</li>
 <li><code>desc</code>ription with the name you set for the waypoint</li>
@@ -206,8 +205,8 @@ entering or leaving a waypoint:</p>
    whether the device is entering or leaving a configured region, respectively.</li>
 <li><code>rid</code> (&gt; January 2021) with the <em>region ID</em> of the region.</li>
 </ul>
-<p>If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with <code>retain=0</code> irrespective of your general preference) to the base topic with <code>/waypoints</code> tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoints</code>) with the payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>transition</code> message and will contain a <code>wtst</code> (for historical purposes) with the timestamp of when the region was originally defined.</p>
-<p>For example, If Jane configures a region on her iPhone, the app could publish the following payload</p>
+<p>If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with <code>retain=0</code> irrespective of your general preference) to the base topic with <code>/waypoint</code> tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoint</code>) with the payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>transition</code> message and will contain a <code>wtst</code> (for historical purposes) with the timestamp of when the region was originally defined. (Note that that branch is <code>/waypoint</code> -- singular.)</p>
+<p>For example, If Jane configures a region on her iPhone, the app could publish the following payload to <code>owntracks/jane/phone/waypoint</code>:</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;waypoint&quot;,
     &quot;desc&quot;: &quot;Paris is lovely&quot;,
@@ -227,7 +226,7 @@ re-published, with the <em>original</em> timestamp, but with possibly new
 identifier of the region even if it is later modified on the device.</p>
 <p>Subscribers to the broker (our apps and any other program) can avoid getting
 regions by subscribing to, say, <code>owntracks/+/+</code>; also broker ACLs can
-prohibit access to <code>owntracks/+/+/waypoints</code> for particular users if so desired.
+prohibit access to <code>owntracks/+/+/waypoint</code> for particular users if so desired.
 Conversely, all messages published by the apps (<code>location</code>, <code>transition</code>, and <code>waypoint</code>) are
 available with a subscription to <code>owntracks/#</code>.</p>
 <p>The OwnTracks apps may keep track of regions, e.g. for displaying to users. </p>
