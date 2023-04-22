@@ -196,8 +196,20 @@
 <p>And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well.</p>
 <p>Read <a href="../../clients/recorder/">more about the Recorder</a>.</p>
 <h2 id="mqttwarn">mqttwarn</h2>
-<p>You'll recall (we hope) the discussion on <a href="../../tech/mqtt/">MQTT</a> and the analogy with the cauldron. <em>mqttwarn</em>, while not specific to OwnTracks, is another client you connect to your <a href="../broker/">MQTT broker</a>. We think it's worth mentioning (and both Ben and JP -- the creators -- are quite pleased with what it does).</p>
-<p><em>mqttwarn</em> lets you do things like tweet everytime OwnTracks reports a location (but do consider whether you <em>really</em> want that), send an e-mail when a loved one enters a particular region, etc.</p>
+<p>You will recall the discussion on <a href="../../tech/mqtt/">MQTT</a>, and the analogy with the cauldron.
+On this matter, <em>mqttwarn</em>, while not specific to OwnTracks, is another client you can connect
+to your <a href="../broker/">MQTT broker</a>. We think it is worth mentioning, and both Ben and JP -- the
+creators -- are quite pleased with what it does.</p>
+<p><em>mqttwarn</em> lets you do things like submitting a tweet each time OwnTracks reports a location
+(but do consider whether you <em>really</em> want that ;]), send an e-mail when a loved one enters
+a particular region, or use <a href="https://ntfy.sh/">ntfy.sh</a> to deliver a notification to your mobile phone, just
+to name a few examples of what is possible. Think of a self-hosted IFTTT or Zapier, but all
+that running on your premises, and a bit less enterprise.</p>
+<p>Technically speaking, <em>mqttwarn</em> is a highly configurable MQTT message router, where the routing
+targets are notification plugins, written in Python. <em>mqttwarn</em> currently supports well over 90
+different notification services or providers. A picture says a thousand words.</p>
+<p><img alt="mqttwarn" src="https://mqttwarn.readthedocs.io/en/latest/_images/mqttwarn.png" /></p>
+<p>Enjoy exploring the <a href="https://mqttwarn.readthedocs.io/">mqttwarn documentation</a>.</p>
 <h2 id="openhab">openHAB</h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
 <p><img alt="openHAB" src="../images/openhab.png" /></p>
