@@ -342,6 +342,10 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </tr>
 </tbody>
 </table>
+<p>Other intents are, for instance:</p>
+<ul>
+<li><code>org.owntracks.android.SEND_LOCATION_USER</code> sends a manual report (i.e. pushes a location) </li>
+</ul>
 <h3 id="adb-example">ADB example</h3>
 <p>It's possible to send an intent to OwnTracks using the <code>am</code> command on the device shell. You just need to call <code>start-service</code> with the correct action, and optionally the extra that you need to set the specific mode.</p>
 <p>E.g. to set move mode:</p>
