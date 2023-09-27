@@ -607,6 +607,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;clearWaypoints&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
 {&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
@@ -625,6 +626,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </li>
 <li><code>reportLocation</code> Triggers the publish of a <code>location</code> messages <em>(iOS,Android)</em>
   Don‘t expect device to be online. Send with QoS&gt;0. Device will receive and repond when activated next time.</li>
+<li><code>clearWaypoints</code> deletes all waypoints/regions <em>(iOS)</em></li>
 <li><code>setWaypoints</code> Imports (merge) and activates new waypoints <em>(iOS,Android)</em><ul>
 <li><code>waypoints</code> Array of <code>waypoint</code> messages to import <em>(iOS,Android/array/required)</em></li>
 </ul>
