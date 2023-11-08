@@ -226,7 +226,7 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 <p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in</p>
 <pre><code>&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;-&lt;device&gt;.json
 </code></pre>
-<p>So, if <code>"jane"</code> is a friend with a device <code>"s8"</code>, the Recorder will load Jane's JSON card machine from the path <code>&lt;STORAGEDIR&gt;/cards/jane/jane-s8.json.</code> Note that as usual in Recorder, usernames and device names are lowercased.</p>
+<p>So, if <code>"jane"</code> is a friend with a device <code>"s8"</code>, the Recorder will load Jane's JSON card from the path <code>&lt;STORAGEDIR&gt;/cards/jane/jane-s8.json.</code> Note that as usual in Recorder, usernames and device names are lowercased.</p>
 <p>In <code>contrib/faces/</code> of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the <code>.json</code> file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with <code>jq . &lt; file.json</code> or <code>python -mjson.tool file.json</code>.)</p>
               
             </div>
