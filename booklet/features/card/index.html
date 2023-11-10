@@ -223,10 +223,11 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 <p>You should use JPEG encoding when the image depicts something complex, such as a photography of a real face. You should use PNG encoding when the image only contains simple flat colors, such as icons or drawings.</p>
 <p>We also recommend compressing the image to further save on data usage. A good app for this is <a href="https://squoosh.app/">Squoosh</a>, but be warned that <a href="https://github.com/GoogleChromeLabs/squoosh#privacy">it uses Google trackers</a>. For JPEG, the MozJPEG encoder with default settings is usually very good, and for PNG, the OxiPNG encoder with default settings is usually very good.</p>
 <h3 id="cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode</h3>
-<p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in</p>
+<p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in the following two paths, with the first found winning:</p>
 <pre><code>&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;-&lt;device&gt;.json
+&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;.json
 </code></pre>
-<p>So, if <code>"jane"</code> is a friend with a device <code>"s8"</code>, the Recorder will load Jane's JSON card from the path <code>&lt;STORAGEDIR&gt;/cards/jane/jane-s8.json.</code> Note that as usual in Recorder, usernames and device names are lowercased.</p>
+<p>So, if <code>"jane"</code> is a friend with a device <code>"s8"</code>, the Recorder will load Jane's JSON card from the path <code>&lt;STORAGEDIR&gt;/cards/jane/jane-s8.json.</code> If Jane's device-specific card doesn't exist, her card is loaded from <code>&lt;STORAGEDIR&gt;/cards/jane.json</code> and silently ignored if that doesn't exist. (Note that as usual in Recorder, usernames and device names are lowercased.)</p>
 <p>In <code>contrib/faces/</code> of the Recorder distribution there are some small utilities which can help create CARDs. Please make sure to verify that the <code>.json</code> file which you place into the directory is readable by the Recorder and is valid JSON. (You can test that with <code>jq . &lt; file.json</code> or <code>python -mjson.tool file.json</code>.)</p>
               
             </div>
