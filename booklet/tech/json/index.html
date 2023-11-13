@@ -604,17 +604,17 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>The theoretical relationship between RSSI and distance is <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.</li>
 </ul>
 <h2 id="_typecmd"><code>_type=cmd</code></h2>
-<pre><code class="language-json">{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportLocation&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;reportSteps&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;dump&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;waypoints&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;clearWaypoints&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setConfiguration&quot;,&quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;setWaypoints&quot;,&quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;url&quot;:&quot;http://support.owntracks.org&quot;}
-{&quot;_type&quot;:&quot;cmd&quot;,&quot;action&quot;:&quot;action&quot;,&quot;notification&quot;:&quot;Warning! Battery low&quot;}
+<pre><code class="language-json">{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;reportLocation&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;reportSteps&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;dump&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;waypoints&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;clearWaypoints&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;setConfiguration&quot;, &quot;configuration&quot;:{&quot;_type&quot;:&quot;configuration&quot;,...}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;setWaypoints&quot;, &quot;waypoints&quot;:{&quot;_type&quot;:&quot;waypoints&quot;,&quot;waypoints&quot;:[...]}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;action&quot;, &quot;content&quot;:&quot;Backend maintenance scheduled for tonight\n\nhttp://support.owntracks.org&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;action&quot;, &quot;content&quot;:&quot;&lt;a href='http://support.owntracks.org'&gt;Backend Maintenance tonight&lt;/a&gt;&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;action&quot;, &quot;url&quot;:&quot;http://support.owntracks.org&quot;}
+{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;action&quot;, &quot;notification&quot;:&quot;Warning! Battery low&quot;}
 </code></pre>
 <ul>
 <li><code>action</code> action to be performed by the device <em>(iOS,Android/string)</em><ul>
