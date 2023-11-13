@@ -649,6 +649,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>The <em>Featured Content</em> tab can be removed with an <code>action</code> cmd message without <code>content</code> and without <code>url</code> element</li>
 <li>If the <code>action</code> cmd contains a <code>notification</code> element, the value of the element is shown in the app <em>(iOS)</em></li>
 <li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
+<li>On Android there's a primary key which isn't surfaced to the API, and <code>tst</code> is a uniquely-constrained value which effectively acts like a key.</li>
 </ul>
 <h2 id="_typesteps"><code>_type=steps</code></h2>
 <pre><code class="language-json">{
