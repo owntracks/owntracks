@@ -214,12 +214,14 @@ we make use of the <a href="https://en.wikipedia.org/wiki/PKCS_12">PKCS#12</a> c
 format. OpenSSL's <code>pkcs12</code> subcommand creates this container and protects it
 with a passphrase you specify. This passphrase we will later require in the app.</p>
 <pre><code class="language-bash">openssl pkcs12 \
+  -legacy \
   -export \
   -in jjolie.crt \
   -inkey jjolie.key \
   -name &quot;Jane's certificate/key&quot; \
   -out jjolie.p12
 </code></pre>
+<p>(Should you be using an older version of the <code>openssl</code> binary, omit the <code>-legacy</code> option.)</p>
 <p>You now send the PKCS#12 file as attachment to the device, e.g. by e-mail. Note that for iOS, the file must have a <code>.otrp</code> extension so that it can be opened in OwnTracks.
 You also send the CA certificate to the device and install it there, as discussed in <a href="../tls/">TLS</a></p>
 <h3 id="android">Android</h3>
