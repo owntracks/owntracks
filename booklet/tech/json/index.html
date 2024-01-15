@@ -512,6 +512,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>downgrade</code> battery level below which to downgrade monitoring from move mode <em>(iOS/integer/percent/optional)</em></li>
 <li><code>extendedData</code> Add extended data attributes to location messages <em>(iOS,Android/boolean)</em></li>
 <li><code>host</code> MQTT endpoint host <em>(iOS,Android/string)</em></li>
+<li><code>httpHeaders</code> extra HTTP headers:field names and field content are separated by a colon (:), multiple fields by a backslash-n (\n) \&lt;field-name&gt;:\&lt;field-content&gt;\n\&lt;field-name&gt;:\&lt;field-content&gt;... <em>(iOS only/string)</em></li>
 <li><code>ignoreInaccurateLocations</code> Location accuracy below which reports are supressed <em>(iOS,Android/integer/meters)</em></li>
 <li><code>ignoreStaleLocations</code> Number of days after which location updates are assumed stale. Locations sent by friends older than the number of days specified here will not be shown on map or in friends list. Defaults to 0, which means stale locations are not filtered. <em>(iOS,Android/integer/days)</em></li>
 <li><code>keepalive</code> MQTT endpoint keepalive <em>(iOS,Android/integer/seconds)</em></li>
