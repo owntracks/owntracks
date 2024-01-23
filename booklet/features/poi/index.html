@@ -176,7 +176,9 @@
               
                 <h2 id="poi-and-tags">POI and tags</h2>
 <p>Currently iOS only.</p>
-<p>When manually publishing a location from the app, users have the possibility to set (or later clear) a tag. This tag is automatically used to subsequently tag messages with an appropriate JSON element until it is manually cleared in the UI. The value of a tag is added to the JSON as</p>
+<p>When manually publishing a location from the app, users have the possibility to set (or later clear) a tag.</p>
+<p><img alt="Publish on iOS" src="../images/ios-poi-tag-select.png" /></p>
+<p>Setting a tag causes all future publishes (manual or automatic) to have their JSON payloads enhanced with a "tag" element until it is manually cleared in the UI. The value of a tag is added to the JSON as</p>
 <pre><code class="language-json">{
   &quot;_type&quot;: &quot;location&quot;,
   &quot;tag&quot; : &quot;&lt;your tag&gt;&quot;,
