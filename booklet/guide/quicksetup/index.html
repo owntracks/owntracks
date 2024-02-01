@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="OwnTracks.org">
-  <link rel="canonical" href="http://owntracks.org/guide/waypoints/">
+  <link rel="canonical" href="http://owntracks.org/guide/quicksetup/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Waypoints - OwnTracks Booklet</title>
+  <title>wip - OwnTracks Booklet</title>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Waypoints";
-    var mkdocs_page_input_path = "guide/waypoints.md";
-    var mkdocs_page_url = "/guide/waypoints/";
+    var mkdocs_page_name = "wip";
+    var mkdocs_page_input_path = "guide/quicksetup.md";
+    var mkdocs_page_url = "/guide/quicksetup/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -50,7 +50,9 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../whathow/">What it does</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../quicksetup/">wip</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">wip</a>
+    <ul class="current">
+    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../clients/">Clients</a>
                     </li>
@@ -64,9 +66,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../bridge/">Bridging</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Waypoints</a>
-    <ul class="current">
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../beacons/">Beacons</a>
                     </li>
@@ -169,10 +169,10 @@
         
       
     
-    <li>Waypoints</li>
+    <li>wip</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/owntracks/booklet/edit/master/docs/guide/waypoints.md"
+        <a href="https://github.com/owntracks/booklet/edit/master/docs/guide/quicksetup.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -184,31 +184,75 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="waypoints">Waypoints</h2>
-<p>If you've configured a geo-fence, a <code>location</code> message will
-contain the elements:</p>
+                <h2 id="get-started-quickly">Get started quickly</h2>
+<p>WARning; Work in Progress</p>
+<p>Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call <em>quicksetup</em>, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.</p>
+<p>To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:</p>
 <ul>
-<li><code>rad</code>ius (if its value is greater than 0): unit: meters</li>
-<li><code>desc</code>ription with the name you set for the waypoint</li>
-<li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
-   whether the device is entering or leaving a configured region, respectively.</li>
+<li>a Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.</li>
+<li>some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)</li>
+<li>we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
+<li>Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
+<li>a DNS domain, something like <code>yourname.example.net</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>yourname.example.net</code>.</li>
 </ul>
-<p>If you set up a waypoint, the app publishes that waypoint (without the retain flag,
-irrespective of your general preference) to the base topic with <code>/waypoint</code>
-tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoint</code>) with the
-payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>.</p>
-<p>When you set up a waypoint (with a <code>desc</code>ription and a <code>rad</code>ius), this
-waypoint is published to the broker with the current time stamp. If you update
-the waypoint definition on the device at a later stage, the waypoint is
-re-published, with the <em>original</em> timestamp, but with possibly new
-<code>desc</code>ription and/or <code>rad</code>ius. To be precise, the <code>tst</code> timestamp is used as an
-identifier of the waypoint even if it is later modified on the device.</p>
-<p>Subscribers to the broker (our apps and any other program) can avoid getting
-waypoints by subscribing to, say, <code>owntracks/+/+</code>; also broker ACLs can
-prohibit access to <code>owntracks/+/+/waypoint</code> for particular users if so desired.
-Conversely, all messages published by the apps (<code>location</code> and <code>waypoint</code>) are
-available with a subscription to <code>owntracks/#</code>.</p>
-<p>The OwnTracks apps may keep track of waypoints, e.g. for displaying to users. </p>
+<p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.
+- after logging in, the following program invocation should produce output similar to that shown:
+  <code>console
+  $ sudo id
+  uid=0(root) gid=0(root) groups=0(root)</code></p>
+<p>if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.</p>
+<ul>
+<li>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:
+  <code>console
+  $ ping yourname.example.net
+  ...</code></li>
+</ul>
+<p>You should now be ready to proceed.</p>
+<h2 id="expectations">expectations</h2>
+<p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
+<ul>
+<li>we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a <em>cron</em> job with which the Let's Encrypt certificate will automatically be renewed when required.</li>
+<li>we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called <code>/usr/local/owntracks/userdata/*.pass</code>.</li>
+<li>we install a Mosquitto MQTT broker in order for our Android or iOS apps to be able to publish location data to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our <code>*.otrc</code> files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.</li>
+<li>we install and configure our Recorder. This is a program which subscribes to MQTT (on your VPS) and receives location publishes when your OwnTracks apps change location. The data is stored and can later be viewed with Frontend.</li>
+<li>you will be able to specify any number of [Friends] during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.</li>
+</ul>
+<p>So, if everything works the way we hope it will, this ought to be a plug-and-play experience. Fingers crossed!</p>
+<p>Let us begin.</p>
+<h2 id="quicksetup">quicksetup</h2>
+<p>You are logged into your VPS either as <code>root</code> or as an unpriviledged user. Three steps will get the installer going:</p>
+<ol>
+<li>
+<p>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.
+   <code>console
+   $ sudo apt install -y git
+   $ git clone --depth=1 https://github.com/owntracks/quicksetup
+   $ cd quicksetup</code></p>
+</li>
+<li>
+<p>you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but <a href="https://github.com/owntracks/quicksetup/issues">do ask us</a> if it isn't.
+   <code>console
+   $ cp configuration.yaml.example configuration.yaml
+   $ nano configuration.yaml</code></p>
+</li>
+<li>
+<p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.
+   <code>console
+   $ sudo ./bootstrap.sh</code></p>
+</li>
+</ol>
+<p>This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by <em>quicksetup</em> to begin configuring all the services as described above.</p>
+<p>FIXME: add screenshot of top of installer</p>
+<p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.</p>
+<p>Assuming the installer was successful, you can verify if the services are working as we intended them to:</p>
+<ol>
+<li>install OwnTracks on your Android or iOS device and configure it, either by sending yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code> or by visiting <code>https://yourname.example.com/owntracks/</code> and logging in with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
+<li>in the app on the smartphone, click on publish 
+   FIXME: screenshots</li>
+<li>back on your VPS, use the following preconfigured utility to subscribe to your MQTT broker:
+   <code>console
+   $ mosquitto_sub -t 'owntracks/#'</code></li>
+</ol>
               
             </div>
           </div>
@@ -216,10 +260,10 @@ available with a subscription to <code>owntracks/#</code>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../beacons/" class="btn btn-neutral float-right" title="Beacons">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../clients/" class="btn btn-neutral float-right" title="Clients">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../bridge/" class="btn btn-neutral" title="Bridging"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../whathow/" class="btn btn-neutral" title="What it does"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -249,10 +293,10 @@ available with a subscription to <code>owntracks/#</code>.</p>
         </span>
     
     
-      <span><a href="../bridge/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../whathow/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../beacons/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../clients/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -166,6 +166,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://owntracks.org/guide/quicksetup/</loc>
+         <lastmod>2024-02-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://owntracks.org/guide/scenarios/</loc>
          <lastmod>2024-02-01</lastmod>
          <changefreq>daily</changefreq>
