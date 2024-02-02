@@ -196,11 +196,13 @@
 <li>we've tested this setup on Ubuntu 22.04 and on Debian 12</li>
 <li>a DNS domain, something like <code>yourname.example.net</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>yourname.example.net</code>.</li>
 </ul>
-<p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.
-- after logging in, the following program invocation should produce output similar to that shown:</p>
-<pre><code>    $ sudo id
-    uid=0(root) gid=0(root) groups=0(root)
+<p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.</p>
+<ul>
+<li>after logging in, the following program invocation should produce output similar to that shown:<pre><code>$ sudo id
+uid=0(root) gid=0(root) groups=0(root)
 </code></pre>
+</li>
+</ul>
 <p>if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.</p>
 <ul>
 <li>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:<pre><code>$ ping yourname.example.net
@@ -223,23 +225,25 @@
 <h2 id="quicksetup">quicksetup</h2>
 <p>You are logged into your VPS either as <code>root</code> or as an unpriviledged user. Three steps will get the installer going:</p>
 <ol>
-<li>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.</li>
-</ol>
-<pre><code class="language-console">$ sudo apt install -y git    # not required on Ubuntu
+<li>
+<p>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.</p>
+<pre><code>$ sudo apt install -y git    # not required on Ubuntu
 $ git clone --depth=1 https://github.com/owntracks/quicksetup
 $ cd quicksetup
 </code></pre>
-<ol>
-<li>you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but <a href="https://github.com/owntracks/quicksetup/issues">do ask us</a> if it isn't.</li>
-</ol>
-<pre><code class="language-console">$ cp configuration.yaml.example configuration.yaml
+</li>
+<li>
+<p>you now have all the files on your system, so feel free to look around. If you just want to continue, make a copy of the configuration and edit it with an editor. The file's content ought to be self-explanatory, but <a href="https://github.com/owntracks/quicksetup/issues">do ask us</a> if it isn't.</p>
+<pre><code>$ cp configuration.yaml.example configuration.yaml
 $ nano configuration.yaml
 </code></pre>
-<ol>
-<li>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</li>
-</ol>
-<pre><code class="language-console">$ sudo ./bootstrap.sh
+</li>
+<li>
+<p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</p>
+<pre><code>$ sudo ./bootstrap.sh
 </code></pre>
+</li>
+</ol>
 <p>This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by <em>quicksetup</em> to begin configuring all the services as described above.</p>
 <p>FIXME: add screenshot of top of installer</p>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.</p>
@@ -248,38 +252,40 @@ $ nano configuration.yaml
 <li>install OwnTracks on your Android or iOS device and configure it, either by sending yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code> or by visiting <code>https://yourname.example.com/owntracks/</code> and logging in with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
 <li>in the app on the smartphone, click on publish 
    FIXME: screenshots</li>
-<li>back on your VPS, use the following preconfigured utility to subscribe to your MQTT broker:</li>
-</ol>
-<pre><code class="language-console">$ mosquitto_sub -t 'owntracks/#'
+<li>
+<p>back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:</p>
+<pre><code>$ mosquitto_sub -t 'owntracks/#'
 </code></pre>
-<ol>
-<li>on the console you should see some output from <code>mosquitto_sub</code> which looks a bit like this:</li>
-</ol>
-<pre><code>owntracks/jane/nokia {&quot;_type&quot;:&quot;location&quot;,&quot;SSID&quot;:&quot;mywifi&quot;,&quot;alt&quot;:154,&quot;batt&quot;:53,&quot;conn&quot;:&quot;w&quot;,&quot;created_at&quot;:1706856299,&quot;lat&quot;:48.856826,&quot;lon&quot;:2.292713,&quot;tid&quot;:&quot;j1&quot;,&quot;tst&quot;:1706856298,&quot;vel&quot;:0}
+</li>
+<li>
+<p>on the console you should see some output from <code>mosquitto_sub</code> which looks a bit like this:</p>
+<pre><code>owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 </code></pre>
+</li>
+</ol>
 <p>The output on your system will differ. The first part before the first space, is called the <code>topic</code> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:</p>
-<pre><code class="language-json">{
-  &quot;_type&quot;: &quot;location&quot;,
-  &quot;SSID&quot;: &quot;mywifi&quot;,
-  &quot;alt&quot;: 154,
-  &quot;batt&quot;: 53,
-  &quot;conn&quot;: &quot;w&quot;,
-  &quot;created_at&quot;: 1706858149,
-  &quot;lat&quot;: 48.856826,
-  &quot;lon&quot;: 2.292713,
-  &quot;tid&quot;: &quot;j1&quot;,
-  &quot;tst&quot;: 1706858149,
-  &quot;vel&quot;: 0
-}
+<pre><code>    {
+      "_type": "location",
+      "SSID": "mywifi",
+      "alt": 154,
+      "batt": 53,
+      "conn": "w",
+      "created_at": 1706858149,
+      "lat": 48.856826,
+      "lon": 2.292713,
+      "tid": "j1",
+      "tst": 1706858149,
+      "vel": 0
+    }
 </code></pre>
 <p>this includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
 <ol>
-<li>still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a <code>YYYY-MM</code> date stamp:</li>
-</ol>
-<pre><code class="language-console">$ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
-2024-02-02T07:15:49Z    *                   {&quot;_type&quot;:&quot;location&quot;,&quot;SSID&quot;:&quot;mywifi&quot;,&quot;alt&quot;:154,&quot;batt&quot;:53,&quot;conn&quot;:&quot;w&quot;,&quot;lat&quot;:48.856826,&quot;lon&quot;:2.292713,&quot;tid&quot;:&quot;j1&quot;,&quot;tst&quot;:1706858149,&quot;vel&quot;:0}
+<li>
+<p>still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a <code>YYYY-MM</code> date stamp:</p>
+<pre><code>$ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
+2024-02-02T07:15:49Z    *                   {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
 </code></pre>
-<ol>
+</li>
 <li>
 <p>let's use a Web browser to access our site:
    <img alt="Index" src="../qs/rabbit-10663.png" /></p>
@@ -296,45 +302,46 @@ $ nano configuration.yaml
 <p>users can select users and devices to see, tracks to view, etc.
    <img alt="viewing a track in Frontend" src="../qs/rabbit-10667.png" /></p>
 <ol>
-<li>back on the command line of your VPS, you can explore the data submitted by your devices using the <code>ocat</code> utility, say:</li>
-</ol>
-<pre><code class="language-console">$ ocat --user jane --device nokia | jq
+<li>
+<p>back on the command line of your VPS, you can explore the data submitted by your devices using the <code>ocat</code> utility, say:</p>
+<pre><code>$ ocat --user jane --device nokia | jq
 {
-  &quot;count&quot;: 1,
-  &quot;locations&quot;: [
+  "count": 1,
+  "locations": [
     {
-      &quot;_type&quot;: &quot;location&quot;,
-      &quot;SSID&quot;: &quot;mywifi&quot;,
-      &quot;alt&quot;: 154,
-      &quot;batt&quot;: 53,
-      &quot;conn&quot;: &quot;w&quot;,
-      &quot;lat&quot;: 48.856826,
-      &quot;lon&quot;: 2.292713,
-      &quot;tid&quot;: &quot;j1&quot;,
-      &quot;tst&quot;: 1706858149,
-      &quot;vel&quot;: 0,
-      &quot;ghash&quot;: &quot;u09tunj&quot;,
-      &quot;cc&quot;: &quot;FR&quot;,
-      &quot;addr&quot;: &quot;11 Av de Suffren, 75007 Paris, France&quot;,
-      &quot;locality&quot;: &quot;Paris&quot;,
-      &quot;tzname&quot;: &quot;Europe/Paris&quot;,
-      &quot;isorcv&quot;: &quot;2024-02-02T07:15:49Z&quot;,
-      &quot;isotst&quot;: &quot;2024-02-02T07:15:49Z&quot;,
-      &quot;isolocal&quot;: &quot;2024-02-02T08:15:49+0100&quot;
-      &quot;disptst&quot;: &quot;2024-02-02 07:15:49&quot;
+      "_type": "location",
+      "SSID": "mywifi",
+      "alt": 154,
+      "batt": 53,
+      "conn": "w",
+      "lat": 48.856826,
+      "lon": 2.292713,
+      "tid": "j1",
+      "tst": 1706858149,
+      "vel": 0,
+      "ghash": "u09tunj",
+      "cc": "FR",
+      "addr": "11 Av de Suffren, 75007 Paris, France",
+      "locality": "Paris",
+      "tzname": "Europe/Paris",
+      "isorcv": "2024-02-02T07:15:49Z",
+      "isotst": "2024-02-02T07:15:49Z",
+      "isolocal": "2024-02-02T08:15:49+0100"
+      "disptst": "2024-02-02 07:15:49"
     }
   ]
 }
 </code></pre>
-<pre><code>Notice how the data has been enriched by the name of the time zone (`tzname`) at the location and the local time there (`isolocal`). In addition, OwnTracks has stored the address (`addr`) of the location, the `locality` or city if know, and the country code (`cc`) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (`ghash`), it's a [convenient way of expressing a location using a short string](https://en.wikipedia.org/wiki/Geohash).
-</code></pre>
-<ol>
-<li>the data you obtain locally from our Recorder is also available <a href="https://github.com/owntracks/recorder/blob/master/API.md">via its API</a></li>
-</ol>
-<pre><code class="language-console">curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
+<p>Notice how the data has been enriched by the name of the time zone (<code>tzname</code>) at the location and the local time there (<code>isolocal</code>). In addition, OwnTracks has stored the address (<code>addr</code>) of the location, the <code>locality</code> or city if know, and the country code (<code>cc</code>) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (<code>ghash</code>), it's a <a href="https://en.wikipedia.org/wiki/Geohash">convenient way of expressing a location using a short string</a>.</p>
+</li>
+<li>
+<p>the data you obtain locally from our Recorder is also available <a href="https://github.com/owntracks/recorder/blob/master/API.md">via its API</a></p>
+<pre><code>curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
 Enter host password for user 'jane':
-{&quot;count&quot;:1,&quot;data&quot;:[{&quot;_type&quot;:&quot;location&quot;,&quot;SSID&quot;:&quot;mywifi&quot;,&quot;alt&quot;:154,&quot;batt&quot;:53,&quot;conn&quot;:&quot;w&quot;,&quot;lat&quot;:48.856826,&quot;lon&quot;:2.292713,&quot;tid&quot;:&quot;j1&quot;,&quot;tst&quot;:1706858149,&quot;vel&quot;:0,&quot;ghash&quot;:&quot;u09tunj&quot;,&quot;cc&quot;:&quot;FR&quot;,&quot;addr&quot;:&quot;11 Av de Suffren, 75007 Paris, France&quot;,&quot;locality&quot;:&quot;Paris&quot;,&quot;isorcv&quot;:&quot;2024-02-02T07:15:49Z&quot;,&quot;isotst&quot;:&quot;2024-02-02T07:15:49Z&quot;,&quot;disptst&quot;:&quot;2024-02-02 07:15:49&quot;}],&quot;status&quot;:200}
+{"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
 </code></pre>
+</li>
+</ol>
               
             </div>
           </div>
