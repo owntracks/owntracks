@@ -193,6 +193,7 @@
 <li>some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)</li>
 <li>we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
 <li>Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
+<li>we've tested this setup on Ubuntu 22.04 and on Debian 12</li>
 <li>a DNS domain, something like <code>yourname.example.net</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>yourname.example.net</code>.</li>
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.
@@ -225,7 +226,7 @@
 <li>
 <p>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.
    <code>console
-   $ sudo apt install -y git
+   $ sudo apt install -y git    # not required on Ubuntu
    $ git clone --depth=1 https://github.com/owntracks/quicksetup
    $ cd quicksetup</code></p>
 </li>
@@ -252,6 +253,44 @@
 <li>back on your VPS, use the following preconfigured utility to subscribe to your MQTT broker:
    <code>console
    $ mosquitto_sub -t 'owntracks/#'</code></li>
+<li>on the console you should see some output from <code>mosquitto_sub</code> which looks a bit like this:
+   <code>owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}</code>
+   The output on your system will differ. The first part before the first space, is called the <code>topic</code> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:
+   <code>json
+    {
+      "_type": "location",
+      "SSID": "mywifi",
+      "alt": 154,
+      "batt": 53,
+      "conn": "w",
+      "created_at": 1706858149,
+      "lat": 48.856826,
+      "lon": 2.292713,
+      "tid": "j1",
+      "tst": 1706858149,
+      "vel": 0
+    }</code></li>
+</ol>
+<p>this includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
+<ol>
+<li>
+<p>still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a <code>YYYY-MM</code> date stamp:
+   <code>console
+   % tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
+   2024-02-02T07:15:49Z *                   {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}</code></p>
+</li>
+<li>
+<p>let's use a Web browser to access our site:
+   <img alt="Index" src="../qs/rabbit-10663.png" /></p>
+</li>
+<li>
+<p>map with live positions
+   <img alt="map with live positions" src="../qs/rabbit-10664.png" /></p>
+</li>
+<li>
+<p>frontend
+   <img alt="main Frontend" src="../qs/rabbit-10665.png" /></p>
+</li>
 </ol>
               
             </div>
