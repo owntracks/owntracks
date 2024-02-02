@@ -244,21 +244,17 @@ $ nano configuration.yaml
 </li>
 <li>
 <p>the configuration file requires the following settings:</p>
-</li>
-<li>
-<p><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>yourname.example.net</code>.</p>
-</li>
+<ul>
+<li><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>yourname.example.net</code>.</li>
 <li><code>email</code> is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.</li>
 <li>we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to <code>opencage_apikey</code>. This is used in determining address information for locations (example below).</li>
-<li>
-<p><code>friends</code> is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.</p>
-</li>
-<li>
-<p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</p>
-<pre><code>$ sudo ./bootstrap.sh
-</code></pre>
+<li><code>friends</code> is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.</li>
+</ul>
 </li>
 </ol>
+<p>4 once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</p>
+<pre><code>    $ sudo ./bootstrap.sh
+</code></pre>
 <p>This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by <em>quicksetup</em> to begin configuring all the services as described above.</p>
 <p>FIXME: add screenshot of top of installer</p>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.</p>
