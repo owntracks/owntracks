@@ -215,7 +215,7 @@ uid=0(root) gid=0(root) groups=0(root)
 </li>
 </ul>
 <p>You should now be ready to proceed.</p>
-<h2 id="expectations">expectations</h2>
+<h2 id="what-you-can-expect">What you can expect</h2>
 <p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
 <ul>
 <li>we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a <em>cron</em> job with which the Let's Encrypt certificate will automatically be renewed when required.</li>
@@ -226,8 +226,8 @@ uid=0(root) gid=0(root) groups=0(root)
 </ul>
 <p>So, if everything works the way we hope it will, this ought to be a plug-and-play experience. Fingers crossed!</p>
 <p>Let us begin.</p>
-<h2 id="quicksetup">quicksetup</h2>
-<p>You are logged into your VPS either as <code>root</code> or as an unpriviledged user. Three steps will get the installer going:</p>
+<h2 id="launching-quicksetup">Launching quicksetup</h2>
+<p>You are logged into your VPS either as <code>root</code> or as an unprivileged user. Three steps will get the installer going:</p>
 <ol>
 <li>
 <p>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.</p>
@@ -246,8 +246,8 @@ $ nano configuration.yaml
 <p>the configuration file requires the following settings:</p>
 <ul>
 <li><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>yourname.example.net</code>.</li>
-<li><code>email</code> is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.</li>
-<li>we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to <code>opencage_apikey</code>. This is used in determining address information for locations (example below).</li>
+<li><code>email</code> is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.</li>
+<li>we strongly recommend you sign up for the free reverse geo service at <a href="https://opencagedata.com/">OpenCage</a>. It's free of charge, and they provide you with an API key you add to <code>opencage_apikey</code>. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it.</li>
 <li><code>friends</code> is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.</li>
 </ul>
 </li>
@@ -258,6 +258,8 @@ $ nano configuration.yaml
 <p>This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by <em>quicksetup</em> to begin configuring all the services as described above.</p>
 <p>FIXME: add screenshot of top of installer</p>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.</p>
+<p>Should you wish to, say, add a friend at a later stage, reconfigure <code>configuration.yaml</code>, and re-run <code>bootstrap.sh</code> as you did earlier.</p>
+<h2 id="initial-testing">Initial testing</h2>
 <p>Assuming the installer was successful, you can verify if the services are working as we intended them to:</p>
 <ul>
 <li>install OwnTracks on your Android or iOS device and configure it, either by</li>
