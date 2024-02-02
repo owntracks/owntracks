@@ -198,16 +198,16 @@
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.
 - after logging in, the following program invocation should produce output similar to that shown:</p>
-<pre><code class="language-console">$ sudo id
-uid=0(root) gid=0(root) groups=0(root)
+<pre><code>    $ sudo id
+    uid=0(root) gid=0(root) groups=0(root)
 </code></pre>
 <p>if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.</p>
 <ul>
-<li>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:</li>
+<li>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:<pre><code>$ ping yourname.example.net
+...
+</code></pre>
+</li>
 </ul>
-<p><code>console
-   $ ping yourname.example.net
-   ...</code></p>
 <p>You should now be ready to proceed.</p>
 <h2 id="expectations">expectations</h2>
 <p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
