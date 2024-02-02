@@ -198,14 +198,18 @@
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.</p>
 <ul>
-<li>after logging in, the following program invocation should produce output similar to that shown:<pre><code>$ sudo id
+<li>
+<p>after logging in, the following program invocation should produce output similar to that shown:</p>
+<pre><code>$ sudo id
 uid=0(root) gid=0(root) groups=0(root)
 </code></pre>
 </li>
-</ul>
+<li>
 <p>if you are prompted for a password, it will be your user password. After entering it you ought to see the output as above.</p>
-<ul>
-<li>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:<pre><code>$ ping yourname.example.net
+</li>
+<li>
+<p>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:</p>
+<pre><code>$ ping yourname.example.net
 ...
 </code></pre>
 </li>
@@ -248,8 +252,10 @@ $ nano configuration.yaml
 <p>FIXME: add screenshot of top of installer</p>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt.</p>
 <p>Assuming the installer was successful, you can verify if the services are working as we intended them to:</p>
-<ol>
-<li>install OwnTracks on your Android or iOS device and configure it, either by sending yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code> or by visiting <code>https://yourname.example.com/owntracks/</code> and logging in with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
+<ul>
+<li>install OwnTracks on your Android or iOS device and configure it, either by</li>
+<li>send yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code></li>
+<li>visit <code>https://yourname.example.com/owntracks/</code> and login with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
 <li>in the app on the smartphone, click on publish 
    FIXME: screenshots</li>
 <li>
@@ -262,46 +268,47 @@ $ nano configuration.yaml
 <pre><code>owntracks/jane/nokia {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","created_at":1706856299,"lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706856298,"vel":0}
 </code></pre>
 </li>
-</ol>
-<p>The output on your system will differ. The first part before the first space, is called the <code>topic</code> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly here:</p>
-<pre><code>    {
-      "_type": "location",
-      "SSID": "mywifi",
-      "alt": 154,
-      "batt": 53,
-      "conn": "w",
-      "created_at": 1706858149,
-      "lat": 48.856826,
-      "lon": 2.292713,
-      "tid": "j1",
-      "tst": 1706858149,
-      "vel": 0
-    }
-</code></pre>
-<p>this includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
-<ol>
 <li>
-<p>still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the username and the device name used for publishing; the rest of the filename is a <code>YYYY-MM</code> date stamp:</p>
+<p>the output on your system will differ. The first part before the first space, is called the <code>topic</code> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
+<pre><code>{
+  "_type": "location",
+  "SSID": "mywifi",
+  "alt": 154,
+  "batt": 53,
+  "conn": "w",
+  "created_at": 1706858149,
+  "lat": 48.856826,
+  "lon": 2.292713,
+  "tid": "j1",
+  "tst": 1706858149,
+  "vel": 0
+}
+</code></pre>
+</li>
+<li>
+<p>still on the console, let's verify whether the Recorder has successfully saved the published location data. Note how the path name contains the <em>user</em> and <em>device</em> names used for publishing; the rest of the filename is a <code>YYYY-MM</code> date stamp:</p>
 <pre><code>$ tail /var/spool/owntracks/recorder/store/rec/jane/nokia/2024-02.rec
 2024-02-02T07:15:49Z    *                   {"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0}
 </code></pre>
 </li>
 <li>
-<p>let's use a Web browser to access our site:
-   <img alt="Index" src="../qs/rabbit-10663.png" /></p>
+<p>let's use a Web browser to access our site:</p>
 </li>
-<li>
-<p>map with live positions
-   <img alt="map with live positions" src="../qs/rabbit-10664.png" /></p>
-</li>
-<li>
-<p>our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)
-   <img alt="main Frontend" src="../qs/rabbit-10665.png" /></p>
-</li>
-</ol>
-<p>users can select users and devices to see, tracks to view, etc.
-   <img alt="viewing a track in Frontend" src="../qs/rabbit-10667.png" /></p>
-<ol>
+</ul>
+<p><img alt="Index" src="../qs/rabbit-10663.png" /></p>
+<ul>
+<li>map with live positions</li>
+</ul>
+<p><img alt="map with live positions" src="../qs/rabbit-10664.png" /></p>
+<ul>
+<li>our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)</li>
+</ul>
+<p><img alt="main Frontend" src="../qs/rabbit-10665.png" /></p>
+<ul>
+<li>in Frontend users can select users and devices to see, tracks to view, etc.</li>
+</ul>
+<p><img alt="viewing a track in Frontend" src="../qs/rabbit-10667.png" /></p>
+<ul>
 <li>
 <p>back on the command line of your VPS, you can explore the data submitted by your devices using the <code>ocat</code> utility, say:</p>
 <pre><code>$ ocat --user jane --device nokia | jq
@@ -332,6 +339,8 @@ $ nano configuration.yaml
   ]
 }
 </code></pre>
+</li>
+<li>
 <p>Notice how the data has been enriched by the name of the time zone (<code>tzname</code>) at the location and the local time there (<code>isolocal</code>). In addition, OwnTracks has stored the address (<code>addr</code>) of the location, the <code>locality</code> or city if know, and the country code (<code>cc</code>) of the published location. This data is possible because we've signed up for an account and configured our system to use OpenCage data. If you're curious about the geohash (<code>ghash</code>), it's a <a href="https://en.wikipedia.org/wiki/Geohash">convenient way of expressing a location using a short string</a>.</p>
 </li>
 <li>
@@ -341,7 +350,7 @@ Enter host password for user 'jane':
 {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
 </code></pre>
 </li>
-</ol>
+</ul>
               
             </div>
           </div>
