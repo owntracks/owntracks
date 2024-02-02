@@ -243,6 +243,17 @@ $ nano configuration.yaml
 </code></pre>
 </li>
 <li>
+<p>the configuration file requires the following settings:</p>
+</li>
+<li>
+<p><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>yourname.example.net</code>.</p>
+</li>
+<li><code>email</code> is your email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.</li>
+<li>we strongly recommend you sign up for the free reverse geo service at OpenCage. It costs you nothing, and they provide you with an API key you add to <code>opencage_apikey</code>. This is used in determining address information for locations (example below).</li>
+<li>
+<p><code>friends</code> is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.</p>
+</li>
+<li>
 <p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</p>
 <pre><code>$ sudo ./bootstrap.sh
 </code></pre>
@@ -297,18 +308,16 @@ $ nano configuration.yaml
 </li>
 <li>
 <p>map with live positions</p>
-</li>
-</ul>
 <p><img alt="map with live positions" src="../qs/rabbit-10664.png" /></p>
-<ul>
-<li>our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)</li>
-</ul>
+</li>
+<li>
+<p>our Frontend is our primary data viewer which shows current locations (click on a bubble to find more details about a position)</p>
 <p><img alt="main Frontend" src="../qs/rabbit-10665.png" /></p>
-<ul>
-<li>in Frontend users can select users and devices to see, tracks to view, etc.</li>
-</ul>
+</li>
+<li>
+<p>in Frontend users can select users and devices to see, tracks to view, etc.</p>
 <p><img alt="viewing a track in Frontend" src="../qs/rabbit-10667.png" /></p>
-<ul>
+</li>
 <li>
 <p>back on the command line of your VPS, you can explore the data submitted by your devices using the <code>ocat</code> utility, say:</p>
 <pre><code>$ ocat --user jane --device nokia | jq
