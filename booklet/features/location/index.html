@@ -61,36 +61,6 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Location</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#ios">iOS</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#move-mode">Move mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#significant-location-change-mode">Significant location change mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#manual-mode">Manual mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#quiet-mode">Quiet mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#region-monitoring">Region monitoring</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#tags-and-poi">Tags and POI</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ibeacon-monitoring">iBeacon monitoring</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#android">Android</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#move-mode_1">Move mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#significant-location-change-mode_1">Significant location change mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#manual-mode_1">Manual mode</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#quiet-mode_1">Quiet mode</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                   </li>
               </ul>
@@ -148,7 +118,7 @@
 <li><em>Move</em> mode: Frequent location  <code>||&gt;</code></li>
 </ul>
 <p>All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on <a href="../beacons/">iBeacons</a>. </p>
-<h3 id="ios">iOS</h3>
+<h2 id="ios">iOS</h2>
 <h4 id="move-mode"><em>Move</em> mode</h4>
 <p>In <em>move</em> mode, the app monitors location permanently and publishes a new
 location as soon as the device moves <code>locatorDisplacement</code> meters or after <code>locatorInterval</code> seconds, whatever
@@ -318,7 +288,7 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="android">Android</h3>
+<h2 id="android">Android</h2>
 <h4 id="move-mode_1"><em>Move</em> mode</h4>
 <p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 10s (by default, configurable in the settings through <code>moveModeLocatorInterval</code>) in high power mode and publishes a new location as soon as it arrives. </p>
 <p>This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
