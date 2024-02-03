@@ -194,7 +194,7 @@
 <li>we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
 <li>Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
 <li>we've tested this setup on Ubuntu 22.04 and on Debian 12</li>
-<li>a DNS domain, something like <code>yourname.example.net</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>yourname.example.net</code>.</li>
+<li>a DNS domain, something like <code>owntracks.example</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>owntracks.example</code>.</li>
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.</p>
 <ul>
@@ -209,7 +209,7 @@ uid=0(root) gid=0(root) groups=0(root)
 </li>
 <li>
 <p>also make sure the DNS domain you chose is associated with your VPS. You can probably test this by using the <code>ping</code> utility from your laptop:</p>
-<pre><code>$ ping yourname.example.net
+<pre><code>$ ping owntracks.example
 ...
 </code></pre>
 </li>
@@ -245,7 +245,7 @@ $ nano configuration.yaml
 <li>
 <p>the configuration file requires the following settings:</p>
 <ul>
-<li><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>yourname.example.net</code>.</li>
+<li><code>dns_domain</code> is the DNS name of your system as reacheable from the Internet. You will set this to, say, <code>owntracks.example</code>.</li>
 <li><code>email</code> is the email address which we will use when enrolling a Let's Encrypt certificate on your behalf. We don't use this for anything else, and Let's Encrypt will send you mail only when your certificate is about to expire.</li>
 <li>we strongly recommend you sign up for the free reverse geo service at <a href="https://opencagedata.com/">OpenCage</a>. It's free of charge, and they provide you with an API key you add to <code>opencage_apikey</code>. This is used in determining address information for locations (example below), and we configure your OwnTracks Android app to use it.</li>
 <li><code>friends</code> is an array of users who will be supported on your system. It will typically contain just yourself, but you might wish to have family members, relatives, or friends use OwnTracks on your system.</li>
@@ -264,7 +264,7 @@ $ nano configuration.yaml
 <ul>
 <li>install OwnTracks on your Android or iOS device and configure it, either by</li>
 <li>send yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code></li>
-<li>visit <code>https://yourname.example.com/owntracks/</code> and login with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
+<li>visit <code>https://owntracks.example/owntracks/</code> and login with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
 <li>in the app on the smartphone, click on publish 
    FIXME: screenshots</li>
 <li>
@@ -352,7 +352,7 @@ $ nano configuration.yaml
 </li>
 <li>
 <p>the data you obtain locally from our Recorder is also available <a href="https://github.com/owntracks/recorder/blob/master/API.md">via its API</a></p>
-<pre><code>curl -u jane -sSf 'https://yourname.example.net/owntracks/api/0/locations' -d user=jane -d device=nokia
+<pre><code>curl -u jane -sSf 'https://owntracks.example/owntracks/api/0/locations' -d user=jane -d device=nokia
 Enter host password for user 'jane':
 {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
 </code></pre>
