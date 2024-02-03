@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -67,24 +65,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../features/location/">Location</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul class="current">
@@ -93,8 +73,6 @@
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../program/">Code</a>
                     </li>
@@ -153,7 +131,7 @@
             <div class="section">
               
                 <h2 id="types">Types</h2>
-<p>OwnTracks publishes its message payloads in <a href="http://www.json.org">JSON</a> format. The different payload types are identified by a mandatory <code>_type</code> element. Depending on the app platform, different payload types are supported.</p>
+<p>OwnTracks uses <a href="http://www.json.org">JSON</a> format for its message payloads. The different payload types are identified by a mandatory <code>_type</code> element. Depending on the app platform, different payload types are supported.</p>
 <table>
 <thead>
 <tr>
@@ -499,8 +477,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>locked</code> Locks settings screen on device for editing <em>(iOS/boolean)</em></li>
 <li><code>maxHistory</code> Number of notifications to store historically. Zero (0) means no notifications are stored and history tab is hidden. Defaults to zero. <em>(iOS/integer)</em></li>
 <li><code>mode</code> Endpoint protocol mode <em>(iOS,Android/integer)</em><ul>
-<li><code>0</code> Private  MQTT <em>(iOS, Android)</em></li>
-<li><code>3</code> Private  HTTP <em>(iOS, Android)</em></li>
+<li><code>0</code> MQTT <em>(iOS, Android)</em></li>
+<li><code>3</code> HTTP <em>(iOS, Android)</em></li>
 </ul>
 </li>
 <li><code>monitoring</code> Location reporting mode <em>(iOS,Android/integer)</em><ul>
@@ -682,7 +660,7 @@ For security reasons, the encryption key is not exported with configuration mess
         <a href="../http/" class="btn btn-neutral float-right" title="HTTP">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../features/remoteconfig/" class="btn btn-neutral" title="Remoteconfig"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../features/location/" class="btn btn-neutral" title="Location"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -712,7 +690,7 @@ For security reasons, the encryption key is not exported with configuration mess
         </span>
     
     
-      <span><a href="../../features/remoteconfig/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../features/location/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../http/" style="color: #fcfcfc">Next &raquo;</a></span>

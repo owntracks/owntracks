@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -67,32 +65,12 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -146,9 +124,26 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="startup">Startup</h2>
-<p>After <a href="https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8">downloading and installing the iPhone/iPad app</a>, start it
-up.</p>
+                <h2 id="ios">iOS</h2>
+<ul>
+<li>
+<p>Runs on iPhones and iPads as an iPhone app, and on Macs. Not tested on iPods.</p>
+</li>
+<li>
+<p>Monitors "significant location changes" as defined by Apple Inc. (about 5 minutes AND 
+    "significant location changes" (&gt;500m)) or as described in Move Mode below.
+    In addition version &gt;= 5.3 supports circular region monitoring (aka geo fences).
+    In addition version &gt;= 7.7 supports iBeacon region monitoring and ranging.</p>
+</li>
+<li>
+<p>publishes this locations via MQTT to the configured server while in foreground and background.</p>
+</li>
+<li>
+<p>The current location can be sent (a.k.a. published) on request.</p>
+</li>
+</ul>
+<h2 id="startup">Startup</h2>
+<p>After <a href="https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8">downloading and installing the iPhone/iPad app</a>, start it up.</p>
 <p>The first time you start the app, the system asks you to give OwnTracks access to your location which it requires in order to, well, find your location.</p>
 <h2 id="settings">Settings</h2>
 <p>Access settings and the individual modes by pressing on the <code>I</code> on the top left.</p>

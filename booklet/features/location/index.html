@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -99,32 +97,12 @@
     </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -183,15 +161,14 @@
             <div class="section">
               
                 <h2 id="location-data">Location data</h2>
-<p>Location data is obtained by your smartphone and published to the <a href="../../guide/broker/">MQTT broker</a> as follows:</p>
-<p>The Android and iOS apps offer 4 modes of location publication as well as region monitoring:</p>
+<p>We support 4 distinct modes of location publication and region monitoring as pertains to data submitted to the <a href="../../guide/broker/">MQTT broker</a> by our apps:</p>
 <ul>
 <li><em>Quiet</em> mode: Only manual location reports. Icon <code>[]</code></li>
 <li><em>Manual</em> mode: Manual location reports and automated reports with region monitoring. Icon <code>||</code></li>
 <li><em>Significant location change</em> mode: Standard tracking mode with automated location reports. Icon <code>|&gt;</code></li>
 <li><em>Move</em> mode: Frequent location  <code>||&gt;</code></li>
 </ul>
-<p>All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on iBeacons. </p>
+<p>All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on <a href="../beacons/">iBeacons</a>. </p>
 <h3 id="ios">iOS</h3>
 <h4 id="move-mode"><em>Move</em> mode</h4>
 <p>In <em>move</em> mode, the app monitors location permanently and publishes a new
@@ -402,7 +379,7 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tid/" class="btn btn-neutral float-right" title="Tracker ID">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../tech/json/" class="btn btn-neutral float-right" title="JSON">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../security/" class="btn btn-neutral" title="Security"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -438,7 +415,7 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
       <span><a href="../security/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../tid/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../tech/json/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

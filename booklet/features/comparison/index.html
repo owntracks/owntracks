@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -63,33 +61,11 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Comparison</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#android">Android</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ios">iOS</a>
-    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../security/">Security</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
@@ -97,8 +73,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -157,8 +131,7 @@
             <div class="section">
               
                 <h2 id="ios-android-compared">iOS / Android compared</h2>
-<p>The OwnTracks <a href="../android/">Android</a> and <a href="../ios/">iOS</a> apps try to be on par as far as the list
-of supported features is concernened. This table summarizes the current status.</p>
+<p>Our OwnTracks apps try to be on par in terms of features, but there are differences. This table lists the main features, and specifics for <a href="../android/">Android</a> and <a href="../ios/">iOS</a> are documented.</p>
 <table>
 <thead>
 <tr>
@@ -169,12 +142,12 @@ of supported features is concernened. This table summarizes the current status.<
 </thead>
 <tbody>
 <tr>
-<td>MQTT mode</td>
+<td><a href="../../tech/mqtt/">MQTT</a> mode</td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;">Y</td>
 </tr>
 <tr>
-<td>HTTP mode</td>
+<td><a href="../../tech/http/">HTTP</a>  mode</td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;">Y</td>
 </tr>
@@ -259,7 +232,7 @@ of supported features is concernened. This table summarizes the current status.<
 <td style="text-align: center;">Y</td>
 </tr>
 <tr>
-<td>Configuration via <a href="qr.md">QR code</a></td>
+<td>Configuration via <a href="../../tech/qr/">QR code</a></td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -299,6 +272,11 @@ of supported features is concernened. This table summarizes the current status.<
 <td style="text-align: center;"></td>
 </tr>
 <tr>
+<td>Barometric pressure in location payloads</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
 <td><a href="../encrypt/">Payload encryption</a></td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;">Y</td>
@@ -319,7 +297,7 @@ of supported features is concernened. This table summarizes the current status.<
 <td style="text-align: center;"></td>
 </tr>
 <tr>
-<td>Popup an <a href="featured">info tab</a> on command</td>
+<td>Popup an <a href="../featured/">info tab</a> on command</td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;"></td>
 </tr>
@@ -335,55 +313,6 @@ of supported features is concernened. This table summarizes the current status.<
 </tr>
 </tbody>
 </table>
-<h3 id="android">Android</h3>
-<ul>
-<li>
-<p>The broker connection works well with:</p>
-</li>
-<li>
-<p>No TLS (i.e. plain)</p>
-</li>
-<li>TLS with Android system certificate authorities</li>
-<li>TLS with side-loaded user-provided self signed certificate authorities </li>
-<li>TLS with client certificates</li>
-<li>
-<p>Username/password authentication to broker.</p>
-</li>
-<li>
-<p>Automatic publishes at configurable maximum intervals under the condition that the devices moved the specified number of meters. Publishes may occur earlier if a new location is avaiable. </p>
-</li>
-<li>
-<p>Display of a marker at which the app believes the user to be at
-  (lastKnownLocation)</p>
-</li>
-<li>
-<p>Reverse geo coding that displays the address of lastKnownLocation</p>
-</li>
-<li>
-<p>Accuracy of lastKnownLocation </p>
-</li>
-<li>
-<p>Button to manually publish lastKnownLocation</p>
-</li>
-</ul>
-<h3 id="ios">iOS</h3>
-<ul>
-<li>
-<p>Runs on iPhones and iPads as an iPhone app. Not tested on iPods.</p>
-</li>
-<li>
-<p>Monitors "significant location changes" as defined by Apple Inc. (about 5 minutes AND 
-    "significant location changes" (&gt;500m)) or as described in Move Mode below.
-    In addition version &gt;= 5.3 supports circular region monitoring (aka geo fences).
-    In addition version &gt;= 7.7 supports iBeacon region monitoring and ranging.</p>
-</li>
-<li>
-<p>publishes this locations via MQTT to the configured server while in foreground and background.</p>
-</li>
-<li>
-<p>The current location can be sent (a.k.a. published) on request.</p>
-</li>
-</ul>
               
             </div>
           </div>

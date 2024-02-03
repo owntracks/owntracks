@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -69,32 +67,12 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -153,9 +131,9 @@
             <div class="section">
               
                 <h2 id="security">Security</h2>
-<p>OwnTracks and its associated utilities have been designed foremost with data privacy in mind. We think your location or that of your loved ones is something only you respectively they should know. While we cannot help you (or ourselves for that matter) protect against NSA snooping, we do our best to protect your data from other people's eyes.</p>
+<p>OwnTracks and its associated utilities have been designed foremost with <a href="../../privacy/">data privacy</a> in mind. We think your location or that of your family members and friends is something only you respectively they should know about. While we cannot help you (or ourselves for that matter) protect against NSA snooping, we do our best to protect your data from other people's eyes.</p>
 <ul>
-<li>If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> when connecting to your broker.</li>
+<li>If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> when connecting to your broker. (We configure this and passwords automatically for you in <a href="../../guide/quicksetup/">quicksetup</a>.)</li>
 <li>The apps support authenticating to the MQTT broker with <em>username</em> and <em>password</em> which can be as strong (or as convoluted) as your broker supports.</li>
 <li>In HTTP mode, the apps provide support for HTTP basic authentication with TLS.</li>
 <li>Credentials you configure (i.e. <em>username</em> and <em>password</em>) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.</li>

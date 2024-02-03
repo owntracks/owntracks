@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -67,32 +65,12 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -146,7 +124,36 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.</h2>
+                <h2 id="android-specifics">Android specifics</h2>
+<ul>
+<li>
+<p>The broker connection works well with:</p>
+<ul>
+<li>No TLS (i.e. plain)</li>
+<li>TLS with Android system certificate authorities</li>
+<li>TLS with side-loaded user-provided self signed certificate authorities</li>
+<li>TLS with client certificates</li>
+<li>Username/password authentication to broker.</li>
+</ul>
+</li>
+<li>
+<p>Automatic publishes at configurable maximum intervals under the condition that the devices moved the specified number of meters. Publishes may occur earlier if a new location is available.</p>
+</li>
+<li>
+<p>Display of a marker at which the app believes the user to be at
+  (last known location)</p>
+</li>
+<li>
+<p>Reverse geo coding that displays the address of last known location</p>
+</li>
+<li>
+<p>Accuracy of last known location</p>
+</li>
+<li>
+<p>Button to manually publish last known (i.e. probably current) location</p>
+</li>
+</ul>
+<h2 id="general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.</h2>
 <p>Since Android 6 and higher, the operating systems enforces stricter restrictions for apps running in the background. Most importantly, network access and background jobs are restricted to certain time slots. As a result, certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from battery optimizations.</p>
 <ul>
 <li>You may find HTTP mode more reliable on Android 6 and higher.</li>

@@ -9,14 +9,14 @@
   <meta name="author" content="OwnTracks.org">
   <link rel="canonical" href="http://owntracks.org/tech/mqtt/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>MQTT - OwnTracks Booklet</title>
+  <title>Mqtt - OwnTracks Booklet</title>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "MQTT";
+    var mkdocs_page_name = "Mqtt";
     var mkdocs_page_input_path = "tech/mqtt.md";
     var mkdocs_page_url = "/tech/mqtt/";
   </script>
@@ -54,8 +54,6 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
@@ -67,36 +65,12 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../features/location/">Location</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/friends/">Friends</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../features/remoteconfig/">Remoteconfig</a>
-                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MQTT</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#keepalives">Keepalives</a>
-    </li>
-    </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../program/">Code</a>
                     </li>
@@ -134,12 +108,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>API &raquo;</li>
-        
-      
     
-    <li>MQTT</li>
+    <li>Mqtt</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/owntracks/booklet/edit/master/docs/tech/mqtt.md"
@@ -168,7 +138,7 @@ a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
 <h2 id="broker">Broker</h2>
 <p>Below is a list of known configuration values that are required to connect to certain MQTT endpoints </p>
 <h3 id="aws-iot">AWS IOT</h3>
-<p>The OwnTracks apps are partially compatible to the <a href="https://aws.amazon.com/iot/">AWS IOT</a> broker in MQTT private mode. 
+<p>The OwnTracks apps are partially compatible to the <a href="https://aws.amazon.com/iot/">AWS IOT</a> broker in MQTT mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
 <p>Before connecting, a so called <em>thing</em> has to be configured which represents the connecting client. 
 The thing needs to have a client certificate generated for authentication and a policy attached that allows some actions. 
@@ -203,7 +173,7 @@ The most basic policy allows all actions for the <em>thing</em>. </p>
 Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca.
 Before importing it into the app, you need to set a password to the client TLS certificate. </p>
 <h3 id="losant-iot-developer-platform">Losant IoT Developer Platform</h3>
-<p>The OwnTracks apps are partially compatible to the <a href="https://www.losant.com/">Losant IoT Developer Platform</a> in MQTT private mode. 
+<p>The OwnTracks apps are partially compatible to the <a href="https://www.losant.com/">Losant IoT Developer Platform</a> in MQTT mode. 
 As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
 <p>The following settings are required to connect </p>
 <pre><code>{
@@ -228,15 +198,6 @@ As Losant does not support some MQTT features (notable retained messages), some 
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../program/" class="btn btn-neutral float-right" title="Code">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../http/" class="btn btn-neutral" title="HTTP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -264,10 +225,6 @@ As Losant does not support some MQTT features (notable retained messages), some 
         </span>
     
     
-      <span><a href="../http/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../program/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -54,46 +54,16 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../guide/scenarios/">Scenarios</a>
-                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Features</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../comparison/">Comparison</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../security/">Security</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tid/">Tracker ID</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Friends</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#faces">Faces</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#android">Android</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ios">iOS</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../card/">Card</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../poi/">POI</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tours/">Tours</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../waypoints/">Waypoints</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../pedometer/">Pedometer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../encrypt/">Encryption</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../remoteconfig/">Remoteconfig</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">API</span></p>
@@ -101,8 +71,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../tech/mqtt/">MQTT</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
                     </li>
@@ -140,10 +108,6 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Features &raquo;</li>
-        
-      
     
     <li>Friends</li>
     <li class="wy-breadcrumbs-aside">
@@ -180,7 +144,7 @@ the other's device will receive it.</p>
 <p>What OwnTracks then does is to list these topic names (e.g. <code>owntracks/jjolie/4s</code>) with the last received position and a time stamp. A click on a particular entry will take you to that entry's location on the map. Neat, eh?</p>
 <h3 id="faces">Faces</h3>
 <p>It gets better.</p>
-<p>You probably don't want to remember the (sometimes cryptic) topic names of your friends or family members, but you would like to see their names and a matching face. That's no problem: OwnTracks can do that.</p>
+<p>You probably don't want to remember the (sometimes cryptic) topic names of your friends or family members, but you would like to see their names and a matching face. That's no problem: OwnTracks can do that, using <a href="../card/">CARDS</a>.</p>
 <p>Depending on the device you're using, the procedure differs slightly.</p>
 <h4 id="android">Android</h4>
 <p>The app subscribes to a topic branch <code>owntracks/+/+</code> on the broker per default
@@ -203,15 +167,6 @@ to the default topic of <code>owntracks/$username/$devicename</code>.</p>
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../card/" class="btn btn-neutral float-right" title="Card">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../tid/" class="btn btn-neutral" title="Tracker ID"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -239,10 +194,6 @@ to the default topic of <code>owntracks/$username/$devicename</code>.</p>
         </span>
     
     
-      <span><a href="../tid/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../card/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
