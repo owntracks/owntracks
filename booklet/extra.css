@@ -4,5 +4,6 @@
  */
 
 .rst-content code {
-	color: yellow;
+	color: #333;
+	border: solid 1px #e1e4e5;
 }
