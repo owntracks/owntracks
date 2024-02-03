@@ -7,3 +7,10 @@
 	color: #333;
 	border: solid 1px #e1e4e5;
 }
+
+.rst-content pre code {
+	color: #333;
+	background-color: #fff;
+	border: solid 1px #e1e4e5;
+	line-height: 150%;
+}
