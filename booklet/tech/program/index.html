@@ -78,14 +78,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#micro-map">Micro Map</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#indexhtml">index.html</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#functionsjs">functions.js</a>
-    </li>
-        </ul>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#last-words">Last words</a>
@@ -132,15 +124,16 @@
                 <h1 id="programming">Programming</h1>
 <p>We've <a href="../../guide/clients/">shown you some clients which consume OwnTracks data</a>, but you may well wish to dip your fingers into programming something of your own. Creating a program to consume OwnTracks data isn't particularly difficult, and we're going to show you what you can do with a bit of <a href="https://www.python.org">Python</a> together with the <a href="https://www.eclipse.org/paho/clients/python/">Paho Python client</a>.</p>
 <h2 id="getting-started-paho-python">Getting started: Paho Python</h2>
-<p>We're assuming you have Python installed, which you can verify by attempting to invoke <code>python -V</code>; if installed, it tells you the version number. We're also assuming you have <code>pip</code> installed (a Python package manager) which may be called <code>pip2</code> or something on your machine. You may have to install <code>setuptools</code> via your distribution's package manager.</p>
+<p>We're assuming you have Python installed, which you can verify by attempting to invoke <code>python3 -V</code>; if installed, it tells you the version number. We're also assuming you have <code>pip</code> installed (a Python package manager) which may be called <code>pip</code> or something on your machine.</p>
 <p>Install the <a href="https://www.eclipse.org/paho/clients/python/">Paho Python</a> module using</p>
-<pre><code class="language-bash">pip install paho-mqtt
+<pre><code class="language-bash">$ python3 -mvenv venv
+$ source venv/bin/activate
+(venv) $ pip install paho-mqtt
 </code></pre>
 <h2 id="progress-reports">Progress reports</h2>
 <p>Assume we want to create a program which should report the location of our friends, as a simple list:</p>
 <pre><code>TID = n4 is currently at 51.0343863, 9.4763712
-TID = n7 is currently at 52.7343671, 7.8764431
-TID = jp is currently at 53.134404655, 8.1063173
+TID = jane is currently at 48.856826, 2.292713
 </code></pre>
 <p>We need a small utility program which will subscribe to location publishes received by your broker by connecting to it on <em>localhost</em> and subscribing to <code>owntracks/+/+</code> (a wild-card expression in which each <code>+</code> means <em>anything at this level</em>).</p>
 <h3 id="the-code">The Code</h3>
@@ -151,7 +144,7 @@ import paho.mqtt.client as mqtt
 import json
 
 # The callback for when the client successfully connects to the broker
-def on_connect(client, userdata, rc):
+def on_connect(client, userdata, flags, rc):
     ''' We subscribe on_connect() so that if we lose the connection
         and reconnect, subscriptions will be renewed. '''
 
@@ -162,12 +155,14 @@ def on_message(client, userdata, msg):
 
     topic = msg.topic
 
-    try:
-        data = json.loads(str(msg.payload))
+    payload = msg.payload.decode(&quot;utf-8&quot;)
 
-        print &quot;TID = {0} is currently at {1}, {2}&quot;.format(data['tid'], data['lat'], data['lon'])
+    try:
+        data = json.loads(payload)
+
+        print(&quot;TID = {0} is currently at {1}, {2}&quot;.format(data['tid'], data['lat'], data['lon']))
     except:
-        print &quot;Cannot decode data on topic {0}&quot;.format(topic)
+        print(&quot;Cannot decode data on topic {0}&quot;.format(topic))
 
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -180,92 +175,6 @@ client.connect(&quot;localhost&quot;, 1883, 60)
 
 client.loop_forever()
 </code></pre>
-<h2 id="micro-map">Micro Map</h2>
-<p>Assume for a moment that you alter the program above in such a way as that it writes your current location in JSON format to a file called <code>me.json</code> which could look like this:</p>
-<pre><code class="language-json">{
-    &quot;lat&quot;: 48.858334,
-    &quot;lon&quot; : 2.295134,
-    &quot;tid&quot;:&quot;JJ&quot;
-}
-</code></pre>
-<p>We could then create a Web page which would load that JSON and display a marker on a map.</p>
-<p><img alt="micro map" src="../images/micro-map.png" /></p>
-<h3 id="indexhtml">index.html</h3>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Micromap&lt;/title&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, height=device-height, user-scalable=no, initial-scale=1.0&quot; /&gt;
-
-    &lt;meta name=&quot;mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
-    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
-    &lt;style type=&quot;text/css&quot;&gt;
-      body {  font-size: 80%; }
-
-      td { border-bottom: 1px solid; border-right: 1px dotted;}
-
-      #map-canvas { height: 100% }
-
-    &lt;/style&gt;
-     &lt;script src=&quot;https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&quot;&gt;&lt;/script&gt;
-     &lt;script src=&quot;http://code.jquery.com/jquery-1.9.1.min.js&quot;&gt;&lt;/script&gt;
-     &lt;script src=&quot;http://code.jquery.com/jquery-migrate-1.1.1.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;functions.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div&gt;
-      &lt;div id=&quot;map-canvas&quot; style='width: 100%; height: 400px;'/&gt;&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h3 id="functionsjs">functions.js</h3>
-<pre><code class="language-js">function initialize() {
-    var json = (function () {
-        var json = null; 
-        $.ajax({ 
-            'type' : 'GET',
-            'async': false, 
-            'cache' : false,
-            'global': true, 
-            'url'   : 'me.json',  // URI of JSON file we create
-            'dataType': &quot;json&quot;, 
-            'success': function (data) {
-                json = data;
-                return json;
-             }
-        });
-    return json;
-    })();
-
-    var data = json;
-    console.log(JSON.stringify(data));
-
-    var center = new google.maps.LatLng(data.lat, data.lon);
-    mapOptions = {
-        center: center,
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false,
-        disableDefaultUI: false,
-        panControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        overviewMapControl: false,
-    };
-
-    map = new google.maps.Map(document.getElementById(&quot;map-canvas&quot;), mapOptions);
-
-    var LatLng = new google.maps.LatLng(data.lat, data.lon); 
-    var m = new google.maps.Marker({
-        position: LatLng,
-        map: map,
-        title: data.tid,
-    });
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</code></pre>
-<p>would result in a map being displayed in your Web browser with a marker at the last location received by your MQTT broker. Note: the marker won't move; we leave that as an exercise to you, or just head over and look <a href="../../guide/clients/">at some clients</a> which do that for you.</p>
 <h2 id="testing">Testing</h2>
 <p>Testing location-based apps is a bit of a, well, pain, but remember there are a few simple tricks you can apply:</p>
 <ul>
