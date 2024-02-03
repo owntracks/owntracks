@@ -190,7 +190,7 @@
 <p>When you've got your endpoint set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
 <h2 id="mosquitto_sub">mosquitto_sub</h2>
 <p><em>mosquitto_sub</em> is a very basic command-line client provided by the <a href="http://mosquitto.org">Mosquitto project</a>. However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with <em>stdout</em> pointing to a file.</p>
-<p>In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in.</p>
+<p>In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in. (If you've used our <a href="quicksetup.md you just need the -t 'owntracks/# option as we've configured the rest for you.">quicksetup</a></p>
 <pre><code class="language-bash">mosquitto_sub -h localhost -p 1883 -v -t 'owntracks/#'
 </code></pre>
 <p><em>mosquitto_sub</em> and it's counterpart, <em>mosquitto_pub</em> for publishing to a broker, support a slew of options. It'll be worth your while to study their <a href="http://mosquitto.org/man/mosquitto_sub-1.html">manual page</a>.</p>

@@ -185,7 +185,6 @@
             <div class="section">
               
                 <h2 id="get-started-quickly">Get started quickly</h2>
-<p>WARning; Work in Progress</p>
 <p>Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call <em>quicksetup</em>, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.</p>
 <p>To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:</p>
 <ul>
@@ -220,7 +219,7 @@ uid=0(root) gid=0(root) groups=0(root)
 <ul>
 <li>we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a <em>cron</em> job with which the Let's Encrypt certificate will automatically be renewed when required.</li>
 <li>we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called <code>/usr/local/owntracks/userdata/*.pass</code>.</li>
-<li>we install a Mosquitto MQTT broker in order for our Android or iOS apps to be able to publish location data to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our <code>*.otrc</code> files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.</li>
+<li>we install a Mosquitto <a href="../broker/">MQTT broker</a> in order for our Android or iOS apps to be able to publish <a href="../../features/location/">location data</a> to your OwnTracks VPS. As mentioned earlier, communication between the apps and the broker is encrypted. We also create automatic configuration files so you can auto-configure the OwnTracks apps using our <code>*.otrc</code> files or a magic link on a Web page. The broker is configured to permit only users you specify with the same passwords we create randomly for the Web server.</li>
 <li>we install and configure our Recorder. This is a program which subscribes to MQTT (on your VPS) and receives location publishes when your OwnTracks apps change location. The data is stored and can later be viewed with Frontend.</li>
 <li>you will be able to specify any number of [Friends] during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.</li>
 </ul>
@@ -262,7 +261,7 @@ $ nano configuration.yaml
 <h2 id="initial-testing">Initial testing</h2>
 <p>Assuming the installer was successful, you can verify if the services are working as we intended them to:</p>
 <ul>
-<li>install OwnTracks on your Android or iOS device and configure it, either by</li>
+<li>install OwnTracks on your <a href="../apps/">Android or iOS device</a> and configure it, either by</li>
 <li>send yourself one of the files from <code>/usr/local/owntracks/userdata/*.otrc</code></li>
 <li>visit <code>https://owntracks.example/owntracks/</code> and login with your username (from the friends list in <code>configuration.yaml</code>) and the corresponding password from <code>/usr/local/owntracks/userdata/*.pass</code>. At the bottom of the page is a link you can click on from your Android/iOS device to automatically configure the app.</li>
 <li>in the app on the smartphone, click on publish 
@@ -278,7 +277,7 @@ $ nano configuration.yaml
 </code></pre>
 </li>
 <li>
-<p>the output on your system will differ. The first part before the first space, is called the <code>topic</code> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
+<p>the output on your system will differ. The first part before the first space, is called the <a href="../topics/">topic</a> name. This is an "address" to which your app publishes data, and each user on your system has a unique topic which has three parts: the constant <code>owntracks</code>, followed by the username, and the device name. After the initial space comes the actual location data your phone published. Let's format that neatly: you see the data includes a time stamp (<code>tst</code>), latitude and longitude (<code>lat</code>, <code>lon</code>), and a whole bunch of other values <a href="https://owntracks.org/booklet/tech/json">you can look up</a> if you wish. </p>
 <pre><code>{
   "_type": "location",
   "SSID": "mywifi",
@@ -357,6 +356,15 @@ Enter host password for user 'jane':
 {"count":1,"data":[{"_type":"location","SSID":"mywifi","alt":154,"batt":53,"conn":"w","lat":48.856826,"lon":2.292713,"tid":"j1","tst":1706858149,"vel":0,"ghash":"u09tunj","cc":"FR","addr":"11 Av de Suffren, 75007 Paris, France","locality":"Paris","isorcv":"2024-02-02T07:15:49Z","isotst":"2024-02-02T07:15:49Z","disptst":"2024-02-02 07:15:49"}],"status":200}
 </code></pre>
 </li>
+</ul>
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+<p>There's a lot you can do with OwnTracks and its backend, so you might want to read up on some of the features:</p>
+<ul>
+<li>Learn about <a href="../../features/waypoints/">geofences or waypoints</a> and <a href="../../features/poi/">Points of Interest</a></li>
+<li>Explore <a href="../../features/friends/">Friends</a> and learn how to configure <a href="../../features/card/">Cards</a></li>
+<li>On iOS you can configure <a href="../../features/tours/">Tours</a> you share with other people, and even utilize its <a href="../../features/pedometer/">pedometer data</a></li>
+<li><a href="../../features/comparison/">Compare our apps on Android and iOS</a></li>
+<li><a href="../bridge/">MQTT broker bridging</a> is useful for connecting two backends together, yours and a friend's, say.</li>
 </ul>
               
             </div>
