@@ -1,8 +1,8 @@
-/* JPM: this one works, but code doesn't.  */
-h2 {
-	color: green;
-}
 
-code {
+/*
+ * My (JP's) thanks to Gergely Nagy for teaching me how this works!
+ */
+
+.rst-content code {
 	color: yellow;
 }
