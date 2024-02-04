@@ -107,7 +107,7 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="payload-encryption">Payload encryption</h2>
-<p>In addition to the <a href="../tls/">transport encryption via TLS</a>, the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://download.libsodium.org/doc/secret-key_cryptography/authenticated_encryption.html">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
+<p>In addition to the <a href="../tls/">transport encryption via TLS</a>, the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
 <p>You configure a <em>secret</em> (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt the <a href="../../tech/json/">JSON</a> with this secret and transport the payload in a new JSON object which looks like this:</p>
 <pre><code class="language-json">{
   &quot;_type&quot;: &quot;encrypted&quot;,
@@ -115,18 +115,25 @@
 }
 </code></pre>
 <p>If you want to share location with a friend, both you and your friend need to share the same <em>secret</em>. A <em>secret</em> should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads. It is not possible to share locations with a friend's device using different <em>secret</em> keys.</p>
+<h3 id="encryption-key">Encryption key</h3>
+<p>For the OwnTracks apps, the encryption key can be configured as follows:</p>
+<ul>
+<li>Android and iOS via the settings UI / configuration editor</li>
+<li>Android additionally via <a href="../remoteconfig/">configuration file</a> from the <code>encryptionKey</code> setting</li>
+</ul>
+<p>The key is a string of up to 32 characters in length which the apps pad with binary zeroes.</p>
 <h3 id="recorder">Recorder</h3>
 <p>You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.</p>
 <p>Add a key by determining the <em>username</em> and the <em>device name</em> of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the <em>username</em> is <code>jjolie</code> and the <em>device name</em> is <code>Phone</code>, the result will be <code>jjolie-phone</code>.</p>
 <p>Load the key into the (running) Recorder:</p>
-<pre><code class="language-bash">echo &quot;jjolie-phone mysecreTpass01&quot; | ocat --load=keys
+<pre><code class="language-bash">printf &quot;jjolie-phone mysecreTpass01&quot; | ocat --load=keys
 </code></pre>
 <p>From this moment onwards, the Recorder will use this secret key for this username/device combination when it receives JSON payloads of <code>_type: encrypted</code>. The Recorder will decrypt the payload and will store the result in plain text in its storage.</p>
 <p>You can check which decryption keys you have stored by running:</p>
 <pre><code class="language-bash">ocat --dump=keys
 </code></pre>
 <p>You can also delete entries for specific devices by replacing the encryption key with <code>DELETE</code>:</p>
-<pre><code class="language-bash">echo &quot;jjolie-phone DELETE&quot; | ocat --load=keys
+<pre><code class="language-bash">printf &quot;jjolie-phone DELETE&quot; | ocat --load=keys
 </code></pre>
 <p>Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!</p>
               

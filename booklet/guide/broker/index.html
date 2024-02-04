@@ -124,140 +124,19 @@ on your own infrastructure. As an example, we've written up how to install
 Mosquitto on a Raspberry Pi.</p>
 <h2 id="raspi">RasPi</h2>
 <p><img alt="Mosquitto on a Raspbi" src="../images/raspi-broker.png" /></p>
-<p>The hardest bit is installing an OS, say, <a href="http://jpmens.net/2013/09/01/installing-mosquitto-on-a-raspberry-pi/">Raspbian Wheezy</a>, onto an SD card, but there are many tutorials on how to do that. (Here's an example <a href="http://mqtt.org/wiki/doku.php/public_brokers">using Mac OS X</a>.) A basic install will suffice, and after logging in with Raspbian's default username and password, we'll get started from there. Note that the current Raspbian Wheezy mosquitto package does NOT contain the <code>mosquitto_passwd</code> tool. If you want to use it, make sure you install the package from a mosquitto repo:</p>
-<p>Roger Light, <a href="http://mosquitto.org">Mosquitto</a>'s creator has thankfully (!) set up a few <a href="http://mosquitto.org/download/">Mosquitto repositories</a> we can use to obtain the latest and greatest version, so we'll do just that. We first perform the required steps to add and activate the repository. The last step in particular can take a few moments.</p>
-<pre><code class="language-bash">curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-sudo apt-key add mosquitto-repo.gpg.key
-rm mosquitto-repo.gpg.key
-cd /etc/apt/sources.list.d/
-sudo curl -O http://repo.mosquitto.org/debian/mosquitto-$(awk -F&quot;[)(]+&quot; '/VERSION=/ {print $2}' /etc/os-release).list
-sudo apt-get update
-</code></pre>
-<p>Now we can go ahead and install <a href="http://mosquitto.org">Mosquitto</a> proper. There are three packages:</p>
-<ul>
-<li><code>mosquitto</code> is the MQTT broker (i.e. server)</li>
-<li><code>mosquitto-clients</code> are the command-line clients, which I recommend you install</li>
-<li>Don't install <code>python-mosquitto</code>; if you want to do programming with Python and MQTT, we <a href="../../tech/program/">show you how to do so with the Paho Python module</a>.</li>
-</ul>
-<pre><code class="language-bash">sudo apt-get install mosquitto mosquitto-clients
-</code></pre>
-<p>Regrettably, as with most Debian packages, the broker is immediately started; stop it.</p>
-<pre><code class="language-bash">sudo /etc/init.d/mosquitto stop
-</code></pre>
-<p>That concludes the installation of the <a href="http://mosquitto.org">Mosquitto</a> MQTT broker, and we'll now proceed to
-its configuration. This section is geared towards a configuration of <a href="http://mosquitto.org">Mosquitto</a> which will
-work well with OwnTracks. In particular we want the following features enabled
-by default:</p>
-<ul>
-<li>Connections to the broker must be authenticated either against user/password or using client certificates.</li>
-<li>Connections to the broker shall also be <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> protected. This requires a (server-side) TLS certificate and key which will be configured automatically.</li>
-<li>ACLs will restrict who may access what.</li>
-</ul>
-<p>To create a <code>mosquitto</code> user database, use <code>sudo mosquitto_passwd -c /etc/mosquitto/passwd &lt;username&gt;</code>.</p>
-<p>You will be prompted to enter a password. That will be the password required to connect to the server (with the username you chose). If you want to add more users, repeat the command without <code>-c</code> as that will create (i.e. overwrite) the passwd file.
-Add a config line <code>password_file /etc/mosquitto/passwd</code> to <code>/etc/mosquitto/mosquitto.conf</code>.</p>
-<p>If you want to use certificates to identify yourself to the broker and/or to TLS-encrypt the TCP session, we've got some utilities over at the <a href="https://github.com/owntracks/tools">OwnTracks repository</a> which are going to automate this process for you. It's a work-in-progress (of course), but this is what <code>sudo ./mosquitto-setup.sh</code> looks like at the moment:</p>
-<pre><code class="language-bash">Saving previous configuration as mosquitto.conf-20130901-133525
-Generating a 2048 bit RSA private key
-.................................................................................................+++
-...............................+++
-writing new private key to '/etc/mosquitto/ca.key'
------
-Created CA certificate in /etc/mosquitto/ca.crt
-subject=
-    commonName                = An MQTT broker
-    organizationName          = MQTTitude.org
-    emailAddress              = nobody@example.net
---- Creating server key and signing request
-Generating RSA private key, 2048 bit long modulus
-............+++
-..............+++
-e is 65537 (0x10001)
---- Creating and signing server certificate
-Signature ok
-subject=/CN=raspberrypi/O=MQTTitude.org/emailAddress=nobody@example.net
-Getting CA Private Key
-</code></pre>
-<p>A CA is created together with a server key-pair with a whole bunch of <code>subjAltName</code>
-settings:</p>
-<pre><code>    X509v3 Subject Alternative Name:
-        IP Address:192.168.1.189, IP Address:127.0.0.1, IP Address:0:0:0:0:0:0:0:1, DNS:broker.example.com, DNS:foo.example.de, DNS:localhost
-</code></pre>
-<p>Check for a couple of broker settings in <code>/etc/mosquitto/mosquitto.conf</code>.
-Your mileage may vary, but you might want to set the following parameters:</p>
-<pre><code>listener 1883
-persistence_file mosquitto.db
-log_dest syslog
-log_dest stdout
-log_dest topic
-log_type error
-log_type warning
-log_type notice
-log_type information
-connection_messages true
-log_timestamp true
-allow_anonymous false
-password_file /etc/mosquitto/passwd
-</code></pre>
-<p>Will it work? Let's start the broker manually to see what it says:</p>
-<pre><code class="language-bash">sudo /usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
-1378042632: mosquitto version 1.2 (build date 2013-08-09 21:49:03+0100) starting
-1378042632: Config loaded from /etc/mosquitto/mosquitto.conf.
-1378042632: Opening ipv4 listen socket on port 1883.
-1378042632: Opening ipv4 listen socket on port 8883.
-1378042632: Opening ipv6 listen socket on port 8883.
-1378042632: Warning: Address family not supported by protocol
-...^C
-1378042634: mosquitto version 1.2 terminating
-1378042634: Saving in-memory database to /tmp/mosquitto.db.
-</code></pre>
-<p>The Mosquitto clients need to have access to a copy of the CA certificate (<code>ca.crt</code>) and you can transport that insecurely to your clients (it's a public certificate).</p>
-<pre><code class="language-bash">mosquitto_pub  --cafile ca.crt -h 127.0.0.1 -p 8883  ...
-</code></pre>
-<p>That's it for the moment. </p>
-<h2 id="testing">Testing</h2>
-<p>Once you've chosen an MQTT broker, make sure you feel comfortable with the
-utilities it provides to subscribe and publish to topics. We recommend the
-<a href="http://mosquitto.org">Mosquitto</a> utilities for doing so.</p>
-<p>For example, to subscribe to all topics prefixed by <code>owntracks</code> on your broker:</p>
-<pre><code>mosquitto_sub -h hostname -p 1883 -v -t 'owntracks/#'
-</code></pre>
-<p>(Note that the hash symbol has to be quoted in the shell which is why we've put
-the whole topic branch in single quotes.)</p>
-<p>In another screen you could publish a test message:</p>
-<pre><code>mosquitto_pub -h hostname -p 1883 -t 'owntracks/test' -m 'hello world'
-</code></pre>
-<p>and in the first screen you'd see the topic name followed by a space and the message
-<em>payload</em>.</p>
-<p>Once you feel comfortable with what is going on, you should consider adding <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a>.</p>
+<p>The hardest bit is installing an OS, say, <a href="http://jpmens.net/2013/09/01/installing-mosquitto-on-a-raspberry-pi/">Raspbian Wheezy</a>, onto an SD card, but there are many tutorials on how to do that. A basic install will suffice, and after logging in with Raspbian's default username and password, we're going to suggest you use our <a href="../quicksetup/">quicksetup</a> to configure most of what you need automatically.</p>
 <h2 id="bridging">Bridging</h2>
 <p>If you want to connect two (or more) brokers (e.g. yours and that of your friend) you can, and we've written up <a href="../bridge/">how you can bridge brokers</a>.</p>
 <h2 id="logging">Logging</h2>
 <p>Before doing anything else, please consult the manual to determine where your Mosquitto logs are being written to. It's hard stabbing around in the dark when a glance at a log file can give you valuable tips on what is actually happening.</p>
-<p>Mosquitto typically logs via <em>syslog</em>, and <em>syslog</em>'s configuration defines where the log messages are actually written to. Your <em>syslog</em> may be called <em>syslog</em>, <em>rsyslog</em>, <em>syslog-ng</em>, or anything else for that matter. In case of doubt, check the files in <code>/var/log</code>; one of them <em>ought</em> to have what you're looking for (e..g <code>messages</code>, <code>syslog</code>, <code>localmessages</code>, or even <code>debugmessages</code>).</p>
-<p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc. (Read the <a href="http://mosquitto.org/man/mosquitto-conf-5.html">manpage for <code>mosquitto.conf</code></a> to learn how to configure logging.</p>
+<p>Mosquitto typically logs via <em>syslog</em>, and <em>syslog</em>'s configuration defines where the log messages are actually written to. Your <em>syslog</em> may be called <em>syslog</em>, <em>rsyslog</em>, <em>syslog-ng</em>, or anything else for that matter. In case of doubt, check the files in <code>/var/log</code>; one of them <em>ought</em> to have what you're looking for (e..g <code>messages</code>, <code>syslog</code>, <code>localmessages</code>, or even <code>debugmessages</code>), very likely <code>/var/log/mosquitto/mosquitto.log</code>.</p>
+<p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc.</p>
 <p>A successful publish of an OwnTracks location could look somewhat like this:</p>
 <pre><code>mosquitto[1366]: Received PUBLISH from jane-5s-m-o (d0, q2, r1, m7, 'owntracks/jane/5s', ... (159 bytes))
 mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
 </code></pre>
-<h2 id="acls">ACLs</h2>
-<p>You will definitely want to set up Access Control Lists (ACLs) on your broker so that you can control who may see what. As an example, suppose Jane (username <code>jjolie</code>) should be able to publish to her <a href="../topics/">OwnTracks MQTT topics</a> and Fred (username <code>fred</code>) should be allowed to see Jane's location, we could configure something like this:</p>
-<pre><code>user jjolie
-topic owntracks/jjolie/#
-
-user fred
-topic read owntracks/jjolie/5s
-topic owntracks/fred/nexus/#
-</code></pre>
-<h2 id="firewall">Firewall</h2>
-<p>If you want to run your <em>Private</em> broker it's possibly going to be at home under your desk (or is it in your small office?). Be that as it may, how does an OwnTracks app reach (network-wise) that broker?  Chances are you have some form of router which connects the local network in your home to the Internet.</p>
-<p>OwnTracks runs on the device which is in your pocket or your purse, or wherever you placed it, and it must be able to connect to your MQTT broker, but it cannot: your router hopefully has a firewall configured on it which will allow outgoing (from your home outwards) connections, but it is sure to not allow incoming connections. We must change that, at least for MQTT, and we're going to assume you've configured TLS, i.e. your broker is (also) listening on TCP port 8883</p>
-<p>What you need to do to get this working is to reconfigure your router to allow incoming TCP traffic on port 8883 and to hand that off to the TCP/IP address of your MQTT broker. The exact details on how to do that vary from vendor to vendor, but a close look at the documentation of your router should show you how to do that.</p>
-<p>What is also likely, or at least possible, is that your home doesn't have a fixed TCP/IP address, but one which changes periodically. The OwnTracks apps won't be able to find your home then, will they? If you keep "moving" (i.e changing addresses).</p>
-<p>A service which is typically (if maybe incorrectly) called dynamic DNS comes to the rescue. These services allow you to configure a DNS name (e.g. <code>freds-router.example.org</code>) which points to the changing IP address of your router.</p>
-<p>Once you've completed those steps, configure the OwnTracks apps to use the shiny new DNS name and TCP port number (8883) and you should be all set.</p>
 <h2 id="owntracks">OwnTracks</h2>
 <p>So, you've configured your broker and you are familiar with the <em>mosquitto</em> command-line
 clients, so now it's time to see if you can <a href="../apps/">get OwnTracks to speak to your broker</a>.</p>
