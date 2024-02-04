@@ -108,13 +108,11 @@
               
                 <h2 id="scenarios">Scenarios</h2>
 <p>There are two basic scenarios we have for you depending on your needs. It'll help if you keep a copy of the <a href="../../terminology/">technical terminology</a> handy.</p>
-<p><img alt="Android Friends" src="../images/b-android-friends.png" /></p>
 <p>There is a bit of stuff you have to learn about in order to use OwnTracks: <a href="../broker/">MQTT brokers</a>, <a href="../topics/">topics</a>, but the upside is that you get to use many of the neat features <em>MQTT</em> mode or <em>HTTP</em> mode come with. For example, you can set up <a href="../../features/friends/">friends</a>.</p>
 <h2 id="http-mode">HTTP mode</h2>
 <p>If you don't want to go to the trouble of hosting your own MQTT setup, you can use <em>HTTP</em> mode to publish location data to a <a href="../../tech/http/">HTTP server of your chosing</a>, and you can also use our Recorder for doing so.</p>
 <h2 id="mqtt-mode">MQTT mode</h2>
-<p>This is where you say <em>adios!</em> (or whatever you say in your language when you leave) to us, continue to use our app (still free of charge of course -- it's Open Source), and host everything yourself. And to be honest, that's <em>precisely what we think you should do</em> so that you only (and the people you authorize) see where you are. That is the <em>Own</em> in OwnTracks: it's <em>your own data</em> and you only should see it.</p>
-<p>In MQTT mode you're on your own: you <a href="../broker/">set up and configure your MQTT broker</a>, you configure authentication, and then you configure your OwnTracks apps to connect to your broker. It's not particularly difficult to do, and you have full control over everything you set up.</p>
+<p>In MQTT mode you <a href="../broker/">set up and configure your MQTT broker</a>, you configure authentication, and then you configure your OwnTracks apps to connect to your broker. It's not particularly difficult to do, and you have full control over everything you set up. We've said it before: <a href="../quicksetup/">using quicksetup</a> is likely the easiest way to accomplish this.</p>
 <p>What you basically have to do is to</p>
 <ul>
 <li><a href="../broker/">set up an MQTT broker</a></li>
@@ -122,8 +120,25 @@
 <li>Possibly dig in and <a href="../../tech/program/">write your own client</a> and do really cool stuff!</li>
 </ul>
 <p>We urge you to resist the temptation of using <em>MQTT mode</em> with one of the many public brokers hosted by different organizations. While it <em>is</em> an easy way out those brokers are publically accessible which means anybody can see where you are if they can identify you. Furthermore, public brokers often don't implement access control, so basically anybody can create a "location" update which looks as though it may be yours. Believe us: it'll drive you crazy.</p>
-<p>If you need assistance, we may be able to help you on our <a href="https://github.com/owntracks/talk">Talk</a> site.</p>
 <p>You will now want to <a href="../clients/">configure a client</a> with which you consume the data which is published by OwnTracks, or if you're feeling very brave, why not <a href="../../tech/program/">write your own client</a>?</p>
+<h2 id="mqtt-vs-http">MQTT vs. HTTP</h2>
+<p>Which should it be? We invented OwnTracks backed by MQTT so we have preference for that, and using MQTT with, say, our Recorder is easier than with HTTP.</p>
+<ul>
+<li>
+<p>implementing support for Friends is easier with MQTT as the apps do this themselves. In HTTP mode, the backend (Recorder) needs to know about Friends and send the information back to the apps. The software has support for this, but configuration is tedious.</p>
+</li>
+<li>
+<p>MQTT connections are more lightweight than HTTP, or rather the overhead is lower.</p>
+</li>
+<li>
+<p>for both MQTT and HTTP, connections are re-established when required.</p>
+</li>
+</ul>
+<h3 id="on-ios">on iOS</h3>
+<p>In the iOS client there is no functional difference between MQTT and HTTP.  The main difference is the backend. MQTT brokers queue messages from devices to other devices (<em>transition events</em> especially). In iOS, the track of friends is recorded, which obviously only makes sense if locations sent by other devices are queued by the backend.</p>
+<p>HTTP works with friends only if the backend takes responsibility to retrieve friend's positions when a new location arrives. (Our recorder does, <em>Home Assistant</em> seems to do it partially, and what other systems do we likely don't know.)</p>
+<p>Re-transmission of off-line locations from an MQTT client is much more efficient and is faster than with HTTP.</p>
+<p>In iOS MQTT connections are deliberately shut down when the app goes into background.  On the other hand there is no permanent HTTP connection, so HTTP connections are established when a new location/event is POSTed.</p>
 <p>Now it's time to <a href="../topics/">discuss topics</a>.</p>
               
             </div>
