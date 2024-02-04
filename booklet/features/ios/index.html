@@ -145,14 +145,9 @@ as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the
 <p>A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.</p>
 <p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the <a href="../friends/">Friends</a> list, as soon as a location update for Jane is seen by the app.</p>
 <h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints</h3>
-<p>For all manually published locations, a description, a region radius and a share flag can be edited.</p>
-<p>Setting the description of a location helps you to remember places.</p>
-<p>If a description is entered and the share flag set, the location is published to the MQTT broker as a <code>waypoint</code> once.</p>
-<p>If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. A region may be 'waypoint'.
-The regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns red-ish.</p>
-<p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
-monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.</p>
-<p>Everytime the devices enters or leaves a monitored region, an additional location message is published to the MQTT broker.</p>
+<p>Regions can be created with a description and a radius. If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. These regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns reddish.</p>
+<p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959' monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.</p>
+<p>Every time the devices enters or leaves a monitored region, an additional so-called <em>transition</em> message with an enter or leave event is published to the MQTT broker.</p>
 <p>Use cases:
 * Define a <code>home</code> region to insure that the device publishes a new location when coming home or leaving home even if you do not move more than 500m.
 * Share your favorite places with your friends ("Best Sushi in Town").

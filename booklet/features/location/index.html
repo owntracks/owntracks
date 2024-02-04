@@ -309,7 +309,7 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
 <p><code>moveModeLocatorInterval</code>: The requested location interval in <em>move</em> mode.</p>
 </li>
 <li>
-<p><code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 0 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved.</p>
+<p><code>locatorDisplacement</code>: The smallest displacement in meters the user must move between location updates. Defaults to 500 and is an <code>and</code> relationship with interval. Can be used to only receive updates when the device has moved.</p>
 <ul>
 <li>This means if the user has not moved by more than the displacement value, the location will not be reported at <code>locatorInterval</code>.</li>
 </ul>

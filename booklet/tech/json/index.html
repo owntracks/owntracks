@@ -156,6 +156,11 @@
 <td style="text-align: center;">Y</td>
 </tr>
 <tr>
+<td><code>request</code></td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">N</td>
+</tr>
+<tr>
 <td><code>steps</code></td>
 <td style="text-align: center;">Y</td>
 <td style="text-align: center;">N</td>
@@ -630,6 +635,16 @@ For security reasons, the encryption key is not exported with configuration mess
 <ul>
 <li><code>data</code> Encrypted and Base64 encoded original JSON message <em>(iOS,Android/string/required)</em></li>
 </ul>
+<h2 id="_typerequest"><code>_type=request</code></h2>
+<p>Apps can request the creation of <a href="../../features/tours/">tours</a> which elicit a <code>cmd</code> response from the Recorder. See <a href="../../features/tours/">tours</a> for the details.</p>
+<pre><code class="language-json">{
+  &quot;_type&quot;: &quot;request&quot;,
+  &quot;request&quot;: &quot;tour&quot;,
+  &quot;tour&quot;: {
+    ...
+  }
+}
+</code></pre>
               
             </div>
           </div><footer>

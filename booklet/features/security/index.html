@@ -112,13 +112,30 @@
                 <h2 id="security">Security</h2>
 <p>OwnTracks and its associated utilities have been designed foremost with <a href="../../privacy/">data privacy</a> in mind. We think your location or that of your family members and friends is something only you respectively they should know about. While we cannot help you (or ourselves for that matter) protect against NSA snooping, we do our best to protect your data from other people's eyes.</p>
 <ul>
-<li>If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> when connecting to your broker. (We configure this and passwords automatically for you in <a href="../../guide/quicksetup/">quicksetup</a>.)</li>
-<li>The apps support authenticating to the MQTT broker with <em>username</em> and <em>password</em> which can be as strong (or as convoluted) as your broker supports.</li>
-<li>In HTTP mode, the apps provide support for HTTP basic authentication with TLS.</li>
-<li>Credentials you configure (i.e. <em>username</em> and <em>password</em>) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.</li>
-<li>The apps support using <a href="../tlscert/">TLS client certificates</a> for authentication to the MQTT broker.</li>
-<li>The apps support <a href="../encrypt/">payload encryption</a> for privacy.</li>
-<li>The apps do not send location data to any server until that server has been configured by the user (i.e., there is no preconfigured demo server).</li>
+<li>
+<p>If your broker supports it, and if you configure OwnTracks to do so, OwnTracks uses MQTT over <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> when connecting to your broker. (We configure this and passwords automatically for you in <a href="../../guide/quicksetup/">quicksetup</a>.)</p>
+</li>
+<li>
+<p>The apps support authenticating to the MQTT broker with <em>username</em> and <em>password</em> which can be as strong (or as convoluted) as your broker supports.</p>
+</li>
+<li>
+<p>In HTTP mode, the apps provide support for HTTP basic authentication with TLS.</p>
+</li>
+<li>
+<p>Credentials you configure (i.e. <em>username</em> and <em>password</em>) are thus protected from snooping, at least until they get to your broker. The same applies to location data our app transmits.</p>
+</li>
+<li>
+<p>The apps support using <a href="../tlscert/">TLS client certificates</a> for authentication to the MQTT broker.</p>
+</li>
+<li>
+<p>The apps have optional support for <a href="../encrypt/">payload encryption</a> for privacy.</p>
+</li>
+<li>
+<p>The apps do not send location data to any server until that server has been configured by the user (i.e., there is no preconfigured demo server).</p>
+</li>
+<li>
+<p>The apps do, however, perform reverse geo location lookups. For iOS these lookups are submitted to the Apple Maps infrastructure, whereas for Android, the requests are performed via Google Play services for the non OSS release. This configuration can be optionally changed by configuring Android to use OpenCageData as reverse geo location provider. This functionality cannot be disabled.</p>
+</li>
 </ul>
               
             </div>
