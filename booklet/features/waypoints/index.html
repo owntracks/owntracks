@@ -107,31 +107,74 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="regions-waypoints">Regions (Waypoints)</h2>
-<p>The <em>base topic</em> for publishes from the devices (OwnTracks apps) is what you configure it
-to be in the app's preferences/settings. For argument's sake we'll use the default <code>owntracks/&lt;user&gt;/&lt;device&gt;</code> as our example.</p>
-<p>This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>).
-All messages published to this base topic are retained if you have configured the app to retain them.</p>
-<p>Additionally, if you've configured a waypoint, regions, or geo-fence (we intermix these terms a lot to mean basically the same thing), a transition event will be published upon entering or leaving a waypoint, containing:</p>
-<ul>
-<li><code>rad</code>ius (if its value is greater than 0)</li>
-<li><code>desc</code>ription with the name you set for the waypoint</li>
-<li><code>event</code> with a value of <code>"enter"</code> or <code>"leave"</code>, depending on
-   whether the device is entering or leaving a configured region, respectively.</li>
-<li><code>rid</code> (&gt; January 2021) with the <em>region ID</em> of the region.</li>
-</ul>
+<p>A <em>region</em>, <em>geofence</em>, or <em>waypoint</em> (sadly we've used these terms interchangeably) is a circular area you configure in the UI on your OwnTracks device. The device then begins monitoring whether the area is being entered or left and it will publish what we call a <em>transition event</em> accordingly.</p>
+<p>The <em>base topic</em> for publishes from the OwnTracks apps is what you've configured it to be in the apps' preferences / settings. This base topic is used for publishes of type <code>location</code> (see <a href="../../tech/json/">JSON</a>). All messages published to this base topic are retained if you have configured the app to retain them.</p>
+<p>So upon entering or leaving a region, the device publishes a transition event which contains:</p>
+<table>
+<thead>
+<tr>
+<th>element</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>desc</code></td>
+<td>description with the name you set for the waypoint</td>
+</tr>
+<tr>
+<td><code>event</code></td>
+<td><code>"enter"</code> or <code>"leave"</code>, depending on whether the <br />device is entering or leaving a configured region, respectively.</td>
+</tr>
+<tr>
+<td><code>rid</code></td>
+<td>the <em>region ID</em> of the region</td>
+</tr>
+<tr>
+<td><code>lat</code>, <code>lon</code></td>
+<td>where the region was detected (entering respectively leaving)</td>
+</tr>
+<tr>
+<td><code>tid</code></td>
+<td>trackerID</td>
+</tr>
+<tr>
+<td><code>tst</code></td>
+<td>timestamp when the event was published</td>
+</tr>
+<tr>
+<td><code>wtst</code></td>
+<td>the time stamp of when the region was created</td>
+</tr>
+</tbody>
+</table>
+<p>For example, this JSON might be published when entering a region:</p>
+<pre><code>{
+  "_type": "transition",
+  "desc": "My favorite coffee shop (Delaville)",
+  "event": "enter",
+  "lat": 48.87069,
+  "lon": 2.34916,
+  "rid": "f7676c",
+  "tid": "j1",
+  "tst": 1707057574,
+  "wtst": 1610104395
+}
+</code></pre>
 <p>If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with <code>retain=0</code> irrespective of your general preference) to the base topic with <code>/waypoint</code> tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoint</code>) with the payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>transition</code> message and will contain a <code>wtst</code> (for historical purposes) with the timestamp of when the region was originally defined. (Note that that branch is <code>/waypoint</code> -- singular.)</p>
 <p>For example, If Jane configures a region on her iPhone, the app could publish the following payload to <code>owntracks/jane/phone/waypoint</code>:</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;waypoint&quot;,
-    &quot;desc&quot;: &quot;Paris is lovely&quot;,
-    &quot;lat&quot;: &quot;48.858330&quot;,
-    &quot;lon&quot;: &quot;2.295130&quot;,
+    &quot;desc&quot;: &quot;My favorite coffee shop (Delaville)&quot;,
+    &quot;lat&quot;: 48.87069,
+    &quot;lon&quot;: 2.34916,
     &quot;rad&quot;: &quot;50&quot;,
     &quot;tst&quot;: &quot;1385997757&quot;,
-    &quot;rid&quot;: &quot;f7676c&quot;
+    &quot;rid&quot;: &quot;f7676c&quot;,
+    &quot;wtst&quot;: 1610104395
 }
 </code></pre>
-<p>When you set up a region (with a <code>desc</code>ription and a <code>rad</code>ius), this
+<p>When you set up a region (with a <code>desc</code>ription and a <code>rad</code>ius), this new
 region is published to the broker with the current time stamp. If you update
 the region definition on the device at a later stage, the region is
 re-published, with the <em>original</em> timestamp, but with possibly new
@@ -141,25 +184,24 @@ identifier of the region even if it is later modified on the device.</p>
 <p>Subscribers to the broker (our apps and any other program) can avoid getting
 regions by subscribing to, say, <code>owntracks/+/+</code>; also broker ACLs can
 prohibit access to <code>owntracks/+/+/waypoint</code> for particular users if so desired.
-Conversely, all messages published by the apps (<code>location</code>, <code>transition</code>, and <code>waypoint</code>) are
-available with a subscription to <code>owntracks/#</code>.</p>
+Conversely, all messages published by the apps (<code>location</code>, <code>transition</code>, and <code>waypoint</code>) are available with a subscription to <code>owntracks/#</code>.</p>
 <p>The OwnTracks apps may keep track of regions, e.g. for displaying to users. </p>
 <h3 id="in-regions">In regions</h3>
 <p>When the apps publish a <code>_type = location</code> message, they add to that an array
 called <code>inregions</code> (and as from January 2021 an array called <code>inrids</code>) with
-the names of the regions and their <code>rid</code>s respectively. The <code>inregions</code> array
+the names of the regions and their respective <code>rid</code>s. The <code>inregions</code> array
 might be consumed by humans whereas the <code>inrids</code> array would be consumed by
 developers who will wish to associate the region IDs (<code>rid</code>) with the values in
 <code>inrids</code>.</p>
 <h3 id="adding-on-ios">Adding on iOS</h3>
-<p>On iOS you can navigate to the place where you want to place a region, Tap long and edit the Region. The region is always placed at the center of the map (hence it's predefined name <code>Center</code>, which you should change to something meaningful). With a bit of practice, you can then drag the region to it's final destination on the map or, and this may be easier, edit the region and specify its exact coordinates.</p>
+<p>On iOS you can navigate to the place where you want to place a region, Tap long and edit the Region. The region gets a default name (<code>Here ..</code>) which you will want to change to something meaningful. With a bit of practice, you can then drag the region to it's final destination on the map or, and this may be easier, edit the region and specify its exact coordinates.</p>
 <h3 id="adding-on-android">Adding on Android</h3>
 <p>On Android, regions can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  </p>
 <h3 id="remote-loading-of-regions">Remote loading of regions</h3>
 <p>Instead of configuring multiple regions on the device, they can be loaded <a href="../remoteconfig/">remotely</a> with the <code>setWaypoints</code> cmd message if remote configuration is enabled on the device. </p>
 <p>You can use this to import individual regions or groups of pre-configured regions which are merged into the existing regions definition on the device. Recall, however, that the <code>rid</code> element is like a <em>key</em> which uniquely identifies each region / waypoint.</p>
 <h3 id="deleting-regions">Deleting regions</h3>
-<p>On iOS a region can be deleted by swiping it away. On Android, a long press is required. </p>
+<p>On iOS a region can be deleted by swiping it away. On Android, a long press is required. Note that deleting a region on the device does not publish anything to the MQTT broker or HTTP server.</p>
 <h3 id="beacons-ranging">Beacons Ranging</h3>
 <p>In addition to circular regions, the iOS app can monitor its proximity to <a href="../beacons/">BLE Beacons</a>. </p>
               
