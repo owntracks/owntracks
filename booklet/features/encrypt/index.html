@@ -136,6 +136,34 @@
 <pre><code class="language-bash">printf &quot;jjolie-phone DELETE&quot; | ocat --load=keys
 </code></pre>
 <p>Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!</p>
+<h3 id="configuring-encryption-in-quicksetup">Configuring encryption in Quicksetup</h3>
+<p>Using <a href="../../guide/quicksetup/">quicksetup</a> you can optionally configure payload encryption for a user:</p>
+<ul>
+<li>
+<p>configure the <code>friends</code> array with an element <code>secret</code> for that user:</p>
+<pre><code>friends:
+   - { tid: j2, username: jjolie, devicename: Phone, secret: "mysecreTpass01" }
+</code></pre>
+</li>
+<li>
+<p>if you prefer to not have the secret in that configuration, write it into a file on the file system and specify the path in lieu of the actual secret, i.e. <code>secret: "/path/to/.jjolie.key"</code></p>
+<pre><code>$ printf "mysecreTpass01" &gt; .jjolie.key
+</code></pre>
+</li>
+<li>
+<p>after rerunning the <code>bootstrap</code> program, the user's <code>.otrc</code> file will have the secret configured:</p>
+<pre><code>$ grep encryption /usr/local/owntracks/userdata/jjolie.otrc
+"encryptionKey": "mysecreTpass01",
+</code></pre>
+</li>
+<li>
+<p>the Recorder's key store will also have the key:</p>
+<pre><code>$ ocat --dump=keys
+jjolie-phone mysecreTpass01
+</code></pre>
+</li>
+</ul>
+<p>Note that the secret is in clear text in the configuration file, the key file, the Recorder's key store, and in the <code>.otrc</code> file!</p>
               
             </div>
           </div><footer>
