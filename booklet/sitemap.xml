@@ -206,6 +206,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://owntracks.org/tech/lua/</loc>
+         <lastmod>2024-02-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://owntracks.org/tech/mqtt/</loc>
          <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
