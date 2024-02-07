@@ -106,15 +106,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="opencagedata">OpenCageData</h2>
-<p>We've had excellent experience using <a href="https://opencagedata.com">OpenCageData</a> as reverse geo-coding provider: their <a href="https://opencagedata.com/pricing">pricing</a> is attractive and they currently offer a free tier that allows up to 2,500 requests per day, which should be more than sufficient for our purposes.</p>
-<p>After signing up and obtaining your API key, configure the OpenCageData API in Recorder by:</p>
+                <h2 id="opencage">OpenCage</h2>
+<p>We've had excellent experience using <a href="https://opencagedata.com">the OpenCage Geocoding API</a> as reverse geo-coding provider: their <a href="https://opencagedata.com/pricing">pricing</a> is attractive and they currently offer a free tier that allows up to 2,500 requests per day, which should be more than sufficient for our purposes.</p>
+<p>After signing up and obtaining your API key, configure the OpenCage API in Recorder by:</p>
 <ul>
 <li>setting <code>OTR_GEOKEY="opencage:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</code> in the defaults file or by exporting it into the environment</li>
 <li>invoking Recorder with the <code>--geokey "opencage:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</code> option</li>
 </ul>
-<p>If you configured your OpenCageData API key in <a href="../../guide/quicksetup/">quicksetup</a>, the Recorder is automatically configured during bootstrapping.</p>
-<p>Be aware that the Recorder queries the service with <code>no_record=1&amp;limit=1</code>. OpenCageData documents the first as meaning it will not log the request, and that protects your privacy.</p>
+<p>If you configured your OpenCage geocoding API key in <a href="../../guide/quicksetup/">quicksetup</a>, the Recorder is automatically configured during bootstrapping.</p>
+<p>Be aware that the Recorder queries the service with <code>no_record=1&amp;limit=1</code>. OpenCage documents the first as meaning it will not log the request, and that protects your privacy (<a href="https://opencagedata.com/api#privacy">see details</a>).</p>
 <p>(Without the substring <code>opencage:</code> the Recorder falls back to using Google in order to maintain backwards-compatibility.)</p>
               
             </div>
