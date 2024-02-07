@@ -297,8 +297,9 @@ Enter host password for user 'jane':
 </code></pre>
 </li>
 <li>
-<p>The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use <em>journalctl</em></p>
+<p>The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use <em>journalctl</em> or <em>syslog</em> on Ubuntu</p>
 <pre><code>$ journalctl -u ot-recorder -f
+$ tail -f /var/log/syslog | grep ot-recorder
 </code></pre>
 </li>
 </ul>
