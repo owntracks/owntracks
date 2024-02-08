@@ -142,7 +142,7 @@ uid=0(root) gid=0(root) groups=0(root)
 <p>You should now be ready to proceed.</p>
 <h2 id="what-you-can-expect">What you can expect</h2>
 <p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
-<p><img alt="Architechture" src="images/owntracks-quicksetup-arch.png" /></p>
+<p><img alt="Architechture" src="../images/owntracks-quicksetup-arch.png" /></p>
 <ul>
 <li>we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a <em>cron</em> job with which the Let's Encrypt certificate will automatically be renewed when required.</li>
 <li>we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called <code>/usr/local/owntracks/userdata/*.pass</code>.</li>
