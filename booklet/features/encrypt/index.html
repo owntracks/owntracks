@@ -107,8 +107,8 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="payload-encryption">Payload encryption</h2>
-<p>In addition to the <a href="../tls/">transport encryption via TLS</a>, the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
-<p>You configure a <em>secret</em> (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt the <a href="../../tech/json/">JSON</a> with this secret and transport the payload in a new JSON object which looks like this:</p>
+<p>In addition to the <a href="../tls/">transport encryption via TLS</a> (over MQTT and HTTPS), the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
+<p>You configure a <em>secret</em> (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt outgoing <a href="../../tech/json/">JSON</a> with this secret and transport the payload in a new JSON object which looks like this:</p>
 <pre><code class="language-json">{
   &quot;_type&quot;: &quot;encrypted&quot;,
   &quot;data&quot;: &quot;1Vu7Owp ... W4lMnh28FB+el22GsCrlnggvEcp4H8GR9iKJdi1qfwkejYpzrQ+491Mwunjg=&quot;
@@ -164,6 +164,11 @@ jjolie-phone mysecreTpass01
 </li>
 </ul>
 <p>Note that the secret is in clear text in the configuration file, the key file, the Recorder's key store, and in the <code>.otrc</code> file!</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Payload encryption makes little sense for just one user on a shared installation. Assume Alice and Bob share a broker. Alice has configured payload encryption and her device publishes a location message. The Recorder receives that payload, decrypts it (assuming it too has Alice's key), and stores the result. Note that the Recorder will not automatically republish Alice's location, so Bob won't receive that data. In order to accomplish this, one would have to configure the Recorder to <a href="../../tech/lua/">republish using Lua</a> those messages with the <code>_decrypted</code> element in them.</li>
+<li>In an environment consisting of a group of people who wish to communicate securely, payload encryption might make sense.</li>
+</ul>
               
             </div>
           </div><footer>

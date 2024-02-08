@@ -113,11 +113,12 @@
 <p>Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call <em>quicksetup</em>, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.</p>
 <p>To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:</p>
 <ul>
+<li>a small Linux-capable device (e.g. a Raspberry Pi or equivalent)</li>
 <li>a Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.</li>
 <li>some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)</li>
-<li>we've had very good experience with the likes of Digital Ocean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
+<li>we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
 <li>Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
-<li>we've tested this setup on Ubuntu 22.04 and on Debian 12. Minimum requirements: Debian 11</li>
+<li>we've tested this setup on Ubuntu 22.04 (<em>jammy</em>) and on Debian/Raspbian 12 (<em>bookworm</em>)</li>
 <li>a DNS domain, something like <code>owntracks.example</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>owntracks.example</code>.</li>
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user.</p>
@@ -141,6 +142,7 @@ uid=0(root) gid=0(root) groups=0(root)
 <p>You should now be ready to proceed.</p>
 <h2 id="what-you-can-expect">What you can expect</h2>
 <p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
+<p><img alt="Architechture" src="images/owntracks-quicksetup-arch.png" /></p>
 <ul>
 <li>we'll attempt to enroll your VPS with Let's Encrypt on your behalf in order to have an SSL (TLS) certificate issued with which the Web server and the MQTT broker on your VPS will be protected. This ensures that all communication via HTTP (to the Web server) and via MQTT (to the broker) will be encrypted. We also install a <em>cron</em> job with which the Let's Encrypt certificate will automatically be renewed when required.</li>
 <li>we install an Apache Web server so that you can login to use our Frontend and other Web-based tools. We generate random passwords with which you login, and you will later find these passwords on the system in files called <code>/usr/local/owntracks/userdata/*.pass</code>.</li>
@@ -303,6 +305,14 @@ $ tail -f /var/log/syslog | grep ot-recorder
 </code></pre>
 </li>
 </ul>
+<p>If you need more help, we'll gladly help you if we can. Even if all you've found is a glitch in our documentation, we consider that a bug <a href="https://github.com/owntracks/quicksetup/issues">so please report it</a>. You might want to keep a copy of the file <code>sys.info</code> handy which should have been created by bootstrapping process in the directory from which you launched it:</p>
+<pre><code>    $ cat sys.info
+    Last bootstrap: 2024-02-08T13:18:43Z
+
+    Ansible version: 2.14.3
+    OS distro: Debian / 12 4
+    OS distribution: bookworm
+</code></pre>
 <h2 id="where-to-go-from-here">Where to go from here</h2>
 <p>There's a lot you can do with OwnTracks and its backend, so you might want to read up on some of the features:</p>
 <ul>
