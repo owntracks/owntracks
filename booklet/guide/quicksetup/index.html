@@ -113,8 +113,7 @@
 <p>Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call <em>quicksetup</em>, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.</p>
 <p>To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:</p>
 <ul>
-<li>a small Linux-capable device (e.g. a Raspberry Pi or equivalent)</li>
-<li>a Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.</li>
+<li>a small dedicated Linux-capable device (e.g. a Raspberry Pi or equivalent) or a dedicated Linux VPS (Virtual Private Server), either at your home or from one of the many VPS providers.</li>
 <li>some offerings are free of charge, though you'll need patience to wade through their lingo. (Oracle cloud, Good Cloud, and possibly a few others have a free tier.)</li>
 <li>we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well.</li>
 <li>Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
@@ -195,7 +194,7 @@ $ nano configuration.yaml
    FIXME: screenshots</li>
 <li>
 <p>back on your VPS, use the following pre-configured utility to subscribe to your MQTT broker; by pre-configured we mean you won't need to specify username, password, hosts, etc:</p>
-<pre><code>$ mosquitto_sub -t 'owntracks/#'
+<pre><code>$ mosquitto_sub -v -t 'owntracks/#'
 </code></pre>
 </li>
 <li>
