@@ -107,12 +107,12 @@
             <div class="section" itemprop="articleBody">
               
                 <h2 id="configuration-file">Configuration file</h2>
-<p>The configuration can be sent to the device as a file that can by imported into the apps. This can be used to initially configure the device or chane detailed settings later. </p>
+<p>The configuration can be sent to the device as a file that can by imported into the apps. This can be used to initially configure the device or change detailed settings later. </p>
 <ul>
 <li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration)</li>
-<li>Ensure the JSON is valid with <a href="http://jsonlint.com">online JSON validator</a>, <a href="http://stedolan.github.io/jq/">jq</a> or simply by running <code>python -mjson.tool &lt; your.otrc</code></li>
-<li>Send the file to the devices via e-mail, provide it for download on an HTTP server, send via Dropbox, ... you name it.</li>
-<li>Have the OwnTracks app user open the file on their device with OwnTracks.</li>
+<li>Ensure the JSON is valid with <a href="http://jsonlint.com">online JSON validator</a>, <a href="http://stedolan.github.io/jq/">jq</a> or simply by running <code>python3 -mjson.tool &lt; your.otrc</code></li>
+<li>Send the file to the devices via e-mail, provide it for download on an HTTP server, send via Dropbox, use <em>URL config</em> (see below), etc.</li>
+<li>Have the OwnTracks app user open the file on their device; this should trigger an open with OwnTracks.</li>
 </ul>
 <p>Here is a sample configuration file which contains some of the possible settings.</p>
 <pre><code class="language-json">{
@@ -125,6 +125,20 @@
 }
 </code></pre>
 <p>The <code>_type</code>entry is mandatory, most other entries are optional. They are replaced by built-in defaults or previously configured values if not specified. A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
+<h2 id="url-config">URL config</h2>
+<p>Both iOS and Android apps can be configured by having the user click on an <code>owntracks:///config?inline=</code> URL containing a base64-encoded version of the content of an <code>.otrc</code> file.</p>
+<p>Say we have a file called <code>j.otrc</code> with the JSON <code>_type: configuration</code> shown above. We can use, say, the <em>openssl</em> utility to base64-encode encode the configuration into a single line:</p>
+<pre><code class="language-console">echo &quot;owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)&quot;
+</code></pre>
+<p>which results in this text:</p>
+<pre><code>owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg==
+</code></pre>
+<p>We can then paste that text into the <code>@@</code> placeholder on an HTML like this:</p>
+<pre><code class="language-html">&lt;html&gt;&lt;body&gt;&lt;p&gt;
+&lt;a href=&quot;@@&quot;&gt;Click to configure OwnTracks&lt;/a&gt;
+&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+<p>This link is then made available to click on after the user has installed the OwnTracks app for configuring it. By omitting, say, <code>deviceID</code> and <code>tid</code> it would be possible to "mass configure" a number of users' apps.</p>
 <h2 id="setconfiguration">setConfiguration</h2>
 <p>The configuration of a connected app can also be changed remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing configuration. A <code>_type: configuration</code> as described <a href="../../tech/json/">on the JSON page</a> can be send to the device. </p>
 <h2 id="setwaypoints">setWaypoints</h2>
@@ -148,20 +162,6 @@
 }
 </code></pre>
 <p>Publishing the above payload to an OwnTracks iOS device will create/modify said waypoint. This also works for Beacon configurations, which are basically waypoints.</p>
-<h2 id="url-config">URL config</h2>
-<p>Since January 2021, both iOS and Android apps can be configured by having the user click on an <code>owntracks:///config?inline=</code> URL containing a base64-encoded version of the content of an <code>.otrc</code> file.</p>
-<p>Say we have a file called <code>j.otrc</code> with the JSON <code>_type: configuration</code> shown above. We can use, say, the <em>openssl</em> utility to base64-encode encode the configuration into a single line:</p>
-<pre><code class="language-console">echo &quot;owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)&quot;
-</code></pre>
-<p>which results in this text:</p>
-<pre><code>owntracks:///config?inline=ewogICJfdHlwZSI6ICJjb25maWd1cmF0aW9uIiwKICAiYXV0aCI6IHRydWUsCiAgInVzZXJuYW1lIjogImpqb2xpZSIsCiAgInBhc3N3b3JkIjogInMxa3IzdCIsCiAgImhvc3QiOiAibXlicm9rZXIuZXhhbXBsZS5vcmciLAogICJwb3J0IjogODg4Mwp9Cg==
-</code></pre>
-<p>We can then paste that text into the <code>@@</code> placeholder on an HTML like this:</p>
-<pre><code class="language-html">&lt;html&gt;&lt;body&gt;&lt;p&gt;
-&lt;a href=&quot;@@&quot;&gt;Click to configure OwnTracks&lt;/a&gt;
-&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
-</code></pre>
-<p>This link is then made available to click on after the user has installed the OwnTracks app for configuring it. By omitting, say, <code>deviceID</code> and <code>tid</code> it would be possible to "mass configure" a number of users' apps.</p>
               
             </div>
           </div><footer>
