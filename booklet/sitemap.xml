@@ -196,6 +196,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://owntracks.org/guide/app/android/</loc>
+         <lastmod>2024-02-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://owntracks.org/other/opencage/</loc>
          <lastmod>2024-02-10</lastmod>
          <changefreq>daily</changefreq>
