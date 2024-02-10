@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="OwnTracks.org" /><link rel="canonical" href="http://owntracks.org/features/qs-config/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Qs config - OwnTracks Booklet</title>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link href="../../extra.css" rel="stylesheet">
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Qs config";
+        var mkdocs_page_input_path = "features/qs-config.md";
+        var mkdocs_page_url = "/features/qs-config/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]--> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> OwnTracks Booklet
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Intro</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/whathow/">What it does</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/quicksetup/">Quicksetup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/clients/">Clients</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/apps/">Apps</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Features</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../comparison/">Comparison</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../security/">Security</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tech/json/">JSON</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tech/http/">HTTP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tech/program/">Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Sundry</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../privacy/">Privacy</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../people/">People</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../faq/">Answers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../press/">Press</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">OwnTracks Booklet</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Qs config</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/owntracks/booklet/edit/master/docs/features/qs-config.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="additional-quicksetup-configuration">Additional Quicksetup Configuration</h2>
+<p>In <a href="../../guide/quicksetup/">Quicksetup</a> we describe how it works and how you begin using <code>configuration.yaml</code> to easily bootstrap your OwnTracks platform.</p>
+<h2 id="friends-list-syntax">Friends list syntax</h2>
+<p>Friends are basically configured like this in the <code>configuration.yaml</code> file:</p>
+<pre><code>          friends:
+            - { tid: JJ, username: jane,   devicename: nokia }
+</code></pre>
+<p>To be clear this is YAML, so you could also write it this way, if you prefer. The field names are the same, the order doesn't matter but note the leading hyphen (<code>-</code>) which denotes a new entry in the array.</p>
+<pre><code>          friends:
+            - tid: JJ
+              username: jane
+              devicename: nokia
+</code></pre>
+<p>The second friend's entry would again begin with a hyphen which must be placed under the first:</p>
+<pre><code>          friends:
+            - tid: JJ
+              username: jane
+              devicename: nokia
+            - tid: m1
+              username: another
+              ...
+</code></pre>
+<h2 id="friend-specific-settings">Friend-specific settings</h2>
+<p>There are a few settings a friend can have we've not mentioned yet, so here they are.</p>
+<ul>
+<li>
+<p>our <em>quicksetup</em> configuration defaults to configuring the apps (via <a href="../remoteconfig/">inline or .otrc</a> in MQTT mode. Setting <code>httpmode</code> to <code>True</code> changes that to HTTP for this particular friend (e.g. <code>httpmode: True</code>).</p>
+</li>
+<li>
+<p>passwords are auto-generated during bootstrapping and result in different and random 20-character passwords. Should you wish to explicit configure a specific one, do so by setting <code>password</code> to a string of your choice (e.g. <code>password: "supersecr1t"</code>). Note that this password will be visible in the configuration and in the <code>*.pass</code> files.</p>
+</li>
+<li>
+<p>set up <a href="../encrypt/">payload encryption</a> for a particular friend by specifying a <code>secret</code> which is either the secret itself (e.g. <code>secret: "bla009"</code>) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. <code>secret: "/home/jane/.secret"</code>).</p>
+</li>
+</ul>
+<h2 id="global">Global</h2>
+<ul>
+<li>with <code>lua_script</code> you configure the path to a <a href="../../tech/lua/">Recorder Lua script</a>  which is written into <code>/etc/defaults/ot-recorder</code> for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/owntracks/booklet" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
