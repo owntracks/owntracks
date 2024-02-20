@@ -115,7 +115,7 @@
 }
 </code></pre>
 <h3 id="creating-a-card">Creating a card</h3>
-<p>Cards can be created with shell scripts or with a webapp.</p>
+<p>Cards can be created with shell scripts, with a webapp, or on iOS with the OwnTracks app itself.</p>
 <h4 id="shell-script">Shell Script</h4>
 <p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
 <ul>
@@ -134,6 +134,8 @@ mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
 It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
 Just head over to the <a href="https://avanc.github.io/owntracks-cards/">demo</a> and create a card. Configure your MQTT broker by clicking the connection state.
 The source code can be found on <a href="https://github.com/avanc/owntracks-cards">Github</a>.</p>
+<h4 id="ios-owntracks">iOS OwnTracks</h4>
+<p>on iOS and iPadOS the <em>Create Card</em> option in <em>Settings</em> permits creating a card directly on device. The app permits entering a name for the card as well as use the on-device camera to take a photograph or select from the photo library to use for the face element of the card. Hitting <em>Save</em> in the app then publishes the card to the current user's topic.</p>
 <h3 id="generating-the-face-image">Generating the face image</h3>
 <p>We recommend formatting the face image as a 192x192 pixel image, encoded either as a JPEG or as a PNG. It is possible to use larger or smaller images, but 192x192 provides a good balance between image fidelity and data usage. Remember that this image will be transmitted many times over cellular data to all phones that use the app, so using very large images can be very costly.</p>
 <p>You should use JPEG encoding when the image depicts something complex, such as a photography of a real face. You should use PNG encoding when the image only contains simple flat colors, such as icons or drawings.</p>
