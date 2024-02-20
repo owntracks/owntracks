@@ -116,6 +116,12 @@
 <li>we've had very good experience with the likes of DigitalOcean; at the time of this writing they have a 512MB Debian 12 VPS which serves us very well. But there are many others: Linode, Server4you, Hetzner, Netcup, ... look around and compare</li>
 <li>we've tested this setup on Ubuntu 22.04 (<em>jammy</em>) and on Debian/Raspbian 12 (<em>bookworm</em>); anything older or different might well cause issues, but we'll gladly help if we can</li>
 <li>a DNS domain, something like <code>owntracks.example</code>, which will be associated with your VPS. Some VPS providers offer one in a package with the VPS. Be that as it may, the technical jargon is you let that DNS domain and associate the IPv4 and/or IPv6 address of your VPS with <code>owntracks.example</code>.</li>
+<li>if your Linux machine is at home, say, you'll need to open a few TCP ports in your router:<ul>
+<li>port <code>80</code> for Let's Encrypt enrollment and renewals only</li>
+<li>port <code>443</code>(optional) if you wish to permit authenticated access to your OwnTracks Web interface from "outside"</li>
+<li>port <code>8883</code> the MQTT port</li>
+</ul>
+</li>
 </ul>
 <p>Before continuing, make sure you can login to your VPS, either as <code>root</code> or as an unprivileged user, but you will need to escalate privileges using <code>sudo</code>.</p>
 <ul>
@@ -189,7 +195,7 @@ $ nano configuration.yaml
 </ul>
 </li>
 <li>
-<p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services.</p>
+<p>once you've edited the configuration file with the settings you wish, launch the installer which will install packages and configure services. Did you remember to open the TCP ports in your router?</p>
 <pre><code>$ sudo ./bootstrap.sh
 </code></pre>
 </li>
