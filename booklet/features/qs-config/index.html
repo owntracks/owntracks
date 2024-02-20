@@ -129,11 +129,15 @@
 <h2 id="friend-specific-settings">Friend-specific settings</h2>
 <p>There are a few settings a friend can have we've not mentioned yet, so here they are.</p>
 <ul>
-<li>our <em>quicksetup</em> configuration defaults to configuring the apps (via <a href="../remoteconfig/">inline or .otrc</a> in MQTT mode. Setting <code>httpmode</code> to <code>True</code> changes that to HTTP for this particular friend (e.g. <code>httpmode: True</code>).</li>
-</ul>
-<p>-different passwords are auto-generated during bootstrapping and result in distinct (per user) and random 20-character passwords. Should you wish to explicit configure a specific password, do so by setting <code>password</code> to a string of your choice (e.g. <code>password: "supersecr1t"</code>). Note that this password will be visible in the configuration and in the <code>*.pass</code> files. Further note, that all entries for a specific user will re-use the first password (specified or randomly generated) set for said user.</p>
-<ul>
-<li>set up <a href="../encrypt/">payload encryption</a> for a particular friend by specifying a <code>secret</code> which is either the secret itself (e.g. <code>secret: "bla009"</code>) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. <code>secret: "/home/jane/.secret"</code>).</li>
+<li>
+<p>our <em>quicksetup</em> configuration defaults to configuring the apps (via <a href="../remoteconfig/">inline or .otrc</a> in MQTT mode. Setting <code>httpmode</code> to <code>True</code> changes that to HTTP for this particular friend (e.g. <code>httpmode: True</code>).</p>
+</li>
+<li>
+<p>different passwords are auto-generated during bootstrapping and result in distinct (per user) and random 20-character passwords. Should you wish to explicit configure a specific password, do so by setting <code>password</code> to a string of your choice (e.g. <code>password: "supersecr1t"</code>). Note that this password will be visible in the configuration and in the <code>*.pass</code> files. Further note, that all entries for a specific user will re-use the first password (specified or randomly generated) set for said user.</p>
+</li>
+<li>
+<p>set up <a href="../encrypt/">payload encryption</a> for a particular friend by specifying a <code>secret</code> which is either the secret itself (e.g. <code>secret: "bla009"</code>) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. <code>secret: "/home/jane/.secret"</code>).</p>
+</li>
 </ul>
 <h2 id="global">Global</h2>
 <ul>
