@@ -151,6 +151,14 @@ uid=0(root) gid=0(root) groups=0(root)
 <p>You are logged into your VPS either as <code>root</code> or as an unprivileged user. Three steps will get the installer going:</p>
 <ol>
 <li>
+<p>ensure you are running a supported operating system (e.g. <code>bookworm</code>) by running</p>
+<pre><code>$ hostnamectl
+...
+Operating System: Debian GNU/Linux 12 (bookworm)
+...
+</code></pre>
+</li>
+<li>
 <p>obtain our <em>quicksetup</em> installer; we can't do this for you, but it's easy: you clone our repository.</p>
 <pre><code>$ sudo apt install -y git    # not required on Ubuntu
 $ git clone --depth=1 https://github.com/owntracks/quicksetup
