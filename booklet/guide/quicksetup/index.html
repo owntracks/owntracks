@@ -355,7 +355,14 @@ Enter host password for user 'jane':
 <p>There's quite a bit going on in the background, so we want to give you some tips on how to go about debugging or finding out what's actually going on.</p>
 <ul>
 <li>
-<p>The MQTT broker logs information on incoming requests.</p>
+<p>Verify the required services are running:</p>
+<pre><code>$ systemctl status ot-recorder
+$ systemctl status mosquitto
+$ systemctl status nginx
+</code></pre>
+</li>
+<li>
+<p>The MQTT broker logs information on incoming requests:</p>
 <pre><code>$ tail -f /var/log/mosquitto/mosquitto.log
 </code></pre>
 </li>
@@ -368,6 +375,11 @@ Enter host password for user 'jane':
 <p>The OwnTracks Recorder prints diagnostics to its console, but that console is typically not visible as it's a background service. Use <em>journalctl</em> or <em>syslog</em> on Ubuntu</p>
 <pre><code>$ journalctl -u ot-recorder -f
 $ tail -f /var/log/syslog | grep ot-recorder
+</code></pre>
+</li>
+<li>
+<p>When <code>jane</code> has successfully published a location from her device (here: <code>nokia</code>), verify it's actually arrived at your recorder:</p>
+<pre><code>$ tail /var/spool/owntracks/recorder/store/jane/nokia/YYYY-MM.rec
 </code></pre>
 </li>
 </ul>
