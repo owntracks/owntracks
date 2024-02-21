@@ -201,9 +201,7 @@ $ nano configuration.yaml
 </li>
 </ol>
 <p>This last step will install a program which will begin the actual installation. The program is called Ansible and it uses a file provided by <em>quicksetup</em> to begin configuring all the services as described above.</p>
-<pre><code>    Shall we publish a test location message when done? [y]: y
-
-    PLAY [OwnTracks Quick Setup] ********************************************************
+<pre><code>    PLAY [OwnTracks Quick Setup] ********************************************************
 
     TASK [Gathering Facts] **************************************************************
     ok: [localhost]
@@ -229,7 +227,6 @@ $ nano configuration.yaml
     TASK [system: install required packages]
     ...
 </code></pre>
-<p>Go ahead and answer the first question with <code>y</code> in order to have a demo location published so you see something on our maps before you connect your phone.</p>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt. Some of the steps will take longer than others, for instance we install several software packages which takes a bit.</p>
 <p>Should you wish to, say, add a friend at a later stage, edit <code>configuration.yaml</code>, and re-run <code>./bootstrap.sh</code> as you did earlier. As often as you wish.</p>
 <h2 id="initial-testing">Initial testing</h2>

@@ -115,7 +115,7 @@
 }
 </code></pre>
 <h3 id="creating-a-card">Creating a card</h3>
-<p>Cards can be created with shell scripts, with a webapp, or on iOS with the OwnTracks app itself.</p>
+<p>Cards can be created with shell scripts, say, or on iOS with the OwnTracks app itself.</p>
 <h4 id="shell-script">Shell Script</h4>
 <p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
 <ul>
@@ -126,14 +126,9 @@
 </ul>
 <p>These utilities create a <em>card</em> on standard output, and you typically then publish the result as a retained message to your MQTT broker:</p>
 <pre><code>./github2card.py defunkt &gt; my-card.json
-mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r
+mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r -q 2
 </code></pre>
-<p>Note the topic branch ending in <code>info</code> and note the use of the retain flag (<code>-r</code>).</p>
-<h4 id="webapp">Webapp</h4>
-<p><a href="https://avanc.github.io/owntracks-cards/">This is a webapp</a> to create and edit <a href="./">OwnTracks cards</a>.
-It can be either used to just create the JSON representation of the card, which has to be published to the MQTT broker manually. Or it can directly publish the card to an MQTT broker connected via websockets.
-Just head over to the <a href="https://avanc.github.io/owntracks-cards/">demo</a> and create a card. Configure your MQTT broker by clicking the connection state.
-The source code can be found on <a href="https://github.com/avanc/owntracks-cards">Github</a>.</p>
+<p>Note the topic branch ending in <code>info</code> and note the use of the retain (<code>-r</code>) and qos (<code>-q</code>) flags.</p>
 <h4 id="ios-owntracks">iOS OwnTracks</h4>
 <p>on iOS and iPadOS the <em>Create Card</em> option in <em>Settings</em> permits creating a card directly on device. The app permits entering a name for the card as well as use the on-device camera to take a photograph or select from the photo library to use for the face element of the card. Hitting <em>Save</em> in the app then publishes the card to the current user's topic.</p>
 <h3 id="generating-the-face-image">Generating the face image</h3>

@@ -107,16 +107,10 @@
                 <h2 id="quicksetup-extras">Quicksetup Extras</h2>
 <p>There are some additional features of <a href="../../guide/quicksetup/">Quicksetup</a> we describe here.</p>
 <h2 id="mqtt">MQTT</h2>
-<p>During bootstrapping <em>quicksetup</em> creates a user for the MQTT broker with additional permissions:</p>
-<pre><code>user _lr
-topic read #
-topic read $SYS/#
-topic write owntracks/#
-</code></pre>
+<p>During bootstrapping <em>quicksetup</em> creates a user for the MQTT broker with additional permissions. Specifically, the user <code>_lr</code> is permitted to publish in <code>owntracks/#</code>: the idea is that this user can, for instance, be used to clear other users' OwnTracks topics, etc.</p>
 <p>The password for this user is randomly generated and stored in a file in the <em>userdata</em> directory. The following invocation can be used from the command line:</p>
 <pre><code class="language-console">$ mosquitto_pub -u _lr -P &quot;$(cat /usr/local/owntracks/userdata/.lr.pw)&quot; ...
 </code></pre>
-<p>The idea is that this user can, for instance, be used to clear other users' OwnTracks topics, etc.</p>
               
             </div>
           </div><footer>
