@@ -147,16 +147,16 @@
 </tbody>
 </table>
 <p>For example, this JSON might be published when entering a region:</p>
-<pre><code>{
-  "_type": "transition",
-  "desc": "My favorite coffee shop (Delaville)",
-  "event": "enter",
-  "lat": 48.87069,
-  "lon": 2.34916,
-  "rid": "f7676c",
-  "tid": "j1",
-  "tst": 1707057574,
-  "wtst": 1610104395
+<pre><code class="language-json">{
+      &quot;_type&quot;: &quot;transition&quot;,
+      &quot;desc&quot;: &quot;My favorite coffee shop (Delaville)&quot;,
+      &quot;event&quot;: &quot;enter&quot;,
+      &quot;lat&quot;: 48.87069,
+      &quot;lon&quot;: 2.34916,
+      &quot;rid&quot;: &quot;f7676c&quot;,
+      &quot;tid&quot;: &quot;j1&quot;,
+      &quot;tst&quot;: 1707057574,
+      &quot;wtst&quot;: 1610104395
 }
 </code></pre>
 <p>If you set up a region (or waypoint or geo-fence, you get the drift), the app publishes that region (with <code>retain=0</code> irrespective of your general preference) to the base topic with <code>/waypoint</code> tacked onto the topic (e.g. <code>owntracks/&lt;user&gt;/&lt;device&gt;/waypoint</code>) with the payload for <code>_type=waypoint</code> as specified in the <a href="../../tech/json/">JSON page</a>. Entering or leaving a waypoint will be published as a <code>transition</code> message and will contain a <code>wtst</code> (for historical purposes) with the timestamp of when the region was originally defined. (Note that that branch is <code>/waypoint</code> -- singular.)</p>
@@ -197,7 +197,39 @@ developers who will wish to associate the region IDs (<code>rid</code>) with the
 <p>On Android, regions can be configured on a separate activity. Coordinates for the geographical region can be entered by hand or by using the place picker.  </p>
 <h3 id="remote-loading-of-regions">Remote loading of regions</h3>
 <p>Instead of configuring multiple regions on the device, they can be loaded <a href="../remoteconfig/">remotely</a> with the <code>setWaypoints</code> cmd message if remote configuration is enabled on the device. </p>
-<p>You can use this to import individual regions or groups of pre-configured regions which are merged into the existing regions definition on the device. Recall, however, that the <code>rid</code> element is like a <em>key</em> which uniquely identifies each region / waypoint.</p>
+<p>You can use this to import individual regions or groups of pre-configured regions which are merged into the existing regions definition on the device. Recall, however, that the <code>rid</code> element is like a <em>key</em> which uniquely identifies each region / waypoint; leave it unchanged when modifying and resubmitting a waypoint.</p>
+<pre><code class="language-json">{
+    &quot;_type&quot;: &quot;cmd&quot;,
+    &quot;action&quot;: &quot;setWaypoints&quot;,
+    &quot;waypoints&quot;: {
+        &quot;_type&quot;: &quot;waypoints&quot;,
+        &quot;waypoints&quot;: [
+            {
+                &quot;_type&quot;: &quot;waypoint&quot;,
+                &quot;tst&quot;: 1708625557,
+                &quot;rid&quot;: &quot;my-region-id-1&quot;,
+                &quot;desc&quot;: &quot;home&quot;,
+                &quot;rad&quot;: 100,
+                &quot;lat&quot;: 30.0,
+                &quot;lon&quot;: 40.0
+            },
+            {
+                &quot;_type&quot;: &quot;waypoint&quot;,
+                &quot;tst&quot;: 1708625558,
+                &quot;rid&quot;: &quot;my-region-id-2&quot;,
+                &quot;desc&quot;: &quot;work&quot;,
+                &quot;rad&quot;: 100,
+                &quot;lat&quot;: 30.1,
+                &quot;lon&quot;: 40.1
+            }
+        ]
+    }
+}
+</code></pre>
+<p>Assuming the above is in a file named <code>wp.json</code>, a user can publish that to themselves (or an authorized user to any other) as follows (note the use of <code>jq -c</code> which ensures a single line of JSON and the benefit that <code>jq</code> verifies for valid JSON):</p>
+<pre><code class="language-console">$ jq -c . wp.json |
+      mosquitto_pub -u username -P 'password' -t owntracks/jane/nokia/cmd -q 1 -l
+</code></pre>
 <h3 id="deleting-regions">Deleting regions</h3>
 <p>On iOS a region can be deleted by swiping it away. On Android, a long press is required. Note that deleting a region on the device does not publish anything to the MQTT broker or HTTP server.</p>
 <h3 id="beacons-ranging">Beacons Ranging</h3>
