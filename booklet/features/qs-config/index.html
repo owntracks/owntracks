@@ -139,6 +139,18 @@
 <p>set up <a href="../encrypt/">payload encryption</a> for a particular friend by specifying a <code>secret</code> which is either the secret itself (e.g. <code>secret: "bla009"</code>) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. <code>secret: "/home/jane/.secret"</code>).</p>
 </li>
 </ul>
+<h2 id="friend-specific-mqtt-acls">Friend-specific MQTT ACLs</h2>
+<p>During <em>bootstrapping</em>, Quicksetup configures a default set of access control lists (ACL) for the Mosquitto broker which basically allow all friends to "see" eachother, receive their enter/leave events, and see their <a href="../card/">cards</a>. This will likely be the typical mode of operation you wish your OwnTracks Mosquitto broker to operate in.</p>
+<p>There might be situations, however, in which you wish to give a specific friend a particular ACL, maybe to restrict, say, whom that friend might see (e.g. your friend should see your location but not that of your spouse).</p>
+<p>To accomplish this, create a directory <code>acl/</code> in the directory in which the <code>bootstrap.sh</code> program is located and add files named <code>&lt;username&gt;.acl</code> to that directory. For example, the user Anouk should have the following ACL:</p>
+<pre><code>  $ cat acl/anouk.acl
+  user anouk
+  topic readwrite owntracks/anouk/#
+  topic read owntracks/jane/nokia
+  topic read owntracks/jane/+/event
+  topic read owntracks/jane/+/info
+</code></pre>
+<p>Re-running <code>./bootstrap.sh</code> will populate this specific ACL in the Mosquitto ACL file (<code>/etc/mosquitto/mosquitto.acl</code>) whereas for all other friends a built-in default will be used.</p>
 <h2 id="global">Global</h2>
 <ul>
 <li>with <code>lua_script</code> you configure the path to a <a href="../../tech/lua/">Recorder Lua script</a>  which is written into <code>/etc/defaults/ot-recorder</code> for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.</li>
