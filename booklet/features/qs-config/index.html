@@ -151,6 +151,23 @@
   topic read owntracks/jane/+/info
 </code></pre>
 <p>Re-running <code>./bootstrap.sh</code> will populate this specific ACL in the Mosquitto ACL file (<code>/etc/mosquitto/mosquitto.acl</code>) whereas for all other friends a built-in default will be used.</p>
+<h2 id="friend-specific-waypoints-regions">Friend-specific Waypoints (Regions)</h2>
+<p>In order for, say, a family to share initial geofence configuration (e.g. <code>"Home"</code>, <code>"School"</code>, etc.) create a directory called <code>waypoints/</code> relative to <code>./bootstrap.sh</code> and populate files <code>&lt;username&gt;.json</code> which contain an array of <a href="../waypoints/">waypoints</a> you wish to add to a particular user's initial configuration. <a href="../beacons/">OTRW</a> files are likewise accepted: the list of waypoints is read from <code>&lt;username&gt;.otrw</code> and merged with all the others.</p>
+<p>For instance, we create a file <code>waypoints/anouk.json</code> with the following content:</p>
+<pre><code>  [
+    {
+      "_type": "waypoint",
+      "tst": 1361636517,
+      "rid": "blauw-utrecht-nl",
+      "desc": "Restaurant Blauw",
+      "rad": 50,
+      "lat": 52.08782,
+      "lon": 5.119438
+    }
+  ]
+</code></pre>
+<p>These files must contain an array of valid waypoints, and must be valid JSON. Additionally, OTRW files must be of <code>_type: waypoints</code> and have a key <code>waypoints</code>.</p>
+<p>During bootstrapping, the users' <a href="../remoteconfig/">inline or .otrc</a> configuration is adjusted accordingly.</p>
 <h2 id="global">Global</h2>
 <ul>
 <li>with <code>lua_script</code> you configure the path to a <a href="../../tech/lua/">Recorder Lua script</a>  which is written into <code>/etc/defaults/ot-recorder</code> for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.</li>
