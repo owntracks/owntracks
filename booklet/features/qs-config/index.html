@@ -153,6 +153,20 @@
 <p>Re-running <code>./bootstrap.sh</code> will populate this specific ACL in the Mosquitto ACL file (<code>/etc/mosquitto/mosquitto.acl</code>) whereas for all other friends a built-in default will be used.</p>
 <h2 id="friend-specific-waypoints-regions">Friend-specific Waypoints (Regions)</h2>
 <p>In order for, say, a family to share initial geofence configuration (e.g. <code>"Home"</code>, <code>"School"</code>, etc.) create a directory called <code>waypoints/</code> relative to <code>./bootstrap.sh</code> and populate files <code>&lt;username&gt;.json</code> which contain an array of <a href="../waypoints/">waypoints</a> you wish to add to a particular user's initial configuration. <a href="../beacons/">OTRW</a> files and YAML files (<code>&lt;username&gt;.yaml</code>) are likewise accepted: the list of waypoints is read from <code>&lt;username&gt;.otrw</code> and merged with all the others.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">iOS</th>
+<th style="text-align: center;">Android</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Waypointslist" src="../../guide/app/assets-i/sm-ios-waypoints.png" /></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 <p>For instance, we create a file <code>waypoints/anouk.json</code> with the following content:</p>
 <pre><code>  [
     {
@@ -167,7 +181,8 @@
   ]
 </code></pre>
 <p>These files must contain an array of valid waypoints, and must be valid JSON. Additionally, OTRW files must be of <code>_type: waypoints</code> and have a key <code>waypoints</code>. As a convenience, YAML files (which may be easier to edit) containing an array of waypoints are also supported:</p>
-<pre><code>  - desc: "Delaville Café"
+<pre><code>  - _type: waypoint
+    desc: "Delaville Café"
     rid: delaville-cafe
     tst: 1708879121
     rad: 70
