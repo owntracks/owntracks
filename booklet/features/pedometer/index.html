@@ -104,11 +104,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="pedometer">Pedometer</h2>
+                <h2 id="pedometer">Pedometer<a class="headerlink" href="#pedometer" title="Permanent link">#</a></h2>
 <p>The iPhone 5S has a built-in pedometer which we’ve leveraged into OwnTracks (iOS only).
 The way this works is that the iPhone counts the steps you take, and OwnTracks
 can report these in a JSON payload upon request.</p>
-<h3 id="command">Command</h3>
+<h3 id="command">Command<a class="headerlink" href="#command" title="Permanent link">#</a></h3>
 <p>In order for the app to actually report the steps counted by the device, you
 send it a specially formatted command. (The device does not periodically publish steps on its own -- you must trigger it.)</p>
 <pre><code>mosquitto_pub -q 2 -t owntracks/jj/5s/cmd -m '{&quot;_type&quot; : &quot;cmd&quot;, &quot;action&quot;: &quot;reportSteps&quot;}'
@@ -125,7 +125,7 @@ to your MQTT broker.</p>
     &quot;tst&quot;: 1400455130
 }
 </code></pre>
-<h3 id="daily-reports">Daily reports</h3>
+<h3 id="daily-reports">Daily reports<a class="headerlink" href="#daily-reports" title="Permanent link">#</a></h3>
 <p>We use the following small program to issue the JSON needed to request the
 steps for the 00:00 - 23:59 time-frame of this particular day (or the day before, etc.)</p>
 <pre><code class="language-python">#!/usr/bin/env python
@@ -163,7 +163,7 @@ print json.dumps(payload)
 deliver the message to the the phone.</p>
 <pre><code>50 22 * * * /usr/local/bin/reportsteps | mosquitto_pub -q 2 -t owntracks/jpm/5s/cmd -l
 </code></pre>
-<h4 id="daily-reports-with-openhab">Daily reports with Openhab</h4>
+<h4 id="daily-reports-with-openhab">Daily reports with Openhab<a class="headerlink" href="#daily-reports-with-openhab" title="Permanent link">#</a></h4>
 <p>With openhab it's quite easy to user rules engine from openhab and to not rely on servers crontab.</p>
 <p>At first you have to define mqtt retain broker (MQTT v. 1 is used) - simply add configuration to /etc/openhab2/services/mqtt.cfg</p>
 <pre><code>mqtt-retain.url=tcp://192.168.1.1:1884

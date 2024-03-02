@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="ideas">Ideas</h1>
+                <h1 id="ideas">Ideas<a class="headerlink" href="#ideas" title="Permanent link">#</a></h1>
 <p>Over the course of time, we've had people propose a number of ideas for OwnTracks. Some of these we thought excellent, others we thought would maybe sometime be nice to have, and others, well, see for yourself. Be that as it may, this page lists a few of these in the hope that you'll see we know of them and if you dream up something new, that you'll first check wether we've heard of it already.</p>
 <ul>
 <li>Allow KML, GPX export. This we do enable in the back-end.</li>
@@ -113,9 +113,9 @@
 <li>Have the device track a route; we do this in the back-end.</li>
 <li>Feature to start a "sequence" which sets two custom attributes for transport mode (e.g. bicycle, walk, etc.) and/or a route name (e.g. drivehome2work_01032021) until manually turned off. If no sequence is started the attribute is just left empty. Makes querying the data much easier.</li>
 </ul>
-<h2 id="short-term">Short term</h2>
-<h2 id="mid-term">Mid-term</h2>
-<h2 id="long-term">Long-term</h2>
+<h2 id="short-term">Short term<a class="headerlink" href="#short-term" title="Permanent link">#</a></h2>
+<h2 id="mid-term">Mid-term<a class="headerlink" href="#mid-term" title="Permanent link">#</a></h2>
+<h2 id="long-term">Long-term<a class="headerlink" href="#long-term" title="Permanent link">#</a></h2>
 <ul>
 <li><del>Add presence. Are my friends in the area?</del></li>
 <li><del>Needs friends/family on same broker</del></li>
@@ -124,16 +124,16 @@
 <li>Queue updates on device (with <code>tst</code> etc) to be PUBlished upon available connection</li>
 <li>NFC support, <a href="https://community.owntracks.org/topic/38/nfc-support">suggested by mrizvic</a></li>
 </ul>
-<h2 id="very-long-term-aka-neat-ideas">Very-long term, a.k.a. "Neat ideas"</h2>
+<h2 id="very-long-term-aka-neat-ideas">Very-long term, a.k.a. "Neat ideas"<a class="headerlink" href="#very-long-term-aka-neat-ideas" title="Permanent link">#</a></h2>
 <ul>
 <li>Publish incoming phone call (caller-id), <a href="http://twitter.com/bordignon/status/372627079059079168">submitted by @bordingnon</a>. JPM: Also SMS? Have to force TLS then, at least.</li>
 <li>Requested in #86: "app should register a subscriprion (configurable topic) a) if someone sends a text message it should be displayed as popup window b) if someone sends an HTML message it should be opened in a embedded browser"</li>
 <li>Generalized messaging app </li>
 <li>Indoors edition with iBeacons as requested in <a href="https://github.com/binarybucks/mqttitude/issues/296">#296</a></li>
 </ul>
-<h4 id="waypoints">Waypoints</h4>
+<h4 id="waypoints">Waypoints<a class="headerlink" href="#waypoints" title="Permanent link">#</a></h4>
 <p><del>JPM added 2013-11-22: We currently have "Annotations" on iOS (see above). I'd like to be able to have an annotation PUBlished to the broker so that m2s (or other processors) can pick it up. I propose the following payload: <code>{ "_type": "_waypoint", "tst":"xx", "lat":"&lt;current&gt;", "lon":&lt;current&gt;", "text":"utf-8 text" }</code></del></p>
-<h4 id="remote-control">Remote control</h4>
+<h4 id="remote-control">Remote control<a class="headerlink" href="#remote-control" title="Permanent link">#</a></h4>
 <ul>
 <li>Maybe add remote-control for enabling "move-mode" on iOS (https://github.com/binarybucks/mqttitude/issues/139)</li>
 <li>Interesting idea in <a href="https://github.com/binarybucks/mqttitude/issues/227">#227</a>: device can change mode (e.g. <em>silent</em>, <em>airplane mode</em>, etc.) depending on location and by listening to a remote-control topic with which it is instructed to switch modes.</li>

@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="traccar">Traccar</h2>
+                <h2 id="traccar">Traccar<a class="headerlink" href="#traccar" title="Permanent link">#</a></h2>
 <p><a href="https://www.traccar.org">Traccar</a> is a free and open source GPS tracking system for which there exists an <code>OwnTracks</code> protocol decoder (called <code>owntracks</code>)  which is, by default, configured on TCP port 5144 on the Traccar server:</p>
 <pre><code class="language-xml">&lt;entry key='owntracks.port'&gt;5144&lt;/entry&gt;
 </code></pre>
@@ -114,12 +114,12 @@
 <p>To make Traccar accept a connection from an owntracks client, you set a matching <em>identifier</em>. This identifier is per default the <a href="../tid/">tid</a> of your device. If you have configured a <code>topic</code> for your device, owntracks will identify  using the <code>topic</code> instead of the <code>tid</code> (currently iOS only). </p>
 <p><img alt="Traccar device configuration" src="../images/traccar-device.jpg" /></p>
 <p>An example of a configuration using a <code>topic</code> of <code>owntracks/jane/phone</code> to identify against the Traccar server.</p>
-<h3 id="notes">Notes</h3>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
 <ul>
 <li>Neither encryption nor friends are supported in Traccar.</li>
 <li>If you see a 400 error in the Traccar log, this can mean the <em>identifier</em> you configured for the Traccar device doesn't match the one sent by the OwnTracks app; try the other one, <code>tid</code> or <code>topic</code>.</li>
 </ul>
-<h3 id="http-payloads">HTTP Payloads</h3>
+<h3 id="http-payloads">HTTP Payloads<a class="headerlink" href="#http-payloads" title="Permanent link">#</a></h3>
 <p>HTTP POST payloads shall contain at least the elements <code>lat</code>, <code>lon</code>, <code>_type:location</code>, <code>tst</code>, and either or both of <code>tid</code> and <code>topic</code>. If <code>topic</code> is contained in the payload, that will be used as Traccar's <em>identifier</em> (in which case <code>tid</code> will be added to attributes), else <code>tid</code>.</p>
 <pre><code>  {"lon":2.29513,"lat":48.85833,"_type":"location","tst":1497476456, "tid":"JJ"}
 

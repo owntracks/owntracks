@@ -104,25 +104,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="client-certificates">Client certificates</h2>
+                <h2 id="client-certificates">Client certificates<a class="headerlink" href="#client-certificates" title="Permanent link">#</a></h2>
 <p>The OwnTracks iOS and Android clients can be configured to use TLS client
 certificates to authenticate against their MQTT broker. This is the next best
 thing to two-factor authentication, where the apps have a TLS key and a
 certificate which has to be presented to the broker for successful
 authentication.</p>
-<h3 id="mosquitto">Mosquitto</h3>
+<h3 id="mosquitto">Mosquitto<a class="headerlink" href="#mosquitto" title="Permanent link">#</a></h3>
 <p>When using the Mosquitto <a href="../../guide/broker/">broker</a> support for TLS
 certificates can be enabled as follows:</p>
 <pre><code>require_certificate true
 use_identity_as_username true
 </code></pre>
-<h3 id="client-certs">Client certs</h3>
+<h3 id="client-certs">Client certs<a class="headerlink" href="#client-certs" title="Permanent link">#</a></h3>
 <p>To create a client certificate and key, you can use, say, <code>generate-CA.sh</code> from
 our <a href="https://github.com/owntracks/tools/tree/master/TLS">tools repository</a>.</p>
 <pre><code class="language-bash">./generate-CA.sh client jjolie
 </code></pre>
 <p>This produces at least two files which are required on the OwnTracks devices: a <code>.key</code> file and a <code>.crt</code> file.</p>
-<h3 id="pkcs12">PKCS#12</h3>
+<h3 id="pkcs12">PKCS#12<a class="headerlink" href="#pkcs12" title="Permanent link">#</a></h3>
 <p>In order to safely transport a user's key and certificate to the OwnTracks app,
 we make use of the <a href="https://en.wikipedia.org/wiki/PKCS_12">PKCS#12</a> container
 format. OpenSSL's <code>pkcs12</code> subcommand creates this container and protects it
@@ -138,14 +138,14 @@ with a passphrase you specify. This passphrase we will later require in the app.
 <p>(Should you be using an older version of the <code>openssl</code> binary, omit the <code>-legacy</code> option.)</p>
 <p>You now send the PKCS#12 file as attachment to the device, e.g. by e-mail. Note that for iOS, the file must have a <code>.otrp</code> extension so that it can be opened in OwnTracks.
 You also send the CA certificate to the device and install it there, as discussed in <a href="../tls/">TLS</a></p>
-<h3 id="android">Android</h3>
+<h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">#</a></h3>
 <ul>
 <li>Save the certificate to your device in an easy accessible location </li>
 <li>Import the certificate into the app (Preferences, Connection, Security, Client certificate, Select) by opening it with the file choser. </li>
 <li>The file will be copied to the secure storage location of the app. If the import is successfull, the original file can be removed from the device. </li>
 <li>Specify the certificate password (certificates without password are not supported). </li>
 </ul>
-<h3 id="ios">iOS</h3>
+<h3 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">#</a></h3>
 <p>We recommend you proceed as follows:</p>
 <ol>
 <li>Install the <a href="../tls/">TLS</a> CA certificate in your system keystore by sending it (e.g. via e-mail) to your device and installing it in the system profile. (Click on the certificate and follow iOS' instructions.)</li>

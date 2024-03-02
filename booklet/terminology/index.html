@@ -104,38 +104,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="terminology">Terminology</h1>
+                <h1 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">#</a></h1>
 <p>Some of the terms we use can be a little confusing at times, so here's a list of terms you should be familiar with.</p>
-<h4 id="mqtt">MQTT</h4>
+<h4 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">#</a></h4>
 <p>MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium. For example, it has been used in sensors communicating to a broker via satellite link, over occasional dial-up connections with healthcare providers, and in a range of home automation and small device scenarios. It is also ideal for mobile applications because of its small size, low power usage, minimised data packets, and efficient distribution of information to one or many receivers</p>
 <p>And what does OwnTracks have to do with all of this? Well, the OwnTracks apps are MQTT clients which publish messages (your location) and subscribe to and consume messages (e.g. the locations of <a href="../features/friends/">your friends</a>). OwnTracks' location updates land in the cauldron when the app publishes a location message from which it can be consumed by any number of subscribers to the same <a href="../guide/broker/">MQTT broker</a>.</p>
 <p>There are <a href="../guide/clients/">a number of clients</a> which do that already, and we're even going to show you how you can <a href="../tech/program/">create your own client</a> for specific purposes.</p>
-<h4 id="pubsub">Pub/Sub</h4>
+<h4 id="pubsub">Pub/Sub<a class="headerlink" href="#pubsub" title="Permanent link">#</a></h4>
 <p>In MQTT-speak, clients publish messages, which means they send or transmit them, and other clients subscribe to messages, meaning they receive them. Messages are published on topics, and the MQTT server, which is called a broker is configured to permit or deny clients doing so.</p>
-<h4 id="broker">broker</h4>
+<h4 id="broker">broker<a class="headerlink" href="#broker" title="Permanent link">#</a></h4>
 <p>A MQTT <em>broker</em> is a server that enables the communication between clients. The broker is responsible for distributing messages to interested clients based on the topic of a message. </p>
-<h4 id="publish">publish</h4>
+<h4 id="publish">publish<a class="headerlink" href="#publish" title="Permanent link">#</a></h4>
 <p>The act of sending a message to a broker. </p>
-<h4 id="topic">topic</h4>
+<h4 id="topic">topic<a class="headerlink" href="#topic" title="Permanent link">#</a></h4>
 <p>Each message that is published by a client is send to a specific topic on the broker. Clients can opt to receive only certain or all messages depending on which topic they subscribe to. </p>
-<h4 id="subscribe">subscribe</h4>
+<h4 id="subscribe">subscribe<a class="headerlink" href="#subscribe" title="Permanent link">#</a></h4>
 <p>Clients can specify to receive messages that are published to specific topics by subscribing to them. A client that is subscribed to the topic <code>owntracks/jane/iphone</code> will, for example, not receive a message that is published to <code>owntracks/john/nexus</code>.</p>
-<h4 id="qos">QoS</h4>
+<h4 id="qos">QoS<a class="headerlink" href="#qos" title="Permanent link">#</a></h4>
 <p><em>QoS</em> or <em>Quality of Service</em>, specifies how the app should attempt to publish messages to an MQTT broker.</p>
 <ul>
 <li>QoS=0. The message is delivered at most once, or it is not delivered at all. Its delivery across the network is not acknowledged.</li>
 <li>QoS=1. The message is always delivered at least once. If the sender does not receive an acknowledgment, the message is sent again with the DUP flag set until an acknowledgment is received. As a result receiver can be sent the same message multiple times, and might process it multiple times.</li>
 <li>QoS=2. The message is always delivered exactly once. This is the safest but slowest method of transfer.</li>
 </ul>
-<h4 id="retain">Retain</h4>
+<h4 id="retain">Retain<a class="headerlink" href="#retain" title="Permanent link">#</a></h4>
 <p>When a message is published to a <em>broker</em> with the <em>durable</em> or <em>retain</em> flat
 set, it means that the MQTT broker will attempt to store the last published
 message on a particular topic.</p>
 <p>A client which subscribes to that topic will receive that last retained message once it
 connects to the broker.</p>
-<h4 id="geocoding">Geocoding</h4>
+<h4 id="geocoding">Geocoding<a class="headerlink" href="#geocoding" title="Permanent link">#</a></h4>
 <p><em>Reverse geocoding</em> is the act of looking up the address for a pair of coordinates.</p>
-<h4 id="geofence-or-region">Geofence or Region</h4>
+<h4 id="geofence-or-region">Geofence or Region<a class="headerlink" href="#geofence-or-region" title="Permanent link">#</a></h4>
 <p>A <em>geofence</em> or a <em>region</em> is an area around a particular coordinate. Geofences will trigger certain actions once the device enters or leaves the setup area. </p>
               
             </div>

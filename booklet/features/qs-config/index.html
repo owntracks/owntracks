@@ -104,9 +104,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="additional-quicksetup-configuration">Additional Quicksetup Configuration</h2>
+                <h2 id="additional-quicksetup-configuration">Additional Quicksetup Configuration<a class="headerlink" href="#additional-quicksetup-configuration" title="Permanent link">#</a></h2>
 <p>In <a href="../../guide/quicksetup/">Quicksetup</a> we describe how it works and how you begin using <code>configuration.yaml</code> to easily bootstrap your OwnTracks platform.</p>
-<h2 id="friends-list-syntax">Friends list syntax</h2>
+<h2 id="friends-list-syntax">Friends list syntax<a class="headerlink" href="#friends-list-syntax" title="Permanent link">#</a></h2>
 <p>Friends are basically configured like this in the <code>configuration.yaml</code> file:</p>
 <pre><code>          friends:
             - { tid: JJ, username: jane,   devicename: nokia }
@@ -126,7 +126,7 @@
               username: another
               ...
 </code></pre>
-<h2 id="friend-specific-settings">Friend-specific settings</h2>
+<h2 id="friend-specific-settings">Friend-specific settings<a class="headerlink" href="#friend-specific-settings" title="Permanent link">#</a></h2>
 <p>There are a few settings a friend can have we've not mentioned yet, so here they are.</p>
 <ul>
 <li>
@@ -139,7 +139,7 @@
 <p>set up <a href="../encrypt/">payload encryption</a> for a particular friend by specifying a <code>secret</code> which is either the secret itself (e.g. <code>secret: "bla009"</code>) or, if the value begins with a slash, the path to a filename which contains the secret (e.g. <code>secret: "/home/jane/.secret"</code>).</p>
 </li>
 </ul>
-<h2 id="friend-specific-mqtt-acls">Friend-specific MQTT ACLs</h2>
+<h2 id="friend-specific-mqtt-acls">Friend-specific MQTT ACLs<a class="headerlink" href="#friend-specific-mqtt-acls" title="Permanent link">#</a></h2>
 <p>During <em>bootstrapping</em>, Quicksetup configures a default set of access control lists (ACL) for the Mosquitto broker which basically allow all friends to "see" eachother, receive their enter/leave events, and see their <a href="../card/">cards</a>. This will likely be the typical mode of operation you wish your OwnTracks Mosquitto broker to operate in.</p>
 <p>There might be situations, however, in which you wish to give a specific friend a particular ACL, maybe to restrict, say, whom that friend might see (e.g. your friend should see your location but not that of your spouse).</p>
 <p>To accomplish this, create a directory <code>acl/</code> in the directory in which the <code>bootstrap.sh</code> program is located and add files named <code>&lt;username&gt;.acl</code> to that directory. For example, the user Anouk should have the following ACL:</p>
@@ -151,19 +151,19 @@
   topic read owntracks/jane/+/info
 </code></pre>
 <p>Re-running <code>./bootstrap.sh</code> will populate this specific ACL in the Mosquitto ACL file (<code>/etc/mosquitto/mosquitto.acl</code>) whereas for all other friends a built-in default will be used.</p>
-<h2 id="friend-specific-waypoints-regions">Friend-specific Waypoints (Regions)</h2>
+<h2 id="friend-specific-waypoints-regions">Friend-specific Waypoints (Regions)<a class="headerlink" href="#friend-specific-waypoints-regions" title="Permanent link">#</a></h2>
 <p>In order for, say, a family to share initial geofence configuration (e.g. <code>"Home"</code>, <code>"School"</code>, etc.) create a directory called <code>waypoints/</code> relative to <code>./bootstrap.sh</code> and populate files <code>&lt;username&gt;.json</code> which contain an array of <a href="../waypoints/">waypoints</a> you wish to add to a particular user's initial configuration. <a href="../beacons/">OTRW</a> files and YAML files (<code>&lt;username&gt;.yaml</code>) are likewise accepted: the list of waypoints is read from <code>&lt;username&gt;.otrw</code> and merged with all the others.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">iOS</th>
 <th style="text-align: center;">Android</th>
+<th style="text-align: center;">iOS</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><img alt="Waypointslist" src="../../guide/app/assets-i/sm-ios-waypoints.png" /></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><img alt="one waypoint" src="../../guide/app/assets-a/sm-a-waypoint-laduree.png" /></td>
+<td style="text-align: center;"><img alt="Waypointslist" class="framed" src="../../guide/app/assets-i/sm-ios-waypoints.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -190,7 +190,7 @@
     lon: 2.3491583
 </code></pre>
 <p>During bootstrapping, the users' <a href="../remoteconfig/">inline or .otrc</a> configuration is adjusted accordingly.</p>
-<h2 id="global">Global</h2>
+<h2 id="global">Global<a class="headerlink" href="#global" title="Permanent link">#</a></h2>
 <ul>
 <li>with <code>lua_script</code> you configure the path to a <a href="../../tech/lua/">Recorder Lua script</a>  which is written into <code>/etc/defaults/ot-recorder</code> for the next Recorder start. Use this only after testing your Lua script as the Recorder will fail to start on error.</li>
 </ul>

@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="payload-encryption">Payload encryption</h2>
+                <h2 id="payload-encryption">Payload encryption<a class="headerlink" href="#payload-encryption" title="Permanent link">#</a></h2>
 <p>In addition to the <a href="../tls/">transport encryption via TLS</a> (over MQTT and HTTPS), the OwnTracks apps support payload encryption using <a href="https://github.com/jedisct1/libsodium/">libsodium</a>, in particular <a href="https://libsodium.gitbook.io/doc/secret-key_cryptography/secretbox">secret-key authenticated encryption</a>. We have also implemented support for payload encryption (i.e. decryption) in the <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a>.</p>
 <p>You configure a <em>secret</em> (which you keep secret) in the app's settings. From this moment onwards, the apps encrypt outgoing <a href="../../tech/json/">JSON</a> with this secret and transport the payload in a new JSON object which looks like this:</p>
 <pre><code class="language-json">{
@@ -113,14 +113,14 @@
 }
 </code></pre>
 <p>If you want to share location with a friend, both you and your friend need to share the same <em>secret</em>. A <em>secret</em> should be kept secret; it is an up to 32 octet long passphrase (which the apps pad with binary zeroes) which is required both for encryption as well as for decryption of the payloads. It is not possible to share locations with a friend's device using different <em>secret</em> keys.</p>
-<h3 id="encryption-key">Encryption key</h3>
+<h3 id="encryption-key">Encryption key<a class="headerlink" href="#encryption-key" title="Permanent link">#</a></h3>
 <p>For the OwnTracks apps, the encryption key can be configured as follows:</p>
 <ul>
 <li>Android and iOS via the settings UI / configuration editor</li>
 <li>Android and iOS also via <a href="../remoteconfig/">configuration file</a> from the <code>encryptionKey</code> setting</li>
 </ul>
 <p>The key is a string of up to 32 characters in length which the apps pad with binary zeroes.</p>
-<h3 id="recorder">Recorder</h3>
+<h3 id="recorder">Recorder<a class="headerlink" href="#recorder" title="Permanent link">#</a></h3>
 <p>You can set up multiple decryption keys on the Recorder (but not in the apps). This is to enable, say, different people to use different secrets on the same Recorder.</p>
 <p>Add a key by determining the <em>username</em> and the <em>device name</em> of the client app. Lowercase these, and create a string with the two values separated with a dash. Suppose the <em>username</em> is <code>jjolie</code> and the <em>device name</em> is <code>Phone</code>, the result will be <code>jjolie-phone</code>.</p>
 <p>Load the key into the (running) Recorder:</p>
@@ -134,7 +134,7 @@
 <pre><code class="language-bash">printf &quot;jjolie-phone DELETE&quot; | ocat --load=keys
 </code></pre>
 <p>Be aware that this is a very powerful command that can corrupt your database if you write it incorrectly!</p>
-<h3 id="configuring-encryption-in-quicksetup">Configuring encryption in Quicksetup</h3>
+<h3 id="configuring-encryption-in-quicksetup">Configuring encryption in Quicksetup<a class="headerlink" href="#configuring-encryption-in-quicksetup" title="Permanent link">#</a></h3>
 <p>Using <a href="../../guide/quicksetup/">quicksetup</a> you can optionally configure payload encryption for a user:</p>
 <ul>
 <li>
@@ -162,7 +162,7 @@ jjolie-phone mysecreTpass01
 </li>
 </ul>
 <p>Note that the secret is in clear text in the configuration file, the key file, the Recorder's key store, and in the <code>.otrc</code> file!</p>
-<h2 id="notes">Notes</h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
 <li>Payload encryption makes little sense for just one user on a shared installation. Assume Alice and Bob share a broker. Alice has configured payload encryption and her device publishes a location message. The Recorder receives that payload, decrypts it (assuming it too has Alice's key), and stores the result. Note that the Recorder will not automatically republish Alice's location, so Bob won't receive that data. In order to accomplish this, one would have to configure the Recorder to <a href="../../tech/lua/">republish using Lua</a> those messages with the <code>_decrypted</code> element in them.</li>
 <li>In an environment consisting of a group of people who wish to communicate securely, payload encryption might make sense.</li>

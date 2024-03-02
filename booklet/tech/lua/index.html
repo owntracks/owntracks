@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="lua-hooks">Lua hooks</h2>
+                <h2 id="lua-hooks">Lua hooks<a class="headerlink" href="#lua-hooks" title="Permanent link">#</a></h2>
 <p>If Recorder is compiled with Lua support (which we do by default), a Lua script you provide is launched at startup. Lua is <em>a powerful, fast, lightweight, embeddable scripting language</em>. You can use this to process location publishes in any way you desire: your imagination (and Lua-scripting knowhow) set the limits. Some examples:</p>
 <ul>
 <li>insert received publishes into a database of your choice</li>
@@ -120,11 +120,11 @@
 <li><code>otr.strftime(fmt, t)</code> is a function which takes a format string <code>fmt</code> (see <code>strftime(3)</code>) and an integer number of seconds <code>t</code> and returns a string with the formatted UTC time. If <code>t</code> is 0 or negative, the current system time is used.</li>
 </ul>
 <p>Your Lua script <em>must</em> provide the following functions:</p>
-<h2 id="otr_init"><code>otr_init</code></h2>
+<h2 id="otr_init"><code>otr_init</code><a class="headerlink" href="#otr_init" title="Permanent link">#</a></h2>
 <p>This is invoked at start of Recorder. If the function returns a non-zero value, Recorder unloads Lua and disables its processing; i.e. the <code>hook()</code> will <em>not</em> be invoked on location publishes.</p>
-<h2 id="otr_exit"><code>otr_exit</code></h2>
+<h2 id="otr_exit"><code>otr_exit</code><a class="headerlink" href="#otr_exit" title="Permanent link">#</a></h2>
 <p>This is invoked when the Recorder stops, which it doesn't really do unless you CTRL-C it or send it a SIGTERM signal.</p>
-<h2 id="otr_hook"><code>otr_hook</code></h2>
+<h2 id="otr_hook"><code>otr_hook</code><a class="headerlink" href="#otr_hook" title="Permanent link">#</a></h2>
 <p>This function is invoked at every location publish processed by the Recorder. Your function is passed three arguments:</p>
 <ol>
 <li><em>topic</em> is the topic published to (e.g. <code>owntracks/jane/phone</code>)</li>
@@ -157,7 +157,7 @@
 <pre><code>    written by OwnTracks Recorder version 0.3.0
     It is 17:13:33 in the year 2015 owntracks/jane/phone lat=48.858339 Avenue Anatole France, 75007 Paris, France
 </code></pre>
-<h2 id="republishing-http-posts">Republishing HTTP posts</h2>
+<h2 id="republishing-http-posts">Republishing HTTP posts<a class="headerlink" href="#republishing-http-posts" title="Permanent link">#</a></h2>
 <p>OwnTracks location (and other type) publishes submitted via HTTP are not automatically republished to MQTT. Should you wish to do this, Lua hooks can help accomplish this. The following example illustrates how to do so.</p>
 <pre><code>  -- requires: 
   --   a) Compile recorder with -DLUA and configure

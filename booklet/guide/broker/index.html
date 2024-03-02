@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="mqtt-broker">MQTT broker</h2>
+                <h2 id="mqtt-broker">MQTT broker<a class="headerlink" href="#mqtt-broker" title="Permanent link">#</a></h2>
 <p>An MQTT broker is a service to which MQTT clients connect. These clients publish
 data to specific <em>topics</em> and they can subscribe to one or more <em>topics</em> to receive
 messages. A <em>topic</em> is like an "address" for a particular message. For example,
@@ -115,17 +115,17 @@ use a topic branch called <code>owntracks/username/device</code>, but you can ov
 name if you prefer to. The reason we've chosen that structure is to accomodate
 friends and family on a single broker, taking into consideration that a particular
 user might have more than one device.</p>
-<h2 id="private-broker">Private broker</h2>
+<h2 id="private-broker">Private broker<a class="headerlink" href="#private-broker" title="Permanent link">#</a></h2>
 <p>You set up a private broker under your control. This sounds more difficult
 than it actually is, and there are some very nice brokers you can use free of charge
 on your own infrastructure. As an example, we've written up how to install
 Mosquitto on a Raspberry Pi.</p>
-<h2 id="raspi">RasPi</h2>
+<h2 id="raspi">RasPi<a class="headerlink" href="#raspi" title="Permanent link">#</a></h2>
 <p><img alt="Mosquitto on a Raspbi" src="../images/raspi-broker.png" /></p>
 <p>The hardest bit is installing an OS, say, <a href="http://jpmens.net/2013/09/01/installing-mosquitto-on-a-raspberry-pi/">Raspbian Wheezy</a>, onto an SD card, but there are many tutorials on how to do that. A basic install will suffice, and after logging in with Raspbian's default username and password, we're going to suggest you use our <a href="../quicksetup/">quicksetup</a> to configure most of what you need automatically.</p>
-<h2 id="bridging">Bridging</h2>
+<h2 id="bridging">Bridging<a class="headerlink" href="#bridging" title="Permanent link">#</a></h2>
 <p>If you want to connect two (or more) brokers (e.g. yours and that of your friend) you can, and we've written up <a href="../bridge/">how you can bridge brokers</a>.</p>
-<h2 id="logging">Logging</h2>
+<h2 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">#</a></h2>
 <p>Before doing anything else, please consult the manual to determine where your Mosquitto logs are being written to. It's hard stabbing around in the dark when a glance at a log file can give you valuable tips on what is actually happening.</p>
 <p>Mosquitto typically logs via <em>syslog</em>, and <em>syslog</em>'s configuration defines where the log messages are actually written to. Your <em>syslog</em> may be called <em>syslog</em>, <em>rsyslog</em>, <em>syslog-ng</em>, or anything else for that matter. In case of doubt, check the files in <code>/var/log</code>; one of them <em>ought</em> to have what you're looking for (e..g <code>messages</code>, <code>syslog</code>, <code>localmessages</code>, or even <code>debugmessages</code>), very likely <code>/var/log/mosquitto/mosquitto.log</code>.</p>
 <p>Mosquitto typically logs each connection request, a publish, a subscribe request, etc.</p>
@@ -135,7 +135,7 @@ mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
 </code></pre>
-<h2 id="owntracks">OwnTracks</h2>
+<h2 id="owntracks">OwnTracks<a class="headerlink" href="#owntracks" title="Permanent link">#</a></h2>
 <p>So, you've configured your broker and you are familiar with the <em>mosquitto</em> command-line
 clients, so now it's time to see if you can <a href="../apps/">get OwnTracks to speak to your broker</a>.</p>
               

@@ -107,7 +107,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="location-data">Location data</h2>
+                <h2 id="location-data">Location data<a class="headerlink" href="#location-data" title="Permanent link">#</a></h2>
 <p>We support 4 distinct modes of location publication and region monitoring as pertains to data submitted to the <a href="../../guide/broker/">MQTT broker</a> by our apps:</p>
 <ul>
 <li><em>Quiet</em> mode: Only manual location reports. Icon <code>[]</code></li>
@@ -116,8 +116,8 @@
 <li><em>Move</em> mode: Frequent location  <code>||&gt;</code></li>
 </ul>
 <p>All four modes work the same but behave slightly different on iOS or Android. In addition to region monitoring, iOS also supports location reporting based on <a href="../beacons/">iBeacons</a>. </p>
-<h2 id="ios">iOS</h2>
-<h4 id="move-mode"><em>Move</em> mode</h4>
+<h2 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">#</a></h2>
+<h4 id="move-mode"><em>Move</em> mode<a class="headerlink" href="#move-mode" title="Permanent link">#</a></h4>
 <p>In <em>move</em> mode, the app monitors location permanently and publishes a new
 location as soon as the device moves <code>locatorDisplacement</code> meters or after <code>locatorInterval</code> seconds, whatever
 happens first. <code>locatorDisplacement</code> and <code>locatorInterval</code> can be adjusted by the user in the systems settings for
@@ -125,7 +125,7 @@ OwnTracks. The defaults are 100m and 300 seconds (5 minutes). </p>
 <p>The payoff is higher battery usage as high as in navigation or tracker app.
 So it is recommend to use <em>move</em> mode while charging or during moves only - hence the name.</p>
 <p>Please note, <em>move</em> mode is active when the app is active (a.k.a in foreground).</p>
-<h4 id="significant-location-change-mode"><em>Significant location change</em> mode</h4>
+<h4 id="significant-location-change-mode"><em>Significant location change</em> mode<a class="headerlink" href="#significant-location-change-mode" title="Permanent link">#</a></h4>
 <p>iOS defines a <em>Significant location change</em> as traveling a distance of at least
 500 meters in 5 minutes.  This mode allows the app to run in background and
 minimize the power consumption.</p>
@@ -138,15 +138,15 @@ with respect to battery usage.</p>
 <li>if you move at least 500 meters, a new location will be published after 5 minutes</li>
 <li>if you move 10 kilometers in 5 minutes, only one location will be published</li>
 </ul>
-<h4 id="manual-mode"><em>Manual</em> mode</h4>
+<h4 id="manual-mode"><em>Manual</em> mode<a class="headerlink" href="#manual-mode" title="Permanent link">#</a></h4>
 <p>The app doesn't monitor location changes in <em>manual</em> mode while in background.
 The user has to publish the current location explicitly via the UI. You use this if
 you want to (temporarily) avoid friends seeing where you are. Note that Region events
 triggered by entering or leaving Geo Fence or Beacon regions
 are still published automatically whilst in <em>Manual</em> mode.</p>
-<h4 id="quiet-mode"><em>Quiet</em> mode</h4>
+<h4 id="quiet-mode"><em>Quiet</em> mode<a class="headerlink" href="#quiet-mode" title="Permanent link">#</a></h4>
 <p>Same as <em>Manual</em> mode except that no region events are published.</p>
-<h4 id="region-monitoring"><em>Region</em> monitoring</h4>
+<h4 id="region-monitoring"><em>Region</em> monitoring<a class="headerlink" href="#region-monitoring" title="Permanent link">#</a></h4>
 <p>The app user may mark a previously manually published or manually created 
 location as a monitored circular region by specifying a monitoring radius in meters. (See <a href="../waypoints/">Regions</a>.)
 The app will publish the location
@@ -159,7 +159,7 @@ and radius. To switch region monitoring off, all regions have to be
 unmarked (by setting their radius to 0).</p>
 <p>Regions are shown on the map display in transparent blue or red circles. Red
 indicates the device is is within the region.</p>
-<h4 id="tags-and-poi"><em>Tags</em> and <em>POI</em></h4>
+<h4 id="tags-and-poi"><em>Tags</em> and <em>POI</em><a class="headerlink" href="#tags-and-poi" title="Permanent link">#</a></h4>
 <p>On iOS, a user can set a point of interest (POI) during manual publish of a location or set a tag while for future location publishes. When tapping on "publish location" an action picker appears on which the user can choose to:</p>
 <p><img alt="iOS action picker when publishing a location" src="../images/ios-action-picker.png" /></p>
 <ul>
@@ -167,7 +167,7 @@ indicates the device is is within the region.</p>
 <li>Set POI. A user is asked to describe the POI (e.g. <code>delicious seafood</code>) and the location is then transmitted with the <code>poi</code> added to the JSON payload.</li>
 <li>Set tag. Users can enter a tag (e.g. <code>Spain 2023</code>) which is added to the JSON of all subsequent location publishes, irrespective of the mode (i.e. this also works in significant changes mode, say), until the tag is removed.</li>
 </ul>
-<h4 id="ibeacon-monitoring">iBeacon monitoring</h4>
+<h4 id="ibeacon-monitoring">iBeacon monitoring<a class="headerlink" href="#ibeacon-monitoring" title="Permanent link">#</a></h4>
 <p>The app user may mark a previously manually published or manually created location
 as a monitored beacon region by appending a beacon UUID to the region's name.
 The app will publish the location
@@ -286,13 +286,13 @@ is shown in red, otherwise blue meaning device is not in any iBeacon region.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="android">Android</h2>
-<h4 id="move-mode_1"><em>Move</em> mode</h4>
+<h2 id="android">Android<a class="headerlink" href="#android" title="Permanent link">#</a></h2>
+<h4 id="move-mode_1"><em>Move</em> mode<a class="headerlink" href="#move-mode_1" title="Permanent link">#</a></h4>
 <p>In <em>move</em> mode, the app monitors device location permanently. It requests a location fix every 10s (by default, configurable in the settings through <code>moveModeLocatorInterval</code>) in high power mode and publishes a new location as soon as it arrives. </p>
 <p>This mode mostly relies on GPS location data and is hence the most accurate. The payoff is a higher battery usage.
 It is recommend to use <em>move</em> mode while charging or during periods that require highly accurate tracking while moving quickly. </p>
 <p>The <code>locatorDisplacement</code> option is ignored in this mode.</p>
-<h4 id="significant-location-change-mode_1"><em>Significant location change</em> mode</h4>
+<h4 id="significant-location-change-mode_1"><em>Significant location change</em> mode<a class="headerlink" href="#significant-location-change-mode_1" title="Permanent link">#</a></h4>
 <p>This standard tracking mode is aimed at everyday usage for location tracking in the background. It uses a balanced power location request that gathers a new location fix every 15 minutes. Location data from other apps is reused and published as soon as it arrives. </p>
 <p>This mode relies mostly on cell tower and WiFi location to conserve power to provide location data that is sufficiently accurate for most users. </p>
 <p>In addition to the default settings, all location request parameters in this mode can also be changed. These parameters directly influence the raw <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest">location request</a> that is send to the Android location API.  </p>
@@ -313,11 +313,11 @@ It is recommend to use <em>move</em> mode while charging or during periods that 
 </ul>
 </li>
 </ul>
-<h4 id="manual-mode_1"><em>Manual</em> mode</h4>
+<h4 id="manual-mode_1"><em>Manual</em> mode<a class="headerlink" href="#manual-mode_1" title="Permanent link">#</a></h4>
 <p>In <em>manual</em> mode, the app monitors device location with a low power location request. It uses the same interval configured for <em>significant mode</em> to receive low accuracy updates to use minimal battery power. </p>
 <p>The user has to publish the current location explicitly via the UI. You use this if you want to (temporarily) avoid friends seeing where you are. Note that Region events triggered by entering or leaving Geo Fence are still published automatically whilst in <em>Manual</em> mode.</p>
 <p>Remote <code>reportLocation</code> commands are ignored. </p>
-<h4 id="quiet-mode_1"><em>Quiet</em> mode</h4>
+<h4 id="quiet-mode_1"><em>Quiet</em> mode<a class="headerlink" href="#quiet-mode_1" title="Permanent link">#</a></h4>
 <p>Same as <em>Manual</em> mode except that no region events are published.</p>
               
             </div>

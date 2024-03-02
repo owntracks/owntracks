@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ibeacons">iBeacons</h2>
+                <h2 id="ibeacons">iBeacons<a class="headerlink" href="#ibeacons" title="Permanent link">#</a></h2>
 <p>If you want to monitor an iBeacon region rather than a circular region set the
 radius to zero (<code>0</code>) or a negative value (iOS only), and add the beacon UUID, major, and minor numbers.</p>
 <p><img alt="Beacon configuration" src="../images/b-waypoint-config-ibeacon.jpg" /></p>
@@ -126,11 +126,11 @@ Minor 33000
 </code></pre>
 <p>In the first example above, OwnTracks will monitor all beacons with the specified UUID, whereas
 in the second example, OwnTracks would monitor just that one specific beacon with the major number <code>1</code> and the minor number <code>33000</code>.</p>
-<h2 id="notes">Notes</h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>The app recognizes the beacon typically within 10 seconds, which is a typical beacon-publishing frequency, and this is very good for presence detection.</p>
 <p>If you use a <code>-</code> as the first character in your Waypoint description e.g. <code>-MyBeacon</code>, the app will ignore short disruptions of the connection to the beacon (hold down).</p>
 <p>Setting the radius to a negative value (e.g. <code>-1</code>) on iOS, the app will update the location coordinates of the waypoint on each enter/leave event. This update will be transmitted to the broker when the <code>share</code> option is on and will be reflected on your map screen. You may use this to keep track of moveable items as luggage or your car.</p>
-<h2 id="example-office">Example: office</h2>
+<h2 id="example-office">Example: office<a class="headerlink" href="#example-office" title="Permanent link">#</a></h2>
 <p>Upon arriving at our Frankfurt location, I see from the monitor panel at the reception that Jane is in the office, so I'll pop in to ask a question.</p>
 <p><img alt="office panel" src="../images/ot-beacons-office-panel.png" /></p>
 <p>Instead of relying solely on the location your smart phone thinks you are at, small, and relatively inexpensive <a href="http://en.m.wikipedia.org/wiki/IBeacon">iBeacons</a> can pinpoint you down to a few meters. OwnTracks for iOS has had support for iBeacons for a few releases now, and it works very reliably.</p>
@@ -176,7 +176,7 @@ in the second example, OwnTracks would monitor just that one specific beacon wit
 <li>a <em>UUID</em> with a <em>major</em> number: the app would report iBeacons with the specified UUID and exactly that <em>major</em> number</li>
 <li>all three: the <em>UUID</em>, the <em>major</em> and <em>minor</em> numbers, in which case the app reports events on precisely that beacon.</li>
 </ul>
-<h2 id="more-examples">More examples</h2>
+<h2 id="more-examples">More examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="http://jpmens.net/2016/01/02/where-exactly-did-i-park-my-car/">Where exactly did I park my car?</a></li>
 </ul>

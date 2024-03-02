@@ -107,7 +107,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="types">Types</h2>
+                <h2 id="types">Types<a class="headerlink" href="#types" title="Permanent link">#</a></h2>
 <p>OwnTracks uses <a href="http://www.json.org">JSON</a> format for its message payloads. The different payload types are identified by a mandatory <code>_type</code> element. Depending on the app platform, different payload types are supported.</p>
 <table>
 <thead>
@@ -180,7 +180,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="topics">Topics</h2>
+<h2 id="topics">Topics<a class="headerlink" href="#topics" title="Permanent link">#</a></h2>
 <p>In MQTT mode the apps publish to:</p>
 <ul>
 <li><code>owntracks/user/device</code> with <code>_type=location</code> for location updates, and with <code>_type=lwt</code></li>
@@ -200,7 +200,7 @@
 <li><code>owntracks/+/+/info</code> for obtaining <a href="../../features/card/">cards</a>.</li>
 </ul>
 <p>In HTTP mode the apps POST their data to a single endpoint you configure.</p>
-<h2 id="_typelocation"><code>_type=location</code></h2>
+<h2 id="_typelocation"><code>_type=location</code><a class="headerlink" href="#_typelocation" title="Permanent link">#</a></h2>
 <p>This location object describes the location of the device that reported it.</p>
 <pre><code class="language-json">{
     &quot;_type&quot; : &quot;location&quot;,
@@ -247,7 +247,7 @@
 <li><code>created_at</code> identifies the time at which the message is constructed (vs. <code>tst</code> which is the timestamp of the GPS fix) <em>(iOS,Android)</em></li>
 <li><code>m</code> identifies the monitoring mode at which the message is constructed (<em>significant</em>=<code>1</code>, <em>move</em>=<code>2</code>)  <em>(iOS/integer/optional)</em></li>
 </ul>
-<h4 id="notes">Notes</h4>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h4>
 <ul>
 <li>The <code>tst</code> in a ping is a <a href="https://github.com/owntracks/ios/issues/197">current timestamp</a>, so that it doesn't look like a duplicate.</li>
 <li>The <code>tid</code> defaults to the last two characters of the topic</li>
@@ -257,7 +257,7 @@
 <li>Some Android devices always return 0 for <code>alt</code> or <code>vel</code></li>
 <li>Elements marked with <em>extended data</em> are only added if <code>extendedData=true</code> is configured</li>
 </ul>
-<h3 id="greenwich">Greenwich</h3>
+<h3 id="greenwich">Greenwich<a class="headerlink" href="#greenwich" title="Permanent link">#</a></h3>
 <p>The OwnTracks edition of the <a href="http://www.choral.it/greenwich&amp;menu2=795">Choral Greenwich</a> device reports the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;location&quot;,
@@ -283,11 +283,11 @@
 </ul>
 </li>
 </ul>
-<h4 id="notes_1">Notes</h4>
+<h4 id="notes_1">Notes<a class="headerlink" href="#notes_1" title="Permanent link">#</a></h4>
 <ul>
 <li>The device can be configured to produce or not produce fields marked as <em>optional</em></li>
 </ul>
-<h3 id="queclink">Queclink</h3>
+<h3 id="queclink">Queclink<a class="headerlink" href="#queclink" title="Permanent link">#</a></h3>
 <p>OwnTracks works with a selection of trackers by <a href="http://www.queclink.com">Queclink</a>, for which the protocol conversion is done via <a href="https://github.com/jpmens/qtripp">qtripp</a>.
 Queclink devices report the following additional elements in a <code>_type=location</code> message:</p>
 <pre><code class="language-json">{
@@ -356,11 +356,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>counter</code> number of ignored positions <em>(integer/optional)</em></li>
 <li><code>ignored</code> indicates counter positions have been ignored <em>(boolean/optional)</em></li>
 </ul>
-<h4 id="notes_2">Notes</h4>
+<h4 id="notes_2">Notes<a class="headerlink" href="#notes_2" title="Permanent link">#</a></h4>
 <ul>
 <li>The device can be configured to produce or not produce fields marked as <em>optional</em></li>
 </ul>
-<h2 id="_typelwt"><code>_type=lwt</code></h2>
+<h2 id="_typelwt"><code>_type=lwt</code><a class="headerlink" href="#_typelwt" title="Permanent link">#</a></h2>
 <p>A <em>last will and testament</em> is published automatically by the MQTT broker when it loses contact with the app. This typically looks like this:</p>
 <pre><code class="language-json">{
     &quot;_type&quot;:&quot;lwt&quot;,
@@ -370,7 +370,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <ul>
 <li><code>tst</code> UNIX <a href="http://en.wikipedia.org/wiki/Unix_time">epoch timestamp</a> at which the app first connected <em>(iOS,Android/integer/epoch/required)</em></li>
 </ul>
-<h2 id="_typewaypoint"><code>_type=waypoint</code></h2>
+<h2 id="_typewaypoint"><code>_type=waypoint</code><a class="headerlink" href="#_typewaypoint" title="Permanent link">#</a></h2>
 <p>Waypoints / regions denote specific geographical regions that you want to keep track of. You define a region in the OwnTracks app, and OwnTracks publishes this waypoint to the topic branch <code>../waypoint</code> (singular). OwnTracks also monitors these waypoints and will publish <code>{_type: "transition", ...}</code> message when entering or leaving the region. A waypoint may also define a BLE <a href="../../features/beacons/">Beacon</a> instead of a geographical region.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;  : &quot;waypoint&quot;,
@@ -388,7 +388,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>minor</code>  Minor number of the BLE Beacon_(iOS/integer/optional)_</li>
 <li><code>rid</code>  region ID, created automatically, copied into the <code>location</code> payload <code>inrids</code> array (iOS/string)_</li>
 </ul>
-<h4 id="notes_3">Notes</h4>
+<h4 id="notes_3">Notes<a class="headerlink" href="#notes_3" title="Permanent link">#</a></h4>
 <ul>
 <li>In iOS version &gt;= 9.1.0 the last three elements (uuid, major, and minor) are used to configure Beacon waypoints instead of encoding these values into the <code>desc</code> element.</li>
 <li>If <code>lat</code>, <code>lon</code> and <code>rad</code> elements are present, transition messages are sent when entering and leaving the geographical region</li>
@@ -397,7 +397,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>Waypoint messages are published non-retained because the second waypoint would overwrite the first: a client would only get the last one which makes no sense. Your application will typically store waypoints to some kind of persistent storage.</li>
 <li>Waypoints are sent to the broker and transition messages contain a <code>desc</code> and <code>event</code> element.</li>
 </ul>
-<h2 id="_typetransition"><code>_type=transition</code></h2>
+<h2 id="_typetransition"><code>_type=transition</code><a class="headerlink" href="#_typetransition" title="Permanent link">#</a></h2>
 <p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;transition&quot;,
@@ -425,7 +425,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </li>
 <li><code>rid</code> Region ID <em>(iOS/Android, after January 2021)</em></li>
 </ul>
-<h2 id="_typeconfiguration"><code>_type=configuration</code></h2>
+<h2 id="_typeconfiguration"><code>_type=configuration</code><a class="headerlink" href="#_typeconfiguration" title="Permanent link">#</a></h2>
 <p>The device configuration can be imported and exported as JSON. The exported configuration can contain an array of waypoints that are defined on the device. If enabled, apps also accept remote configuration messages.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;configuration&quot;,
@@ -502,12 +502,12 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>ws</code> use MQTT over Websocket, default <code>false</code> <em>(iOS,Android/boolean)</em></li>
 <li><code>waypoints</code> Array of waypoint messages <em>(iOS,Android/array)</em></li>
 </ul>
-<h4 id="notes_4">Notes</h4>
+<h4 id="notes_4">Notes<a class="headerlink" href="#notes_4" title="Permanent link">#</a></h4>
 <ul>
 <li>When importing a configuration message, all contained values are imported for the currently active mode. If the message also contains a <code>mode</code> element, the mode is changed first and all remaining elements are imported for the new mode.</li>
 <li>In MQTT mode the server will consider the client as dead if it the keepalive interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if <code>keepalive</code> was 60). Afterwards, an <code>lwt</code> message will be send.</li>
 </ul>
-<h2 id="_typebeacon"><code>_type=beacon</code></h2>
+<h2 id="_typebeacon"><code>_type=beacon</code><a class="headerlink" href="#_typebeacon" title="Permanent link">#</a></h2>
 <p>These messages are published when beacon ranging (iOS only) is enabled. Be advised that beacon ranging publishes a lot of messages and has a strong impact on battery life.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;:&quot;beacon&quot;,
@@ -530,11 +530,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 </li>
 </ul>
-<h4 id="notes_5">Notes</h4>
+<h4 id="notes_5">Notes<a class="headerlink" href="#notes_5" title="Permanent link">#</a></h4>
 <ul>
 <li>The theoretical relationship between RSSI and distance is <code>RSSI[dbm] = −(10n log10(d) − A)</code> where d is the distance and A is the offset which is the measured RSSI one meter point away from the beacon.</li>
 </ul>
-<h2 id="_typecmd"><code>_type=cmd</code></h2>
+<h2 id="_typecmd"><code>_type=cmd</code><a class="headerlink" href="#_typecmd" title="Permanent link">#</a></h2>
 <pre><code class="language-json">{&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;reportLocation&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;reportSteps&quot;}
 {&quot;_type&quot;:&quot;cmd&quot;, &quot;action&quot;:&quot;dump&quot;}
@@ -571,7 +571,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 </ul>
 </li>
 </ul>
-<h4 id="notes_6">Notes</h4>
+<h4 id="notes_6">Notes<a class="headerlink" href="#notes_6" title="Permanent link">#</a></h4>
 <ul>
 <li>If <code>url</code> for the <code>action</code> cmd message is specified, the URL is opened in a full screen web view within the app</li>
 <li>If the optional <code>extern</code> boolean is <code>true</code> a click on the notification will launch an external browser instead</li>
@@ -582,7 +582,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>On iOS, the array of waypoints to the <code>setWaypoints</code> command allows updates / removal; the key of the waypoint is its name (<code>desc</code>). If you specify an invalid <code>lat</code> or <code>lon</code> (invalid means out of range number value e.g. <code>-1000000</code>, a string like <code>"foo"</code> will result in a <code>0</code> in app) the waypoint is deleted.</li>
 <li>On Android there's a primary key which isn't surfaced to the API, and <code>tst</code> is a uniquely-constrained value which effectively acts like a key.</li>
 </ul>
-<h2 id="_typesteps"><code>_type=steps</code></h2>
+<h2 id="_typesteps"><code>_type=steps</code><a class="headerlink" href="#_typesteps" title="Permanent link">#</a></h2>
 <pre><code class="language-json">{
     &quot;_type&quot;:&quot;steps&quot;,
     elements
@@ -594,11 +594,11 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>from</code> Effective start of time period <em>(iOS/integer/epoch)</em></li>
 <li><code>to</code>  Effective end of time period <em>(iOS/integer/epoch)</em></li>
 </ul>
-<h4 id="notes_7">Notes</h4>
+<h4 id="notes_7">Notes<a class="headerlink" href="#notes_7" title="Permanent link">#</a></h4>
 <ul>
 <li><code>steps</code> is -1 if device does not support step counting or specified time period is invalid</li>
 </ul>
-<h2 id="_typecard"><code>_type=card</code></h2>
+<h2 id="_typecard"><code>_type=card</code><a class="headerlink" href="#_typecard" title="Permanent link">#</a></h2>
 <p>Apps read <a href="../../features/card/">Card</a> to display a name and icon for a user.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;card&quot;,
@@ -609,7 +609,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>name</code> Name to identify a user <em>(iOS,Android/string/optional)</em></li>
 <li><code>face</code> Base64 encoded PNG image that is displayed instead of the Tracker ID <em>(iOS,Android/string/optional)</em></li>
 </ul>
-<h2 id="_typewaypoints"><code>_type=waypoints</code></h2>
+<h2 id="_typewaypoints"><code>_type=waypoints</code><a class="headerlink" href="#_typewaypoints" title="Permanent link">#</a></h2>
 <p>The app can export a list of configured waypoints to the endpoint <code>../waypoints</code> (plural).</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;waypoints&quot;,
@@ -620,7 +620,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>_creator</code> Identification of what created the array. Ignored by the apps <em>(iOS,Android/string/optional)</em></li>
 <li><code>waypoints</code> Array of <code>waypoint</code> messages <em>(iOS,Android/array/required)</em></li>
 </ul>
-<h2 id="_typeencrypted"><code>_type=encrypted</code></h2>
+<h2 id="_typeencrypted"><code>_type=encrypted</code><a class="headerlink" href="#_typeencrypted" title="Permanent link">#</a></h2>
 <p>Apps can optionally <a href="../../features/encrypt/">encrypt</a> outgoing messages with a shared symmetric key.  The encrypted message is contained in the <code>data</code>element.
 For security reasons, the encryption key is not exported with configuration messages and cannot be imported.</p>
 <pre><code class="language-json">{
@@ -631,7 +631,7 @@ For security reasons, the encryption key is not exported with configuration mess
 <ul>
 <li><code>data</code> Encrypted and Base64 encoded original JSON message <em>(iOS,Android/string/required)</em></li>
 </ul>
-<h2 id="_typerequest"><code>_type=request</code></h2>
+<h2 id="_typerequest"><code>_type=request</code><a class="headerlink" href="#_typerequest" title="Permanent link">#</a></h2>
 <p>Apps can request the creation of <a href="../../features/tours/">tours</a> which elicit a <code>cmd</code> response from the Recorder. See <a href="../../features/tours/">tours</a> for the details.</p>
 <pre><code class="language-json">{
   &quot;_type&quot;: &quot;request&quot;,

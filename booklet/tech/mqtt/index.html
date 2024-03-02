@@ -104,8 +104,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="mqtt">MQTT</h2>
-<h3 id="keepalives">Keepalives</h3>
+                <h2 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">#</a></h2>
+<h3 id="keepalives">Keepalives<a class="headerlink" href="#keepalives" title="Permanent link">#</a></h3>
 <p>MQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the <em>keepalive</em> interval which is set by the client.</p>
 <p>The server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.</p>
 <p>From the spec:</p>
@@ -115,9 +115,9 @@ a few minutes. The maximum value is 18 hours 12 minutes and 15 seconds.</p>
 </blockquote>
 <p>For example, <code>mosquitto_sub</code> uses a default of 60 sec.</p>
 <p>In addition, note that the mosquitto broker sends an LWT message if the TCP connection is closed/aborts without sending an MQTT-Disconnect beforehand.</p>
-<h2 id="broker">Broker</h2>
+<h2 id="broker">Broker<a class="headerlink" href="#broker" title="Permanent link">#</a></h2>
 <p>Below is a list of known configuration values that are required to connect to certain MQTT endpoints </p>
-<h3 id="aws-iot">AWS IOT</h3>
+<h3 id="aws-iot">AWS IOT<a class="headerlink" href="#aws-iot" title="Permanent link">#</a></h3>
 <p>The OwnTracks apps are partially compatible to the <a href="https://aws.amazon.com/iot/">AWS IOT</a> broker in MQTT mode. 
 As AWS IOT does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
 <p>Before connecting, a so called <em>thing</em> has to be configured which represents the connecting client. 
@@ -152,7 +152,7 @@ The most basic policy allows all actions for the <em>thing</em>. </p>
 <p>The <code>ENDPOINT</code> can be obtained in the <em>thing</em> details under <em>Interact</em>.<br />
 Additionaly, you need to configure the app to use a client TLS certificate for authentication and the AWS TLS ca.
 Before importing it into the app, you need to set a password to the client TLS certificate. </p>
-<h3 id="losant-iot-developer-platform">Losant IoT Developer Platform</h3>
+<h3 id="losant-iot-developer-platform">Losant IoT Developer Platform<a class="headerlink" href="#losant-iot-developer-platform" title="Permanent link">#</a></h3>
 <p>The OwnTracks apps are partially compatible to the <a href="https://www.losant.com/">Losant IoT Developer Platform</a> in MQTT mode. 
 As Losant does not support some MQTT features (notable retained messages), some OwnTracks features might not work as expected. </p>
 <p>The following settings are required to connect </p>

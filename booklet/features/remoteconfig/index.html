@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="configuration-file">Configuration file</h2>
+                <h2 id="configuration-file">Configuration file<a class="headerlink" href="#configuration-file" title="Permanent link">#</a></h2>
 <p>The configuration can be sent to the device as a file that can by imported into the apps. This can be used to initially configure the device or change detailed settings later. </p>
 <ul>
 <li>Create a configuration file in JSON with an <code>.otrc</code> suffix (for OwnTracks Configuration)</li>
@@ -123,7 +123,7 @@
 }
 </code></pre>
 <p>The <code>_type</code>entry is mandatory, most other entries are optional. They are replaced by built-in defaults or previously configured values if not specified. A list of all possible settings is described <a href="../../tech/json/">on the JSON page</a>.</p>
-<h2 id="url-config">URL config</h2>
+<h2 id="url-config">URL config<a class="headerlink" href="#url-config" title="Permanent link">#</a></h2>
 <p>Both iOS and Android apps can be configured by having the user click on an <code>owntracks:///config?inline=</code> URL containing a base64-encoded version of the content of an <code>.otrc</code> file.</p>
 <p>Say we have a file called <code>j.otrc</code> with the JSON <code>_type: configuration</code> shown above. We can use, say, the <em>openssl</em> utility to base64-encode encode the configuration into a single line:</p>
 <pre><code class="language-console">echo &quot;owntracks:///config?inline=$(openssl enc -a -A -in j.otrc)&quot;
@@ -137,9 +137,9 @@
 &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
 </code></pre>
 <p>This link is then made available to click on after the user has installed the OwnTracks app for configuring it. By omitting, say, <code>deviceID</code> and <code>tid</code> it would be possible to "mass configure" a number of users' apps.</p>
-<h2 id="setconfiguration">setConfiguration</h2>
+<h2 id="setconfiguration">setConfiguration<a class="headerlink" href="#setconfiguration" title="Permanent link">#</a></h2>
 <p>The configuration of a connected app can also be changed remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing configuration. A <code>_type: configuration</code> as described <a href="../../tech/json/">on the JSON page</a> can be send to the device. </p>
-<h2 id="setwaypoints">setWaypoints</h2>
+<h2 id="setwaypoints">setWaypoints<a class="headerlink" href="#setwaypoints" title="Permanent link">#</a></h2>
 <p>Waypoints can be configured remotely if <em>Remote Commands</em> is enabled on the device, by publishing a JSON payload which is merged into existing waypoints. (Note: the "key" for a waypoint is the <code>tst</code> timestamp, so overwriting an existing <code>tst</code> actually overwrites an existing waypoint.)</p>
 <pre><code class="language-json">{
   &quot;_type&quot;: &quot;cmd&quot;,

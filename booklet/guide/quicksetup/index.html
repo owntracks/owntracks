@@ -107,7 +107,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="get-started-quickly">Get started quickly</h2>
+                <h2 id="get-started-quickly">Get started quickly<a class="headerlink" href="#get-started-quickly" title="Permanent link">#</a></h2>
 <p>Using OwnTracks means having to set up and configure your own server, which can be non-trivial. For this reason we have created what we call <em>quicksetup</em>, a set of tools which will hopefully get your OwnTracks environment set up as effortlessly as possible.</p>
 <p>To get started you'll need roughly an hour of time and a bit of love of a Linux command line. You'll also need the following:</p>
 <ul>
@@ -142,7 +142,7 @@ uid=0(root) gid=0(root) groups=0(root)
 </li>
 </ul>
 <p>You should now be ready to proceed.</p>
-<h2 id="what-you-can-expect">What you can expect</h2>
+<h2 id="what-you-can-expect">What you can expect<a class="headerlink" href="#what-you-can-expect" title="Permanent link">#</a></h2>
 <p>Let's briefly describe what <em>quicksetup</em> will actually attempt to accomplish so that you can follow along.</p>
 <p><img alt="Architechture" src="../images/owntracks-quicksetup-arch.png" /></p>
 <ul>
@@ -153,7 +153,7 @@ uid=0(root) gid=0(root) groups=0(root)
 <li>you will be able to specify any number of <a href="../../features/friends/">Friends</a> during the configuration below. Each of these friends can use the MQTT broker, use the Web server, login with their username and different random password.</li>
 </ul>
 <p>So, if everything works the way we hope it will, this ought to be a plug-and-play experience. Fingers crossed, let us begin.</p>
-<h2 id="launching-quicksetup">Launching quicksetup</h2>
+<h2 id="launching-quicksetup">Launching quicksetup<a class="headerlink" href="#launching-quicksetup" title="Permanent link">#</a></h2>
 <p>You are logged into your VPS either as <code>root</code> or as an unprivileged user. Three steps will get the installer going:</p>
 <ol>
 <li>
@@ -229,7 +229,7 @@ $ nano configuration.yaml
 </code></pre>
 <p>If all goes well you ought to see green and/or yellow lines only; no red diagnostics. Red means error, and the installer would halt. Some of the steps will take longer than others, for instance we install several software packages which takes a bit.</p>
 <p>Should you wish to, say, add a friend at a later stage, edit <code>configuration.yaml</code>, and re-run <code>./bootstrap.sh</code> as you did earlier. As often as you wish.</p>
-<h2 id="initial-testing">Initial testing</h2>
+<h2 id="initial-testing">Initial testing<a class="headerlink" href="#initial-testing" title="Permanent link">#</a></h2>
 <p>Assuming the installer was successful, you can verify if the services are working as we intended them to:</p>
 <ul>
 <li>install OwnTracks on your <a href="../apps/">Android or iOS device</a> and configure it, either by<ul>
@@ -348,7 +348,7 @@ Enter host password for user 'jane':
 </code></pre>
 </li>
 </ul>
-<h2 id="debugging">Debugging</h2>
+<h2 id="debugging">Debugging<a class="headerlink" href="#debugging" title="Permanent link">#</a></h2>
 <p>There's quite a bit going on in the background, so we want to give you some tips on how to go about debugging or finding out what's actually going on.</p>
 <ul>
 <li>
@@ -388,7 +388,7 @@ $ tail -f /var/log/syslog | grep ot-recorder
     OS distro: Debian / 12 4
     OS distribution: bookworm
 </code></pre>
-<h2 id="where-to-go-from-here">Where to go from here</h2>
+<h2 id="where-to-go-from-here">Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permanent link">#</a></h2>
 <p>There's a lot you can do with OwnTracks and its backend, so you might want to read up on some of the features:</p>
 <ul>
 <li>Learn about <a href="../../features/waypoints/">geofences or waypoints</a> and <a href="../../features/poi/">Points of Interest</a></li>

@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="topics">Topics</h2>
+                <h2 id="topics">Topics<a class="headerlink" href="#topics" title="Permanent link">#</a></h2>
 <p>If you use HTTP mode skip this section.</p>
 <p>You now know that <a href="../../tech/mqtt/">MQTT</a> is a messaging protocol, and that it uses
 topic names to label messages.  topic names can be structured into multiple
@@ -117,7 +117,7 @@ The last two are used to address sets of topic names.</p>
 <li>traffic minimization</li>
 <li>granular access control</li>
 </ul>
-<h2 id="topic-name-root">topic name Root</h2>
+<h2 id="topic-name-root">topic name Root<a class="headerlink" href="#topic-name-root" title="Permanent link">#</a></h2>
 <p>Typically an MQTT broker hosts multiple applications. To create a separate name space
 for OwnTracks we use a topic name root as the beginning of a topic name. Per default
 this is <code>owntracks/</code>, but you may choose any other root (e.g. <code>peters/locations/</code>) or,
@@ -129,7 +129,7 @@ the file in Mail, Dropbox or similar app. The settings which have to be changed 
 <pre><code>pubTopicBase
 subTopic
 </code></pre>
-<h2 id="device-name">Device name</h2>
+<h2 id="device-name">Device name<a class="headerlink" href="#device-name" title="Permanent link">#</a></h2>
 <p>Locations are captured in OwnTracks by devices (e.g. your Smartphone). The
 device name forms the second component of the topic name. In order to avoid
 clashes in naming and to simplify subscription and authorization we decided to
@@ -144,16 +144,16 @@ just one level <code>peters-iPhone</code> or multiple levels <code>aFamily/fathe
 under any one OwnTracks name root the number of levels used for device names
 have to be the same.</p>
 <p>We reccomend you keep the device name generic: something like <code>myphone</code> might be preferable to <code>siemens-x67</code> so that you don't feel the need to change the device name (and hence the topic) if you move to a different device and vendor.</p>
-<h2 id="base-topic-name">Base topic name</h2>
+<h2 id="base-topic-name">Base topic name<a class="headerlink" href="#base-topic-name" title="Permanent link">#</a></h2>
 <p>Combining the topic name root and the device name result in what we call <em>base
 topic name</em> for each device (e.g. <code>owntracks/peter/iPhone</code>).  The devices label
 their location messages with the <em>base topic name</em> when publishing to the MQTT
 broker.</p>
-<h2 id="subscribing-to-location-messages">Subscribing to location Messages</h2>
+<h2 id="subscribing-to-location-messages">Subscribing to location Messages<a class="headerlink" href="#subscribing-to-location-messages" title="Permanent link">#</a></h2>
 <p>Given the structure explained above, the topic filter you can use to subscribe to the
 location messages of all devices is <code>owntracks/+/+</code> (the topic name root plus a so-called
 wild card (<code>+</code>) for each level of the device name.</p>
-<h2 id="additional-topic-names">Additional topic names</h2>
+<h2 id="additional-topic-names">Additional topic names<a class="headerlink" href="#additional-topic-names" title="Permanent link">#</a></h2>
 <p>For additional communication from and to devices, OwnTracks uses topic names relative
 to the base topic name.</p>
 <p>Devices listen to the relative topic name <code>cmd</code> for commands you can publish to
@@ -169,7 +169,7 @@ avatar of a user with which authorized users can identify, say, Peter within the
 <p>Devices publish their <a href="../waypoints/">waypoints</a> to the relative topic name
 <code>waypoint</code> and the corresponding events the transition into or out of a
 waypoint triggers, to the relative topic name <code>event</code>.</p>
-<h2 id="summary">Summary</h2>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">#</a></h2>
 <p>A device (named <code>peter/iPhone</code> in this example) is connected to an <a href="../broker/">MQTT
 Broker</a> with the OwnTracks name Root <code>owntracks</code>. It publishes
 location messages labeled with the topic name <code>owntracks/peter/iPhone</code>. The
@@ -187,7 +187,7 @@ the device will subscribe to <code>owntracks/peter/iPhone/cmd</code> as well, an
 commands; responses to these commands will be published and labeled <code>owntracks/peter/iPhone/dump</code>,
 <code>owntracks/peter/iPhone/step</code>, etc.</p>
 <p>A full set of supported topic names and expected payloads is documented in <a href="../../tech/json/">our JSON API</a>.</p>
-<h2 id="terms-used">Terms used</h2>
+<h2 id="terms-used">Terms used<a class="headerlink" href="#terms-used" title="Permanent link">#</a></h2>
 <ul>
 <li>topic name</li>
 <li>OwnTracks topic name root</li>

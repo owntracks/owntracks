@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="android-specifics">Android specifics</h2>
+                <h2 id="android-specifics">Android specifics<a class="headerlink" href="#android-specifics" title="Permanent link">#</a></h2>
 <ul>
 <li>
 <p>The broker connection works well with:</p>
@@ -133,7 +133,7 @@
 <p>Button to manually publish last known (i.e. probably current) location</p>
 </li>
 </ul>
-<h2 id="general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.</h2>
+<h2 id="general-restrictions-on-android-6-and-higher">General Restrictions on Android 6 and higher.<a class="headerlink" href="#general-restrictions-on-android-6-and-higher" title="Permanent link">#</a></h2>
 <p>Since Android 6 and higher, the operating systems enforces stricter restrictions for apps running in the background. Most importantly, network access and background jobs are restricted to certain time slots. As a result, certain features might be restricted when the app is not actively used. This also applies if OwnTracks is exluded from battery optimizations.</p>
 <ul>
 <li>You may find HTTP mode more reliable on Android 6 and higher.</li>
@@ -144,10 +144,10 @@
 <li>When using MQTT, the broker connection is not guaranteed to be maintained permanently. A reconnect will be attempted regularly or when a message is sent. If the connection is established without the clean session flag, missed messages will be received once connected.</li>
 <li>Beacons are no long supported in OwnTracks for Android</li>
 </ul>
-<h2 id="vendor-background-restrictions">Vendor background restrictions</h2>
+<h2 id="vendor-background-restrictions">Vendor background restrictions<a class="headerlink" href="#vendor-background-restrictions" title="Permanent link">#</a></h2>
 <p>Certain vendors have their own restrictions for apps running in the background. On these devices, Owntracks might be killed even though it behaves according to the official Android background execution limits.</p>
 <p>A list of vendors known to interfer with background apps and a number of workarounds can be found at <a href="https://dontkillmyapp.com/">Don’t kill my app!</a>.</p>
-<h2 id="google-play-services">Google Play Services</h2>
+<h2 id="google-play-services">Google Play Services<a class="headerlink" href="#google-play-services" title="Permanent link">#</a></h2>
 <p>Google Play Services are required to use OwnTracks that's distributed on the Google Play Store.</p>
 <p>They are used for:</p>
 <ul>
@@ -157,13 +157,13 @@
 <li>Displaying the map</li>
 </ul>
 <p>A separate "flavour" of OwnTracks called "OSS" aims to remove this dependency for people that can't or prefer not to use Google Play Services. This version will use other providers for maps, geocoding and location and is currently in development. The plan is to release this via the <a href="https://www.f-droid.org/">F-Droid</a> app catalogue.</p>
-<h2 id="setup">Setup</h2>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">#</a></h2>
 <p>In the unlikely case that your broker does not require a username and password, you can disable authentication in the configuration editor. Please note that even then, you have to set a device name and username before you can connect as these are also used to construct various other internal things.</p>
 <p>By default a <a href="../tls/">TLS</a> secured communication channel with the broker is assumed. Thus you have to ensure that the broker certificate is properly imported on your device.</p>
 <p>In recent Android versions, a passcode is required once custom TLS certificates are imported. If you want to circumvent this, you can enable TLS with custom certificates and import that into the private storage location of the app. This will circumvent the Android TLS certificate management by using the certificate directly and skipping any other certificates known to the system.</p>
 <p>In HTTP mode the <code>url</code> is required to connect.
 In MQTT mode the <code>host</code> and <code>username</code>  and <code>password</code> is required to connect.</p>
-<h2 id="debug-log">Debug Log</h2>
+<h2 id="debug-log">Debug Log<a class="headerlink" href="#debug-log" title="Permanent link">#</a></h2>
 <p>Since Owntracks 2.1.2 application logs can be exported easily to assist in debugging problems with the app.</p>
 <p>To generate the logs, follow the next steps:</p>
 <ul>
@@ -172,10 +172,10 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 <li>The most recent logs are displayed. To view debug log entries as well, select the <em>Debug Logs</em> option in the top right menu.</li>
 <li>The <em>Share</em> button (bottom right) allows the logs to be exported and shared, either to disk (via a suitable file manager app such as <em>Total Commander</em>) or sent over email.</li>
 </ul>
-<h2 id="automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.</h2>
+<h2 id="automation-via-tasker-automagic-etc">Automation via Tasker, Automagic, etc.<a class="headerlink" href="#automation-via-tasker-automagic-etc" title="Permanent link">#</a></h2>
 <p>Since Owntracks 2.1 it is possible to automate changes to the location monitoring mode by sending Owntracks an intent. You can change the mode to one of the following pre-defined <a href="https://owntracks.org/booklet/features/location/">modes</a>: <code>Move</code>, <code>Significant location change</code>,<code>Manual</code>,<code>Quiet</code>.</p>
 <p>To set modes, use the same example as provided below and simply substitute the Extra in the table that corresponds to the desired state of Owntracks into the first Extra field of the Intent Action.  Do not put any text into the fields listed as [LEAVE FIELD BLANK] above.</p>
-<h3 id="tasker-example">Tasker example:</h3>
+<h3 id="tasker-example">Tasker example:<a class="headerlink" href="#tasker-example" title="Permanent link">#</a></h3>
 <p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:</p>
 <ul>
 <li>Action: <code>org.owntracks.android.CHANGE_MONITORING</code></li>
@@ -215,7 +215,7 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </tr>
 </tbody>
 </table>
-<h3 id="macrodroid-example">Macrodroid example:</h3>
+<h3 id="macrodroid-example">Macrodroid example:<a class="headerlink" href="#macrodroid-example" title="Permanent link">#</a></h3>
 <p>To trigger <code>Move</code> mode in tasker, create a <code>Send Intent</code> action and enter the following information:</p>
 <ul>
 <li>Target: <code>Service</code></li>
@@ -256,7 +256,7 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 </tr>
 </tbody>
 </table>
-<h3 id="automagic-example">Automagic example:</h3>
+<h3 id="automagic-example">Automagic example:<a class="headerlink" href="#automagic-example" title="Permanent link">#</a></h3>
 <p>To trigger <code>Move</code> mode in Automagic, create a <code>Start Service</code> action and enter the following information:</p>
 <ul>
 <li>Action: <code>org.owntracks.android.CHANGE_MONITORING</code></li>
@@ -299,7 +299,7 @@ In MQTT mode the <code>host</code> and <code>username</code>  and <code>password
 <ul>
 <li><code>org.owntracks.android.SEND_LOCATION_USER</code> sends a manual report (i.e. pushes a location) </li>
 </ul>
-<h3 id="adb-example">ADB example</h3>
+<h3 id="adb-example">ADB example<a class="headerlink" href="#adb-example" title="Permanent link">#</a></h3>
 <p>It's possible to send an intent to OwnTracks using the <code>am</code> command on the device shell. You just need to call <code>start-service</code> with the correct action, and optionally the extra that you need to set the specific mode.</p>
 <p>E.g. to set move mode:</p>
 <pre><code>am start-service -a org.owntracks.android.CHANGE_MONITORING --ei monitoring 2

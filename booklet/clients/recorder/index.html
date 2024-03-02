@@ -104,12 +104,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="recorder">Recorder</h2>
+                <h2 id="recorder">Recorder<a class="headerlink" href="#recorder" title="Permanent link">#</a></h2>
 <p>The <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> is a lightweight program for storing and accessing location data published via MQTT by the OwnTracks apps. It is a compiled program which is easily to install and operate even on low-end hardware, and it doesn't require an external database.</p>
-<h3 id="docker">Docker</h3>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">#</a></h3>
 <p>We have a multi-architecture <a href="https://hub.docker.com/r/owntracks/recorder">Docker image</a> which you can use to launch the Recorder. The image expects a volume which you mount into it into which it will write persistent data. You pass environment variables into the container to configure it.</p>
 <p>This is documented <a href="https://github.com/owntracks/docker-recorder">on the docker-recorder</a> repository.</p>
-<h2 id="recorder-on-synology">Recorder on Synology</h2>
+<h2 id="recorder-on-synology">Recorder on Synology<a class="headerlink" href="#recorder-on-synology" title="Permanent link">#</a></h2>
 <p>After installing Docker on your compatible Synology DiskStation, click on <em>Image</em> and <em>Add</em> the Recorder image from the URL <code>https://hub.docker.com/r/owntracks/recorder</code>; you do not have to specify a username/password. Select <code>latest</code> when prompted to choose a tag.</p>
 <p>In list of images you should then see one called <code>owntracks/recorder:latest</code> as shown below.</p>
 <p><img alt="" src="../jmbp-4953.png" /></p>

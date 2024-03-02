@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="tls">TLS</h2>
+                <h2 id="tls">TLS<a class="headerlink" href="#tls" title="Permanent link">#</a></h2>
 <p>You want data between your mobile device (a.k.a. smartphone) and the MQTT broker you use to be secured from eavesdropping. This is accomplished using <em>TLS</em>. When you configure your broker you will generate what is called a CA certificate which is basically a large amount of bits. (See below for the nitty gritty.)</p>
 <p>Configuring TLS (<a href="http://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a>) for OwnTracks involves doing three things:</p>
 <ul>
@@ -114,7 +114,7 @@
 </ul>
 <p>You can share the certificate if you want to (though not many people will want it ...)
 It's so public, that it's perfectly OK to send yourself the file by, say, e-mail.</p>
-<h2 id="configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker</h2>
+<h2 id="configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker<a class="headerlink" href="#configure-tls-on-the-mosquitto-broker" title="Permanent link">#</a></h2>
 <p>We'll first show you how to set up TLS on your Mosquitto <a href="../../guide/broker/">broker</a>.
 The basic configuration for TLS in <a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> is:</p>
 <pre><code>listener 8883
@@ -129,11 +129,11 @@ keyfile .............
 <li><code>certfile</code> points to your server's certificate in PEM format</li>
 <li><code>keyfile</code> points to your server's secret key file (which you <em>never</em> divulge!)</li>
 </ul>
-<h2 id="configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS</h2>
+<h2 id="configure-the-owntracks-app-to-use-tls">Configure the OwnTracks app to use TLS<a class="headerlink" href="#configure-the-owntracks-app-to-use-tls" title="Permanent link">#</a></h2>
 <p>We show you here how to set up your iOS or Android device with that kind of certificate.</p>
 <p>In both cases we assume you've got an e-mail in your inbox with the file you've sent yourself. This file has a <code>.crt</code> extension, and in both Android and iOS you can simply launch configuration by clicking on the attachment.</p>
 <p>In our example, the CA certificate is called <code>MQTTitude-ca.crt</code>.</p>
-<h3 id="android">Android</h3>
+<h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">#</a></h3>
 <p>Note that by following these instructions on Android you'll be prompted to set a device PIN or pattern to protect the device. If you already have that, just carry on. If you absolutely don't want to do that, you should download the certificate into, say, the Downloads folder, and configure it manually in OwnTracks (see below).</p>
 <p>So, here's your e-mail message with said attachment.</p>
 <p><img alt="Android" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/android-cert-01-mail.png" /></p>
@@ -142,7 +142,7 @@ keyfile .............
 <p>That's it. You're done, and if you no longer require the certificate file just delete the e-mail, though we recommend you keep it around for a bit.</p>
 <p>Note that installing a certificate into Android will, since Kitkat (4.4) bring up a warning when you power up your device. This warning is harmless (even though we consider it quite annoying).</p>
 <p><img alt="Android" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/cert-alert.png" /></p>
-<h3 id="ios">iOS</h3>
+<h3 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">#</a></h3>
 <p>So, here's your e-mail containing the certificate file. Click on it to launch the profile installer. No worries: we're not going to break anything. We're just adding yet another certificate to iOS' certificate store, and you're going to say that you trust that certificate. You ought to trust it: you've just created it yourself!</p>
 <p><img alt="iOS" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/ios-cert-01-mail.png" /></p>
 <p>You've clicked, and here's the trust store. You see the certificate has a name, but it's not trusted yet. Click on Install.</p>
@@ -152,14 +152,14 @@ keyfile .............
 <p>There you go! That's it: the certificate was installed.</p>
 <p><img alt="iOS" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/ios-cert-04-stor.png" /></p>
 <p>You're done, and if you no longer require the certificate file just delete the e-mail, though we recommend you keep it around for a bit.</p>
-<h3 id="manual-configuration-on-android">manual configuration on Android</h3>
+<h3 id="manual-configuration-on-android">manual configuration on Android<a class="headerlink" href="#manual-configuration-on-android" title="Permanent link">#</a></h3>
 <p>From the, say, e-mail you got with the certificate, click "save" on the attached <code>.crt</code> file which is stored on your device's <code>Download</code> folder.</p>
 <p>In OwnTracks's settings, select <code>TLS (Custom Certificate)</code></p>
 <p><img alt="Android custom" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/android-custom-01.png" /></p>
 <p>Now comes the hard part: you have to enter the path to the certificate you downloaded. On my device this is <code>/storage/emulated/0/Download/MQTTitude.crt</code>. Your mileage, etc; </p>
 <p><img alt="Android custom" src="https://raw.github.com/wiki/owntracks/owntracks/assets/tls/android-custom-02.png" /></p>
 <p>When you click <code>Connect</code>, it will try and use your certificate. Good luck! ;-)</p>
-<h2 id="the-nitty-gritty">The nitty gritty</h2>
+<h2 id="the-nitty-gritty">The nitty gritty<a class="headerlink" href="#the-nitty-gritty" title="Permanent link">#</a></h2>
 <p>That CA certificate file we mentioned? The attachment called <code>something.crt</code>?
 It looks like this, in fact, in what is called <a href="http://en.wikipedia.org/wiki/Privacy_Enhanced_Mail">PEM</a> format; but you don't really want to know that, but if you do, this is what it looks like:</p>
 <pre><code>-----BEGIN CERTIFICATE-----
@@ -204,10 +204,10 @@ cPZ5pT/WCvGuIOgNdy1VyWJrrlAjeQlbK+GDcNc=
         ...
 </code></pre>
 <p>Better, huh? Well, at least parts of it are now readable. Hope you liked this.</p>
-<h3 id="obtain-a-certificate-and-key">Obtain a certificate and key</h3>
+<h3 id="obtain-a-certificate-and-key">Obtain a certificate and key<a class="headerlink" href="#obtain-a-certificate-and-key" title="Permanent link">#</a></h3>
 <p>The following sections are not an endorsement of a particular Certification Authority, but rather are a few tips on getting you set up with <a href="http://mosquitto.org">Mosquitto</a>.</p>
 <p>You can also create your own self-signed certificate. We provide the <a href="https://github.com/owntracks/tools/tree/master/TLS">generate-CA.sh</a> utility for doing this easily.</p>
-<h4 id="startsslcom">startssl.com</h4>
+<h4 id="startsslcom">startssl.com<a class="headerlink" href="#startsslcom" title="Permanent link">#</a></h4>
 <p>If you have a key-pair issued by <em>startssl.com</em>, you'll be issued a key (in a <code>*.key</code> file), and a certificate (as <code>*.pem</code> or <code>*.crt</code> -- either contains a PEM-encoded certificate).</p>
 <p><a href="http://mosquitto.org">Mosquitto</a> will need the certificate chain for <em>startssl.com</em>, which you can find as <a href="http://www.startssl.com/certs/ca-bundle.crt">ca-bundle.crt</a> at <a href="http://www.startssl.com/certs/">www.startssl.com/certs/</a>.</p>
 <p>As far as TLS is concerned, you'll therefore set up your <code>mosquitto.conf</code> as follows, specifying corrrect paths to the files.</p>
@@ -217,7 +217,7 @@ certfile server.crt
 keyfile server.key
 </code></pre>
 <p>Then download the <em>startssl.com</em> CA certificate (<a href="http://www.startssl.com/certs/ca.crt">ca.crt</a>) and install that on your device as described above.</p>
-<h2 id="tls-client-certificates">TLS client certificates</h2>
+<h2 id="tls-client-certificates">TLS client certificates<a class="headerlink" href="#tls-client-certificates" title="Permanent link">#</a></h2>
 <ul>
 <li>We also support using <a href="../tlscert/">TLS client certificates</a></li>
 </ul>

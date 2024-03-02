@@ -104,22 +104,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="clients">Clients</h2>
+                <h2 id="clients">Clients<a class="headerlink" href="#clients" title="Permanent link">#</a></h2>
 <p>Using our OwnTracks app is cool, but what do you do with the location data the apps send (i.e. <em>publish</em>) to the MQTT broker? We have some suggestions.</p>
 <p>You know that OwnTracks <em>publishes</em> location information to an MQTT or HTTP endpoint. The data it publishes is transferred in a particular format called <a href="http://json.org">JSON</a>, and <a href="../../tech/json/">this is what it looks like</a>.</p>
 <p>When you've got your endpoint set up, and OwnTracks configured to use it, you'll want to do something useful with the data, and the following sections introduce you to some of the existing clients you can utilize for doing that.</p>
-<h2 id="mosquitto_sub">mosquitto_sub</h2>
+<h2 id="mosquitto_sub">mosquitto_sub<a class="headerlink" href="#mosquitto_sub" title="Permanent link">#</a></h2>
 <p><em>mosquitto_sub</em> is a very basic command-line client provided by the <a href="http://mosquitto.org">Mosquitto project</a>. However, it is brilliantly useful, and you can also use it for long-time collection of data by having it run in the background with <em>stdout</em> pointing to a file.</p>
 <p>In it's most basic invocation, you have the program connect to your broker and subscribe to the topics you're interested in. (If you've used our <a href="../quicksetup/">quicksetup</a> you just need the <code>-t 'owntracks/#</code> option as we've configured the rest for you.)</p>
 <pre><code class="language-bash">mosquitto_sub -h localhost -p 1883 -v -t 'owntracks/#'
 </code></pre>
 <p><em>mosquitto_sub</em> and it's counterpart, <em>mosquitto_pub</em> for publishing to a broker, support a slew of options. It'll be worth your while to study their <a href="http://mosquitto.org/man/mosquitto_sub-1.html">manual page</a>.</p>
-<h2 id="recorder">Recorder</h2>
+<h2 id="recorder">Recorder<a class="headerlink" href="#recorder" title="Permanent link">#</a></h2>
 <p>We recommend our very own <a href="https://github.com/owntracks/recorder">OwnTracks Recorder</a> because it's lightweight, relatively simple to set up, and because it offers a lot of features. It stores location data published by the apps by subscribing to an MQTT broker, and it enables you to access that data in a variety of formats. The best part is: it doesn't require a heavy external database of any kind.</p>
 <p><img alt="Recorder" src="../images/demo-geojson-linestring.png" /></p>
 <p>And the best is, you can configure the Recorder to also accept the HTTP POST requests from the apps, so it's the best companion for the OwnTracks apps in HTTP mode as well. Here again, if you used <a href="../quicksetup/">quicksetup</a>, you already have a correctly configured Recorder.</p>
 <p>Read <a href="../../clients/recorder/">more about the Recorder</a>.</p>
-<h2 id="mqttwarn">mqttwarn</h2>
+<h2 id="mqttwarn">mqttwarn<a class="headerlink" href="#mqttwarn" title="Permanent link">#</a></h2>
 <p>You will recall the discussion on <a href="../../tech/mqtt/">MQTT</a>, and the analogy with the cauldron.
 On this matter, <em>mqttwarn</em>, while not specific to OwnTracks, is another client you can connect
 to your <a href="../broker/">MQTT broker</a>. We think it is worth mentioning, and both Ben and JP -- the
@@ -134,17 +134,17 @@ targets are notification plugins, written in Python. <em>mqttwarn</em> currently
 different notification services or providers. A picture says a thousand words.</p>
 <p><img alt="mqttwarn" src="https://mqttwarn.readthedocs.io/en/latest/_images/mqttwarn.png" /></p>
 <p>Enjoy exploring the <a href="https://mqttwarn.readthedocs.io/">mqttwarn documentation</a>.</p>
-<h2 id="openhab">openHAB</h2>
+<h2 id="openhab">openHAB<a class="headerlink" href="#openhab" title="Permanent link">#</a></h2>
 <p>Presence detection in home automation is one of the most important pieces of the puzzle. Without it your smart home is effectively blind, and as a result can hardly be called 'smart' at all. There are very few automation rules that do not require some form of context in terms of human occupancy. Rules around security, lighting, music, even coffee machines -- all need to know if 'someone' is home before deciding whether to take action. </p>
 <p><img alt="openHAB" src="../images/openhab.png" /></p>
 <p>This is where OwnTracks steps in. In its simplest form it can be configured with waypoints (for home/work etc) that generate events whenever your phone enters/leaves these regions. These are sent to your own personal <a href="../broker/">MQTT broker</a> where your home automation software can react accordingly. The beauty of OwnTracks is two-fold - it is simple, you can disable the standard location reporting so all you get is the waypoint event/leave events, which is all your smart home cares about. The second is that, in all your data is <a href="../../privacy/">yours and yours alone</a> - there is no cloud service collecting, storing and potentially mining your data. </p>
 <p>Read more about <a href="https://v2.openhab.org/addons/bindings/mqttitude1/">openHAB and OwnTracks</a>.</p>
-<h2 id="home-assistant">Home Assistant</h2>
+<h2 id="home-assistant">Home Assistant<a class="headerlink" href="#home-assistant" title="Permanent link">#</a></h2>
 <p>Another home automation solution that can be used with OwnTracks is Home Assistant. Home Assistant allows you to track the location of people connected to your personal <a href="../broker/">MQTT broker</a>. It has a map to show their current location and can trigger automations based on entering and leaving zones. In order to use the internal broker of Home Assistant, the MQTT protocol level has to be set to 4. </p>
 <p>See the <a href="https://home-assistant.io/demo/">demo</a> for an example of the map with OwnTracks devices or read more about how Home Assistant <a href="https://home-assistant.io/components/mqtt/">connects to your private MQTT broker</a>, how to <a href="https://home-assistant.io/components/device_tracker.owntracks/">enable OwnTracks support in Home Assistant</a> and how to <a href="https://home-assistant.io/components/automation/#zone-trigger">configure automations based on zones</a>.</p>
-<h2 id="roll-your-own">Roll your own</h2>
+<h2 id="roll-your-own">Roll your own<a class="headerlink" href="#roll-your-own" title="Permanent link">#</a></h2>
 <p>If you feel really brave, you can <a href="../../tech/program/">write your own program</a> which subscribes to OwnTracks data, but don't forget to tell us about it!</p>
-<h2 id="related">Related</h2>
+<h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">#</a></h2>
 <p>Here are some projects we know of which use and/or integrate OwnTracks and/or
 which are useful when using MQTT in general or OwnTracks in particular.</p>
 <ul>

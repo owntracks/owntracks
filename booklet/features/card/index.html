@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="card">Card</h2>
+                <h2 id="card">Card<a class="headerlink" href="#card" title="Permanent link">#</a></h2>
 <p>OwnTracks typically displays the <a href="../tid/">TID</a> of a <a href="../friends/">friend</a> on the map, but you can associate an address book entry to that friend on iOS in order to see a friendly face (if you have you friend's photo in your device's address book) and/or a friendly name.</p>
 <p><img alt="TID on iOS" src="../images/b-ipad-TID-map.png" /></p>
 <p>We developed a new feature we call a <em>card</em> which you can use when in both <em>MQTT mode</em> and <em>HTTP mode</em>. A card is a retained message which contains a <a href="../../tech/json/">JSON payload</a> which, in absence of an address-book association, will be used to populate your friend on your map. The payload contains a full name (hopefully one you recognize), and an avatar -- a small image. If a card exists it will be used, but you can override its use in OwnTracks by associating your friend with an address book entry of your own device.</p>
@@ -114,9 +114,9 @@
   &quot;face&quot;: &quot;iV1CFEVkMhmCIKBUKh3 ... ghAAAAABJRU5ErkJggg==&quot;
 }
 </code></pre>
-<h3 id="creating-a-card">Creating a card</h3>
+<h3 id="creating-a-card">Creating a card<a class="headerlink" href="#creating-a-card" title="Permanent link">#</a></h3>
 <p>Cards can be created with shell scripts, say, or on iOS with the OwnTracks app itself.</p>
-<h4 id="shell-script">Shell Script</h4>
+<h4 id="shell-script">Shell Script<a class="headerlink" href="#shell-script" title="Permanent link">#</a></h4>
 <p>We provide several utilities for creating a <em>card</em> in the <a href="https://github.com/owntracks/recorder/tree/master/contrib/faces">Recorder's repository</a>:</p>
 <ul>
 <li>If you have an image file you want to use, use <code>image2card.sh</code>, passing <em>image-filename</em> and <em>fullname</em>.</li>
@@ -129,13 +129,13 @@
 mosquitto_pub -t owntracks/jjolie/phone/info -f my-card.json -r -q 2
 </code></pre>
 <p>Note the topic branch ending in <code>info</code> and note the use of the retain (<code>-r</code>) and qos (<code>-q</code>) flags.</p>
-<h4 id="ios-owntracks">iOS OwnTracks</h4>
+<h4 id="ios-owntracks">iOS OwnTracks<a class="headerlink" href="#ios-owntracks" title="Permanent link">#</a></h4>
 <p>on iOS and iPadOS the <em>Create Card</em> option in <em>Settings</em> permits creating a card directly on device. The app permits entering a name for the card as well as use the on-device camera to take a photograph or select from the photo library to use for the face element of the card. Hitting <em>Save</em> in the app then publishes the card to the current user's topic.</p>
-<h3 id="generating-the-face-image">Generating the face image</h3>
+<h3 id="generating-the-face-image">Generating the face image<a class="headerlink" href="#generating-the-face-image" title="Permanent link">#</a></h3>
 <p>We recommend formatting the face image as a 192x192 pixel image, encoded either as a JPEG or as a PNG. It is possible to use larger or smaller images, but 192x192 provides a good balance between image fidelity and data usage. Remember that this image will be transmitted many times over cellular data to all phones that use the app, so using very large images can be very costly.</p>
 <p>You should use JPEG encoding when the image depicts something complex, such as a photography of a real face. You should use PNG encoding when the image only contains simple flat colors, such as icons or drawings.</p>
 <p>We also recommend compressing the image to further save on data usage. A good app for this is <a href="https://squoosh.app/">Squoosh</a>, but be warned that <a href="https://github.com/GoogleChromeLabs/squoosh#privacy">it uses Google trackers</a>. For JPEG, the MozJPEG encoder with default settings is usually very good, and for PNG, the OxiPNG encoder with default settings is usually very good.</p>
-<h3 id="cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode</h3>
+<h3 id="cards-in-recorder-in-http-mode">Cards in Recorder in HTTP mode<a class="headerlink" href="#cards-in-recorder-in-http-mode" title="Permanent link">#</a></h3>
 <p>Using HTTP mode in the OwnTracks Recorder will cause the Recorder to search for a friend's CARD in the following two paths, with the first found winning:</p>
 <pre><code>&lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;-&lt;device&gt;.json
 &lt;STORAGEDIR&gt;/cards/&lt;user&gt;/&lt;user&gt;.json

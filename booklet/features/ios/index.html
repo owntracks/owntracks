@@ -104,7 +104,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="ios">iOS</h2>
+                <h2 id="ios">iOS<a class="headerlink" href="#ios" title="Permanent link">#</a></h2>
 <ul>
 <li>
 <p>Runs on iPhones and iPads as an iPhone app, and on Macs. Not tested on iPods.</p>
@@ -122,12 +122,12 @@
 <p>The current location can be sent (a.k.a. published) on request.</p>
 </li>
 </ul>
-<h2 id="startup">Startup</h2>
+<h2 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">#</a></h2>
 <p>After <a href="https://itunes.apple.com/en/app/mqttitude/id692424691?mt=8">downloading and installing the iPhone/iPad app</a>, start it up.</p>
 <p>The first time you start the app, the system asks you to give OwnTracks access to your location which it requires in order to, well, find your location.</p>
-<h2 id="settings">Settings</h2>
+<h2 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h2>
 <p>Access settings and the individual modes by pressing on the <code>I</code> on the top left.</p>
-<h2 id="friends">Friends</h2>
+<h2 id="friends">Friends<a class="headerlink" href="#friends" title="Permanent link">#</a></h2>
 <p>The Friends feature shows self and all Friends published by the server,
 their picture or OwnTracks default icon, and their last location.  Tapping on
 the entry switches back to map centered on friend's last location.</p>
@@ -136,13 +136,13 @@ contacts data, which you should allow. (If you change your mind later, <em>Priva
 <em>General settings</em> allows you to disable the feature.)</p>
 <p>Tapping on an location entry centers the map on the selected location.</p>
 <p>No geo-coding is done automatically in the background to limit mobile data usage.</p>
-<h3 id="location-indicators-and-friendly-faces">Location indicators and friendly faces</h3>
+<h3 id="location-indicators-and-friendly-faces">Location indicators and friendly faces<a class="headerlink" href="#location-indicators-and-friendly-faces" title="Permanent link">#</a></h3>
 <p>The locations of yourself, your friends and of the waypoints you set are displayed on the map. The inner area of the circle either shows a picture of yourself / your friend or the Tracker ID (tid) which is usually 2 characters and defaults to the last two characters of the publish topic.</p>
 <p>A red, yellow rimmed tachometer indicating the velocity (speed) at the reported location starts at at the 6 o'clock position and works clockwise. It uses a logarithmic scale to show slow speeds
 as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the 12 o'clock posistion a speed of 100 km/h. 3 o'clock means 180 km/h.</p>
 <p>A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.</p>
 <p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the <a href="../friends/">Friends</a> list, as soon as a location update for Jane is seen by the app.</p>
-<h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints</h3>
+<h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints<a class="headerlink" href="#region-monitoring-and-waypoints" title="Permanent link">#</a></h3>
 <p>Regions can be created with a description and a radius. If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. These regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns reddish.</p>
 <p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959' monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.</p>
 <p>Every time the devices enters or leaves a monitored region, an additional so-called <em>transition</em> message with an enter or leave event is published to the MQTT broker.</p>
@@ -153,7 +153,7 @@ as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the
 * Use iBeacons to accurately report enter/leave events for your home
 * Use iBeacons to publish enter/leave events for individual rooms/floors in your home</p>
 <p>See also <a href="../waypoints/">Waypoints</a>.</p>
-<h3 id="region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)</h3>
+<h3 id="region-monitoring-aka-geo-fences">Region monitoring (a.k.a. Geo Fences)<a class="headerlink" href="#region-monitoring-aka-geo-fences" title="Permanent link">#</a></h3>
 <p>If the waypoint description is non-empty and a radius &gt; 0 (meters) is set, the
 app starts monitoring the circular region around the specified coordinates.
 Regions are shown on the map as blue-ish circles. If the
@@ -165,7 +165,7 @@ said region.</p>
 new location when coming home or leaving home even if you do not move more than
 500m. Share your favorite places with your friends ("Best Sushi in Town"). Keep
 a private note ("Parked Car here").</p>
-<h3 id="region-monitoring-with-ibeacons">Region Monitoring with iBeacons</h3>
+<h3 id="region-monitoring-with-ibeacons">Region Monitoring with iBeacons<a class="headerlink" href="#region-monitoring-with-ibeacons" title="Permanent link">#</a></h3>
 <p>Rather than setting the radius, you may add your iBeacon's UUID and optionally major and minor numbers
 to the description to start region monitoring using iBeacons.</p>
 <p>e.g.
@@ -175,11 +175,11 @@ reports region with description 'myBeacon' when the iBeacon identified with UUID
 <li>'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959'
 reports region with description 'myBeacons' when any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant is in proximity</li>
 </ul>
-<h3 id="region-monitoring-with-follow">Region Monitoring with <code>+follow</code></h3>
+<h3 id="region-monitoring-with-follow">Region Monitoring with <code>+follow</code><a class="headerlink" href="#region-monitoring-with-follow" title="Permanent link">#</a></h3>
 <p>Create a region with a name begining with a <code>+</code> character, e.g. <code>+follow</code> and set an initial radius to be greater than zero. From this moment onwards, <em>lat</em> and <em>lon</em> will be set dynamically at each location publish and <em>radius</em> will be the distance you've covered in 30 seconds, at least 50 meters.</p>
 <p>Available in version &gt; 15.x.x: If the name of such a region starts with a <em>number</em> (e.g. <code>+60follow</code>), the dynamically set new <em>radius</em> will be the distance you've covered in <em>number</em> seconds (minimum 50 meters).</p>
 <p>This <em>follow</em>-type region will not trigger <code>enter/leave</code> events or notifications, and location publishes will have a type setting of <code>"t" : "C"</code>.</p>
-<h3 id="region-monitoring-with-automatic-monitoring-mode-change">Region Monitoring with automatic monitoring mode change</h3>
+<h3 id="region-monitoring-with-automatic-monitoring-mode-change">Region Monitoring with automatic monitoring mode change<a class="headerlink" href="#region-monitoring-with-automatic-monitoring-mode-change" title="Permanent link">#</a></h3>
 <p><em>Available in version &gt; 16.x.x</em></p>
 <p>Create a region with a name ending with <code>'|&lt;monitoring mode on enter&gt;|&lt;monitoring mode on exit&gt;</code>. E.g. <code>Home|1|2</code> will
 switch to monitoring mode 2 (Move Mode) when exiting the region <code>Home</code> and will switch back to monitoring mode 1 (Significant
@@ -187,16 +187,16 @@ Mode) when entering the region <code>Home</code>.</p>
 <p>Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all further region detection.</p>
 <p>As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a <code>+follow</code> region, which will trigger a wake up of the app when moving.</p>
-<h3 id="region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change">Region Monitoring with automatic battery level controlled monitoring mode change</h3>
+<h3 id="region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change">Region Monitoring with automatic battery level controlled monitoring mode change<a class="headerlink" href="#region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change" title="Permanent link">#</a></h3>
 <p><em>Available in version &gt; 16.x.x</em></p>
 <p>A new Settings parameter "downgrade" indicates the percentage of battery level which is the threshold.</p>
 <p>If the phone is in Move Mode and the battery level drops below "downgrade" percent, the app will automatically switch from Move Mode to Significant Mode.</p>
 <p>If the phone did that automatic switch and detects the charges is connected, it will automatically switch back to Move Mode.
 This will happen when then next location update in Significant mode is processed. </p>
 <p>The fact the app is in "downgraded" mode is indicated in the UI by a trailing <code>!</code> to the <code>Significant</code> mode (e.g. <code>Significant!</code>).</p>
-<h3 id="remote-configuration">Remote configuration</h3>
+<h3 id="remote-configuration">Remote configuration<a class="headerlink" href="#remote-configuration" title="Permanent link">#</a></h3>
 <p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
-<h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?</h3>
+<h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?<a class="headerlink" href="#why-do-location-publishes-sometimes-seem-to-cease-to-work" title="Permanent link">#</a></h3>
 <p>Here's what happens:</p>
 <p>If the app goes into Background, the connection is disconnected because the app
 cannot maintain the TCP connection in background.</p>

@@ -107,7 +107,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h2 id="http">HTTP</h2>
+                <h2 id="http">HTTP<a class="headerlink" href="#http" title="Permanent link">#</a></h2>
 <p>An optional HTTP mode is implemented with which the OwnTracks apps use a privately configured HTTP endpoint (a.k.a. a Web server) to which they POST requests over HTTP instead of publishing to MQTT. In this mode all <a href="../json/">JSON</a> payloads reported by the apps are transmitted via HTTP to the endpoint. In particular and most importantly, the apps publish their location data. Note that the length of the payload may be zero if a friend is deleted from the app: the zero-length message which is normally published via MQTT will be POSTed via HTTP to your endpoint; as such it is best to ignore zero-length payloads.</p>
 <p>The URL you enter in the setting for HTTP mode has the following syntax:</p>
 <pre><code>http[s]://[user[:password]@]host[:port]/path
@@ -156,7 +156,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="distinguishing-payloads">Distinguishing payloads</h2>
+<h2 id="distinguishing-payloads">Distinguishing payloads<a class="headerlink" href="#distinguishing-payloads" title="Permanent link">#</a></h2>
 <p>When a message is received over MQTT, the payload is sent to a topic, and this topic can be used to map the message to the user and their device. In the case that a message is received over HTTP, we don't have the context of a topic; instead, the iOS and Android apps use a different approach to help you figure out where the message came from:</p>
 <ul>
 <li>On iOS, a new <code>topic</code> key is added to the payload if the payload is unencrypted. If the payload is encrypted, the <code>topic</code> key is only available in the decrypted payload.</li>
@@ -166,7 +166,7 @@
 X-Limit-U: jjolie
 X-Limit-D: myphone
 </code></pre>
-<h2 id="php-example">PHP example</h2>
+<h2 id="php-example">PHP example<a class="headerlink" href="#php-example" title="Permanent link">#</a></h2>
 <p>Using a simple PHP script which you host, say, on an Apache or nginx server, you can quite easily record locations POSTed from the OwnTracks apps. The following very simple example will fill a database table:</p>
 <pre><code>mysql&gt; select * from locations;
 +---------------------+------+-----------+----------+
@@ -215,7 +215,7 @@ X-Limit-D: myphone
 </code></pre>
 <p>Assuming the Web server hosting this example is called <code>example.com</code>, and assuming the above script is in Jane's home directory's <code>public_html</code> saved as <code>loc.php</code>, the URL you configure in the OwnTracks app would be <code>http://example.com/~jane/loc.php</code>. We <em>urge</em> you to consider transmitting your data to your Web server securely using TLS and authentication, in which case the URL you use will be along the lines of <code>https://user:password@example.com/~jane/loc.php</code>.</p>
 <p>There's lots of other data in the JSON payload from the OwnTracks apps you may be interested in; we reccomend you <a href="../json/">study the API documentation</a>.</p>
-<h2 id="testing-your-http-endpoint">Testing your HTTP endpoint</h2>
+<h2 id="testing-your-http-endpoint">Testing your HTTP endpoint<a class="headerlink" href="#testing-your-http-endpoint" title="Permanent link">#</a></h2>
 <p>An simple example for testing a HTTP endpoint you set up:</p>
 <pre><code class="language-bash">#!/bin/sh
 
