@@ -251,7 +251,7 @@
 <li><code>inrids</code> contains a list of region IDs the device is currently in (e.g. <code>["6da9cf","3defa7"]</code>). Might be empty. <em>(iOS,Android/list of strings/optional)</em></li>
 <li><code>SSID</code>, if available, is the unique name of the WLAN. <em>(iOS,string/optional)</em></li>
 <li><code>BSSID</code>, if available, identifies the access point. <em>(iOS,string/optional)</em></li>
-<li><code>created_at</code> identifies the time at which the message is constructed (vs. <code>tst</code> which is the timestamp of the GPS fix) <em>(iOS,Android)</em></li>
+<li><code>created_at</code> identifies the time at which the message is constructed (if it differs from <code>tst</code>, which is the timestamp of the GPS fix) <em>(iOS,Android/integer/epoch/optional)</em></li>
 <li><code>m</code> identifies the monitoring mode at which the message is constructed (<em>significant</em>=<code>1</code>, <em>move</em>=<code>2</code>)  <em>(iOS/integer/optional)</em></li>
 <li><code>_id</code> random identifier to be used by consumers to correlate &amp; distinguish send/return messages <em>(Android/string)</em></li>
 </ul>
