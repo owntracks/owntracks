@@ -114,6 +114,7 @@
 </ul>
 <p>You can share the certificate if you want to (though not many people will want it ...)
 It's so public, that it's perfectly OK to send yourself the file by, say, e-mail.</p>
+<p>Note: as per <a href="https://www.rfc-editor.org/rfc/rfc9525#appendix-A-2.2">RFC 9525</a> an existing certificate/key pair will not work if the server certificate does not have a Subject Alternative Name (SAN). To verify that your server certificate has a SAN, you can look at the certificate in x509 form (see below, in "The nitty gritty").</p>
 <h2 id="configure-tls-on-the-mosquitto-broker">Configure TLS on the Mosquitto broker<a class="headerlink" href="#configure-tls-on-the-mosquitto-broker" title="Permanent link">#</a></h2>
 <p>We'll first show you how to set up TLS on your Mosquitto <a href="../../guide/broker/">broker</a>.
 The basic configuration for TLS in <a href="http://mosquitto.org/man/mosquitto-conf-5.html">mosquitto.conf</a> is:</p>
