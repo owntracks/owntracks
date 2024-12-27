@@ -128,6 +128,36 @@
 }
 </code></pre>
 <p>iOS displays the Points of Interest as red bubbles on the map as shown above. The last POI and tags seen for a particular user are visible on the user's status page.</p>
+<h2 id="poi-and-images">POI and images<a class="headerlink" href="#poi-and-images" title="Permanent link">#</a></h2>
+<p>POI can also be submitted with a thumbnail of an photo selected from the Photos app. I take a photo using the normal iOS mechanisms to do this, and from within OwnTracks I can submit a POI (Point of Interest) with an associated image; the image is tagged with the <em>file name</em> of the photo.</p>
+<p>Choose to publish a new location from the map:</p>
+<p><img alt="manually publish a location" src="../images/poi2/jagular309-a.jpg" />
+<img alt="create new POI with image" src="../images/poi2/jagular309-b.jpg" /></p>
+<p>A new dialog opens when tapping on <em>Set POI with image</em> in which an image from the photos library can be selected and set a POI text input, and the POI itself is shown on the Friend's details page</p>
+<p><img alt="selecting a photo from the library and setting POI" src="../images/poi2/jagular309-c.jpg" />
+<img alt="location details show POI" src="../images/poi2/jagular309-d.jpg" /></p>
+<p>and the map displays the thumbnail of the photo</p>
+<p><img alt="the tagged POI on the app's map" src="../images/poi2/jagular309-e.jpg" /></p>
+<p>This thumbnail will also be shown on Friends' maps.</p>
+<p>Our <code>"_type" : "location"</code> JSON payload is augmented with the image name, a POI text, and the image data of the thumbnail:</p>
+<pre><code class="language-json">{
+  &quot;_type&quot;: &quot;location&quot;,
+  &quot;acc&quot;: 5,
+  &quot;alt&quot;: 0,
+  &quot;conn&quot;: &quot;w&quot;,
+  &quot;created_at&quot;: 1734377867,
+  &quot;image&quot;: &quot;/9j/42nS1Xn ... JfVKcX0R5mIy9+813P/9k=&quot;,
+  &quot;imagename&quot;: &quot;IMG_0009&quot;,
+  &quot;lat&quot;: 52.085284,
+  &quot;lon&quot;: 5.120975,
+  &quot;m&quot;: 1,
+  &quot;poi&quot;: &quot;fabulous rijsttafel&quot;,
+  &quot;t&quot;: &quot;u&quot;,
+  &quot;tid&quot;: &quot;JJ&quot;,
+  &quot;tst&quot;: 1734377712
+}
+</code></pre>
+<p>The Recorder's API will return these larger payloads transparently.</p>
               
             </div>
           </div><footer>
