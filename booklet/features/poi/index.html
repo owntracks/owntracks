@@ -158,6 +158,10 @@
 }
 </code></pre>
 <p>The Recorder's API will return these larger payloads transparently.</p>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>POI are visible on iOS' map as long as they are locally stored on the device. This is controlled by the <code>positions</code> setting which indicates how many positions for a friend the device should keep in store. As soon as least-recently-used positions containing POI (both <em>simple</em> and <em>with image</em>) are removed from that store, the appropriate POI will not longer be visible on the map.</li>
+</ul>
               
             </div>
           </div><footer>
