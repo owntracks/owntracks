@@ -256,6 +256,7 @@
 <li><code>created_at</code> identifies the time at which the message is constructed (if it differs from <code>tst</code>, which is the timestamp of the GPS fix) <em>(iOS,Android/integer/epoch/optional)</em></li>
 <li><code>m</code> identifies the monitoring mode at which the message is constructed (<em>significant</em>=<code>1</code>, <em>move</em>=<code>2</code>)  <em>(iOS/integer/optional)</em></li>
 <li><code>_id</code> random identifier to be used by consumers to correlate &amp; distinguish send/return messages <em>(Android/string)</em></li>
+<li><code>motionactivities</code> contains a list of motion states detected by iOS' motion manager (a combination of <code>stationary</code>, <code>walking</code>, <code>running</code>, <code>automotive</code>, <code>cycling</code>, and/or <code>unknown</code>, e.g. <code>["cycling"]</code>). <em>(iOS/list of strings/optional)</em></li>
 </ul>
 <h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h4>
 <ul>
@@ -414,6 +415,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 }
 </code></pre>
 <ul>
+<li><code>adapt</code> time in minutes of non-movement before switching from move to significant mode. 0 (zero) means disabled. Defaults to 0 (zero) <em>(iOS/integer/minutes/optional)</em></li>
 <li><code>allowRemoteLocation</code> Respond to reportLocation cmd message <em>(iOS/boolean)</em></li>
 <li><code>allowinvalidcerts</code> disable TLS certificate checks <strong>insecure</strong>  <em>(iOS/boolean)</em></li>
 <li><code>auth</code> Use <code>username</code> and <code>password</code> for endpoint authentication <em>(iOS,Android/boolean)</em></li>
@@ -423,6 +425,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>clientpkcs</code> Name of the client pkcs12 file <em>(iOS/string)</em></li>
 <li><code>cmd</code> Respond to cmd messages <em>(iOS,Android/boolean)</em></li>
 <li><code>connectionTimeoutSeconds</code> (default 30) TCP timeout for establishing a connection to the MQTT / HTTP broker, <em>(Android/int)</em></li>
+<li><code>days</code> Number of days to keep locations stored locally. 0 means no local keeping of locations. A negative number indicates to use the <code>positions</code> value. Defaults to -1 for backward compatibility. <em>(iOS/integer/days)</em></li>
 <li><code>debugLog</code> (default false) whether or not debug logs should be shown in the log viewer / exporter activity <em>(Android/bool)</em></li>
 <li><code>deviceId</code> id of the device used for <code>pubTopicBase</code> and <code>clientId</code> construction. Defaults to the os name of the device  <em>(iOS,Android/string)</em></li>
 <li><code>downgrade</code> battery level below which to downgrade monitoring from move mode <em>(iOS/integer/percent/optional)</em></li>
@@ -471,7 +474,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>pegLocatorFastestIntervalToInterval</code> (default false) - if true, requests that that the device provide locations no faster than the specified interval. Location providers often use the requested interval as a "at least every" setting, and may return locations more frequencly. Some people wanted the behaviour where it also meant "no more frequently than", so this setting lets them specify this <em>(Android/bool)</em></li>
 <li><code>ping</code> Interval in which location messages of with <code>t</code>:<code>p</code> are reported <em>(Android/integer)</em></li>
 <li><code>port</code> MQTT endpoint port <em>(iOS,Android/integer)</em></li>
-<li><code>positions</code> Number of locations to keep and display <em>(iOS/integer)</em></li>
+<li><code>positions</code> Number of locations to keep for friends and own device and display <em>(iOS/integer)</em></li>
 <li><code>pubTopicBase</code> MQTT topic base to which the app publishes; <code>%u</code> is replaced by the user name, <code>%d</code> by device   <em>(iOS,Android/string)</em></li>
 <li><code>pubRetain</code> MQTT retain flag for reported messages <em>(iOS,Android/boolean)</em></li>
 <li><code>pubQos</code> MQTT QoS level for reported messages <em>(iOS,Android/integer)</em></li>
@@ -515,6 +518,8 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li><code>locale</code> the current locale on the device <em>(iOS/string)</em> as defined in <a href="https://developer.apple.com/documentation/foundation/nslocale/1416263-localeidentifier?language=objc">localeIdentifier</a></li>
 <li><code>localeUsesMetricSystem</code> <em>(iOS/boolean)</em> as defined in <a href="https://developer.apple.com/documentation/foundation/nslocale/1643225-usesmetricsystem?language=objc">usesMetricSystem</a></li>
 <li><code>locationManagerAuthorizationStatus</code> used for all locations <em>(iOS/string)</em> as defined in <a href="https://developer.apple.com/documentation/corelocation/clauthorizationstatus?language=objc">"CLAuthorizationStatus"</a></li>
+<li><code>motionActivityManagerAuthorizationStatus</code> used for motionactivities <em>(iOS/string)</em> as defined in <a href="https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/authorizationstatus()?language=objc">motionActivityManagerAuthorizationStatus</a></li>
+<li><code>motionActivityManagerIsActivityAvailable</code> used for motionactivities <em>(iOS/boolean)</em> as defined in <a href="https://developer.apple.com/documentation/coremotion/cmmotionactivitymanager/isactivityavailable()?language=objc">motionActivityManagerIsActivityAvailable</a></li>
 <li><code>pedometerIsDistanceAvailable</code> <em>(iOS/boolean)</em> as defined in <a href="https://developer.apple.com/documentation/coremotion/cmpedometer/isdistanceavailable()?language=objc">isDistanceAvailable</a></li>
 <li><code>pedometerIsFloorCountingAvailable</code> <em>(iOS/boolean)</em> as defined in <a href="https://developer.apple.com/documentation/coremotion/cmpedometer/isfloorcountingavailable()?language=objc">isFloorCountingAvailable</a></li>
 <li><code>pedometerIsStepCountingAvailable</code> <em>(iOS/boolean)</em> as defined in <a href="https://developer.apple.com/documentation/coremotion/cmpedometer/isstepcountingavailable()?language=objc">isStepCountingAvailable</a></li>

@@ -142,6 +142,7 @@ contacts data, which you should allow. (If you change your mind later, <em>Priva
 as good as high speeds. The 9 o'clock position indicates a speed of 30 km/h, the 12 o'clock posistion a speed of 100 km/h. 3 o'clock means 180 km/h.</p>
 <p>A small blue, yellow rimmed semicircle at the perimeter indicates the course over ground (direction of movement)  with the 12 o'clock position meaning North.</p>
 <p>If your iOS addressbook has an entry for, say, Jane Jolie, and Jane has an image associated with her addressbook entry, OwnTracks will show Jane's image on the map and on the <a href="../friends/">Friends</a> list, as soon as a location update for Jane is seen by the app.</p>
+<h2 id="regions">Regions<a class="headerlink" href="#regions" title="Permanent link">#</a></h2>
 <h3 id="region-monitoring-and-waypoints">Region Monitoring and Waypoints<a class="headerlink" href="#region-monitoring-and-waypoints" title="Permanent link">#</a></h3>
 <p>Regions can be created with a description and a radius. If the description is non-empty and a radius &gt; 0 (meters) is set, the app starts monitoring the circular region around the coordinate. These regions are shown on the map as blue-ish circles. If the device is within a region, the corresponding circle turns reddish.</p>
 <p>If the description is non-empty and includes a value UUID for an iBeacon, the app starts monitoring the iBeacon region. e.g. 'myBeacons:CA271EAE-5FA8-4E80-8F08-2A302A95A959' monitors any iBeacon identified with UUID = CA..., with major and minor numbers irrelevant.</p>
@@ -187,13 +188,27 @@ Mode) when entering the region <code>Home</code>.</p>
 <p>Please note automatic change to monitoring mode -1 (Quiet Mode) will stop all further region detection.</p>
 <p>As the automatic change to monitoring mode 2 (Move Mode) does not work reliably under all circumstances, we recommend to
 add a <code>+follow</code> region, which will trigger a wake up of the app when moving.</p>
-<h3 id="region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change">Region Monitoring with automatic battery level controlled monitoring mode change<a class="headerlink" href="#region-monitoring-with-automatic-battery-level-controlled-monitoring-mode-change" title="Permanent link">#</a></h3>
+<h2 id="smart-monitoring-mode-changes">Smart Monitoring Mode Changes<a class="headerlink" href="#smart-monitoring-mode-changes" title="Permanent link">#</a></h2>
+<h3 id="automatic-battery-level-controlled-monitoring-mode-change">Automatic battery level controlled monitoring mode change<a class="headerlink" href="#automatic-battery-level-controlled-monitoring-mode-change" title="Permanent link">#</a></h3>
 <p><em>Available in version &gt; 16.x.x</em></p>
 <p>A new Settings parameter "downgrade" indicates the percentage of battery level which is the threshold.</p>
 <p>If the phone is in Move Mode and the battery level drops below "downgrade" percent, the app will automatically switch from Move Mode to Significant Mode.</p>
-<p>If the phone did that automatic switch and detects the charges is connected, it will automatically switch back to Move Mode.
+<p>If the phone did that automatic switch and detects the charger is connected, it will automatically switch back to Move Mode.
 This will happen when then next location update in Significant mode is processed. </p>
 <p>The fact the app is in "downgraded" mode is indicated in the UI by a trailing <code>!</code> to the <code>Significant</code> mode (e.g. <code>Significant!</code>).</p>
+<h3 id="automatic-movement-controlled-monitoring-mode-change">Automatic movement controlled monitoring mode change<a class="headerlink" href="#automatic-movement-controlled-monitoring-mode-change" title="Permanent link">#</a></h3>
+<p><em>Available in version &gt; 18.4.x</em></p>
+<p>A new Settings parameter "adapt" indicates the minutes of non-movement after which the iPhone will switch from Move Mode to Significant Mode.
+"adapt" inactive if set the 0 (zero).</p>
+<p>If the phone did that automatic switch and gets the next location update, it will automatically switch back to Move Mode.
+This will happen when then next location update in Significant mode is processed. It is best practice to setup a <code>+follow</code> region as described above
+to ensure timely switching back to Move Mode.</p>
+<p>The fact the app is in "adapt" mode is indicated in the UI by a trailing <code>#</code> to the <code>Significant</code> mode (e.g. <code>Significant#</code>).</p>
+<h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h2>
+<h3 id="offline-mode-and-gpx-export">Offline Mode and GPX Export<a class="headerlink" href="#offline-mode-and-gpx-export" title="Permanent link">#</a></h3>
+<p>To avoid connection to a backend server, please select MQTT mode and use Port 0 (zero).</p>
+<p>The iPhone will keep all locations for the last number of days specified in the <code>days</code> configuration setting.</p>
+<p>On the status screen, there is a possibility to export the stored locations in GPX format.</p>
 <h3 id="remote-configuration">Remote configuration<a class="headerlink" href="#remote-configuration" title="Permanent link">#</a></h3>
 <p>You can help your friends customize their copy of OwnTracks with <a href="../remoteconfig/">remote configuration</a>.</p>
 <h3 id="why-do-location-publishes-sometimes-seem-to-cease-to-work">Why do location publishes sometimes seem to cease to work?<a class="headerlink" href="#why-do-location-publishes-sometimes-seem-to-cease-to-work" title="Permanent link">#</a></h3>
