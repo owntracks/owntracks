@@ -201,8 +201,10 @@ This will happen when then next location update in Significant mode is processed
 <p>A new Settings parameter "adapt" indicates the minutes of non-movement after which the iPhone will switch from Move Mode to Significant Mode.
 "adapt" inactive if set the 0 (zero).</p>
 <p>If the phone did that automatic switch and gets the next location update, it will automatically switch back to Move Mode.
-This will happen when then next location update in Significant mode is processed. It is best practice to setup a <code>+follow</code> region as described above
-to ensure timely switching back to Move Mode.</p>
+This will happen when then next location update in Significant mode is processed.
+We found the automatic switching from and timely switching back to Move Mode works best if you setup a <code>+follow</code> region
+as described above. We do check if an active <code>+follow</code> region is configured before activating adapt mode, otherwise
+the <code>adapt</code> setting is ignored.</p>
 <p>The fact the app is in "adapt" mode is indicated in the UI by a trailing <code>#</code> to the <code>Significant</code> mode (e.g. <code>Significant#</code>).</p>
 <h2 id="miscellaneous">Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permanent link">#</a></h2>
 <h3 id="offline-mode-and-gpx-export">Offline Mode and GPX Export<a class="headerlink" href="#offline-mode-and-gpx-export" title="Permanent link">#</a></h3>
