@@ -380,7 +380,7 @@ Queclink devices report the following additional elements in a <code>_type=locat
 <li>Waypoints are sent to the broker and transition messages contain a <code>desc</code> and <code>event</code> element.</li>
 </ul>
 <h2 id="_typetransition"><code>_type=transition</code><a class="headerlink" href="#_typetransition" title="Permanent link">#</a></h2>
-<p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the timestamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.</p>
+<p>A transition message is sent, when entering or leaving a previously configured geographical region or BLE Beacon. In addition to the coordinates where the event fired, the message contains the time stamp of the waypoint creation as well as the event that triggered the transition message with its description. MQTT transition messages are published non retained.</p>
 <pre><code class="language-json">{
     &quot;_type&quot;: &quot;transition&quot;,
     elements
