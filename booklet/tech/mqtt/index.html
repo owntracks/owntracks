@@ -107,7 +107,7 @@
                 <h2 id="mqtt">MQTT<a class="headerlink" href="#mqtt" title="Permanent link">#</a></h2>
 <h3 id="keepalives">Keepalives<a class="headerlink" href="#keepalives" title="Permanent link">#</a></h3>
 <p>MQTT was designed with mobile clients in mind so it doesn't require a persistent TCP connection. The broker detects a dead client if it hasn't heard from a client within the <em>keepalive</em> interval which is set by the client.</p>
-<p>The server should send the LWT if it the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.</p>
+<p>The server should send the LWT if the interval plus 50% passed without receiving any MQTT packet from the client (e.g. after 90 sec if keepalive was 60 sec.</p>
 <p>From the spec:</p>
 <blockquote>
 <p>The actual value of the Keep Alive is application specific; typically this is
