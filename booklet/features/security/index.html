@@ -57,6 +57,8 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Security</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#security-related-changes-beginning-in-july-2026">Security-related changes beginning in July 2026</a>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../location/">Location</a>
@@ -138,7 +140,21 @@
 <li>On Android the requests are performed via Google Play services for the non OSS release. This configuration can be optionally changed by configuring Android to use <a href="../../other/opencage/">OpenCage</a> as reverse geo location provider. This functionality cannot be disabled.</li>
 </ul>
 </li>
+<li>
+<p>The OwnTracks Recorder should not be directly connected to the Internet. In MQTT mode it will typically be fronted by a TLS-capable MQTT broker, and in HTTP mode, we very strongly recommend placing it behind a TLS-protected HTTP reverse proxy which will typically also provide authentication.</p>
+</li>
 </ul>
+<h3 id="security-related-changes-beginning-in-july-2026">Security-related changes beginning in July 2026<a class="headerlink" href="#security-related-changes-beginning-in-july-2026" title="Permanent link">#</a></h3>
+<p>Beginning with our iOS app version 26.2.2, and our Android app version 2.6.0 sundry security-related changes have been implemented. (The Changelogs of the respective repositories have all the details.)</p>
+<p>The following changes have been implemented:</p>
+<ul>
+<li>a security advisory covering several intent-handling and remote configuration vulnerabilities has been addressed.</li>
+<li>external configuration loading (via <code>owntracks://</code> URLs and via <code>*.otrc</code> config files) is now disabled by default and must be explicitly enabled in Settings. Once enabled, the apps can be remotely configured.</li>
+<li>a confirmation dialog is shown when enabling external configuration, warning that any config URL can fully reconfigure the app.</li>
+<li>all intents/shortcuts now require a shared secret (<code>Intent Auth Key</code>) in every intent, preventing un-authorized apps from triggering location publishes or changing monitoring mode. The <code>Intent Auth Key</code> is created once when the app is installed.</li>
+<li>security-related preferences (on iOS these are <code>allowConfigurationByURIAndConfigFile</code>, <code>allowIntentControl</code>, <code>intentAuthKey</code>, and on Android these are <code>allowConfigurationByURIAndConfigFile</code>, <code>allowIntentControl,</code> <code>intentAuthKey</code>) cannot be changed via imported config files or URLs</li>
+</ul>
+<p>Many users will not need to concern themselves with these settings, but they might be important for OwnTracks users who wish to remotely control the OwnTracks apps.</p>
               
             </div>
           </div><footer>
