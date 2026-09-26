@@ -141,7 +141,7 @@ You also send the CA certificate to the device and install it there, as discusse
 <h3 id="android">Android<a class="headerlink" href="#android" title="Permanent link">#</a></h3>
 <ul>
 <li>Save the certificate to your device in an easy accessible location </li>
-<li>Import the certificate into the app (Preferences, Connection, Security, Client certificate, Select) by opening it with the file choser. </li>
+<li>Import the certificate into the app (Preferences, Connection, Security, Client certificate, Select) by opening it with the file choser. Note that external config loading needs to be enabled for this to work.</li>
 <li>The file will be copied to the secure storage location of the app. If the import is successfull, the original file can be removed from the device. </li>
 <li>Specify the certificate password (certificates without password are not supported). </li>
 </ul>
@@ -149,7 +149,7 @@ You also send the CA certificate to the device and install it there, as discusse
 <p>We recommend you proceed as follows:</p>
 <ol>
 <li>Install the <a href="../tls/">TLS</a> CA certificate in your system keystore by sending it (e.g. via e-mail) to your device and installing it in the system profile. (Click on the certificate and follow iOS' instructions.)</li>
-<li>Send the prepared PKCS#12 file (with an <code>.otrp</code> extension) to your device, and open it. It will be imported into OwnTracks</li>
+<li>Send the prepared PKCS#12 file (with an <code>.otrp</code> extension) to your device, and open it. It will be imported into OwnTracks. Note that external config loading needs to be enabled for this to work.</li>
 <li>Launch OwnTracks, select Settings and TLS. Select the <code>otrp</code> file you just imported as Client Certificate Filename, and below that, enter its passphrase.</li>
 <li>Leave <em>Use Custom Security Policy</em> disabled.</li>
 <li>Verify the connection to your broker.</li>
