@@ -134,6 +134,9 @@
 <p>The apps do not send location data to any server until that server has been configured by the user (i.e., there is no preconfigured demo server).</p>
 </li>
 <li>
+<p>The iOS app keeps a limited local history of points received from Friends and a history of the user's own enter/leave events.</p>
+</li>
+<li>
 <p>The apps do, however, perform reverse geo location lookups.</p>
 <ul>
 <li>For iOS these lookups are submitted to the Apple Maps infrastructure, and as reverse geo-coding is rate-limited on the iPhone we do not use it for all sent locations, but only when a location is displayed on user request, e.g. on the Friends page.</li>
