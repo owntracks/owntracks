@@ -366,6 +366,9 @@ $ systemctl status nginx
 </code></pre>
 </li>
 <li>
+<p>If clients are experiencing frequent disconnections, especially over cellular networks, check your <a href="../broker/#proxy-and-firewall-configuration">broker configuration for proxy and firewall timeouts</a>.</p>
+</li>
+<li>
 <p>You'll likely also want to see the payloads the MQTT broker is getting; do so by subscribing to all topics:</p>
 <pre><code>$ mosquitto_sub -v -t '#'
 </code></pre>

@@ -135,6 +135,25 @@ mosquitto[1366]: Sending PUBREC to jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Received PUBREL from jane-5s-m-o (Mid: 7)
 mosquitto[1366]: Sending PUBCOMP to jane-5s-m-o (Mid: 7)
 </code></pre>
+<h2 id="proxy-and-firewall-configuration">Proxy and firewall configuration<a class="headerlink" href="#proxy-and-firewall-configuration" title="Permanent link">#</a></h2>
+<p>If your MQTT broker sits behind a proxy or firewall (such as HAProxy in a pfSense deployment), you need to ensure that idle timeout settings do not interfere with MQTT's persistent connections.</p>
+<p>MQTT clients maintain long-lived TCP connections to the broker, using periodic keepalive messages to stay connected. OwnTracks clients send keepalive packets every 3600 seconds (one hour) by default. If your proxy or firewall has a shorter idle timeout, it will close these "silent" connections prematurely, causing frequent disconnections.</p>
+<p><strong>HAProxy configuration example:</strong></p>
+<p>If you are using HAProxy (e.g., on pfSense), configure the following timeouts on both the frontend and backend handling MQTT traffic (in TCP mode):</p>
+<ul>
+<li><strong>Client timeout</strong>: Set to at least 4200000 ms (70 minutes)</li>
+<li><strong>Server timeout</strong>: Set to at least 4200000 ms (70 minutes)</li>
+<li><strong>Connection timeout</strong>: Leave at default (only covers initial connection establishment)</li>
+</ul>
+<p>Both the client and server timeouts must exceed your MQTT client keepalive setting, with a safety margin. Mosquitto itself waits 1.5 times the keepalive interval before declaring a client dead.</p>
+<p><strong>Important notes:</strong></p>
+<ul>
+<li>These timeout settings are per frontend/backend, so other services behind your proxy remain unaffected.</li>
+<li>The <code>httpclose</code> option in HAProxy is irrelevant when operating in TCP mode.</li>
+<li>After saving configuration changes, clients must reconnect for new timeouts to take effect.</li>
+<li>If disconnections continue to occur only on cellular connections, consider lowering the client keepalive to 120–300 seconds to stay ahead of carrier NAT idle timeouts.</li>
+</ul>
+<p>Consult your proxy or firewall documentation for the specific steps to adjust these settings.</p>
 <h2 id="owntracks">OwnTracks<a class="headerlink" href="#owntracks" title="Permanent link">#</a></h2>
 <p>So, you've configured your broker and you are familiar with the <em>mosquitto</em> command-line
 clients, so now it's time to see if you can <a href="../apps/">get OwnTracks to speak to your broker</a>.</p>

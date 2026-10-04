@@ -126,6 +126,8 @@ A: Depending on the mode, the apps report location changes only after significan
 <p>Q: I'm sure I've moved into (or out of) a region, but OwnTracks isn't reporting that.<br/></p>
 <p>Q: Why are transition events delayed?<br/></p>
 <p>Q: How can I increase reporting frequency and does that have any negative impact?<br/></p>
+<p>Q: OwnTracks clients keep disconnecting, especially over cellular<br/>
+A: In MQTT mode, this is often caused by idle timeout settings on intermediate devices like proxies or firewalls. If your broker sits behind HAProxy, pfSense, or similar infrastructure, check that client and server timeout settings exceed your MQTT keepalive interval (default 3600 seconds). See <a href="../guide/broker/#proxy-and-firewall-configuration">Proxy and firewall configuration</a> in the broker setup guide. If drops occur only on cellular, try lowering the client keepalive to 120–300 seconds to stay ahead of carrier NAT idle timeouts.</p>
 <p>Q: I have a question<br/>
 A: We love questions. Well, sometimes. If you want to ask us a question or desire feedback from other OwnTracks users, visit us at the <a href="https://github.com/owntracks/talk">OwnTracks meta tracker</a>.</p>
 <p>Q: How can I report an issue?<br/>
