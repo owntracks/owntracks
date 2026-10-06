@@ -163,8 +163,8 @@ print json.dumps(payload)
 deliver the message to the the phone.</p>
 <pre><code>50 22 * * * /usr/local/bin/reportsteps | mosquitto_pub -q 2 -t owntracks/jpm/5s/cmd -l
 </code></pre>
-<h4 id="daily-reports-with-openhab">Daily reports with Openhab<a class="headerlink" href="#daily-reports-with-openhab" title="Permanent link">#</a></h4>
-<p>With openhab it's quite easy to user rules engine from openhab and to not rely on servers crontab.</p>
+<h4 id="daily-reports-with-openhab">Daily reports with OpenHAB<a class="headerlink" href="#daily-reports-with-openhab" title="Permanent link">#</a></h4>
+<p>With openHAB it's quite easy to user rules engine from openHAB and to not rely on servers crontab.</p>
 <p>At first you have to define mqtt retain broker (MQTT v. 1 is used) - simply add configuration to /etc/openhab2/services/mqtt.cfg</p>
 <pre><code>mqtt-retain.url=tcp://192.168.1.1:1884
 mqtt-retain.qos=2
